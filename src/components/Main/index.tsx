@@ -1,6 +1,5 @@
 'use client';
 
-import ThemeSwitcher from '@/components/ThemeSwitcher';
 import { useTheme } from '@/contexts/ThemeContext';
 import Image from 'next/image';
 
@@ -22,10 +21,6 @@ export function Main({
 
   return (
     <main className='relative flex flex-col items-center justify-center min-h-screen p-8 text-center bg-white dark:bg-gradient-to-br dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 transition-all duration-500'>
-      {/* Theme Switcher no canto superior direito */}
-      <div className='absolute top-6 right-6 z-10'>
-        <ThemeSwitcher size='lg' variant='minimal' animated={true} />
-      </div>
 
       <Image
         src={logoSrc}

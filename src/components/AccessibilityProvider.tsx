@@ -136,15 +136,13 @@ export function AccessibilityProvider({
             </label>
             <button
               onClick={() => setHighContrast(!highContrast)}
-              className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors ${
-                highContrast ? 'bg-blue-600' : 'bg-gray-200 dark:bg-gray-600'
-              }`}
+              className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors ${highContrast ? 'bg-blue-600' : 'bg-gray-200 dark:bg-gray-600'
+                }`}
               aria-label={`${highContrast ? 'Desativar' : 'Ativar'} alto contraste`}
             >
               <span
-                className={`inline-block h-4 w-4 transform rounded-full bg-white transition-transform ${
-                  highContrast ? 'translate-x-6' : 'translate-x-1'
-                }`}
+                className={`inline-block h-4 w-4 transform rounded-full bg-white transition-transform ${highContrast ? 'translate-x-6' : 'translate-x-1'
+                  }`}
               />
             </button>
           </div>
@@ -159,11 +157,10 @@ export function AccessibilityProvider({
                 <button
                   key={size}
                   onClick={() => setFontSize(size)}
-                  className={`px-3 py-1 text-xs rounded-md transition-colors ${
-                    fontSize === size
+                  className={`px-3 py-1 text-xs rounded-md transition-colors ${fontSize === size
                       ? 'bg-blue-600 text-white'
                       : 'bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-600'
-                  }`}
+                    }`}
                 >
                   {size === 'small' && 'A'}
                   {size === 'medium' && 'A'}
@@ -180,15 +177,13 @@ export function AccessibilityProvider({
             </label>
             <button
               onClick={() => setReducedMotion(!reducedMotion)}
-              className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors ${
-                reducedMotion ? 'bg-blue-600' : 'bg-gray-200 dark:bg-gray-600'
-              }`}
+              className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors ${reducedMotion ? 'bg-blue-600' : 'bg-gray-200 dark:bg-gray-600'
+                }`}
               aria-label={`${reducedMotion ? 'Desativar' : 'Ativar'} redução de movimento`}
             >
               <span
-                className={`inline-block h-4 w-4 transform rounded-full bg-white transition-transform ${
-                  reducedMotion ? 'translate-x-6' : 'translate-x-1'
-                }`}
+                className={`inline-block h-4 w-4 transform rounded-full bg-white transition-transform ${reducedMotion ? 'translate-x-6' : 'translate-x-1'
+                  }`}
               />
             </button>
           </div>

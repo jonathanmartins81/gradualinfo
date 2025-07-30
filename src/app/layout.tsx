@@ -26,7 +26,10 @@ export default function RootLayout({
         <JsonLd />
       </head>
       <body className="font-sans">
-        <Providers>{children}</Providers>
+        <Providers>
+          <Navigation />
+          {children}
+        </Providers>
       </body>
     </html>
   );

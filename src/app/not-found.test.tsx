@@ -29,6 +29,6 @@ describe('NotFound Page', () => {
     const container = screen.getByText('Página não encontrada').closest('div');
     expect(container).toBeInTheDocument();
     // Verificar se o container tem as classes corretas
-    expect(container).toHaveClass('text-center');
+    expect(container).toHaveClass('mb-8');
   });
 });

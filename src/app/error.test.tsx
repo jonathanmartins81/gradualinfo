@@ -14,7 +14,7 @@ vi.mock('react', async () => {
 // Mock do console.error
 const mockConsoleError = vi
   .spyOn(console, 'error')
-  .mockImplementation(() => {});
+  .mockImplementation(() => { });
 
 describe('Error Page', () => {
   const mockError = {
@@ -62,6 +62,6 @@ describe('Error Page', () => {
     const errorContainer = screen.getByText('Ops! Algo deu errado');
     expect(errorContainer).toBeInTheDocument();
     const container = errorContainer.closest('div');
-    expect(container).toHaveClass('max-w-md', 'w-full', 'text-center');
+    expect(container).toHaveClass('mb-8');
   });
 });

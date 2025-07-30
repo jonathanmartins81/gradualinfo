@@ -249,11 +249,10 @@ export default function DashboardPage() {
                       <span>{post.views} visualizações</span>
                       <span>•</span>
                       <span
-                        className={`px-2 py-1 rounded-full text-xs font-medium ${
-                          post.status === 'publicado'
+                        className={`px-2 py-1 rounded-full text-xs font-medium ${post.status === 'publicado'
                             ? 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200'
                             : 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-200'
-                        }`}
+                          }`}
                       >
                         {post.status}
                       </span>

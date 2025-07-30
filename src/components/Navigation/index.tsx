@@ -117,6 +117,7 @@ export default function Navigation() {
   const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false);
   const [activeCategory, setActiveCategory] = useState<string | null>(null);
+  const [imageError, setImageError] = useState(false);
   const { isDark } = useTheme();
 
   // Agrupar itens por categoria
@@ -140,14 +141,19 @@ export default function Navigation() {
               href='/'
               className='flex items-center space-x-3 text-xl font-bold text-gray-900 dark:text-white'
             >
-              <Image
-                src={isDark ? '/img/logo-dark.svg' : '/img/logo-light.svg'}
-                alt='Aqua9 Logo'
-                width={120}
-                height={32}
-                className='h-8 w-auto'
-                priority
-              />
+              {!imageError ? (
+                <Image
+                  src={isDark ? '/img/logo-dark.svg' : '/img/logo-light.svg'}
+                  alt='Aqua9 Logo'
+                  width={120}
+                  height={32}
+                  className='h-8 w-auto'
+                  priority
+                  onError={() => setImageError(true)}
+                />
+              ) : (
+                <span className='text-blue-600 dark:text-blue-400 text-xl font-bold'>Aqua9</span>
+              )}
               <span className='text-gray-600 dark:text-gray-300'>Boilerplate</span>
             </Link>
           </div>

@@ -16,8 +16,8 @@ export default {
       'prettier --write',
       // Lintar e corrigir automaticamente
       'eslint --fix',
-      // Executar testes relacionados aos arquivos alterados (apenas unitários)
-      'vitest run --bail --findRelatedTests --passWithNoTests',
+      // Executar testes relacionados aos arquivos alterados (apenas unitários, excluindo e2e)
+      'vitest run --bail --findRelatedTests --passWithNoTests --exclude="tests/e2e/**"',
     ];
   },
 

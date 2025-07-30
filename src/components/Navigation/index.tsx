@@ -154,7 +154,7 @@ export default function Navigation() {
               ) : (
                 <span className='text-blue-600 dark:text-blue-400 text-xl font-bold'>Aqua9</span>
               )}
-              <span className='text-gray-600 dark:text-gray-300'>Boilerplate</span>
+              <span className='text-gray-600 dark:text-gray-300'></span>
             </Link>
           </div>
 

@@ -1,4 +1,12 @@
 import { NextRequest, NextResponse } from 'next/server';
+import {
+  checkRateLimit,
+  extractToken,
+  protectAPI,
+  protectPage,
+  SecurityConfig,
+  verifyToken,
+} from './lib/auth';
 
 // Cache simples para rate limiting (em produção, use Redis)
 const rateLimitCache = new Map<string, { count: number; resetTime: number }>();
@@ -72,22 +80,61 @@ if (typeof window !== 'undefined') {
   setInterval(cleanupRateLimitCache, 5 * 60 * 1000);
 }
 
-export function middleware(request: NextRequest) {
+export async function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
   const clientIP = getClientIP(request);
 
   // Headers de segurança
   const response = NextResponse.next();
 
-  // Headers de segurança básicos
-  response.headers.set('X-Content-Type-Options', 'nosniff');
-  response.headers.set('X-Frame-Options', 'DENY');
-  response.headers.set('X-XSS-Protection', '1; mode=block');
-  response.headers.set('Referrer-Policy', 'strict-origin-when-cross-origin');
-  response.headers.set(
-    'Permissions-Policy',
-    'camera=(), microphone=(), geolocation=()'
-  );
+  // Aplicar headers de segurança do SecurityConfig
+  Object.entries(SecurityConfig.securityHeaders).forEach(([key, value]) => {
+    response.headers.set(key, value);
+  });
+
+  // Proteção de rotas para páginas
+  if (!pathname.startsWith('/api/') && !pathname.startsWith('/_next/')) {
+    const pageProtection = await protectPage(request, pathname);
+    if (pageProtection) {
+      return pageProtection;
+    }
+  }
+
+  // Proteção de rotas para APIs
+  if (pathname.startsWith('/api/')) {
+    const { user, isAuthorized } = await protectAPI(request, pathname);
+
+    if (!isAuthorized) {
+      return new NextResponse(
+        JSON.stringify({
+          error: 'Unauthorized',
+          message: 'Access denied. Insufficient permissions.',
+        }),
+        {
+          status: 403,
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        }
+      );
+    }
+
+    // Rate limiting por usuário para APIs
+    if (user && !checkRateLimit(user.id, 50, 15 * 60 * 1000)) {
+      return new NextResponse(
+        JSON.stringify({
+          error: 'Too Many Requests',
+          message: 'Rate limit exceeded for user.',
+        }),
+        {
+          status: 429,
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        }
+      );
+    }
+  }
 
   // Rate limiting baseado no tipo de rota
   let rateLimitConfig = RATE_LIMIT_CONFIG.general;
@@ -157,6 +204,19 @@ export function middleware(request: NextRequest) {
   // Proteção contra ataques de força bruta
   if (pathname.includes('login') || pathname.includes('password')) {
     response.headers.set('X-Content-Security-Policy', "default-src 'self'");
+  }
+
+  // Log de segurança para rotas sensíveis
+  if (pathname.startsWith('/admin') || pathname.startsWith('/api/admin')) {
+    const token = extractToken(request);
+    const user = token ? await verifyToken(token) : null;
+
+    console.log(`[SECURITY] Admin access attempt:`, {
+      pathname,
+      user: user?.email || 'anonymous',
+      ip: clientIP,
+      timestamp: new Date().toISOString(),
+    });
   }
 
   return response;

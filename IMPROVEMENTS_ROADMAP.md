@@ -231,33 +231,39 @@ export const theme = {
 
 ### **Semana 3-4: Segurança e DevOps**
 
-#### **Rate Limiting**
+#### **🔒 Sistema de Autenticação e Autorização**
 
-```typescript
-// middleware.ts
-import { rateLimit } from 'express-rate-limit';
+- [x] **Autenticação JWT** com tokens seguros
+- [x] **Sistema de roles e permissões** granular
+- [x] **Proteção de rotas** automática via middleware
+- [x] **Hook de autenticação** (`useAuth`)
+- [x] **Componentes de proteção** (`ProtectedRoute`, `AdminRoute`, etc.)
+- [x] **APIs de autenticação** (`/api/auth/login`, `/api/auth/me`)
+- [x] **Páginas protegidas** (login, dashboard, admin)
 
-const limiter = rateLimit({
-  windowMs: 15 * 60 * 1000, // 15 minutos
-  max: 100, // limite por IP
-  message: 'Too many requests from this IP',
-});
-```
+#### **🛡️ Rate Limiting e Segurança**
 
-#### **Auditoria de Dependências**
+- [x] **Rate limiting** por IP e usuário
+- [x] **Headers de segurança** robustos (CSP, HSTS, etc.)
+- [x] **Validação e sanitização** de entrada
+- [x] **Detecção de ataques** (SQL Injection, XSS, etc.)
+- [x] **Logs de segurança** detalhados
+- [x] **Criptografia** de senhas e tokens
 
-```yaml
-# .github/workflows/security.yml
-name: Security Audit
-on: [push, pull_request]
-jobs:
-  audit:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - name: Run npm audit
-        run: npm audit --audit-level=moderate
-```
+#### **🔍 Auditoria de Dependências**
+
+- [x] **GitHub Actions** para segurança
+- [x] **npm audit** automatizado
+- [x] **Snyk** para vulnerabilidades
+- [x] **License checking** automático
+- [x] **Dependabot** para updates
+
+#### **📚 Documentação de Segurança**
+
+- [x] **SECURITY_GUIDE.md** completo
+- [x] **Boas práticas** documentadas
+- [x] **Exemplos de implementação**
+- [x] **Configuração de produção**
 
 ---
 

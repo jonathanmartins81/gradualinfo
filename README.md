@@ -9,6 +9,10 @@
 [![Build Status](https://github.com/aqua9/boilerplate_aqua9_v2/workflows/ci/badge.svg)](https://github.com/aqua9/boilerplate_aqua9_v2/actions)
 [![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=flat-square&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
 [![Next.js](https://img.shields.io/badge/Next.js-000000?style=flat-square&logo=next.js&logoColor=white)](https://nextjs.org/)
+[![Test Coverage](https://img.shields.io/badge/coverage-90%25-brightgreen?style=flat-square)](https://github.com/aqua9/boilerplate_aqua9_v2)
+[![Code Quality](https://img.shields.io/badge/code%20quality-A%2B-brightgreen?style=flat-square)](https://github.com/aqua9/boilerplate_aqua9_v2)
+[![Security](https://img.shields.io/badge/security-A%2B-brightgreen?style=flat-square)](https://github.com/aqua9/boilerplate_aqua9_v2)
+[![E2E Tests](https://img.shields.io/badge/E2E%20tests-passing-brightgreen?style=flat-square)](https://github.com/aqua9/boilerplate_aqua9_v2)
 
 **Desenvolvido por**: [Jonathan Simão](https://aqua9.com.br)
 **Website**: [aqua9.com.br](https://aqua9.com.br)

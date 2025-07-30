@@ -16,7 +16,6 @@
  * - Configurações de SEO por página
  */
 
-import { sitemapConfig } from '@/utils/SEO';
 import { MetadataRoute } from 'next';
 
 /**
@@ -28,27 +27,88 @@ import { MetadataRoute } from 'next';
  * @returns Array de entradas do sitemap
  */
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  try {
-    // Gera sitemap completo usando a configuração dinâmica
-    const sitemapData = await sitemapConfig.generateSitemap();
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://aqua9.com.br';
+  const currentDate = new Date();
 
-    // Converte para o formato esperado pelo Next.js
-    return sitemapData.map(page => ({
-      url: `${sitemapConfig.baseUrl}${page.url}`,
-      lastModified: page.lastModified,
-      changeFrequency: page.changeFrequency,
-      priority: page.priority,
+  try {
+    // Páginas estáticas
+    const staticPages = [
+      {
+        url: baseUrl,
+        lastModified: currentDate,
+        changeFrequency: 'weekly' as const,
+        priority: 1,
+      },
+      {
+        url: `${baseUrl}/about`,
+        lastModified: currentDate,
+        changeFrequency: 'monthly' as const,
+        priority: 0.8,
+      },
+      {
+        url: `${baseUrl}/portfolio`,
+        lastModified: currentDate,
+        changeFrequency: 'weekly' as const,
+        priority: 0.9,
+      },
+    ];
+
+    // Páginas dinâmicas de projetos
+    const projects = [
+      {
+        slug: 'ecommerce',
+        title: 'E-Commerce Platform',
+        updatedAt: new Date('2024-03-15'),
+      },
+      {
+        slug: 'dashboard',
+        title: 'Analytics Dashboard',
+        updatedAt: new Date('2024-03-10'),
+      },
+      {
+        slug: 'blog',
+        title: 'Tech Blog Platform',
+        updatedAt: new Date('2024-03-05'),
+      },
+      {
+        slug: 'mobile',
+        title: 'Mobile Task Manager',
+        updatedAt: new Date('2024-03-01'),
+      },
+    ];
+
+    const projectPages = projects.map(project => ({
+      url: `${baseUrl}/portfolio/${project.slug}`,
+      lastModified: project.updatedAt,
+      changeFrequency: 'monthly' as const,
+      priority: 0.7,
     }));
+
+    return [...staticPages, ...projectPages];
   } catch (error) {
     // eslint-disable-next-line no-console
     console.error('Erro ao gerar sitemap:', error);
 
     // Fallback: retorna apenas páginas estáticas em caso de erro
-    return sitemapConfig.staticPages.map(page => ({
-      url: `${sitemapConfig.baseUrl}${page.url}`,
-      lastModified: page.lastModified,
-      changeFrequency: page.changeFrequency,
-      priority: page.priority,
-    }));
+    return [
+      {
+        url: baseUrl,
+        lastModified: currentDate,
+        changeFrequency: 'weekly' as const,
+        priority: 1,
+      },
+      {
+        url: `${baseUrl}/about`,
+        lastModified: currentDate,
+        changeFrequency: 'monthly' as const,
+        priority: 0.8,
+      },
+      {
+        url: `${baseUrl}/portfolio`,
+        lastModified: currentDate,
+        changeFrequency: 'weekly' as const,
+        priority: 0.9,
+      },
+    ];
   }
 }

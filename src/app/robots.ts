@@ -1,24 +1,37 @@
-import type { MetadataRoute } from 'next';
-import { robotsConfig } from '@/utils/SEO';
+import { MetadataRoute } from 'next';
 
-/**
- * Gera o arquivo robots.txt
- *
- * O robots.txt é um arquivo que instrui os bots de busca
- * sobre quais páginas podem ou não ser indexadas
- *
- * Acessível em: /robots.txt
- */
 export default function robots(): MetadataRoute.Robots {
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://aqua9.com.br';
+  const isProduction = process.env.NODE_ENV === 'production';
+
   return {
     rules: [
       {
-        userAgent: robotsConfig.userAgent,
-        allow: robotsConfig.allow,
-        disallow: robotsConfig.disallow,
+        userAgent: '*',
+        allow: '/',
+        disallow: [
+          '/api/',
+          '/_next/',
+          '/admin/',
+          '/private/',
+          '*.json',
+          '*.xml',
+        ],
+      },
+      {
+        userAgent: 'Googlebot',
+        allow: '/',
+        disallow: ['/api/', '/_next/', '/admin/', '/private/'],
+      },
+      {
+        userAgent: 'Bingbot',
+        allow: '/',
+        disallow: ['/api/', '/_next/', '/admin/', '/private/'],
       },
     ],
-    sitemap: robotsConfig.sitemap,
-    host: robotsConfig.host,
+    sitemap: `${baseUrl}/sitemap.xml`,
+    host: baseUrl,
+    // Adiciona crawl-delay apenas em desenvolvimento
+    ...(isProduction ? {} : { crawlDelay: 1 }),
   };
 }

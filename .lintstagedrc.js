@@ -5,16 +5,21 @@
  * antes de cada commit, garantindo qualidade do código.
  */
 
-module.exports = {
-  // Arquivos TypeScript e JavaScript
-  '*.{js,jsx,ts,tsx}': [
-    // Formatar código com Prettier
-    'prettier --write',
-    // Lintar e corrigir automaticamente
-    'eslint --fix',
-    // Executar testes relacionados aos arquivos alterados
-    'jest --bail --findRelatedTests --passWithNoTests',
-  ],
+export default {
+  // Arquivos TypeScript e JavaScript (excluindo testes E2E)
+  '*.{js,jsx,ts,tsx}': files => {
+    const e2eFiles = files.filter(file => !file.includes('tests/e2e'));
+    if (e2eFiles.length === 0) return [];
+
+    return [
+      // Formatar código com Prettier
+      'prettier --write',
+      // Lintar e corrigir automaticamente
+      'eslint --fix',
+      // Executar testes relacionados aos arquivos alterados (apenas unitários)
+      'vitest run --bail --findRelatedTests --passWithNoTests',
+    ];
+  },
 
   // Arquivos de configuração e outros
   '*.{json,md,yml,yaml}': [

@@ -26,6 +26,8 @@ export default [
         URL: 'readonly',
         HTMLMetaElement: 'readonly',
         HTMLLinkElement: 'readonly',
+        process: 'readonly',
+        URLSearchParams: 'readonly',
       },
     },
     plugins: {

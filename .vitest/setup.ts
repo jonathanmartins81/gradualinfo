@@ -17,17 +17,30 @@ Object.defineProperty(window, 'matchMedia', {
   })),
 });
 
+// Interfaces para tipagem dos mocks
+interface ImageProps {
+  src: string;
+  alt: string;
+  priority?: boolean;
+  [key: string]: unknown;
+}
+
+interface LinkProps {
+  children: React.ReactNode;
+  href: string;
+  [key: string]: unknown;
+}
+
 // Mock do Next.js Image component
 vi.mock('next/image', () => ({
-  default: ({ src, alt, ...props }: any) => {
-    // eslint-disable-next-line @next/next/no-img-element
+  default: ({ src, alt, ...props }: ImageProps) => {
     return React.createElement('img', { src, alt, ...props });
   },
 }));
 
 // Mock do Next.js Link component
 vi.mock('next/link', () => ({
-  default: ({ children, href, ...props }: any) => {
+  default: ({ children, href, ...props }: LinkProps) => {
     return React.createElement('a', { href, ...props }, children);
   },
 }));

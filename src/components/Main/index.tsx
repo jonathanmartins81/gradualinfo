@@ -24,7 +24,7 @@ export function Main({
       }}
     >
       <Image
-        src='/img/logo.svg'
+        src='/img/logo-aqua9.svg'
         alt='Aqua9 Logo'
         width={120}
         height={64}
@@ -79,7 +79,7 @@ export function Main({
         ))}
       </div>
       <Image
-        src='/img/hero-illustration.svg'
+        src='/img/illustration.svg'
         alt='Hero Illustration'
         width={300}
         height={200}

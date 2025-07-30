@@ -46,7 +46,7 @@ const projects: Project[] = [
     title: 'E-commerce Platform',
     description:
       'Plataforma completa de e-commerce com Next.js, TypeScript e Stripe.',
-    image: '/projects/ecommerce.jpg',
+    image: '/projects/ecommerce.svg',
     category: 'E-commerce',
     technologies: ['Next.js', 'TypeScript', 'Stripe'],
     url: 'https://ecommerce-example.com',
@@ -58,7 +58,7 @@ const projects: Project[] = [
     title: 'Dashboard Administrativo',
     description:
       'Dashboard moderno para administração de sistemas empresariais.',
-    image: '/projects/dashboard.jpg',
+    image: '/projects/dashboard.svg',
     category: 'Dashboard',
     technologies: ['React', 'TypeScript', 'Chart.js', 'Material-UI'],
     url: 'https://dashboard-example.com',
@@ -69,7 +69,7 @@ const projects: Project[] = [
     id: 'blog-platform',
     title: 'Plataforma de Blog',
     description: 'Sistema de blog com CMS integrado e SEO otimizado.',
-    image: '/projects/blog.jpg',
+    image: '/projects/blog.svg',
     category: 'Blog',
     technologies: ['Next.js', 'Contentful', 'SEO'],
     url: 'https://blog-example.com',
@@ -80,7 +80,7 @@ const projects: Project[] = [
     id: 'mobile-app',
     title: 'Aplicativo Mobile',
     description: 'Aplicativo mobile híbrido com React Native.',
-    image: '/projects/mobile.jpg',
+    image: '/projects/mobile.svg',
     category: 'Mobile',
     technologies: ['React Native', 'TypeScript', 'Expo', 'Firebase'],
     url: 'https://mobile-example.com',
@@ -113,7 +113,7 @@ export default function PortfolioPage() {
           'typescript',
         ]}
         type='website'
-        image='/og-portfolio.png'
+        image='/og-portfolio.svg'
         canonical='https://aqua9.com.br/portfolio'
       />
 

@@ -1,0 +1,175 @@
+name: Security Audit
+
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+    branches: [main, develop]
+  schedule:
+    # Executar diariamente às 2h da manhã
+    - cron: '0 2 * * *'
+
+jobs:
+  security-audit:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run npm audit
+        run: npm audit --audit-level=moderate
+        continue-on-error: true
+
+      - name: Run Snyk to check for vulnerabilities
+        uses: snyk/actions/node@master
+        env:
+          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+        with:
+          args: --severity-threshold=high
+        continue-on-error: true
+
+      - name: Run Snyk to check for license issues
+        uses: snyk/actions/node@master
+        env:
+          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+        with:
+          args: --severity-threshold=high --license-check
+        continue-on-error: true
+
+      - name: Upload Snyk results to GitHub Code Scanning
+        uses: github/codeql-action/upload-sarif@v3
+        if: always()
+        with:
+          sarif_file: snyk.sarif
+
+      - name: Comment PR with security results
+        if: github.event_name == 'pull_request'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+
+            // Verificar se há vulnerabilidades
+            let securityMessage = '## 🔒 Security Audit Results\n\n';
+
+            try {
+              const auditResult = fs.readFileSync('npm-audit.json', 'utf8');
+              const audit = JSON.parse(auditResult);
+
+              if (audit.vulnerabilities && Object.keys(audit.vulnerabilities).length > 0) {
+                securityMessage += '⚠️ **Vulnerabilities found:**\n';
+                securityMessage += `- ${Object.keys(audit.vulnerabilities).length} vulnerabilities detected\n`;
+                securityMessage += `- ${audit.metadata.vulnerabilities.high} high severity\n`;
+                securityMessage += `- ${audit.metadata.vulnerabilities.moderate} moderate severity\n`;
+                securityMessage += `- ${audit.metadata.vulnerabilities.low} low severity\n\n`;
+              } else {
+                securityMessage += '✅ **No vulnerabilities found in npm audit**\n\n';
+              }
+            } catch (error) {
+              securityMessage += 'ℹ️ **npm audit results not available**\n\n';
+            }
+
+            // Verificar resultados do Snyk
+            try {
+              const snykResult = fs.readFileSync('snyk-report.json', 'utf8');
+              const snyk = JSON.parse(snykResult);
+
+              if (snyk.vulnerabilities && snyk.vulnerabilities.length > 0) {
+                securityMessage += '⚠️ **Snyk vulnerabilities found:**\n';
+                snyk.vulnerabilities.forEach(vuln => {
+                  securityMessage += `- ${vuln.title} (${vuln.severity})\n`;
+                });
+                securityMessage += '\n';
+              } else {
+                securityMessage += '✅ **No Snyk vulnerabilities found**\n\n';
+              }
+            } catch (error) {
+              securityMessage += 'ℹ️ **Snyk results not available**\n\n';
+            }
+
+            securityMessage += '---\n';
+            securityMessage += '🔍 **Next Steps:**\n';
+            securityMessage += '1. Review any vulnerabilities found\n';
+            securityMessage += '2. Update dependencies if necessary\n';
+            securityMessage += '3. Consider using `npm audit fix` for automatic fixes\n';
+
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: securityMessage
+            });
+
+  dependency-update:
+    runs-on: ubuntu-latest
+    if: github.event_name == 'schedule'
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Check for outdated dependencies
+        run: npx npm-check-updates --target minor
+
+      - name: Create issue for major updates
+        if: failure()
+        uses: actions/github-script@v7
+        with:
+          script: |
+            github.rest.issues.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              title: '🔧 Dependency Updates Available',
+              body: '## Dependency Updates\n\nSome dependencies have major updates available. Please review and update them manually.\n\n### To check for updates:\n```bash\nnpx npm-check-updates\n```\n\n### To update dependencies:\n```bash\nnpx npm-check-updates -u\nnpm install\n```\n\n### To update specific packages:\n```bash\nnpm update package-name\n```\n\n---\n*This issue was automatically created by the security audit workflow.*',
+              labels: ['dependencies', 'security', 'automated']
+            });
+
+  license-check:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Check licenses
+        run: npx license-checker --summary --onlyAllow "MIT;ISC;Apache-2.0;BSD-2-Clause;BSD-3-Clause;CC0-1.0;CC-BY-4.0;CC-BY-SA-4.0;WTFPL;Unlicense"
+        continue-on-error: true
+
+      - name: Generate license report
+        run: npx license-checker --json --out license-report.json
+        continue-on-error: true
+
+      - name: Upload license report
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: license-report
+          path: license-report.json

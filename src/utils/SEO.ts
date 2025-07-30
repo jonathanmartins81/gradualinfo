@@ -205,7 +205,7 @@ export const routeSEOConfig: Record<string, DynamicSEOConfig> = {
       'template',
     ],
     type: 'website',
-    image: '/og-home.png',
+    image: '/og-home.svg',
     canonical: 'https://aqua9.com.br',
     priority: 1.0,
     changeFreq: 'weekly',
@@ -216,7 +216,7 @@ export const routeSEOConfig: Record<string, DynamicSEOConfig> = {
       siteName: 'Aqua9 Boilerplate',
       images: [
         {
-          url: '/og-home.png',
+          url: '/og-home.svg',
           width: 1200,
           height: 630,
           alt: 'Aqua9 Boilerplate v2 - Next.js Profissional',
@@ -227,7 +227,7 @@ export const routeSEOConfig: Record<string, DynamicSEOConfig> = {
       card: 'summary_large_image',
       title: 'Aqua9 Boilerplate v2 - Next.js Profissional',
       description: 'Template moderno com TypeScript e SEO otimizado',
-      image: '/og-home.png',
+      image: '/og-home.svg',
       creator: '@aqua9dev',
       site: '@aqua9dev',
     },
@@ -247,7 +247,7 @@ export const routeSEOConfig: Record<string, DynamicSEOConfig> = {
       'nextjs',
     ],
     type: 'website',
-    image: '/og-about.png',
+    image: '/og-about.svg',
     canonical: 'https://aqua9.com.br/about',
     priority: 0.8,
     changeFreq: 'monthly',
@@ -258,7 +258,7 @@ export const routeSEOConfig: Record<string, DynamicSEOConfig> = {
       siteName: 'Aqua9 Boilerplate',
       images: [
         {
-          url: '/og-about.png',
+          url: '/og-about.svg',
           width: 1200,
           height: 630,
           alt: 'Sobre - Aqua9 Boilerplate v2',
@@ -269,7 +269,7 @@ export const routeSEOConfig: Record<string, DynamicSEOConfig> = {
       card: 'summary_large_image',
       title: 'Sobre - Aqua9 Boilerplate v2',
       description: 'Conheça mais sobre o projeto e o desenvolvedor',
-      image: '/og-about.png',
+      image: '/og-about.svg',
       creator: '@aqua9dev',
       site: '@aqua9dev',
     },
@@ -290,7 +290,7 @@ export const routeSEOConfig: Record<string, DynamicSEOConfig> = {
       'typescript',
     ],
     type: 'website',
-    image: '/og-portfolio.png',
+    image: '/og-portfolio.svg',
     canonical: 'https://aqua9.com.br/portfolio',
     priority: 0.9,
     changeFreq: 'weekly',
@@ -301,7 +301,7 @@ export const routeSEOConfig: Record<string, DynamicSEOConfig> = {
       siteName: 'Aqua9 Boilerplate',
       images: [
         {
-          url: '/og-portfolio.png',
+          url: '/og-portfolio.svg',
           width: 1200,
           height: 630,
           alt: 'Portfólio - Aqua9 Boilerplate v2',
@@ -312,7 +312,7 @@ export const routeSEOConfig: Record<string, DynamicSEOConfig> = {
       card: 'summary_large_image',
       title: 'Portfólio - Aqua9 Boilerplate v2',
       description: 'Projetos desenvolvidos com o boilerplate',
-      image: '/og-portfolio.png',
+      image: '/og-portfolio.svg',
       creator: '@aqua9dev',
       site: '@aqua9dev',
     },
@@ -331,7 +331,7 @@ export const routeSEOConfig: Record<string, DynamicSEOConfig> = {
       'resultados',
     ],
     type: 'article',
-    image: '/og-project.png',
+    image: '/og-project.svg',
     canonical: 'https://aqua9.com.br/portfolio/{slug}',
     priority: 0.8,
     changeFreq: 'monthly',
@@ -342,7 +342,7 @@ export const routeSEOConfig: Record<string, DynamicSEOConfig> = {
       siteName: 'Aqua9 Boilerplate',
       images: [
         {
-          url: '/og-project.png',
+          url: '/og-project.svg',
           width: 1200,
           height: 630,
           alt: 'Projeto {slug} - Aqua9 Boilerplate v2',
@@ -353,7 +353,7 @@ export const routeSEOConfig: Record<string, DynamicSEOConfig> = {
       card: 'summary_large_image',
       title: 'Projeto {slug} - Aqua9 Boilerplate v2',
       description: 'Detalhes do projeto {slug}',
-      image: '/og-project.png',
+      image: '/og-project.svg',
       creator: '@aqua9dev',
       site: '@aqua9dev',
     },
@@ -366,7 +366,7 @@ export const routeSEOConfig: Record<string, DynamicSEOConfig> = {
       'Documentação completa do Aqua9 Boilerplate v2. Guias, tutoriais e referências para usar o template em seus projetos.',
     keywords: ['documentação', 'guias', 'tutoriais', 'referência', 'api'],
     type: 'website',
-    image: '/og-docs.png',
+    image: '/og-docs.svg',
     canonical: 'https://aqua9.com.br/docs',
     priority: 0.7,
     changeFreq: 'weekly',
@@ -377,7 +377,7 @@ export const routeSEOConfig: Record<string, DynamicSEOConfig> = {
       siteName: 'Aqua9 Boilerplate',
       images: [
         {
-          url: '/og-docs.png',
+          url: '/og-docs.svg',
           width: 1200,
           height: 630,
           alt: 'Documentação - Aqua9 Boilerplate v2',
@@ -388,7 +388,7 @@ export const routeSEOConfig: Record<string, DynamicSEOConfig> = {
       card: 'summary_large_image',
       title: 'Documentação - Aqua9 Boilerplate v2',
       description: 'Guias e tutoriais do boilerplate',
-      image: '/og-docs.png',
+      image: '/og-docs.svg',
       creator: '@aqua9dev',
       site: '@aqua9dev',
     },
@@ -401,7 +401,7 @@ export const routeSEOConfig: Record<string, DynamicSEOConfig> = {
       'Entre em contato com a equipe Aqua9. Suporte, dúvidas e parcerias relacionadas ao Boilerplate v2.',
     keywords: ['contato', 'suporte', 'dúvidas', 'parcerias', 'aqua9'],
     type: 'website',
-    image: '/og-contact.png',
+    image: '/og-contact.svg',
     canonical: 'https://aqua9.com.br/contact',
     priority: 0.6,
     changeFreq: 'monthly',
@@ -412,7 +412,7 @@ export const routeSEOConfig: Record<string, DynamicSEOConfig> = {
       siteName: 'Aqua9 Boilerplate',
       images: [
         {
-          url: '/og-contact.png',
+          url: '/og-contact.svg',
           width: 1200,
           height: 630,
           alt: 'Contato - Aqua9 Boilerplate v2',
@@ -423,7 +423,7 @@ export const routeSEOConfig: Record<string, DynamicSEOConfig> = {
       card: 'summary_large_image',
       title: 'Contato - Aqua9 Boilerplate v2',
       description: 'Entre em contato conosco',
-      image: '/og-contact.png',
+      image: '/og-contact.svg',
       creator: '@aqua9dev',
       site: '@aqua9dev',
     },
@@ -482,7 +482,7 @@ export const defaultSEO: Metadata = {
     siteName: 'Aqua9 Boilerplate',
     images: [
       {
-        url: '/og-image.png',
+        url: '/og-image.svg',
         width: 1200,
         height: 630,
         alt: 'Boilerplate Aqua9 - Next.js Profissional',
@@ -495,87 +495,13 @@ export const defaultSEO: Metadata = {
     card: 'summary_large_image',
     title: 'Boilerplate Aqua9 - Next.js Profissional',
     description: SEOConfig.project.description,
-    images: ['/og-image.png'],
+    images: ['/og-image.svg'],
     creator: SEOConfig.developer.twitter,
     site: SEOConfig.developer.twitter,
   },
 
-  // Configuração para bots de busca (Google, Bing, etc.)
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-      'max-video-preview': -1,
-      'max-image-preview': 'large',
-      'max-snippet': -1,
-    },
-  },
-
-  // Verificação para Google Search Console
-  verification: {
-    google: 'your-google-verification-code', // Substitua pelo código real
-  },
-
-  // Configuração de ícones para diferentes dispositivos
-  icons: [
-    {
-      rel: 'icon',
-      type: 'image/svg+xml',
-      url: '/favicon.svg',
-    },
-    {
-      rel: 'icon',
-      type: 'image/png',
-      url: '/favicon.png',
-    },
-    {
-      rel: 'apple-touch-icon',
-      url: '/apple-touch-icon.png',
-    },
-    {
-      rel: 'icon',
-      type: 'image/png',
-      sizes: '32x32',
-      url: '/favicon-32x32.png',
-    },
-    {
-      rel: 'icon',
-      type: 'image/png',
-      sizes: '16x16',
-      url: '/favicon-16x16.png',
-    },
-    {
-      rel: 'icon',
-      url: '/favicon.ico',
-    },
-  ],
-
-  // Configuração de manifest para PWA
-  manifest: '/manifest.json',
-
-  // Configuração de viewport
-  viewport: {
-    width: 'device-width',
-    initialScale: 1,
-    maximumScale: 1,
-  },
-
-  // Configuração de categoria
-  category: 'technology',
-
-  // Configuração de classificação
-  classification: 'Web Development Tools',
-
-  // Configuração de idioma e localização
-  other: {
-    language: 'pt-BR',
-    'geo.region': 'BR',
-    'geo.placename': 'Brazil',
-    'geo.position': '-14.235004;-51.92528',
-    ICBM: '-14.235004, -51.92528',
-  },
+  // Configuração de viewport (removido - será migrado para viewport export)
+  // viewport: 'width=device-width, initial-scale=1',
 };
 
 /**

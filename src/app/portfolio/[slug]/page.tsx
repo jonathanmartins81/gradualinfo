@@ -50,7 +50,7 @@ const projectsData: Record<string, ProjectDetails> = {
       'Plataforma completa de e-commerce com Next.js, TypeScript e Stripe.',
     longDescription:
       'Uma plataforma de e-commerce moderna e escalável desenvolvida com as melhores práticas de desenvolvimento web. O projeto inclui sistema de pagamentos, gestão de produtos, carrinho de compras e painel administrativo.',
-    image: '/projects/ecommerce.jpg',
+    image: '/projects/ecommerce.svg',
     category: 'E-commerce',
     technologies: ['Next.js', 'TypeScript', 'Stripe', 'PostgreSQL', 'Prisma'],
     url: 'https://ecommerce-example.com',
@@ -86,7 +86,7 @@ const projectsData: Record<string, ProjectDetails> = {
       'Dashboard moderno para administração de sistemas empresariais.',
     longDescription:
       'Dashboard administrativo completo desenvolvido para empresas que precisam gerenciar múltiplos sistemas e dados em uma interface unificada. Inclui gráficos interativos, relatórios em tempo real e gestão de usuários.',
-    image: '/projects/dashboard.jpg',
+    image: '/projects/dashboard.svg',
     category: 'Dashboard',
     technologies: [
       'React',

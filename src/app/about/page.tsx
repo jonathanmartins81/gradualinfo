@@ -45,7 +45,7 @@ export default function AboutPage() {
           'nextjs',
         ]}
         type='website'
-        image='/og-about.png'
+        image='/og-about.svg'
         canonical='https://aqua9.com.br/about'
       />
 

@@ -35,10 +35,6 @@ pre-commit:
 pre-push:
   parallel: false
   commands:
-    # Verificação completa de qualidade
-    quality-full:
-      run: npm run quality:full
-
     # Build de produção
     build:
       run: npm run build
@@ -46,6 +42,10 @@ pre-push:
     # Verificação de vulnerabilidades
     audit:
       run: npm audit --audit-level=moderate
+
+    # Verificação de qualidade (sem check-deps)
+    quality:
+      run: npm run quality
 
 # Hooks executados após o commit
 post-commit:

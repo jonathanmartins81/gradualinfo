@@ -1,37 +1,44 @@
-# 🤝 Guia de Contribuição - Aqua9 Boilerplate v2
+# 🤝 Contribuindo para o Aqua9 Boilerplate
 
-Obrigado por considerar contribuir com o **Aqua9 Boilerplate v2**! Este documento fornece diretrizes e informações para contribuições.
+Obrigado por se interessar em contribuir com o **Boilerplate Aqua9 v2**! Este documento fornece diretrizes e informações para tornar o processo de contribuição suave e eficiente.
 
 ## 📋 Índice
 
 - [Como Contribuir](#como-contribuir)
 - [Configuração do Ambiente](#configuração-do-ambiente)
 - [Padrões de Código](#padrões-de-código)
-- [Processo de Pull Request](#processo-de-pull-request)
-- [Reportando Bugs](#reportando-bugs)
-- [Sugerindo Melhorias](#sugerindo-melhorias)
-- [Código de Conduta](#código-de-conduta)
+- [Testes](#testes)
+- [Pull Requests](#pull-requests)
+- [Issues](#issues)
+- [Comunicação](#comunicação)
+- [Recursos](#recursos)
 
 ---
 
 ## 🚀 Como Contribuir
 
-### Tipos de Contribuição
+### Tipos de Contribuições
 
-- 🐛 **Bug Fixes**: Correções de bugs e problemas
-- ✨ **Features**: Novas funcionalidades
-- 📚 **Documentação**: Melhorias na documentação
-- 🎨 **UI/UX**: Melhorias de interface e experiência
-- ⚡ **Performance**: Otimizações de performance
-- 🔒 **Segurança**: Melhorias de segurança
-- 🧪 **Testes**: Adição ou melhoria de testes
+Aceitamos diferentes tipos de contribuições:
 
-### Antes de Começar
+- 🐛 **Bug Fixes** - Correções de bugs e problemas
+- ✨ **Features** - Novas funcionalidades e melhorias
+- 📚 **Documentação** - Melhorias na documentação
+- 🧪 **Testes** - Adição ou melhoria de testes
+- 🎨 **UI/UX** - Melhorias na interface e experiência
+- 🔧 **DevOps** - Melhorias na infraestrutura
+- 🔒 **Segurança** - Correções e melhorias de segurança
 
-1. **Verifique se já existe uma issue** relacionada ao que você quer fazer
-2. **Leia a documentação** do projeto
-3. **Familiarize-se** com a estrutura do código
-4. **Siga os padrões** estabelecidos
+### Processo de Contribuição
+
+1. **Fork** o repositório
+2. **Clone** seu fork localmente
+3. **Crie** uma branch para sua feature
+4. **Desenvolva** sua contribuição
+5. **Teste** suas mudanças
+6. **Commit** seguindo os padrões
+7. **Push** para seu fork
+8. **Abra** um Pull Request
 
 ---
 
@@ -40,30 +47,30 @@ Obrigado por considerar contribuir com o **Aqua9 Boilerplate v2**! Este document
 ### Pré-requisitos
 
 - Node.js 18+
-- npm 8+ ou yarn
+- npm 8+
 - Git
 
-### Setup Local
+### Setup Inicial
 
 ```bash
-# 1. Clone o repositório
-git clone https://github.com/aqua9/boilerplate_aqua9_v2.git
+# Clone seu fork
+git clone https://github.com/SEU_USUARIO/boilerplate_aqua9_v2.git
 cd boilerplate_aqua9_v2
 
-# 2. Instale as dependências
+# Instale dependências
 npm install
 
-# 3. Configure as variáveis de ambiente
-cp .env.example .env.local
+# Configure o ambiente
+npm run setup
 
-# 4. Execute os testes
-npm run test
+# Execute testes
+npm test
 
-# 5. Inicie o servidor de desenvolvimento
+# Inicie o servidor de desenvolvimento
 npm run dev
 ```
 
-### Scripts Disponíveis
+### Scripts Úteis
 
 ```bash
 # Desenvolvimento
@@ -75,268 +82,307 @@ npm run start        # Servidor de produção
 npm run test         # Executa todos os testes
 npm run test:watch   # Testes em modo watch
 npm run test:coverage # Testes com cobertura
+npm run test:e2e     # Testes E2E
 
-# Qualidade de Código
-npm run lint         # ESLint
-npm run lint:fix     # ESLint com auto-fix
-npm run format       # Prettier
-npm run type-check   # Verificação de tipos
+# Qualidade
+npm run lint         # Verifica linting
+npm run lint:fix     # Corrige problemas de linting
+npm run format       # Formata código
+npm run type-check   # Verifica tipos TypeScript
 
-# Git Hooks
-npm run prepare      # Configura git hooks
+# Utilitários
+npm run generate:component  # Gera novo componente
+npm run generate:page       # Gera nova página
+npm run generate:hook       # Gera novo hook
+npm run generate:util       # Gera nova utilidade
 ```
 
 ---
 
 ## 📝 Padrões de Código
 
-### Estrutura do Projeto
+### Estrutura de Pastas
 
 ```
 src/
-├── app/              # App Router (Next.js 13+)
-│   ├── (routes)/     # Rotas organizadas
-│   ├── api/          # API Routes
-│   └── globals.css   # Estilos globais
+├── app/              # Páginas e rotas (App Router)
 ├── components/       # Componentes React
-│   ├── ui/          # Componentes base
-│   └── features/    # Componentes específicos
 ├── lib/             # Bibliotecas e configurações
-├── styles/          # Sistema de design
-├── types/           # Definições TypeScript
-└── utils/           # Utilitários
+├── hooks/           # Custom hooks
+├── utils/           # Utilitários
+├── types/           # Definições de tipos
+└── styles/          # Estilos e design system
 ```
 
 ### Convenções de Nomenclatura
 
-#### Arquivos e Pastas
+- **Arquivos**: `kebab-case` (ex: `user-profile.tsx`)
+- **Componentes**: `PascalCase` (ex: `UserProfile`)
+- **Hooks**: `camelCase` com prefixo `use` (ex: `useUserProfile`)
+- **Utilitários**: `camelCase` (ex: `formatDate`)
+- **Tipos**: `PascalCase` (ex: `UserProfileProps`)
 
-- **Componentes**: PascalCase (`UserProfile.tsx`)
-- **Hooks**: camelCase com prefixo `use` (`useLocalStorage.ts`)
-- **Utilitários**: camelCase (`formatDate.ts`)
-- **Tipos**: PascalCase (`UserTypes.ts`)
-- **Constantes**: UPPER_SNAKE_CASE (`API_ENDPOINTS.ts`)
+### Padrões de Commit
 
-#### Variáveis e Funções
+Siga o padrão **Conventional Commits**:
 
-```typescript
-// ✅ Correto
-const userName = 'John';
-const getUserData = () => {};
-const isAuthenticated = true;
+```
+<type>[optional scope]: <description>
 
-// ❌ Incorreto
-const user_name = 'John';
-const get_user_data = () => {};
-const IsAuthenticated = true;
+[optional body]
+
+[optional footer(s)]
+```
+
+#### Tipos de Commit
+
+- `feat:` - Nova funcionalidade
+- `fix:` - Correção de bug
+- `docs:` - Documentação
+- `style:` - Formatação, ponto e vírgula, etc.
+- `refactor:` - Refatoração de código
+- `test:` - Adição ou correção de testes
+- `chore:` - Tarefas de build, dependências, etc.
+
+#### Exemplos
+
+```bash
+feat(auth): add JWT authentication system
+fix(ui): resolve button alignment in mobile view
+docs(readme): update installation instructions
+test(components): add unit tests for Button component
+refactor(utils): simplify date formatting function
 ```
 
 ### Padrões de Código
 
 #### TypeScript
 
+- Use tipos explícitos quando necessário
+- Evite `any`, use `unknown` quando apropriado
+- Use interfaces para objetos complexos
+- Prefira `const` sobre `let`
+
 ```typescript
-// ✅ Use interfaces para objetos
-interface User {
+// ✅ Bom
+interface UserProfile {
   id: string;
   name: string;
   email: string;
 }
 
-// ✅ Use type para unions e primitivos
-type Status = 'loading' | 'success' | 'error';
-type UserId = string;
+const getUserProfile = async (id: string): Promise<UserProfile> => {
+  // implementação
+};
 
-// ✅ Use generics quando apropriado
-function createApiClient<T>(baseUrl: string): ApiClient<T> {
-  // ...
-}
+// ❌ Evite
+const getUserProfile = async (id: any): Promise<any> => {
+  // implementação
+};
 ```
 
-#### React Components
+#### React
+
+- Use componentes funcionais com hooks
+- Prefira `useState` e `useEffect` sobre classes
+- Use `React.memo` para otimização quando necessário
+- Mantenha componentes pequenos e focados
 
 ```typescript
-// ✅ Use function components
-export default function UserProfile({ user }: UserProfileProps) {
-  return <div>{user.name}</div>;
-}
-
-// ✅ Use arrow functions para componentes pequenos
-const UserAvatar = ({ src, alt }: UserAvatarProps) => (
-  <img src={src} alt={alt} className="rounded-full" />
-);
-
-// ✅ Use destructuring para props
+// ✅ Bom
 interface ButtonProps {
-  variant?: 'primary' | 'secondary';
-  size?: 'sm' | 'md' | 'lg';
   children: React.ReactNode;
   onClick?: () => void;
+  variant?: 'primary' | 'secondary';
 }
+
+export const Button: React.FC<ButtonProps> = ({
+  children,
+  onClick,
+  variant = 'primary'
+}) => {
+  return (
+    <button
+      className={`btn btn-${variant}`}
+      onClick={onClick}
+    >
+      {children}
+    </button>
+  );
+};
 ```
 
 #### CSS/Tailwind
 
-```typescript
-// ✅ Use classes Tailwind organizadas
-const buttonClasses = [
-  'px-4',
-  'py-2',
-  'rounded-lg',
-  'font-medium',
-  'transition-colors',
-  'duration-200',
-  variant === 'primary'
-    ? 'bg-blue-600 text-white'
-    : 'bg-gray-200 text-gray-800',
-].join(' ');
-
-// ✅ Use CSS modules para estilos complexos
-import styles from './UserProfile.module.css';
-```
-
-### Testes
-
-#### Estrutura de Testes
+- Use classes utilitárias do Tailwind CSS
+- Mantenha consistência com o design system
+- Use componentes customizados para padrões repetitivos
+- Prefira responsividade mobile-first
 
 ```typescript
-// ✅ Organize testes por funcionalidade
-describe('UserProfile Component', () => {
-  describe('when user is authenticated', () => {
-    it('should display user information', () => {
-      // ...
-    });
-  });
+// ✅ Bom
+<div className="flex flex-col items-center justify-center min-h-screen p-8 text-center bg-gradient-primary">
+  <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 text-white">
+    Título
+  </h1>
+</div>
 
-  describe('when user is not authenticated', () => {
-    it('should show login button', () => {
-      // ...
-    });
-  });
-});
-```
-
-#### Padrões de Teste
-
-```typescript
-// ✅ Use descrições claras
-it('should update user name when form is submitted', () => {
-  // ...
-});
-
-// ✅ Use data-testid para elementos sem texto
-<button data-testid="submit-button">Submit</button>
-
-// ✅ Teste comportamentos, não implementação
-expect(screen.getByRole('button', { name: /submit/i })).toBeInTheDocument();
+// ❌ Evite
+<div style={{
+  display: 'flex',
+  flexDirection: 'column',
+  alignItems: 'center',
+  justifyContent: 'center',
+  minHeight: '100vh',
+  padding: '2rem',
+  textAlign: 'center',
+  background: 'linear-gradient(135deg, #06b6d4 0%, #0891b2 100%)'
+}}>
 ```
 
 ---
 
-## 🔄 Processo de Pull Request
+## 🧪 Testes
 
-### 1. Preparação
+### Cobertura de Testes
 
-```bash
-# 1. Crie uma branch a partir da main
-git checkout main
-git pull origin main
-git checkout -b feature/nova-funcionalidade
-
-# 2. Faça suas alterações
-# 3. Execute os testes
-npm run test
-npm run lint
-npm run type-check
-
-# 4. Commit suas alterações
-git add .
-git commit -m "feat: adiciona nova funcionalidade"
-```
-
-### 2. Convenções de Commit
-
-Use o padrão [Conventional Commits](https://www.conventionalcommits.org/):
+Mantenha uma cobertura de testes de pelo menos **80%**:
 
 ```bash
-# Tipos de commit
-feat:     nova funcionalidade
-fix:      correção de bug
-docs:     documentação
-style:    formatação (espaços, ponto e vírgula, etc.)
-refactor: refatoração de código
-test:     adição ou correção de testes
-chore:    tarefas de manutenção
-
-# Exemplos
-feat: adiciona sistema de autenticação
-fix: corrige erro de validação no formulário
-docs: atualiza README com novas instruções
-test: adiciona testes para componente UserProfile
+npm run test:coverage
 ```
 
-### 3. Criando o Pull Request
+### Tipos de Teste
 
-1. **Título**: Descreva brevemente a mudança
-2. **Descrição**: Explique o que foi feito e por quê
-3. **Issue**: Referencie a issue relacionada (se houver)
-4. **Checklist**: Marque os itens completados
+#### Testes Unitários
 
-#### Template de Pull Request
+- Teste componentes isoladamente
+- Use mocks para dependências externas
+- Teste diferentes estados e props
+
+```typescript
+import { render, screen } from '@testing-library/react';
+import { Button } from '@/components/Button';
+
+describe('Button', () => {
+  it('renders with correct text', () => {
+    render(<Button>Click me</Button>);
+    expect(screen.getByRole('button')).toHaveTextContent('Click me');
+  });
+
+  it('calls onClick when clicked', () => {
+    const handleClick = jest.fn();
+    render(<Button onClick={handleClick}>Click me</Button>);
+
+    screen.getByRole('button').click();
+    expect(handleClick).toHaveBeenCalledTimes(1);
+  });
+});
+```
+
+#### Testes de Integração
+
+- Teste fluxos completos
+- Teste interações entre componentes
+- Use `@testing-library/user-event` para interações
+
+#### Testes E2E
+
+- Teste cenários completos do usuário
+- Use Playwright para testes E2E
+- Teste em diferentes navegadores
+
+### Utilitários de Teste
+
+Use os utilitários em `src/test-utils/index.ts`:
+
+```typescript
+import { renderWithProviders, UserFactory } from '@/test-utils';
+
+describe('UserProfile', () => {
+  it('displays user information', () => {
+    const user = UserFactory.create({
+      name: 'João Silva',
+      email: 'joao@example.com'
+    });
+
+    renderWithProviders(<UserProfile user={user} />);
+
+    expect(screen.getByText('João Silva')).toBeInTheDocument();
+    expect(screen.getByText('joao@example.com')).toBeInTheDocument();
+  });
+});
+```
+
+---
+
+## 🔄 Pull Requests
+
+### Checklist do PR
+
+Antes de abrir um PR, verifique:
+
+- [ ] Código segue os padrões estabelecidos
+- [ ] Testes foram adicionados/atualizados
+- [ ] Documentação foi atualizada
+- [ ] Build passa sem erros
+- [ ] Linting passa sem warnings
+- [ ] Commits seguem o padrão Conventional Commits
+
+### Template do PR
 
 ```markdown
 ## 📝 Descrição
 
 Breve descrição das mudanças realizadas.
 
-## 🔗 Issue Relacionada
+## 🎯 Tipo de Mudança
 
-Closes #123
+- [ ] Bug fix
+- [ ] Nova feature
+- [ ] Breaking change
+- [ ] Documentação
+- [ ] Refatoração
 
-## ✅ Checklist
+## 🧪 Testes
 
-- [ ] Código segue os padrões do projeto
-- [ ] Testes foram adicionados/atualizados
-- [ ] Documentação foi atualizada
-- [ ] Build passa sem erros
-- [ ] Lint passa sem warnings
-
-## 🧪 Como Testar
-
-1. Clone a branch
-2. Execute `npm install`
-3. Execute `npm run dev`
-4. Teste a funcionalidade
+- [ ] Testes unitários adicionados/atualizados
+- [ ] Testes de integração adicionados/atualizados
+- [ ] Testes E2E adicionados/atualizados
+- [ ] Todos os testes passam
 
 ## 📸 Screenshots (se aplicável)
 
-Adicione screenshots das mudanças visuais.
+Adicione screenshots para mudanças visuais.
 
-## 🔍 Revisão
+## 🔍 Checklist
 
-- [ ] Código foi revisado
-- [ ] Testes foram executados
-- [ ] Funcionalidade foi testada
+- [ ] Código segue os padrões do projeto
+- [ ] Self-review do código foi realizado
+- [ ] Comentários foram adicionados onde necessário
+- [ ] Documentação foi atualizada
+- [ ] Build e testes passam localmente
+
+## 📋 Contexto Adicional
+
+Informações adicionais que podem ser úteis para os revisores.
 ```
 
-### 4. Revisão
+### Processo de Review
 
-- **Code Review**: Todas as mudanças são revisadas
-- **CI/CD**: Builds e testes devem passar
-- **Aprovação**: Pelo menos 1 aprovação é necessária
+1. **Auto-review** - Revise seu próprio código
+2. **Testes** - Execute todos os testes
+3. **Linting** - Verifique se não há problemas de linting
+4. **Documentação** - Atualize documentação se necessário
+5. **Submissão** - Abra o PR com descrição clara
 
 ---
 
-## 🐛 Reportando Bugs
+## 🐛 Issues
 
-### Antes de Reportar
+### Reportando Bugs
 
-1. **Verifique se já existe uma issue** similar
-2. **Teste em diferentes navegadores** (se aplicável)
-3. **Reproduza o bug** consistentemente
-4. **Verifique a versão** do projeto
-
-### Template de Bug Report
+Use o template de bug report:
 
 ```markdown
 ## 🐛 Descrição do Bug
@@ -352,41 +398,36 @@ Descrição clara e concisa do bug.
 
 ## ✅ Comportamento Esperado
 
-O que deveria acontecer.
-
-## ❌ Comportamento Atual
-
-O que está acontecendo.
+Descrição do que deveria acontecer.
 
 ## 📸 Screenshots
 
 Adicione screenshots se aplicável.
 
-## 💻 Ambiente
+## 🖥️ Ambiente
 
-- OS: [ex: Windows 10, macOS 12]
-- Navegador: [ex: Chrome 120, Firefox 119]
-- Versão: [ex: 2.0.0]
+- OS: [ex: macOS, Windows, Linux]
+- Navegador: [ex: Chrome, Safari, Firefox]
+- Versão: [ex: 22]
+- Node.js: [ex: 18.0.0]
 
 ## 📋 Informações Adicionais
 
 Qualquer informação adicional sobre o problema.
 ```
 
----
+### Sugerindo Features
 
-## 💡 Sugerindo Melhorias
-
-### Template de Feature Request
+Use o template de feature request:
 
 ```markdown
-## 💡 Descrição da Melhoria
+## 💡 Descrição da Feature
 
 Descrição clara da funcionalidade desejada.
 
 ## 🎯 Problema que Resolve
 
-Explicação do problema que esta melhoria resolveria.
+Descrição do problema que esta feature resolveria.
 
 ## 💭 Solução Proposta
 
@@ -403,108 +444,64 @@ Qualquer informação adicional.
 
 ---
 
-## 📚 Documentação
-
-### Padrões de Documentação
-
-- **README**: Documentação principal do projeto
-- **JSDoc**: Documentação de funções e classes
-- **Storybook**: Documentação de componentes
-- **Guias**: Documentação específica de funcionalidades
-
-### Exemplo de JSDoc
-
-````typescript
-/**
- * Calcula a idade baseada na data de nascimento
- *
- * @param birthDate - Data de nascimento
- * @returns Idade em anos
- *
- * @example
- * ```typescript
- * const age = calculateAge(new Date('1990-01-01'));
- * console.log(age); // 34
- * ```
- */
-export function calculateAge(birthDate: Date): number {
-  const today = new Date();
-  let age = today.getFullYear() - birthDate.getFullYear();
-  const monthDiff = today.getMonth() - birthDate.getMonth();
-
-  if (
-    monthDiff < 0 ||
-    (monthDiff === 0 && today.getDate() < birthDate.getDate())
-  ) {
-    age--;
-  }
-
-  return age;
-}
-````
-
----
-
-## 🤝 Código de Conduta
-
-### Nossos Padrões
-
-- **Respeito**: Trate todos com respeito
-- **Inclusão**: Seja inclusivo e acolhedor
-- **Colaboração**: Trabalhe em equipe
-- **Construtividade**: Seja construtivo nas críticas
-
-### Comportamento Inaceitável
-
-- Linguagem ofensiva ou discriminatória
-- Assédio ou bullying
-- Spam ou conteúdo irrelevante
-- Violação de privacidade
-
-### Como Reportar
-
-Se você testemunhar ou sofrer comportamento inaceitável:
-
-1. **Contate a equipe** via email ou GitHub
-2. **Forneça detalhes** específicos do incidente
-3. **Mantenha confidencialidade** durante a investigação
-
----
-
-## 🏆 Reconhecimento
-
-### Contribuidores
-
-- **Contribuidores** são listados no README
-- **Mantenedores** são reconhecidos no perfil
-- **Agradecimentos** especiais para contribuições significativas
-
-### Badges
-
-- **Contribuidor**: Para contribuições regulares
-- **Mantenedor**: Para contribuições significativas
-- **Especialista**: Para expertise em áreas específicas
-
----
-
-## 📞 Suporte
+## 💬 Comunicação
 
 ### Canais de Comunicação
 
-- **Issues**: Para bugs e melhorias
-- **Discussions**: Para perguntas e discussões
+- **Issues**: Para bugs e feature requests
+- **Discussions**: Para discussões gerais
 - **Email**: contato@aqua9.com.br
 
-### Recursos Úteis
+### Diretrizes de Comunicação
 
-- [Documentação do Next.js](https://nextjs.org/docs)
-- [Guia do TypeScript](https://www.typescriptlang.org/docs)
-- [Documentação do Tailwind CSS](https://tailwindcss.com/docs)
+- Seja respeitoso e construtivo
+- Use linguagem clara e objetiva
+- Forneça contexto suficiente
+- Responda prontamente a feedback
+
+### Código de Conduta
+
+- Respeite todos os contribuidores
+- Mantenha discussões construtivas
+- Reporte comportamento inadequado
+- Ajude outros contribuidores
 
 ---
 
-## 🎉 Obrigado!
+## 📚 Recursos
 
-Obrigado por contribuir com o **Aqua9 Boilerplate v2**! Suas contribuições ajudam a tornar este projeto melhor para toda a comunidade.
+### Documentação
 
-**Desenvolvido com ❤️ pela Aqua9**
+- [README.md](./README.md) - Documentação principal
+- [SECURITY_GUIDE.md](./SECURITY_GUIDE.md) - Guia de segurança
+- [DEPENDENCY_UPGRADE_GUIDE.md](./DEPENDENCY_UPGRADE_GUIDE.md) - Guia de atualizações
+
+### Ferramentas
+
+- **ESLint**: Linting de código
+- **Prettier**: Formatação de código
+- **TypeScript**: Tipagem estática
+- **Vitest**: Framework de testes
+- **Playwright**: Testes E2E
+- **Storybook**: Documentação de componentes
+
+### Links Úteis
+
+- [Conventional Commits](https://www.conventionalcommits.org/)
+- [React Testing Library](https://testing-library.com/docs/react-testing-library/intro/)
+- [Tailwind CSS](https://tailwindcss.com/docs)
+- [Next.js](https://nextjs.org/docs)
+
+---
+
+## 🎉 Agradecimentos
+
+Obrigado por contribuir com o **Boilerplate Aqua9 v2**! Suas contribuições ajudam a tornar este projeto melhor para toda a comunidade.
+
+### Contribuidores
+
+Veja a lista de [contribuidores](https://github.com/aqua9/boilerplate_aqua9_v2/graphs/contributors) no GitHub.
+
+---
+
+**Desenvolvido com ❤️ pela [Aqua9](https://aqua9.com.br)**

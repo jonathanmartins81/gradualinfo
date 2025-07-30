@@ -3,56 +3,59 @@
  *
  * Sistema de design centralizado com tokens de design,
  * paleta de cores, tipografia e breakpoints padronizados.
+ *
+ * Este arquivo serve como fonte única da verdade para
+ * todos os tokens visuais do projeto.
  */
 
 // ===== PALETA DE CORES =====
 export const colors = {
-  // Cores primárias
+  // Cores primárias - Cyan (moderno e profissional)
   primary: {
-    50: '#eff6ff',
-    100: '#dbeafe',
-    200: '#bfdbfe',
-    300: '#93c5fd',
-    400: '#60a5fa',
-    500: '#3b82f6',
-    600: '#2563eb',
-    700: '#1d4ed8',
-    800: '#1e40af',
-    900: '#1e3a8a',
-    950: '#172554',
+    50: '#ecfeff',
+    100: '#cffafe',
+    200: '#a5f3fc',
+    300: '#67e8f9',
+    400: '#22d3ee',
+    500: '#06b6d4',
+    600: '#0891b2',
+    700: '#0e7490',
+    800: '#155e75',
+    900: '#164e63',
+    950: '#083344',
   },
 
-  // Cores secundárias
+  // Cores secundárias - Indigo (complementar e elegante)
   secondary: {
-    50: '#ecfdf5',
-    100: '#d1fae5',
-    200: '#a7f3d0',
-    300: '#6ee7b7',
-    400: '#34d399',
-    500: '#10b981',
-    600: '#059669',
-    700: '#047857',
-    800: '#065f46',
-    900: '#064e3b',
-    950: '#022c22',
+    50: '#eef2ff',
+    100: '#e0e7ff',
+    200: '#c7d2fe',
+    300: '#a5b4fc',
+    400: '#818cf8',
+    500: '#6366f1',
+    600: '#4f46e5',
+    700: '#4338ca',
+    800: '#3730a3',
+    900: '#312e81',
+    950: '#1e1b4b',
   },
 
-  // Cores de acento
+  // Cores de acento - Amber (energético e atrativo)
   accent: {
-    50: '#faf5ff',
-    100: '#f3e8ff',
-    200: '#e9d5ff',
-    300: '#d8b4fe',
-    400: '#c084fc',
-    500: '#a855f7',
-    600: '#9333ea',
-    700: '#7c3aed',
-    800: '#6b21a8',
-    900: '#581c87',
-    950: '#3b0764',
+    50: '#fffbeb',
+    100: '#fef3c7',
+    200: '#fde68a',
+    300: '#fcd34d',
+    400: '#fbbf24',
+    500: '#f59e0b',
+    600: '#d97706',
+    700: '#b45309',
+    800: '#92400e',
+    900: '#78350f',
+    950: '#451a03',
   },
 
-  // Cores neutras
+  // Cores neutras - Slate (moderno e versátil)
   gray: {
     50: '#f8fafc',
     100: '#f1f5f9',
@@ -67,7 +70,7 @@ export const colors = {
     950: '#020617',
   },
 
-  // Cores de estado
+  // Cores de estado - Success (verde)
   success: {
     50: '#f0fdf4',
     100: '#dcfce7',
@@ -79,21 +82,25 @@ export const colors = {
     700: '#15803d',
     800: '#166534',
     900: '#14532d',
+    950: '#052e16',
   },
 
+  // Cores de estado - Warning (laranja)
   warning: {
-    50: '#fffbeb',
-    100: '#fef3c7',
-    200: '#fde68a',
-    300: '#fcd34d',
-    400: '#fbbf24',
-    500: '#f59e0b',
-    600: '#d97706',
-    700: '#b45309',
-    800: '#92400e',
-    900: '#78350f',
+    50: '#fff7ed',
+    100: '#ffedd5',
+    200: '#fed7aa',
+    300: '#fdba74',
+    400: '#fb923c',
+    500: '#f97316',
+    600: '#ea580c',
+    700: '#c2410c',
+    800: '#9a3412',
+    900: '#7c2d12',
+    950: '#431407',
   },
 
+  // Cores de estado - Error (vermelho)
   error: {
     50: '#fef2f2',
     100: '#fee2e2',
@@ -105,31 +112,78 @@ export const colors = {
     700: '#b91c1c',
     800: '#991b1b',
     900: '#7f1d1d',
+    950: '#450a0a',
   },
 
-  // Cores de informação
+  // Cores de estado - Info (azul)
   info: {
-    50: '#f0f9ff',
-    100: '#e0f2fe',
-    200: '#bae6fd',
-    300: '#7dd3fc',
-    400: '#38bdf8',
-    500: '#0ea5e9',
-    600: '#0284c7',
-    700: '#0369a1',
-    800: '#075985',
-    900: '#0c4a6e',
+    50: '#eff6ff',
+    100: '#dbeafe',
+    200: '#bfdbfe',
+    300: '#93c5fd',
+    400: '#60a5fa',
+    500: '#3b82f6',
+    600: '#2563eb',
+    700: '#1d4ed8',
+    800: '#1e40af',
+    900: '#1e3a8a',
+    950: '#172554',
   },
-} as const;
+};
 
 // ===== TIPOGRAFIA =====
 export const typography = {
+  // Famílias de fontes
   fontFamily: {
-    sans: ['Inter', 'system-ui', 'sans-serif'],
-    serif: ['Georgia', 'serif'],
-    mono: ['Fira Code', 'Consolas', 'monospace'],
+    sans: [
+      'Inter',
+      'ui-sans-serif',
+      'system-ui',
+      '-apple-system',
+      'BlinkMacSystemFont',
+      'Segoe UI',
+      'Roboto',
+      'Helvetica Neue',
+      'Arial',
+      'Noto Sans',
+      'sans-serif',
+    ],
+    heading: [
+      'Poppins',
+      'Inter',
+      'ui-sans-serif',
+      'system-ui',
+      '-apple-system',
+      'BlinkMacSystemFont',
+      'Segoe UI',
+      'Roboto',
+      'Helvetica Neue',
+      'Arial',
+      'Noto Sans',
+      'sans-serif',
+    ],
+    mono: [
+      'Fira Code',
+      'ui-monospace',
+      'SFMono-Regular',
+      'Menlo',
+      'Monaco',
+      'Consolas',
+      'Liberation Mono',
+      'Courier New',
+      'monospace',
+    ],
+    serif: [
+      'ui-serif',
+      'Georgia',
+      'Cambria',
+      'Times New Roman',
+      'Times',
+      'serif',
+    ],
   },
 
+  // Tamanhos de fonte
   fontSize: {
     xs: ['0.75rem', { lineHeight: '1rem' }],
     sm: ['0.875rem', { lineHeight: '1.25rem' }],
@@ -146,6 +200,7 @@ export const typography = {
     '9xl': ['8rem', { lineHeight: '1' }],
   },
 
+  // Pesos de fonte
   fontWeight: {
     thin: '100',
     extralight: '200',
@@ -157,24 +212,30 @@ export const typography = {
     extrabold: '800',
     black: '900',
   },
-} as const;
 
-// ===== BREAKPOINTS =====
-export const breakpoints = {
-  xs: '475px',
-  sm: '640px',
-  md: '768px',
-  lg: '1024px',
-  xl: '1280px',
-  '2xl': '1536px',
-} as const;
+  // Espaçamento entre linhas
+  lineHeight: {
+    none: '1',
+    tight: '1.25',
+    snug: '1.375',
+    normal: '1.5',
+    relaxed: '1.625',
+    loose: '2',
+  },
+};
 
-// ===== ESPAÇAMENTO =====
+// ===== ESPAÇAMENTOS =====
 export const spacing = {
+  // Espaçamentos base (baseado em 0.25rem = 4px)
+  px: '1px',
   0: '0',
+  0.5: '0.125rem',
   1: '0.25rem',
+  1.5: '0.375rem',
   2: '0.5rem',
+  2.5: '0.625rem',
   3: '0.75rem',
+  3.5: '0.875rem',
   4: '1rem',
   5: '1.25rem',
   6: '1.5rem',
@@ -182,6 +243,7 @@ export const spacing = {
   8: '2rem',
   9: '2.25rem',
   10: '2.5rem',
+  11: '2.75rem',
   12: '3rem',
   14: '3.5rem',
   16: '4rem',
@@ -200,7 +262,17 @@ export const spacing = {
   72: '18rem',
   80: '20rem',
   96: '24rem',
-} as const;
+};
+
+// ===== BREAKPOINTS =====
+export const breakpoints = {
+  xs: '475px',
+  sm: '640px',
+  md: '768px',
+  lg: '1024px',
+  xl: '1280px',
+  '2xl': '1536px',
+};
 
 // ===== BORDER RADIUS =====
 export const borderRadius = {
@@ -213,7 +285,7 @@ export const borderRadius = {
   '2xl': '1rem',
   '3xl': '1.5rem',
   full: '9999px',
-} as const;
+};
 
 // ===== SHADOWS =====
 export const shadows = {
@@ -224,25 +296,95 @@ export const shadows = {
   xl: '0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1)',
   '2xl': '0 25px 50px -12px rgb(0 0 0 / 0.25)',
   inner: 'inset 0 2px 4px 0 rgb(0 0 0 / 0.05)',
-  none: '0 0 #0000',
-} as const;
+  none: 'none',
+
+  // Shadows customizados
+  soft: '0 2px 15px -3px rgba(0, 0, 0, 0.07), 0 10px 20px -2px rgba(0, 0, 0, 0.04)',
+  medium:
+    '0 4px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)',
+  strong:
+    '0 10px 40px -10px rgba(0, 0, 0, 0.15), 0 2px 10px -2px rgba(0, 0, 0, 0.05)',
+  glow: '0 0 20px rgba(6, 182, 212, 0.3)',
+  'glow-success': '0 0 20px rgba(34, 197, 94, 0.3)',
+  'glow-warning': '0 0 20px rgba(245, 158, 11, 0.3)',
+  'glow-error': '0 0 20px rgba(239, 68, 68, 0.3)',
+};
 
 // ===== ANIMAÇÕES =====
 export const animations = {
+  // Durações
   duration: {
-    fast: '150ms',
-    base: '300ms',
-    slow: '500ms',
-    slower: '700ms',
+    75: '75ms',
+    100: '100ms',
+    150: '150ms',
+    200: '200ms',
+    300: '300ms',
+    500: '500ms',
+    700: '700ms',
+    1000: '1000ms',
   },
 
+  // Easing functions
   easing: {
     linear: 'linear',
     in: 'cubic-bezier(0.4, 0, 1, 1)',
     out: 'cubic-bezier(0, 0, 0.2, 1)',
     inOut: 'cubic-bezier(0.4, 0, 0.2, 1)',
   },
-} as const;
+
+  // Keyframes customizados
+  keyframes: {
+    fadeIn: {
+      '0%': { opacity: '0' },
+      '100%': { opacity: '1' },
+    },
+    fadeOut: {
+      '0%': { opacity: '1' },
+      '100%': { opacity: '0' },
+    },
+    slideIn: {
+      '0%': { transform: 'translateX(-100%)' },
+      '100%': { transform: 'translateX(0)' },
+    },
+    slideOut: {
+      '0%': { transform: 'translateX(0)' },
+      '100%': { transform: 'translateX(-100%)' },
+    },
+    bounceIn: {
+      '0%': { transform: 'scale(0.3)', opacity: '0' },
+      '50%': { transform: 'scale(1.05)' },
+      '70%': { transform: 'scale(0.9)' },
+      '100%': { transform: 'scale(1)', opacity: '1' },
+    },
+    scaleIn: {
+      '0%': { transform: 'scale(0.9)', opacity: '0' },
+      '100%': { transform: 'scale(1)', opacity: '1' },
+    },
+    pulse: {
+      '0%, 100%': { opacity: '1' },
+      '50%': { opacity: '.5' },
+    },
+    spin: {
+      '0%': { transform: 'rotate(0deg)' },
+      '100%': { transform: 'rotate(360deg)' },
+    },
+  },
+};
+
+// ===== GRADIENTS =====
+export const gradients = {
+  primary: 'linear-gradient(135deg, #06b6d4 0%, #0891b2 100%)',
+  secondary: 'linear-gradient(135deg, #6366f1 0%, #4f46e5 100%)',
+  accent: 'linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%)',
+  warm: 'linear-gradient(135deg, #f97316 0%, #ea580c 100%)',
+  cool: 'linear-gradient(135deg, #06b6d4 0%, #0891b2 100%)',
+  success: 'linear-gradient(135deg, #22c55e 0%, #16a34a 100%)',
+  warning: 'linear-gradient(135deg, #f59e0b 0%, #d97706 100%)',
+  error: 'linear-gradient(135deg, #ef4444 0%, #dc2626 100%)',
+  info: 'linear-gradient(135deg, #3b82f6 0%, #2563eb 100%)',
+  dark: 'linear-gradient(135deg, #1e293b 0%, #0f172a 100%)',
+  light: 'linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%)',
+};
 
 // ===== Z-INDEX =====
 export const zIndex = {
@@ -259,50 +401,67 @@ export const zIndex = {
   skipLink: 1600,
   toast: 1700,
   tooltip: 1800,
-} as const;
+};
 
 // ===== TEMA COMPLETO =====
 export const theme = {
   colors,
   typography,
-  breakpoints,
   spacing,
+  breakpoints,
   borderRadius,
   shadows,
   animations,
+  gradients,
   zIndex,
-} as const;
+};
 
 // ===== UTILITÁRIOS =====
-export const themeUtils = {
-  // Gera classes CSS customizadas
-  getColor: (color: string, shade?: keyof typeof colors.primary) => {
-    if (shade) {
-      const colorObj = colors[color as keyof typeof colors];
-      return (colorObj as any)?.[shade] || colors.gray[500];
+export const utils = {
+  // Função para obter cor com opacidade
+  colorWithOpacity: (color: string, opacity: number) => {
+    return `${color}${Math.round(opacity * 255)
+      .toString(16)
+      .padStart(2, '0')}`;
+  },
+
+  // Função para obter breakpoint
+  getBreakpoint: (size: keyof typeof breakpoints) => breakpoints[size],
+
+  // Função para obter cor do tema
+  getColor: (colorPath: string) => {
+    const path = colorPath.split('.');
+    let current: any = colors;
+
+    for (const key of path) {
+      if (current[key] === undefined) {
+        console.warn(`Color path "${colorPath}" not found`);
+        return colors.gray[500];
+      }
+      current = current[key];
     }
-    return colors[color as keyof typeof colors]?.[500] || colors.gray[500];
+
+    return current;
   },
 
-  // Gera breakpoint responsivo
-  getBreakpoint: (size: keyof typeof breakpoints) => {
-    return breakpoints[size];
-  },
+  // Função para obter shadow
+  getShadow: (shadow: keyof typeof shadows) => shadows[shadow],
 
-  // Gera espaçamento
-  getSpacing: (size: keyof typeof spacing) => {
-    return spacing[size];
-  },
+  // Função para obter gradiente
+  getGradient: (gradient: keyof typeof gradients) => gradients[gradient],
+};
 
-  // Gera border radius
-  getRadius: (size: keyof typeof borderRadius) => {
-    return borderRadius[size];
-  },
-
-  // Gera shadow
-  getShadow: (size: keyof typeof shadows) => {
-    return shadows[size];
-  },
-} as const;
-
+// ===== EXPORTS =====
 export default theme;
+export {
+  animations,
+  borderRadius,
+  breakpoints,
+  colors,
+  gradients,
+  shadows,
+  spacing,
+  typography,
+  utils,
+  zIndex,
+};

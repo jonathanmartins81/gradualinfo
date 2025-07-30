@@ -1,228 +1,309 @@
-import { NextRequest, NextResponse } from 'next/server';
-import {
-  checkRateLimit,
-  extractToken,
-  protectAPI,
-  protectPage,
-  SecurityConfig,
-  verifyToken,
-} from './lib/auth';
+import type { NextRequest } from 'next/server';
+import { NextResponse } from 'next/server';
 
-// Cache simples para rate limiting (em produção, use Redis)
-const rateLimitCache = new Map<string, { count: number; resetTime: number }>();
+/**
+ * Middleware de Segurança - Aqua9 Boilerplate v2
+ *
+ * Este middleware implementa várias camadas de segurança:
+ * - Headers de segurança essenciais
+ * - Rate limiting básico
+ * - Proteção contra ataques comuns
+ * - Redirecionamentos seguros
+ * - Logging de segurança
+ */
 
-// Configurações de rate limiting
-const RATE_LIMIT_CONFIG = {
-  // Rotas sensíveis (APIs, formulários, etc.)
-  sensitive: {
+// ===== CONFIGURAÇÕES DE SEGURANÇA =====
+const SECURITY_CONFIG = {
+  // Headers de segurança
+  headers: {
+    'X-Content-Type-Options': 'nosniff',
+    'X-Frame-Options': 'DENY',
+    'X-XSS-Protection': '1; mode=block',
+    'Referrer-Policy': 'strict-origin-when-cross-origin',
+    'Permissions-Policy':
+      'camera=(), microphone=(), geolocation=(), interest-cohort=()',
+    'Strict-Transport-Security': 'max-age=63072000; includeSubDomains; preload',
+    'Content-Security-Policy': [
+      "default-src 'self'",
+      "script-src 'self' 'unsafe-eval' 'unsafe-inline' https://vercel.live https://va.vercel-scripts.com",
+      "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
+      "font-src 'self' https://fonts.gstatic.com",
+      "img-src 'self' data: https: blob:",
+      "connect-src 'self' https://api.vercel.com https://vitals.vercel-insights.com",
+      "frame-ancestors 'none'",
+      "base-uri 'self'",
+      "form-action 'self'",
+    ].join('; '),
+  },
+
+  // Rate limiting (básico)
+  rateLimit: {
     windowMs: 15 * 60 * 1000, // 15 minutos
-    maxRequests: 100, // 100 requests por IP
+    maxRequests: 100, // máximo de 100 requests por IP
   },
-  // Rotas de autenticação
-  auth: {
-    windowMs: 5 * 60 * 1000, // 5 minutos
-    maxRequests: 10, // 10 tentativas de login
+
+  // Rotas protegidas
+  protectedRoutes: [
+    '/api/auth',
+    '/api/admin',
+    '/api/users',
+    '/dashboard',
+    '/admin',
+  ],
+
+  // Rotas públicas
+  publicRoutes: [
+    '/',
+    '/about',
+    '/portfolio',
+    '/contact',
+    '/blog',
+    '/docs',
+    '/tailwind-demo',
+  ],
+
+  // User agents maliciosos conhecidos
+  maliciousUserAgents: [
+    'bot',
+    'crawler',
+    'spider',
+    'scraper',
+    'curl',
+    'wget',
+    'python',
+    'java',
+    'php',
+  ],
+};
+
+// ===== UTILITÁRIOS DE SEGURANÇA =====
+const SecurityUtils = {
+  // Verifica se o user agent é malicioso
+  isMaliciousUserAgent: (userAgent: string): boolean => {
+    const lowerUA = userAgent.toLowerCase();
+    return SECURITY_CONFIG.maliciousUserAgents.some(agent =>
+      lowerUA.includes(agent)
+    );
   },
-  // Rotas gerais
-  general: {
-    windowMs: 60 * 1000, // 1 minuto
-    maxRequests: 1000, // 1000 requests por IP
+
+  // Verifica se a rota é protegida
+  isProtectedRoute: (pathname: string): boolean => {
+    return SECURITY_CONFIG.protectedRoutes.some(route =>
+      pathname.startsWith(route)
+    );
+  },
+
+  // Verifica se a rota é pública
+  isPublicRoute: (pathname: string): boolean => {
+    return SECURITY_CONFIG.publicRoutes.some(
+      route => pathname === route || pathname.startsWith(route)
+    );
+  },
+
+  // Obtém IP real do cliente
+  getClientIP: (request: NextRequest): string => {
+    const forwarded = request.headers.get('x-forwarded-for');
+    const realIP = request.headers.get('x-real-ip');
+    const cfConnectingIP = request.headers.get('cf-connecting-ip');
+
+    if (forwarded) {
+      return forwarded.split(',')[0].trim();
+    }
+    if (realIP) {
+      return realIP;
+    }
+    if (cfConnectingIP) {
+      return cfConnectingIP;
+    }
+
+    return 'unknown';
+  },
+
+  // Log de segurança
+  logSecurityEvent: (event: string, details: any) => {
+    console.log(`[SECURITY] ${event}:`, {
+      timestamp: new Date().toISOString(),
+      ...details,
+    });
+  },
+
+  // Sanitiza string para prevenir ataques
+  sanitizeString: (str: string): string => {
+    return str
+      .replace(/[<>]/g, '') // Remove < e >
+      .replace(/javascript:/gi, '') // Remove javascript:
+      .replace(/on\w+=/gi, '') // Remove event handlers
+      .trim();
   },
 };
 
-// Função para obter IP do cliente
-function getClientIP(request: NextRequest): string {
-  const forwarded = request.headers.get('x-forwarded-for');
-  const realIP = request.headers.get('x-real-ip');
-  const cfConnectingIP = request.headers.get('cf-connecting-ip');
+// ===== CACHE SIMPLES PARA RATE LIMITING =====
+const rateLimitCache = new Map<string, { count: number; resetTime: number }>();
 
-  return forwarded?.split(',')[0] || realIP || cfConnectingIP || 'unknown';
-}
+const RateLimiter = {
+  // Verifica rate limit
+  check: (ip: string): boolean => {
+    const now = Date.now();
+    const windowMs = SECURITY_CONFIG.rateLimit.windowMs;
+    const maxRequests = SECURITY_CONFIG.rateLimit.maxRequests;
 
-// Função para verificar rate limit
-function checkRateLimit(
-  ip: string,
-  config: typeof RATE_LIMIT_CONFIG.sensitive
-): boolean {
-  const now = Date.now();
-  const record = rateLimitCache.get(ip);
+    const record = rateLimitCache.get(ip);
 
-  if (!record || now > record.resetTime) {
-    // Primeira requisição ou janela expirada
-    rateLimitCache.set(ip, {
-      count: 1,
-      resetTime: now + config.windowMs,
-    });
+    if (!record || now > record.resetTime) {
+      // Reset ou primeira requisição
+      rateLimitCache.set(ip, {
+        count: 1,
+        resetTime: now + windowMs,
+      });
+      return true;
+    }
+
+    if (record.count >= maxRequests) {
+      return false; // Rate limit excedido
+    }
+
+    // Incrementa contador
+    record.count++;
     return true;
+  },
+
+  // Limpa cache antigo
+  cleanup: () => {
+    const now = Date.now();
+    for (const [ip, record] of rateLimitCache.entries()) {
+      if (now > record.resetTime) {
+        rateLimitCache.delete(ip);
+      }
+    }
+  },
+};
+
+// ===== MIDDLEWARE PRINCIPAL =====
+export function middleware(request: NextRequest) {
+  const { pathname } = request.nextUrl;
+  const userAgent = request.headers.get('user-agent') || '';
+  const clientIP = SecurityUtils.getClientIP(request);
+
+  // Log da requisição
+  SecurityUtils.logSecurityEvent('Request', {
+    pathname,
+    userAgent: userAgent.substring(0, 100),
+    clientIP,
+    method: request.method,
+  });
+
+  // ===== VERIFICAÇÕES DE SEGURANÇA =====
+
+  // 1. Verifica User Agent malicioso
+  if (SecurityUtils.isMaliciousUserAgent(userAgent)) {
+    SecurityUtils.logSecurityEvent('MaliciousUserAgent', {
+      userAgent,
+      clientIP,
+      pathname,
+    });
+    return new NextResponse('Forbidden', { status: 403 });
   }
 
-  if (record.count >= config.maxRequests) {
-    return false; // Rate limit excedido
+  // 2. Verifica Rate Limiting
+  if (!RateLimiter.check(clientIP)) {
+    SecurityUtils.logSecurityEvent('RateLimitExceeded', {
+      clientIP,
+      pathname,
+    });
+    return new NextResponse('Too Many Requests', { status: 429 });
   }
 
-  // Incrementar contador
-  record.count++;
-  return true;
-}
+  // 3. Verifica rota protegida sem autenticação
+  if (SecurityUtils.isProtectedRoute(pathname)) {
+    const authToken =
+      request.headers.get('authorization') ||
+      request.cookies.get('auth-token')?.value;
 
-// Função para limpar cache antigo (executar periodicamente)
-function cleanupRateLimitCache() {
-  const now = Date.now();
-  for (const [ip, record] of rateLimitCache.entries()) {
-    if (now > record.resetTime) {
-      rateLimitCache.delete(ip);
+    if (!authToken) {
+      SecurityUtils.logSecurityEvent('UnauthorizedAccess', {
+        clientIP,
+        pathname,
+      });
+      return NextResponse.redirect(new URL('/login', request.url));
     }
   }
-}
 
-// Limpar cache a cada 5 minutos
-if (typeof window !== 'undefined') {
-  setInterval(cleanupRateLimitCache, 5 * 60 * 1000);
-}
+  // 4. Verifica ataques de path traversal
+  if (pathname.includes('..') || pathname.includes('~')) {
+    SecurityUtils.logSecurityEvent('PathTraversalAttempt', {
+      clientIP,
+      pathname,
+    });
+    return new NextResponse('Forbidden', { status: 403 });
+  }
 
-export async function middleware(request: NextRequest) {
-  const { pathname } = request.nextUrl;
-  const clientIP = getClientIP(request);
+  // 5. Verifica ataques de SQL Injection (básico)
+  const sqlInjectionPatterns = [
+    /(\b(union|select|insert|update|delete|drop|create|alter)\b)/i,
+    /(\b(or|and)\b\s+\d+\s*=\s*\d+)/i,
+    /(\b(union|select)\b.*\bfrom\b)/i,
+  ];
 
-  // Headers de segurança
+  for (const pattern of sqlInjectionPatterns) {
+    if (pattern.test(pathname) || pattern.test(userAgent)) {
+      SecurityUtils.logSecurityEvent('SQLInjectionAttempt', {
+        clientIP,
+        pathname,
+        userAgent,
+      });
+      return new NextResponse('Forbidden', { status: 403 });
+    }
+  }
+
+  // ===== APLICA HEADERS DE SEGURANÇA =====
   const response = NextResponse.next();
 
-  // Aplicar headers de segurança do SecurityConfig
-  Object.entries(SecurityConfig.securityHeaders).forEach(([key, value]) => {
+  // Aplica todos os headers de segurança
+  Object.entries(SECURITY_CONFIG.headers).forEach(([key, value]) => {
     response.headers.set(key, value);
   });
 
-  // Proteção de rotas para páginas
-  if (!pathname.startsWith('/api/') && !pathname.startsWith('/_next/')) {
-    const pageProtection = await protectPage(request, pathname);
-    if (pageProtection) {
-      return pageProtection;
-    }
+  // Headers adicionais baseados na rota
+  if (SecurityUtils.isProtectedRoute(pathname)) {
+    response.headers.set(
+      'Cache-Control',
+      'no-store, no-cache, must-revalidate, proxy-revalidate'
+    );
+    response.headers.set('Pragma', 'no-cache');
+    response.headers.set('Expires', '0');
   }
 
-  // Proteção de rotas para APIs
-  if (pathname.startsWith('/api/')) {
-    const { user, isAuthorized } = await protectAPI(request, pathname);
+  // ===== REDIRECIONAMENTOS ESPECÍFICOS =====
 
-    if (!isAuthorized) {
-      return new NextResponse(
-        JSON.stringify({
-          error: 'Unauthorized',
-          message: 'Access denied. Insufficient permissions.',
-        }),
-        {
-          status: 403,
-          headers: {
-            'Content-Type': 'application/json',
-          },
-        }
-      );
-    }
-
-    // Rate limiting por usuário para APIs
-    if (user && !checkRateLimit(user.id, 50, 15 * 60 * 1000)) {
-      return new NextResponse(
-        JSON.stringify({
-          error: 'Too Many Requests',
-          message: 'Rate limit exceeded for user.',
-        }),
-        {
-          status: 429,
-          headers: {
-            'Content-Type': 'application/json',
-          },
-        }
-      );
-    }
-  }
-
-  // Rate limiting baseado no tipo de rota
-  let rateLimitConfig = RATE_LIMIT_CONFIG.general;
-
-  // Rotas de autenticação
-  if (pathname.startsWith('/api/auth') || pathname.includes('login')) {
-    rateLimitConfig = RATE_LIMIT_CONFIG.auth;
-  }
-  // Rotas sensíveis (APIs, formulários)
-  else if (
-    pathname.startsWith('/api/') ||
-    pathname.includes('contact') ||
-    pathname.includes('submit') ||
-    pathname.includes('admin')
+  // Redireciona HTTP para HTTPS em produção
+  if (
+    process.env.NODE_ENV === 'production' &&
+    request.headers.get('x-forwarded-proto') === 'http'
   ) {
-    rateLimitConfig = RATE_LIMIT_CONFIG.sensitive;
+    const httpsUrl = request.nextUrl.clone();
+    httpsUrl.protocol = 'https';
+    return NextResponse.redirect(httpsUrl);
   }
 
-  // Verificar rate limit
-  if (!checkRateLimit(clientIP, rateLimitConfig)) {
-    return new NextResponse(
-      JSON.stringify({
-        error: 'Too Many Requests',
-        message: 'Rate limit exceeded. Please try again later.',
-        retryAfter: Math.ceil(rateLimitConfig.windowMs / 1000),
-      }),
-      {
-        status: 429,
-        headers: {
-          'Content-Type': 'application/json',
-          'Retry-After': Math.ceil(rateLimitConfig.windowMs / 1000).toString(),
-          'X-RateLimit-Limit': rateLimitConfig.maxRequests.toString(),
-          'X-RateLimit-Remaining': '0',
-          'X-RateLimit-Reset': (
-            Date.now() + rateLimitConfig.windowMs
-          ).toString(),
-        },
-      }
-    );
+  // Redireciona www para non-www (opcional)
+  if (request.nextUrl.hostname.startsWith('www.')) {
+    const nonWwwUrl = request.nextUrl.clone();
+    nonWwwUrl.hostname = nonWwwUrl.hostname.replace('www.', '');
+    return NextResponse.redirect(nonWwwUrl);
   }
 
-  // Adicionar headers de rate limit
-  const record = rateLimitCache.get(clientIP);
-  if (record) {
-    response.headers.set(
-      'X-RateLimit-Limit',
-      rateLimitConfig.maxRequests.toString()
-    );
-    response.headers.set(
-      'X-RateLimit-Remaining',
-      (rateLimitConfig.maxRequests - record.count).toString()
-    );
-    response.headers.set('X-RateLimit-Reset', record.resetTime.toString());
-  }
-
-  // Throttling para requests pesados
-  if (pathname.startsWith('/api/') && request.method !== 'GET') {
-    // Adicionar delay mínimo para requests não-GET
-    const delay = Math.random() * 100; // 0-100ms delay aleatório
-    if (delay > 0) {
-      // Em produção, implementar throttling mais sofisticado
-      // Por enquanto, apenas adicionar header
-      response.headers.set('X-Throttle-Delay', delay.toString());
-    }
-  }
-
-  // Proteção contra ataques de força bruta
-  if (pathname.includes('login') || pathname.includes('password')) {
-    response.headers.set('X-Content-Security-Policy', "default-src 'self'");
-  }
-
-  // Log de segurança para rotas sensíveis
-  if (pathname.startsWith('/admin') || pathname.startsWith('/api/admin')) {
-    const token = extractToken(request);
-    const user = token ? await verifyToken(token) : null;
-
-    console.log(`[SECURITY] Admin access attempt:`, {
-      pathname,
-      user: user?.email || 'anonymous',
-      ip: clientIP,
-      timestamp: new Date().toISOString(),
-    });
+  // ===== LIMPEZA PERIÓDICA =====
+  // Limpa cache de rate limiting a cada 100 requisições
+  if (Math.random() < 0.01) {
+    RateLimiter.cleanup();
   }
 
   return response;
 }
 
+// ===== CONFIGURAÇÃO DO MIDDLEWARE =====
 export const config = {
+  // Aplica em todas as rotas
   matcher: [
     /*
      * Match all request paths except for the ones starting with:

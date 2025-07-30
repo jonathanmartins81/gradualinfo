@@ -2,7 +2,7 @@
 
 <div align="center">
 
-![Aqua9 Logo](public/img/logo-gh.svg)
+<img src="public/img/logo-gh.svg" alt="Aqua9 Logo" width="300" height="64" />
 
 **Modern Next.js template optimized for professional projects by Aqua9**
 

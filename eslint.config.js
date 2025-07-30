@@ -43,7 +43,6 @@ export default [
       'dist/**',
       'build/**',
       'coverage/**',
-      '*.config.js',
       '*.config.ts',
       '!.storybook',
       '!.jest',

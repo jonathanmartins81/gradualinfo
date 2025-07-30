@@ -1,6 +1,5 @@
 import { render, screen } from '@testing-library/react';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
-import HomePage from './page';
 
 // Mock do ThemeSwitcher
 vi.mock('@/components/ThemeSwitcher', () => ({
@@ -16,6 +15,9 @@ vi.mock('@/contexts/ThemeContext', () => ({
     setMode: vi.fn(),
   }),
 }));
+
+// Importar o componente APÓS os mocks
+import HomePage from './page';
 
 describe('Home Page', () => {
   it('should render without crashing', () => {

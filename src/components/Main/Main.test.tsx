@@ -1,6 +1,5 @@
 import { render, screen } from '@testing-library/react';
 import { describe, expect, it, vi } from 'vitest';
-import { Main } from './index';
 
 // Mock do ThemeSwitcher
 vi.mock('@/components/ThemeSwitcher', () => ({
@@ -16,6 +15,9 @@ vi.mock('@/contexts/ThemeContext', () => ({
     setMode: vi.fn(),
   }),
 }));
+
+// Importar o componente APÓS os mocks
+import { Main } from './index';
 
 describe('Main Component', () => {
   it('should render with default props', () => {

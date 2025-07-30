@@ -30,7 +30,7 @@ pre-commit:
     # Testes unitários para arquivos alterados
     test:
       glob: '*.{js,jsx,ts,tsx}'
-      run: npx jest --bail --findRelatedTests {staged_files} --passWithNoTests
+      run: npx vitest run --reporter=verbose {staged_files}
 
 # Hooks executados antes do push
 pre-push:

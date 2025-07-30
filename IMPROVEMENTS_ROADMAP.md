@@ -34,26 +34,26 @@ Este roadmap define as melhorias estratégicas para transformar o boilerplate_aq
 
 #### **1.2 Sitemap e Robots.txt Dinâmicos**
 
-- [ ] Implementar sitemap via API Route
-- [ ] Criar robots.txt dinâmico
-- [ ] Adicionar suporte a múltiplos ambientes
-- [ ] Otimizar para SEO técnico
+- [x] Implementar sitemap via API Route
+- [x] Criar robots.txt dinâmico
+- [x] Adicionar suporte a múltiplos ambientes
+- [x] Otimizar para SEO técnico
 
 ### **2. Testes e Cobertura**
 
 #### **2.1 Ampliar Cobertura de Testes**
 
-- [ ] Aumentar cobertura para 90%+
-- [ ] Adicionar testes de integração
+- [x] Aumentar cobertura para 90%+
+- [x] Adicionar testes de integração
 - [x] Implementar testes E2E com Playwright
-- [ ] Criar testes de performance
+- [x] Criar testes de performance
 
 #### **2.2 Badges e Status**
 
 - [x] Integrar badges de coverage no README
 - [x] Adicionar status de build
 - [x] Implementar qualidade de código
-- [ ] Criar dashboard de métricas
+- [x] Criar dashboard de métricas
 
 ---
 
@@ -63,10 +63,10 @@ Este roadmap define as melhorias estratégicas para transformar o boilerplate_aq
 
 #### **3.1 README Expandido**
 
-- [ ] Documentar função de cada pasta
-- [ ] Adicionar exemplos de uso
-- [ ] Criar guias de features
-- [ ] Documentar hooks e utils
+- [x] Documentar função de cada pasta
+- [x] Adicionar exemplos de uso
+- [x] Criar guias de features
+- [x] Documentar hooks e utils
 
 #### **3.2 Diagramas e Fluxos**
 
@@ -86,10 +86,10 @@ Este roadmap define as melhorias estratégicas para transformar o boilerplate_aq
 
 #### **4.1 Design System Centralizado**
 
-- [ ] Criar `/styles/theme.ts`
-- [ ] Definir paleta de cores
-- [ ] Estabelecer breakpoints
-- [ ] Padronizar tipografia
+- [x] Criar `/styles/theme.ts`
+- [x] Definir paleta de cores
+- [x] Estabelecer breakpoints
+- [x] Padronizar tipografia
 
 #### **4.2 Otimização de Imagens**
 

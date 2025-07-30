@@ -1,8 +1,5 @@
 {
-  // ===== CONFIGURAÇÕES GERAIS DO EDITOR =====
   "editor.formatOnSave": true,
-  "editor.formatOnPaste": true,
-  "editor.formatOnType": false,
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": "explicit",
     "source.organizeImports": "explicit"
@@ -10,272 +7,157 @@
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "editor.tabSize": 2,
   "editor.insertSpaces": true,
-  "editor.detectIndentation": false,
-  "editor.rulers": [80, 120],
+  "editor.rulers": [80, 100],
   "editor.wordWrap": "bounded",
-  "editor.wordWrapColumn": 80,
   "editor.bracketPairColorization.enabled": true,
   "editor.guides.bracketPairs": true,
-  "editor.minimap.enabled": true,
   "editor.suggestSelection": "first",
   "editor.acceptSuggestionOnCommitCharacter": false,
   "editor.acceptSuggestionOnEnter": "on",
-  "editor.renderLineHighlight": "gutter",
-  "editor.parameterHints.enabled": false,
-
-  // ===== CONFIGURAÇÕES DE FONTE =====
-  "editor.fontSize": 18,
-  "editor.lineHeight": 24,
-  "editor.fontFamily": "Fira Code",
-  "editor.fontLigatures": true,
-
-  // ===== CONFIGURAÇÕES DE ARQUIVOS =====
-  "files.trimTrailingWhitespace": true,
-  "files.insertFinalNewline": true,
-  "files.trimFinalNewlines": true,
-  "files.eol": "\n",
-  "files.encoding": "utf8",
-  "files.autoSave": "onFocusChange",
-  "files.exclude": {
-    "**/node_modules": true,
-    "**/.next": true,
-    "**/dist": true,
-    "**/build": true,
-    "**/.git": true,
-    "**/.DS_Store": true,
-    "**/coverage": true
-  },
-  "files.watcherExclude": {
-    "**/node_modules/**": true,
-    "**/.next/**": true,
-    "**/dist/**": true,
-    "**/build/**": true,
-    "**/.git/**": true,
-    "**/coverage/**": true
+  "editor.quickSuggestions": {
+    "other": true,
+    "comments": false,
+    "strings": true
   },
   "files.associations": {
-    ".sequelizerc": "javascript",
-    ".stylelintrc": "json",
-    ".prettierrc": "json"
+    "*.css": "tailwindcss"
   },
-
-  // ===== CONFIGURAÇÕES DO TYPESCRIPT =====
+  "files.exclude": {
+    "**/.git": true,
+    "**/.DS_Store": true,
+    "**/node_modules": true,
+    "**/.next": true,
+    "**/coverage": true,
+    "**/dist": true,
+    "**/.turbo": true
+  },
+  "search.exclude": {
+    "**/node_modules": true,
+    "**/.next": true,
+    "**/coverage": true,
+    "**/dist": true,
+    "**/.turbo": true,
+    "**/package-lock.json": true
+  },
   "typescript.preferences.importModuleSpecifier": "relative",
   "typescript.suggest.autoImports": true,
   "typescript.updateImportsOnFileMove.enabled": "always",
-  "typescript.preferences.includePackageJsonAutoImports": "auto",
-  "typescript.suggest.includeCompletionsForModuleExports": true,
-  "typescript.suggest.includeCompletionsWithSnippetText": true,
-  "typescript.suggest.includeCompletionsWithInsertText": true,
-  "typescript.suggest.includeCompletionsWithClassMemberSnippets": true,
-  "typescript.suggest.includeCompletionsWithObjectLiteralMethodSnippets": true,
-  "typescript.suggest.includeCompletionsWithFunctionParameterSnippets": true,
-  "typescript.tsserver.log": "verbose",
-
-  // ===== CONFIGURAÇÕES DO JAVASCRIPT =====
-  "javascript.preferences.importModuleSpecifier": "relative",
-  "javascript.suggest.autoImports": false,
-  "javascript.updateImportsOnFileMove.enabled": "never",
-  "javascript.preferences.includePackageJsonAutoImports": "auto",
-  "javascript.suggest.includeCompletionsForModuleExports": true,
-  "javascript.suggest.includeCompletionsWithSnippetText": true,
-  "javascript.suggest.includeCompletionsWithInsertText": true,
-  "javascript.suggest.includeCompletionsWithClassMemberSnippets": true,
-  "javascript.suggest.includeCompletionsWithObjectLiteralMethodSnippets": true,
-  "javascript.suggest.includeCompletionsWithFunctionParameterSnippets": true,
-
-  // ===== CONFIGURAÇÕES DO PRETTIER =====
-  "prettier.requireConfig": true,
-  "prettier.useEditorConfig": true,
-  "prettier.enable": true,
-  "prettier.disableLanguages": ["markdown"],
-  "[javascript]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode",
-    "editor.codeActionsOnSave": {
-      "source.fixAll.eslint": "explicit"
-    }
+  "emmet.includeLanguages": {
+    "typescript": "html",
+    "typescriptreact": "html"
   },
-  "[javascriptreact]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode",
-    "editor.codeActionsOnSave": {
-      "source.fixAll.eslint": "explicit"
-    }
+  "tailwindCSS.includeLanguages": {
+    "typescript": "html",
+    "typescriptreact": "html"
   },
-  "[typescript]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode",
-    "editor.codeActionsOnSave": {
-      "source.fixAll.eslint": "explicit"
-    }
-  },
-  "[typescriptreact]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode",
-    "editor.codeActionsOnSave": {
-      "source.fixAll.eslint": "explicit"
-    }
-  },
-  "[json]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "[jsonc]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "[css]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "[scss]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "[html]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "[markdown]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode",
-    "editor.formatOnSave": false
-  },
-  "[yaml]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "[yml]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-
-  // ===== CONFIGURAÇÕES DO ESLINT =====
-  "eslint.enable": true,
+  "tailwindCSS.experimental.classRegex": [
+    ["cva\\(([^)]*)\\)", "[\"'`]([^\"'`]*).*?[\"'`]"],
+    ["cx\\(([^)]*)\\)", "(?:'|\"|`)([^']*)(?:'|\"|`)"]
+  ],
   "eslint.validate": [
     "javascript",
     "javascriptreact",
     "typescript",
     "typescriptreact"
   ],
-  "eslint.format.enable": true,
-  "eslint.codeActionsOnSave.mode": "problems",
-  "eslint.run": "onType",
   "eslint.workingDirectories": ["."],
-  "eslint.experimental.useFlatConfig": false,
-  "eslint.packageManager": "yarn",
-
-  // ===== CONFIGURAÇÕES DO GIT =====
+  "prettier.requireConfig": true,
+  "prettier.useEditorConfig": true,
   "git.enableSmartCommit": true,
-  "git.autofetch": true,
   "git.confirmSync": false,
-  "git.enableCommitSigning": false,
-  "git.ignoreLimitWarning": true,
-  "git.ignoreSubmodules": true,
-  "git.showPushSuccessNotification": true,
-  "git.suggestSmartCommit": true,
-  "gitlens.codeLens.enabled": false,
-  "gitlens.codeLens.recentChange.enabled": false,
-  "gitlens.codeLens.authors.enabled": false,
-
-  // ===== CONFIGURAÇÕES DE TERMINAL =====
+  "git.autofetch": true,
+  "gitlens.codeLens.enabled": true,
+  "gitlens.currentLine.enabled": false,
+  "auto-rename-tag.activationOnLanguage": [
+    "html",
+    "xml",
+    "php",
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact"
+  ],
+  "bracket-pair-colorizer-2.colors": [
+    "Gold",
+    "Orchid",
+    "LightSkyBlue",
+    "LightGreen",
+    "LightPink",
+    "LightCoral"
+  ],
+  "bracket-pair-colorizer-2.showBracketsInGutter": true,
+  "bracket-pair-colorizer-2.showBracketsInRuler": true,
+  "workbench.colorTheme": "One Dark Pro",
+  "workbench.iconTheme": "material-icon-theme",
+  "workbench.preferredDarkColorTheme": "One Dark Pro",
+  "workbench.preferredLightColorTheme": "One Light Pro",
   "terminal.integrated.defaultProfile.linux": "zsh",
   "terminal.integrated.defaultProfile.osx": "zsh",
   "terminal.integrated.defaultProfile.windows": "PowerShell",
+  "terminal.integrated.fontFamily": "Fira Code",
   "terminal.integrated.fontSize": 14,
-  "terminal.integrated.fontFamily": "JetBrains Mono, Consolas, 'Courier New', monospace",
+  "terminal.integrated.lineHeight": 1.2,
   "terminal.integrated.cursorBlinking": true,
   "terminal.integrated.cursorStyle": "line",
-  "terminal.integrated.shell.osx": "/bin/zsh",
-
-  // ===== CONFIGURAÇÕES DE WORKSPACE =====
-  "workbench.colorTheme": "Dracula Theme",
-  "workbench.iconTheme": "material-icon-theme",
-  "workbench.startupEditor": "newUntitledFile",
-  "workbench.editor.enablePreview": false,
-  "workbench.editor.enablePreviewFromQuickOpen": false,
-  "workbench.editor.showTabs": "multiple",
-  "workbench.editor.tabSizing": "shrink",
-  "workbench.editor.wrapTabs": false,
-  "workbench.editor.decorations.badges": true,
-  "workbench.editor.decorations.colors": true,
-
-  // ===== CONFIGURAÇÕES DE EXPLORER =====
-  "explorer.confirmDelete": false,
-  "explorer.confirmDragAndDrop": false,
-  "explorer.incrementalNaming": "smart",
-  "explorer.openEditors.visible": 0,
-  "explorer.sortOrder": "type",
-  "explorer.compactFolders": false,
-
-  // ===== CONFIGURAÇÕES DE SEARCH =====
-  "search.exclude": {
-    "**/node_modules": true,
-    "**/bower_components": true,
-    "**/*.code-search": true,
-    "**/.next": true,
-    "**/dist": true,
-    "**/build": true,
-    "**/coverage": true,
-    "**/.git": true,
-    "**/package-lock.json": true,
-    "**/yarn.lock": true
-  },
-  "search.useGlobalIgnoreFiles": true,
-  "search.useIgnoreFiles": true,
-  "search.useParentIgnoreFiles": true,
-
-  // ===== CONFIGURAÇÕES DE EMET =====
-  "emmet.includeLanguages": {
-    "typescript": "html",
-    "typescriptreact": "html",
-    "javascript": "javascriptreact"
-  },
-  "emmet.triggerExpansionOnTab": true,
-  "emmet.showAbbreviationSuggestions": true,
-  "emmet.showExpandedAbbreviation": "always",
-  "emmet.showSuggestionsAsSnippets": true,
-  "emmet.syntaxProfiles": {
-    "javascript": "jsx"
-  },
-
-  // ===== CONFIGURAÇÕES DE SNIPPETS =====
-  "editor.snippetSuggestions": "top",
-  "editor.tabCompletion": "on",
-
-  // ===== CONFIGURAÇÕES DE PERFORMANCE =====
-  "files.maxMemoryForLargeFilesMB": 4096,
-  "typescript.tsserver.maxTsServerMemory": 3072,
-  "typescript.tsserver.watchOptions": {
-    "watchFile": "useFsEventsOnParentDirectory",
-    "watchDirectory": "useFsEvents",
-    "fallbackPolling": "dynamicPriorityPolling"
-  },
-
-  // ===== CONFIGURAÇÕES DE DEBUGGING =====
-  "debug.console.fontSize": 14,
-  "debug.console.fontFamily": "JetBrains Mono, Consolas, 'Courier New', monospace",
-  "debug.console.lineHeight": 1.5,
-
-  // ===== CONFIGURAÇÕES DE EXTENSÕES =====
-  "extensions.autoUpdate": true,
-  "extensions.autoCheckUpdates": true,
-  "extensions.ignoreRecommendations": true,
-
-  // ===== CONFIGURAÇÕES ESPECÍFICAS DO PROJETO =====
-  "nextjs.enableExperimentalFeatures": true,
-  "nextjs.suggestions": true,
-  "nextjs.includePackageJson": true,
-  "nextjs.includeWorkspaceRoot": true,
-
-  // ===== CONFIGURAÇÕES DE TESTES =====
+  "liveServer.settings.donotShowInfoMsg": true,
+  "liveServer.settings.donotVerifyTags": true,
+  "liveServer.settings.ignoreFiles": [
+    ".vscode/**",
+    "**/*.scss",
+    "**/*.sass",
+    "**/*.ts"
+  ],
   "jest.autoRun": {
     "watch": false,
     "onSave": "test-file"
   },
   "jest.showCoverageOnLoad": true,
-  "jest.enableInlineErrorMessages": true,
-  "jest.enableCodeLens": true,
-
-  // ===== CONFIGURAÇÕES DE STORYBOOK =====
-  "storybook.enableStorybook": true,
-  "storybook.enableStorybookLint": true,
-
-  // ===== CONFIGURAÇÕES DE ACESSIBILIDADE =====
-  "editor.accessibilitySupport": "auto",
-  "workbench.accessibilitySupport": "auto",
-
-  // ===== CONFIGURAÇÕES ADICIONAIS =====
-  "window.zoomLevel": 0,
-  "breadcrumbs.enabled": true,
-  "liveshare.featureSet": "insiders"
+  "jest.coverageFormatter": "DefaultFormatter",
+  "jest.coverageColors": {
+    "covered": "green",
+    "uncovered": "red",
+    "partially-covered": "yellow"
+  },
+  "testing.automaticallyOpenPeekView": "never",
+  "testing.followRunningTest": false,
+  "testing.gutterEnabled": true,
+  "testing.openTesting": "never",
+  "testing.autoRun.delay": 1000,
+  "testing.autoRun.mode": "rerun",
+  "testing.autoRun.watch": false,
+  "testing.autoRun.onReload": "rerun",
+  "testing.autoRun.onStart": false,
+  "testing.autoRun.onSave": "test-file",
+  "testing.autoRun.onFocus": false,
+  "testing.autoRun.onEdit": false,
+  "testing.autoRun.onType": false,
+  "testing.autoRun.onSelection": false,
+  "testing.autoRun.onCommand": false,
+  "testing.autoRun.onTerminal": false,
+  "testing.autoRun.onDebug": false,
+  "testing.autoRun.onRun": false,
+  "testing.autoRun.onStop": false,
+  "testing.autoRun.onError": false,
+  "testing.autoRun.onWarning": false,
+  "testing.autoRun.onInfo": false,
+  "testing.autoRun.onDebugConsole": false,
+  "testing.autoRun.onProblems": false,
+  "testing.autoRun.onOutput": false,
+  "testing.autoRun.onPanel": false,
+  "testing.autoRun.onStatusBar": false,
+  "testing.autoRun.onTitleBar": false,
+  "testing.autoRun.onActivityBar": false,
+  "testing.autoRun.onSideBar": false,
+  "testing.autoRun.onEditor": false,
+  "testing.autoRun.onExplorer": false,
+  "testing.autoRun.onSearch": false,
+  "testing.autoRun.onSourceControl": false,
+  "testing.autoRun.onExtensions": false,
+  "testing.autoRun.onSettings": false,
+  "testing.autoRun.onHelp": false,
+  "testing.autoRun.onWelcome": false,
+  "testing.autoRun.onWalkthrough": false,
+  "testing.autoRun.onWebview": false,
+  "testing.autoRun.onNotebook": false,
+  "testing.autoRun.onChat": false
 }

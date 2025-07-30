@@ -132,9 +132,9 @@ export default function Navigation() {
   const isActive = (href: string) => pathname === href;
 
   return (
-    <nav className='bg-white dark:bg-gray-900 shadow-sm border-b border-gray-200 dark:border-gray-700'>
+    <nav className='bg-white dark:bg-gray-900 shadow-sm border-b border-gray-200 dark:border-gray-700 sticky top-0 z-50 backdrop-blur-sm bg-white/95 dark:bg-gray-900/95'>
       <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
-        <div className='flex justify-between items-center h-16'>
+        <div className='flex justify-between items-center h-14 sm:h-16'>
           {/* Logo */}
           <div className='flex-shrink-0'>
             <Link
@@ -147,14 +147,14 @@ export default function Navigation() {
                   alt='Aqua9 Logo'
                   width={120}
                   height={32}
-                  className='h-8 w-auto'
+                  className='h-6 sm:h-8 w-auto transition-all duration-300'
                   priority
                   onError={() => setImageError(true)}
                 />
               ) : (
-                <span className='text-blue-600 dark:text-blue-400 text-xl font-bold'>Aqua9</span>
+                <span className='text-blue-600 dark:text-blue-400 text-lg sm:text-xl font-bold'>Aqua9</span>
               )}
-              <span className='text-gray-600 dark:text-gray-300'></span>
+              <span className='text-gray-600 dark:text-gray-300 hidden sm:inline'>Boilerplate</span>
             </Link>
           </div>
 
@@ -235,8 +235,8 @@ export default function Navigation() {
 
         {/* Mobile Navigation */}
         {isOpen && (
-          <div className='md:hidden'>
-            <div className='px-2 pt-2 pb-3 space-y-1 bg-gray-50 dark:bg-gray-800 rounded-lg mt-2'>
+          <div className='md:hidden animate-slide-in'>
+            <div className='px-2 pt-2 pb-3 space-y-1 bg-gray-50/95 dark:bg-gray-800/95 backdrop-blur-sm rounded-lg mt-2 border border-gray-200 dark:border-gray-700 shadow-lg'>
               {/* Categorias móveis */}
               {Object.entries(groupedItems).map(([category, items]) => (
                 <div key={category} className='mb-4'>

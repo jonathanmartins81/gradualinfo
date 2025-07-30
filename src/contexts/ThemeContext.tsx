@@ -63,18 +63,24 @@ export function ThemeProvider({
     const currentTheme = getCurrentTheme();
     const root = document.documentElement;
 
-    // Aplicar classes CSS
+    // Aplicar classes CSS com transição suave
     root.classList.remove('light', 'dark');
     const currentMode = mode === 'system' ? getSystemTheme() : mode;
     root.classList.add(currentMode);
 
-    // Aplicar variáveis CSS customizadas
+    // Aplicar variáveis CSS customizadas com transição
     Object.entries(currentTheme).forEach(([key, value]) => {
       root.style.setProperty(`--${key}`, value);
     });
 
     // Aplicar atributo data-theme
     root.setAttribute('data-theme', currentMode);
+
+    // Adicionar classe de transição temporária
+    root.classList.add('theme-transitioning');
+    setTimeout(() => {
+      root.classList.remove('theme-transitioning');
+    }, 300);
   }, [mode, mounted]);
 
   // ===== FUNÇÕES DE CONTROLE =====

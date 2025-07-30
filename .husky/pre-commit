@@ -1,23 +1,70 @@
 #!/usr/bin/env sh
 . "$(dirname -- "$0")/_/husky.sh"
 
-echo "🔍 Executando verificações de qualidade..."
+# Cores para output
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+YELLOW='\033[1;33m'
+BLUE='\033[0;34m'
+PURPLE='\033[0;35m'
+CYAN='\033[0;36m'
+NC='\033[0m' # No Color
 
-# Executar lint-staged para formatar e lintar arquivos alterados
-echo "📝 Formatando e lintando arquivos alterados..."
+echo "${BLUE}🚀 Aqua9 Boilerplate v2 - Pre-commit Hook${NC}"
+echo "${CYAN}==========================================${NC}"
+
+# Função para exibir status
+show_status() {
+    if [ $? -eq 0 ]; then
+        echo "${GREEN}✅ $1${NC}"
+    else
+        echo "${RED}❌ $1${NC}"
+        exit 1
+    fi
+}
+
+# Função para exibir progresso
+show_progress() {
+    echo "${YELLOW}🔄 $1...${NC}"
+}
+
+# 1. Lint-staged (formatar e lintar arquivos alterados)
+show_progress "Formatando e lintando arquivos alterados"
 npx --no-install lint-staged
+show_status "Lint-staged executado"
 
-# Verificar tipos TypeScript
-echo "🔧 Verificando tipos TypeScript..."
-npm run type-check
+# 2. Verificação de tipos TypeScript
+show_progress "Verificando tipos TypeScript"
+npm run type-check > /dev/null 2>&1
+show_status "TypeScript type-check"
 
-# Executar testes unitários com Vitest
-echo "🧪 Executando testes unitários com Vitest..."
-npm run test:ci
+# 3. Testes unitários com Vitest (apenas para arquivos alterados)
+show_progress "Executando testes unitários"
+if [ -n "$(git diff --cached --name-only --diff-filter=ACM | grep -E '\.(ts|tsx|js|jsx)$')" ]; then
+    npx vitest run --reporter=verbose --run --coverage=false > /dev/null 2>&1
+    show_status "Testes unitários"
+else
+    echo "${PURPLE}⏭️  Nenhum arquivo de teste alterado, pulando testes${NC}"
+fi
 
-# Verificar qualidade geral do código (sem check-deps para desenvolvimento)
-echo "✅ Verificando qualidade geral do código..."
-npm run lint && npm run format:check
+# 4. Verificação de qualidade geral
+show_progress "Verificando qualidade geral do código"
+npm run lint > /dev/null 2>&1 && npm run format:check > /dev/null 2>&1
+show_status "Qualidade geral do código"
 
-echo "🎉 Verificações básicas passaram! Commit permitido."
-echo "💡 Para verificação completa, execute: npm run quality && npm run check-deps"
+# 5. Verificação de dependências (opcional, comentado para desenvolvimento)
+# show_progress "Verificando dependências"
+# npm run check-deps > /dev/null 2>&1
+# show_status "Verificação de dependências"
+
+echo ""
+echo "${GREEN}🎉 Pre-commit hook executado com sucesso!${NC}"
+echo "${CYAN}📝 Commit permitido.${NC}"
+echo ""
+echo "${YELLOW}💡 Dicas:${NC}"
+echo "   • Para verificação completa: ${PURPLE}npm run quality${NC}"
+echo "   • Para verificar dependências: ${PURPLE}npm run check-deps${NC}"
+echo "   • Para testes com cobertura: ${PURPLE}npm run test:coverage${NC}"
+echo "   • Para testes E2E: ${PURPLE}npm run test:e2e${NC}"
+echo ""
+echo "${BLUE}🔗 Repositório: https://github.com/jonathanmartins81/boilerplate_aqua9_v2${NC}"

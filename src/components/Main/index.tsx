@@ -1,3 +1,5 @@
+import Image from 'next/image';
+
 interface MainProps {
   title?: string;
   description?: string;
@@ -21,14 +23,15 @@ export function Main({
         textAlign: 'center',
       }}
     >
-      <img
+      <Image
         src='/img/logo.svg'
         alt='Aqua9 Logo'
+        width={120}
+        height={64}
         style={{
-          width: '120px',
-          height: 'auto',
           marginBottom: '2rem',
         }}
+        priority
       />
       <h1
         style={{
@@ -75,12 +78,12 @@ export function Main({
           </span>
         ))}
       </div>
-      <img
+      <Image
         src='/img/hero-illustration.svg'
         alt='Hero Illustration'
+        width={300}
+        height={200}
         style={{
-          width: '300px',
-          height: 'auto',
           opacity: '0.8',
         }}
       />

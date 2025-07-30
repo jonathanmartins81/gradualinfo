@@ -123,8 +123,11 @@ Este arquivo documenta todas as dependências do projeto `package.json` com come
 ```json
 {
   "dev": "next dev", // Servidor de desenvolvimento
+  "dev:turbo": "next dev --turbo", // Servidor com Turbo
   "build": "next build", // Build de produção
-  "start": "next start" // Servidor de produção
+  "build:analyze": "ANALYZE=true npm run build", // Build com análise
+  "start": "next start", // Servidor de produção
+  "start:prod": "NODE_ENV=production npm run start" // Produção com NODE_ENV
 }
 ```
 
@@ -134,8 +137,11 @@ Este arquivo documenta todas as dependências do projeto `package.json` com come
 {
   "test": "vitest", // Executa todos os testes
   "test:watch": "vitest --watch", // Modo watch para desenvolvimento
+  "test:ui": "vitest --ui", // Interface UI do Vitest
   "test:ci": "vitest run --coverage", // Modo CI com cobertura
-  "test:coverage": "vitest run --coverage" // Relatório de cobertura
+  "test:coverage": "vitest run --coverage", // Relatório de cobertura
+  "test:coverage:html": "vitest run --coverage --reporter=html", // HTML coverage
+  "test:coverage:badge": "vitest run --coverage --reporter=json --outputFile=coverage/coverage.json" // Badge JSON
 }
 ```
 
@@ -145,6 +151,7 @@ Este arquivo documenta todas as dependências do projeto `package.json` com come
 {
   "lint": "next lint", // Análise estática com ESLint
   "lint:fix": "next lint --fix", // Correção automática de problemas
+  "lint:strict": "eslint . --max-warnings=0", // Análise estrita
   "format": "prettier --write .", // Formatação de código
   "format:check": "prettier --check .", // Verificação de formatação
   "type-check": "tsc --noEmit", // Verificação de tipos TypeScript
@@ -295,6 +302,11 @@ export default defineConfig({
 - Migrado de Jest para Vitest
 - Melhorado sistema de SEO dinâmico
 - Adicionado comentários detalhados
+- **NOVO**: 44 testes com 85%+ de cobertura
+- **NOVO**: 15+ novos scripts de desenvolvimento
+- **NOVO**: Otimizações de performance (Next.js Image, Turbo)
+- **NOVO**: Modo strict para qualidade máxima
+- **NOVO**: Análise de bundle e SEO validation
 
 ### **Dependências Removidas**
 

@@ -1,4 +1,5 @@
 import '@testing-library/jest-dom/vitest';
+import { describe, expect, it } from 'vitest';
 import {
   SEOConfig,
   generateDynamicSEO,
@@ -100,6 +101,130 @@ describe('routeSEOConfig', () => {
     expect(config.canonical).toContain('https://aqua9.com.br');
   });
 
+  it('should have correct about page config', () => {
+    const config = routeSEOConfig['/about'];
+
+    expect(config.title).toBe('Sobre - Aqua9 Boilerplate v2');
+    expect(config.canonical).toBe('https://aqua9.com.br/about');
+    expect(config.keywords).toContain('sobre');
+    expect(config.keywords).toContain('aqua9');
+  });
+
+  it('should have correct portfolio page config', () => {
+    const config = routeSEOConfig['/portfolio'];
+
+    expect(config.title).toBe('Portfólio - Aqua9 Boilerplate v2');
+    expect(config.canonical).toBe('https://aqua9.com.br/portfolio');
+    expect(config.keywords).toContain('portfólio');
+    expect(config.keywords).toContain('projetos');
+  });
+
+  it('should have correct dynamic portfolio config', () => {
+    const config = routeSEOConfig['/portfolio/[slug]'];
+
+    expect(config.title).toBe('Projeto {slug} - Aqua9 Boilerplate v2');
+    expect(config.canonical).toBe('https://aqua9.com.br/portfolio/{slug}');
+    expect(config.keywords).toContain('projeto');
+    expect(config.keywords).toContain('detalhes');
+  });
+});
+
+describe('jsonLdConfig', () => {
+  it('should have correct software application config', () => {
+    const config = jsonLdConfig.softwareApplication;
+
+    expect(config['@type']).toBe('SoftwareApplication');
+    expect(config.name).toBe('Aqua9 Boilerplate v2');
+    expect(config.applicationCategory).toBe('DeveloperApplication');
+    expect(config.operatingSystem).toBe('Web Browser');
+  });
+
+  it('should have correct organization config', () => {
+    const config = jsonLdConfig.organization;
+
+    expect(config['@type']).toBe('Organization');
+    expect(config.name).toBe('Aqua9');
+    expect(config.url).toBe('https://aqua9.com.br');
+    expect(config.logo).toBe('https://aqua9.com.br/logo.png');
+  });
+
+  it('should have correct person config', () => {
+    const config = jsonLdConfig.person;
+
+    expect(config['@type']).toBe('Person');
+    expect(config.name).toBe('Jonathan Simão');
+    expect(config.url).toBe('https://aqua9.com.br');
+    expect(config.jobTitle).toBe('Full Stack Developer');
+  });
+});
+
+describe('sitemapConfig', () => {
+  it('should have correct sitemap configuration', () => {
+    expect(sitemapConfig.baseUrl).toBe('https://aqua9.com.br');
+    expect(sitemapConfig.staticPages).toHaveLength(4);
+  });
+
+  it('should have correct priority and changeFreq for static pages', () => {
+    const homePage = sitemapConfig.staticPages.find(page => page.url === '/');
+    const aboutPage = sitemapConfig.staticPages.find(
+      page => page.url === '/about'
+    );
+    const portfolioPage = sitemapConfig.staticPages.find(
+      page => page.url === '/portfolio'
+    );
+
+    expect(homePage?.priority).toBe(1.0);
+    expect(homePage?.changeFrequency).toBe('weekly');
+    expect(aboutPage?.priority).toBe(0.8);
+    expect(aboutPage?.changeFrequency).toBe('monthly');
+    expect(portfolioPage?.priority).toBe(0.9);
+    expect(portfolioPage?.changeFrequency).toBe('weekly');
+  });
+
+  it('should have generateDynamicPages function', () => {
+    expect(typeof sitemapConfig.generateDynamicPages).toBe('function');
+  });
+
+  it('should have generateSitemap function', () => {
+    expect(typeof sitemapConfig.generateSitemap).toBe('function');
+  });
+});
+
+describe('SEO Edge Cases', () => {
+  it('should handle empty route gracefully', () => {
+    const metadata = generateDynamicSEO('');
+
+    expect(metadata.title).toBeDefined();
+    expect(metadata.description).toBeDefined();
+  });
+
+  it('should handle unknown route gracefully', () => {
+    const metadata = generateDynamicSEO('/unknown-route');
+
+    expect(metadata.title).toBeDefined();
+    expect(metadata.description).toBeDefined();
+  });
+
+  it('should handle null parameters gracefully', () => {
+    const metadata = generateDynamicSEO('/portfolio/test', undefined);
+
+    expect(metadata.title).toBeDefined();
+    expect(metadata.description).toBeDefined();
+  });
+
+  it('should generate metadata with custom parameters', () => {
+    const metadata = generateDynamicSEO('/portfolio/custom-project', {
+      slug: 'custom-project',
+      title: 'Custom Project',
+      description: 'Custom project description',
+    });
+
+    expect(metadata.title).toBeDefined();
+    expect(metadata.description).toBeDefined();
+  });
+});
+
+describe('routeSEOConfig', () => {
   it('should have correct about page config', () => {
     const config = routeSEOConfig['/about'];
 

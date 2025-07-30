@@ -1,8 +1,8 @@
+<img src="public/img/logo-gh-aqua9.svg" alt="Aqua9 Logo" width="300" height="64" />
+
 # 🚀 Aqua9 Boilerplate - Next.js Profissional
 
 <div align="center">
-
-<img src="public/img/logo-gh.svg" alt="Aqua9 Logo" width="300" height="64" />
 
 **Template Next.js moderno otimizado para projetos profissionais pela Aqua9**
 
@@ -39,56 +39,56 @@ Este projeto utiliza uma stack moderna e robusta, cuidadosamente selecionada par
 
 ### **🎯 Framework Principal**
 
-| Tecnologia                                    | Versão | Descrição                             |
-| --------------------------------------------- | ------ | ------------------------------------- |
+| Tecnologia                                    | Versão | Descrição                            |
+| --------------------------------------------- | ------ | ------------------------------------ |
 | [Next.js](https://nextjs.org/)                | 15.x   | Framework React com App Router e SSR |
 | [React](https://reactjs.org/)                 | 19.x   | Biblioteca JavaScript para UIs       |
 | [TypeScript](https://www.typescriptlang.org/) | 5.x    | Tipagem estática para JavaScript     |
 
 ### **🔧 Desenvolvimento & Qualidade**
 
-| Ferramenta                                           | Propósito                 | Configuração           | Funcionalidades                                                   |
-| ---------------------------------------------------- | ------------------------- | ---------------------- | ----------------------------------------------------------------- |
+| Ferramenta                                           | Propósito                  | Configuração           | Funcionalidades                                                   |
+| ---------------------------------------------------- | -------------------------- | ---------------------- | ----------------------------------------------------------------- |
 | [ESLint](https://eslint.org/)                        | Linting & análise estática | Configuração estrita   | 🔍 Detecção de erros, 🎯 Melhores práticas, ⚡ Auto-correção      |
-| [Prettier](https://prettier.io/)                     | Formatação de código      | Padrões consistentes   | 🎨 Auto-formatação, 📏 Estilo consistente, 🔄 Formatar ao salvar  |
-| [EditorConfig](https://editorconfig.org/)            | Configurações do editor   | Workspace padronizado  | ⚙️ Config universal, 📝 Indentação consistente, 🌍 Cross-platform |
-| [Lefthook](https://github.com/evilmartians/lefthook) | Git hooks                 | Qualidade automatizada | 🚀 Execução rápida, 🔧 Config flexível, 🎯 Checks pré-commit      |
-| [Husky](https://typicode.github.io/husky/)           | Gerenciador de git hooks  | Automação pré-commit   | 🛡️ Gates de qualidade, 🧪 Forçar testes, 📋 Validação de commits |
+| [Prettier](https://prettier.io/)                     | Formatação de código       | Padrões consistentes   | 🎨 Auto-formatação, 📏 Estilo consistente, 🔄 Formatar ao salvar  |
+| [EditorConfig](https://editorconfig.org/)            | Configurações do editor    | Workspace padronizado  | ⚙️ Config universal, 📝 Indentação consistente, 🌍 Cross-platform |
+| [Lefthook](https://github.com/evilmartians/lefthook) | Git hooks                  | Qualidade automatizada | 🚀 Execução rápida, 🔧 Config flexível, 🎯 Checks pré-commit      |
+| [Husky](https://typicode.github.io/husky/)           | Gerenciador de git hooks   | Automação pré-commit   | 🛡️ Gates de qualidade, 🧪 Forçar testes, 📋 Validação de commits  |
 
 ### **🧪 Testes & Documentação**
 
-| Ferramenta                                               | Tipo            | Descrição                      | Funcionalidades                               |
-| -------------------------------------------------------- | --------------- | ------------------------------ | -------------------------------------------- |
-| [Vitest](https://vitest.dev/)                            | Testes unitários | Framework de testes rápido e moderno | ⚡ ESM nativo, 🔥 Hot reload, 📊 Cobertura    |
-| [React Testing Library](https://testing-library.com/)    | Testes de componentes | Foca no comportamento do usuário | 🎯 Centrado no usuário, 🧪 Acessível, 🔍 Queries |
-| [Playwright](https://playwright.dev/)                    | Testes E2E      | Automação cross-browser        | 🌐 Multi-browser, 📱 Mobile, 🎬 Gravação     |
-| [@vitejs/plugin-react](https://vitejs.dev/)              | Suporte React   | Testes React confiáveis        | ⚛️ Suporte JSX, 🔧 Fast refresh, 📦 Bundling |
-| [Storybook](https://storybook.js.org/)                   | Documentação    | Desenvolvimento isolado de componentes | 📚 Docs interativos, 🎨 Testes visuais       |
-| [@vitest/coverage-v8](https://vitest.dev/guide/coverage) | Cobertura       | Relatórios de cobertura de testes | 📊 Relatórios detalhados, 🎯 Thresholds de cobertura |
+| Ferramenta                                               | Tipo                  | Descrição                              | Funcionalidades                                      |
+| -------------------------------------------------------- | --------------------- | -------------------------------------- | ---------------------------------------------------- |
+| [Vitest](https://vitest.dev/)                            | Testes unitários      | Framework de testes rápido e moderno   | ⚡ ESM nativo, 🔥 Hot reload, 📊 Cobertura           |
+| [React Testing Library](https://testing-library.com/)    | Testes de componentes | Foca no comportamento do usuário       | 🎯 Centrado no usuário, 🧪 Acessível, 🔍 Queries     |
+| [Playwright](https://playwright.dev/)                    | Testes E2E            | Automação cross-browser                | 🌐 Multi-browser, 📱 Mobile, 🎬 Gravação             |
+| [@vitejs/plugin-react](https://vitejs.dev/)              | Suporte React         | Testes React confiáveis                | ⚛️ Suporte JSX, 🔧 Fast refresh, 📦 Bundling         |
+| [Storybook](https://storybook.js.org/)                   | Documentação          | Desenvolvimento isolado de componentes | 📚 Docs interativos, 🎨 Testes visuais               |
+| [@vitest/coverage-v8](https://vitest.dev/guide/coverage) | Cobertura             | Relatórios de cobertura de testes      | 📊 Relatórios detalhados, 🎯 Thresholds de cobertura |
 
 ### **🔍 SEO & Performance**
 
-| Tecnologia                                                                             | Propósito        | Funcionalidades              |
-| -------------------------------------------------------------------------------------- | ---------------- | ---------------------------- |
-| [Dynamic SEO](https://nextjs.org/docs/app/api-reference/functions/generate-metadata)   | Otimização SEO   | Open Graph, Twitter Cards    |
-| [JSON-LD](https://schema.org/)                                                         | Dados Estruturados | Rich snippets, Schema.org    |
+| Tecnologia                                                                             | Propósito          | Funcionalidades               |
+| -------------------------------------------------------------------------------------- | ------------------ | ----------------------------- |
+| [Dynamic SEO](https://nextjs.org/docs/app/api-reference/functions/generate-metadata)   | Otimização SEO     | Open Graph, Twitter Cards     |
+| [JSON-LD](https://schema.org/)                                                         | Dados Estruturados | Rich snippets, Schema.org     |
 | [Sitemap](https://nextjs.org/docs/app/api-reference/file-conventions/metadata/sitemap) | Indexação de Busca | Geração automática de sitemap |
 
 ### **📊 Analytics & Monitoramento**
 
-| Serviço                                  | Funcionalidade            | Integração |
-| ---------------------------------------- | ------------------------- | ---------- |
-| [PostHog](https://posthog.com/)          | Analytics & Feature Flags | Automática |
-| [Sentry](https://sentry.io/)             | Monitoramento de erros    | Tempo real |
+| Serviço                                  | Funcionalidade            | Integração   |
+| ---------------------------------------- | ------------------------- | ------------ |
+| [PostHog](https://posthog.com/)          | Analytics & Feature Flags | Automática   |
+| [Sentry](https://sentry.io/)             | Monitoramento de erros    | Tempo real   |
 | [Better Stack](https://betterstack.com/) | Logs & Observabilidade    | Centralizada |
 
 ### **🔒 Segurança & Qualidade**
 
-| Ferramenta                                             | Proteção           | Benefício               |
-| ------------------------------------------------------ | ------------------ | ----------------------- |
-| [Husky](https://typicode.github.io/husky/)             | Git hooks          | Automação de qualidade de código |
-| [Lefthook](https://github.com/evilmartians/lefthook)   | Gerenciador de git hooks | Workflows automatizados |
-| [Knip](https://github.com/webpro/knip)                 | Análise de dependências | Dependências limpas     |
+| Ferramenta                                           | Proteção                 | Benefício                        |
+| ---------------------------------------------------- | ------------------------ | -------------------------------- |
+| [Husky](https://typicode.github.io/husky/)           | Git hooks                | Automação de qualidade de código |
+| [Lefthook](https://github.com/evilmartians/lefthook) | Gerenciador de git hooks | Workflows automatizados          |
+| [Knip](https://github.com/webpro/knip)               | Análise de dependências  | Dependências limpas              |
 
 ## 🔍 Sistema SEO Dinâmico
 

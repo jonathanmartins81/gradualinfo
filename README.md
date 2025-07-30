@@ -56,12 +56,13 @@ This project uses a modern, robust stack, carefully selected for quality, perfor
 
 ### **🧪 Testing & Documentation**
 
-| Tool                                                  | Type            | Description                 |
-| ----------------------------------------------------- | --------------- | --------------------------- |
-| [Vitest](https://vitest.dev/)                         | Unit tests      | Fast, modern test framework |
-| [React Testing Library](https://testing-library.com/) | Component tests | Focuses on user behavior    |
-| [@vitejs/plugin-react](https://vitejs.dev/)           | React support   | Reliable React testing      |
-| [Storybook](https://storybook.js.org/)                | Documentation   | Isolated components         |
+| Tool                                                  | Type            | Description                                    | Features                                    |
+| ----------------------------------------------------- | --------------- | ---------------------------------------------- | ------------------------------------------- |
+| [Vitest](https://vitest.dev/)                         | Unit tests      | Fast, modern test framework                    | ⚡ Native ESM, 🔥 Hot reload, 📊 Coverage   |
+| [React Testing Library](https://testing-library.com/) | Component tests | Focuses on user behavior                       | 🎯 User-centric, 🧪 Accessible, 🔍 Queries  |
+| [Playwright](https://playwright.dev/)                 | E2E tests       | Cross-browser automation                       | 🌐 Multi-browser, 📱 Mobile, 🎬 Recording   |
+| [@vitejs/plugin-react](https://vitejs.dev/)           | React support   | Reliable React testing                         | ⚛️ JSX support, 🔧 Fast refresh, 📦 Bundling |
+| [Storybook](https://storybook.js.org/)                | Documentation   | Isolated component development                  | 📚 Interactive docs, 🎨 Visual testing      |
 
 ### **🔍 SEO & Performance**
 
@@ -215,6 +216,64 @@ All tools can be configured through these files:
 - `.editorconfig` - Editor configs
 - `lefthook.yml` - Git hooks
 
+## 🧪 Testing Strategy
+
+The Aqua9 Boilerplate v2 implements a comprehensive **testing pyramid** ensuring code quality and reliability across all levels.
+
+### **📊 Testing Pyramid**
+
+```
+    🎯 E2E Tests (Playwright)
+         /     \
+        /       \
+   🔍 Integration Tests
+      /           \
+     /             \
+🧪 Unit Tests (Vitest + RTL)
+```
+
+### **🎯 Test Types**
+
+#### **🧪 Unit Tests (Vitest + React Testing Library)**
+- ✅ **Fast execution** - Run in milliseconds
+- ✅ **Isolated testing** - Test individual components
+- ✅ **User behavior focus** - Test what users see and do
+- ✅ **Accessibility testing** - Ensure inclusive design
+- ✅ **Coverage reports** - Track test coverage metrics
+
+#### **🔍 Integration Tests**
+- ✅ **Component interaction** - Test component relationships
+- ✅ **API integration** - Test data flow and state management
+- ✅ **User workflows** - Test complete user journeys
+- ✅ **Error handling** - Test error scenarios and edge cases
+
+#### **🎯 End-to-End Tests (Playwright)**
+- ✅ **Cross-browser testing** - Chrome, Firefox, Safari, Edge
+- ✅ **Mobile testing** - Responsive design validation
+- ✅ **Real user scenarios** - Complete user workflows
+- ✅ **Visual regression** - Screenshot comparison
+- ✅ **Performance testing** - Load time and Core Web Vitals
+
+### **🚀 Testing Benefits**
+
+#### **For Developers**
+- ⚡ **Fast feedback** - Immediate test results
+- 🔍 **Bug prevention** - Catch issues early
+- 🎯 **Confidence** - Safe refactoring and changes
+- 📚 **Documentation** - Tests as living documentation
+
+#### **For Users**
+- 🛡️ **Reliability** - Stable, bug-free application
+- ⚡ **Performance** - Optimized user experience
+- 🎯 **Usability** - Tested user workflows
+- 📱 **Accessibility** - Inclusive design for all users
+
+#### **For Business**
+- 💰 **Cost reduction** - Fewer bugs in production
+- 🚀 **Faster delivery** - Confident deployments
+- 📈 **Quality metrics** - Measurable quality standards
+- 🎯 **User satisfaction** - Reliable user experience
+
 ## 🚀 Getting Started
 
 ### **Prerequisites**
@@ -279,12 +338,15 @@ The page will reload as you edit files.
 
 ### **🧪 Tests**
 
-| Command                 | Type     | Description        |
-| ----------------------- | -------- | ------------------ |
-| `npm run test`          | Unit     | Full test run      |
-| `npm run test:watch`    | Unit     | Dev mode (watch)   |
-| `npm run test:ci`       | CI/CD    | Sequential testing |
-| `npm run test:coverage` | Coverage | Detailed report    |
+| Command                 | Type     | Description                    | Environment |
+| ----------------------- | -------- | ------------------------------ | ----------- |
+| `npm run test`          | Unit     | Full test run                  | Development |
+| `npm run test:watch`    | Unit     | Dev mode (watch)               | Development |
+| `npm run test:ci`       | Unit     | Sequential testing             | CI/CD       |
+| `npm run test:coverage` | Unit     | Detailed coverage report       | CI/CD       |
+| `npm run test:e2e`      | E2E      | Playwright end-to-end tests    | Development |
+| `npm run test:e2e:ui`   | E2E      | Playwright with UI mode        | Development |
+| `npm run test:e2e:ci`   | E2E      | E2E tests for CI/CD            | CI/CD       |
 
 ### **📚 Documentation**
 

@@ -12,11 +12,27 @@
   "quoteProps": "as-needed",
   "jsxSingleQuote": true,
   "proseWrap": "preserve",
+  "insertPragma": false,
+  "requirePragma": false,
+  "htmlWhitespaceSensitivity": "css",
+  "embeddedLanguageFormatting": "auto",
   "overrides": [
     {
       "files": ["*.js", "*.jsx", "*.ts", "*.tsx"],
       "options": {
         "parser": "typescript"
+      }
+    },
+    {
+      "files": ["*.json", "*.jsonc"],
+      "options": {
+        "parser": "json"
+      }
+    },
+    {
+      "files": ["*.md", "*.mdx"],
+      "options": {
+        "parser": "markdown"
       }
     }
   ]

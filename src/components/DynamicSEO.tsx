@@ -170,6 +170,7 @@ export function useDynamicSEO(config: DynamicSEOConfig) {
 
   return {
     updateSEO: (newConfig: Partial<DynamicSEOConfig>) => {
+      // eslint-disable-next-line no-console
       console.log('Atualizando SEO:', { ...config, ...newConfig });
     },
     config,

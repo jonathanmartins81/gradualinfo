@@ -34,14 +34,26 @@ export default [
       'react-hooks': reactHooksPlugin,
       '@next/next': nextPlugin,
     },
+    settings: {
+      react: {
+        version: '19.0.0',
+      },
+    },
     rules: {
       ...typescriptPlugin.configs.recommended.rules,
       ...reactPlugin.configs.recommended.rules,
       ...reactHooksPlugin.configs.recommended.rules,
       '@typescript-eslint/no-explicit-any': 'error',
       '@typescript-eslint/no-unused-vars': 'error',
+      '@typescript-eslint/no-var-requires': 'error',
       'react/react-in-jsx-scope': 'off',
       'react/prop-types': 'off',
+      'react/jsx-uses-react': 'off',
+      'react/jsx-uses-vars': 'error',
+      'no-console': 'warn',
+      'prefer-const': 'error',
+      'no-var': 'error',
+      'no-unused-vars': 'off', // Desabilitado em favor do TypeScript
     },
   },
   {

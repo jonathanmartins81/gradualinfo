@@ -40,6 +40,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: page.priority,
     }));
   } catch (error) {
+    // eslint-disable-next-line no-console
     console.error('Erro ao gerar sitemap:', error);
 
     // Fallback: retorna apenas páginas estáticas em caso de erro

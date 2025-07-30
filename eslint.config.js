@@ -45,6 +45,9 @@ export default [
       'coverage/**',
       '*.config.js',
       '*.config.ts',
+      '!.storybook',
+      '!.jest',
+      'generators',
     ],
   },
 ];

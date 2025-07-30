@@ -5,7 +5,13 @@ import { DynamicSEO, useDynamicSEO } from './DynamicSEO';
 
 // Mock do componente DynamicSEO para evitar problemas de DOM
 vi.mock('./DynamicSEO', () => ({
-  DynamicSEO: ({ title, description }: { title?: string; description?: string }) => (
+  DynamicSEO: ({
+    title,
+    description,
+  }: {
+    title?: string;
+    description?: string;
+  }) => (
     <div
       data-testid='dynamic-seo'
       data-title={title}

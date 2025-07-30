@@ -5,7 +5,13 @@ import PortfolioPage from './page';
 
 // Mock do componente DynamicSEO
 vi.mock('@/components/DynamicSEO', () => ({
-  DynamicSEO: ({ title, description }: { title?: string; description?: string }) => (
+  DynamicSEO: ({
+    title,
+    description,
+  }: {
+    title?: string;
+    description?: string;
+  }) => (
     <div
       data-testid='dynamic-seo'
       data-title={title}

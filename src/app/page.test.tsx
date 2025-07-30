@@ -5,7 +5,15 @@ import Home from './page';
 
 // Mock do componente Main
 vi.mock('@/components/Main', () => ({
-  Main: ({ title, description, technologies }: { title?: string; description?: string; technologies?: string[] }) => (
+  Main: ({
+    title,
+    description,
+    technologies,
+  }: {
+    title?: string;
+    description?: string;
+    technologies?: string[];
+  }) => (
     <div data-testid='main-component'>
       <h1>{title}</h1>
       <p>{description}</p>

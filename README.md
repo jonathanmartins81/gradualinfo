@@ -1,8 +1,8 @@
-<img src="public/img/logo-gh-aqua9.svg" alt="Aqua9 Logo" width="300" height="64" />
+<div align="center">
+
+<img src="public/img/logo-gh.svg" alt="Aqua9 Logo" width="300" height="64" />
 
 # 🚀 Aqua9 Boilerplate - Next.js Profissional
-
-<div align="center">
 
 **Template Next.js moderno otimizado para projetos profissionais pela Aqua9**
 
@@ -326,383 +326,383 @@ O Boilerplate Aqua9 v2 implementa uma **pirâmide de testes** abrangente garanti
 - ✅ **Testes de acessibilidade** - Garante design inclusivo
 - ✅ **Relatórios de cobertura** - Acompanha métricas de cobertura de testes
 
-#### **🔍 Integration Tests**
+#### **🔍 Testes de Integração**
 
-- ✅ **Component interaction** - Test component relationships
-- ✅ **API integration** - Test data flow and state management
-- ✅ **User workflows** - Test complete user journeys
-- ✅ **Error handling** - Test error scenarios and edge cases
+- ✅ **Interação entre componentes** - Testa relacionamentos de componentes
+- ✅ **Integração com API** - Testa fluxo de dados e gerenciamento de estado
+- ✅ **Fluxos de usuário** - Testa jornadas completas do usuário
+- ✅ **Tratamento de erros** - Testa cenários de erro e casos extremos
 
-#### **🎯 End-to-End Tests (Playwright)**
+#### **🎯 Testes End-to-End (Playwright)**
 
-- ✅ **Cross-browser testing** - Chrome, Firefox, Safari, Edge
-- ✅ **Mobile testing** - Responsive design validation
-- ✅ **Real user scenarios** - Complete user workflows
-- ✅ **Visual regression** - Screenshot comparison
-- ✅ **Performance testing** - Load time and Core Web Vitals
+- ✅ **Testes cross-browser** - Chrome, Firefox, Safari, Edge
+- ✅ **Testes mobile** - Validação de design responsivo
+- ✅ **Cenários reais de usuário** - Fluxos completos de usuário
+- ✅ **Regressão visual** - Comparação de screenshots
+- ✅ **Testes de performance** - Tempo de carregamento e Core Web Vitals
 
-### **🚀 Testing Benefits**
+### **🚀 Benefícios dos Testes**
 
-#### **For Developers**
+#### **Para Desenvolvedores**
 
-- ⚡ **Fast feedback** - Immediate test results
-- 🔍 **Bug prevention** - Catch issues early
-- 🎯 **Confidence** - Safe refactoring and changes
-- 📚 **Documentation** - Tests as living documentation
+- ⚡ **Feedback rápido** - Resultados de teste imediatos
+- 🔍 **Prevenção de bugs** - Detecta problemas cedo
+- 🎯 **Confiança** - Refatoração e mudanças seguras
+- 📚 **Documentação** - Testes como documentação viva
 
-#### **For Users**
+#### **Para Usuários**
 
-- 🛡️ **Reliability** - Stable, bug-free application
-- ⚡ **Performance** - Optimized user experience
-- 🎯 **Usability** - Tested user workflows
-- 📱 **Accessibility** - Inclusive design for all users
+- 🛡️ **Confiabilidade** - Aplicação estável e sem bugs
+- ⚡ **Performance** - Experiência do usuário otimizada
+- 🎯 **Usabilidade** - Fluxos de usuário testados
+- 📱 **Acessibilidade** - Design inclusivo para todos os usuários
 
-#### **For Business**
+#### **Para o Negócio**
 
-- 💰 **Cost reduction** - Fewer bugs in production
-- 🚀 **Faster delivery** - Confident deployments
-- 📈 **Quality metrics** - Measurable quality standards
-- 🎯 **User satisfaction** - Reliable user experience
+- 💰 **Redução de custos** - Menos bugs em produção
+- 🚀 **Entrega mais rápida** - Deployments confiantes
+- 📈 **Métricas de qualidade** - Padrões de qualidade mensuráveis
+- 🎯 **Satisfação do usuário** - Experiência do usuário confiável
 
-## 🚀 Getting Started
+## 🚀 Começando
 
-### **Prerequisites**
+### **Pré-requisitos**
 
 - Node.js 18+
-- npm or yarn
+- npm ou yarn
 - Git
 
-### **Installation**
+### **Instalação**
 
-1. **Clone the repository:**
+1. **Clone o repositório:**
 
 ```bash
 git clone https://github.com/aqua9/boilerplate_aqua9_v2.git
 cd boilerplate_aqua9_v2
 ```
 
-2. **Install dependencies:**
+2. **Instale as dependências:**
 
 ```bash
 npm install
-# or
+# ou
 yarn install
 ```
 
-3. **Configure environment variables:**
+3. **Configure as variáveis de ambiente:**
 
 ```bash
 cp .env.example .env.local
 ```
 
-4. **Start the dev server:**
+4. **Inicie o servidor de desenvolvimento:**
 
 ```bash
 npm run dev
-# or
+# ou
 yarn dev
 ```
 
-5. **Open [http://localhost:3000](http://localhost:3000)** in your browser to see the result.
+5. **Abra [http://localhost:3000](http://localhost:3000)** no seu navegador para ver o resultado.
 
-The page will reload as you edit files.
+A página será recarregada conforme você edita os arquivos.
 
-## 📋 Available Commands
+## 📋 Comandos Disponíveis
 
-### **🚀 Development**
+### **🚀 Desenvolvimento**
 
-| Command                 | Description                             | Usage                |
-| ----------------------- | --------------------------------------- | -------------------- |
-| `npm run dev`           | Dev server                              | `localhost:3000`     |
-| `npm run dev:turbo`     | Dev server with Turbo                   | `localhost:3000`     |
-| `npm run build`         | Production build                        | Optimized for deploy |
-| `npm run build:analyze` | Production build with analysis          | Bundle analysis      |
-| `npm run start`         | Production server                       | Local build testing  |
-| `npm run start:prod`    | Production server (NODE_ENV=production) | Production testing   |
+| Comando                 | Descrição                                  | Uso                   |
+| ----------------------- | ------------------------------------------ | --------------------- |
+| `npm run dev`           | Servidor de desenvolvimento                | `localhost:3000`      |
+| `npm run dev:turbo`     | Servidor de desenvolvimento com Turbo      | `localhost:3000`      |
+| `npm run build`         | Build de produção                          | Otimizado para deploy |
+| `npm run build:analyze` | Build de produção com análise              | Análise de bundle     |
+| `npm run start`         | Servidor de produção                       | Teste de build local  |
+| `npm run start:prod`    | Servidor de produção (NODE_ENV=production) | Teste de produção     |
 
-### **🔧 Code Quality**
+### **🔧 Qualidade de Código**
 
-| Command                     | Action            | Result           |
-| --------------------------- | ----------------- | ---------------- |
-| `npm run lint`              | Static analysis   | Problem report   |
-| `npm run lint:fix`          | Auto-fix          | Clean code       |
-| `npm run lint:strict`       | Strict analysis   | Zero warnings    |
-| `npm run format`            | Formatting        | Consistent code  |
-| `npm run format:check`      | Format check      | Validates style  |
-| `npm run type-check`        | TypeScript check  | Type validation  |
-| `npm run type-check:strict` | Strict TypeScript | Zero type errors |
-| `npm run check-deps`        | Dependency check  | Clean deps       |
-| `npm run check-deps:fix`    | Auto-fix deps     | Remove unused    |
+| Comando                     | Ação                          | Resultado              |
+| --------------------------- | ----------------------------- | ---------------------- |
+| `npm run lint`              | Análise estática              | Relatório de problemas |
+| `npm run lint:fix`          | Auto-correção                 | Código limpo           |
+| `npm run lint:strict`       | Análise estrita               | Zero avisos            |
+| `npm run format`            | Formatação                    | Código consistente     |
+| `npm run format:check`      | Verificação de formato        | Valida estilo          |
+| `npm run type-check`        | Verificação TypeScript        | Validação de tipos     |
+| `npm run type-check:strict` | TypeScript estrito            | Zero erros de tipo     |
+| `npm run check-deps`        | Verificação de dependências   | Dependências limpas    |
+| `npm run check-deps:fix`    | Auto-correção de dependências | Remove não utilizadas  |
 
-### **🧪 Tests**
+### **🧪 Testes**
 
-| Command                       | Type | Description                 | Environment |
-| ----------------------------- | ---- | --------------------------- | ----------- |
-| `npm run test`                | Unit | Full test run               | Development |
-| `npm run test:watch`          | Unit | Dev mode (watch)            | Development |
-| `npm run test:ui`             | Unit | Vitest UI interface         | Development |
-| `npm run test:ci`             | Unit | Sequential testing          | CI/CD       |
-| `npm run test:coverage`       | Unit | Detailed coverage report    | CI/CD       |
-| `npm run test:coverage:html`  | Unit | HTML coverage report        | Development |
-| `npm run test:coverage:badge` | Unit | Coverage badge JSON         | CI/CD       |
-| `npm run test:e2e`            | E2E  | Playwright end-to-end tests | Development |
-| `npm run test:e2e:ui`         | E2E  | Playwright with UI mode     | Development |
-| `npm run test:e2e:ci`         | E2E  | E2E tests for CI/CD         | CI/CD       |
+| Comando                       | Tipo     | Descrição                        | Ambiente        |
+| ----------------------------- | -------- | -------------------------------- | --------------- |
+| `npm run test`                | Unitário | Execução completa de testes      | Desenvolvimento |
+| `npm run test:watch`          | Unitário | Modo desenvolvimento (watch)     | Desenvolvimento |
+| `npm run test:ui`             | Unitário | Interface UI do Vitest           | Desenvolvimento |
+| `npm run test:ci`             | Unitário | Testes sequenciais               | CI/CD           |
+| `npm run test:coverage`       | Unitário | Relatório detalhado de cobertura | CI/CD           |
+| `npm run test:coverage:html`  | Unitário | Relatório HTML de cobertura      | Desenvolvimento |
+| `npm run test:coverage:badge` | Unitário | Badge JSON de cobertura          | CI/CD           |
+| `npm run test:e2e`            | E2E      | Testes end-to-end do Playwright  | Desenvolvimento |
+| `npm run test:e2e:ui`         | E2E      | Playwright com modo UI           | Desenvolvimento |
+| `npm run test:e2e:ci`         | E2E      | Testes E2E para CI/CD            | CI/CD           |
 
-### **📚 Documentation**
+### **📚 Documentação**
 
-| Command                   | Environment | Port             |
-| ------------------------- | ----------- | ---------------- |
-| `npm run storybook`       | Development | `localhost:6006` |
-| `npm run build-storybook` | Production  | Static build     |
+| Comando                   | Ambiente        | Porta            |
+| ------------------------- | --------------- | ---------------- |
+| `npm run storybook`       | Desenvolvimento | `localhost:6006` |
+| `npm run build-storybook` | Produção        | Build estático   |
 
-### **✅ Validation**
+### **✅ Validação**
 
-| Command                     | Check             | Benefit              |
-| --------------------------- | ----------------- | -------------------- |
-| `npm run type-check`        | TypeScript        | Correct types        |
-| `npm run type-check:strict` | TypeScript strict | Strict type checking |
-| `npm run lint:strict`       | ESLint strict     | Zero warnings        |
-| `npm run check-deps`        | Dependencies      | Clean dependencies   |
-| `npm run check-deps:fix`    | Dependencies      | Auto-fix unused deps |
-| `npm run quality:strict`    | All checks        | Maximum quality      |
+| Comando                     | Verificação           | Benefício                                    |
+| --------------------------- | --------------------- | -------------------------------------------- |
+| `npm run type-check`        | TypeScript            | Tipos corretos                               |
+| `npm run type-check:strict` | TypeScript estrito    | Verificação estrita de tipos                 |
+| `npm run lint:strict`       | ESLint estrito        | Zero avisos                                  |
+| `npm run check-deps`        | Dependências          | Dependências limpas                          |
+| `npm run check-deps:fix`    | Dependências          | Auto-correção de dependências não utilizadas |
+| `npm run quality:strict`    | Todas as verificações | Qualidade máxima                             |
 
-## 📚 Project Documentation
+## 📚 Documentação do Projeto
 
-### **📖 Documentation Files**
+### **📖 Arquivos de Documentação**
 
-| File                                             | Description              | Purpose                                    |
-| ------------------------------------------------ | ------------------------ | ------------------------------------------ |
-| [PACKAGE.md](./PACKAGE.md)                       | Dependency documentation | Complete guide to all project dependencies |
-| [SEO_DYNAMIC_SYSTEM.md](./SEO_DYNAMIC_SYSTEM.md) | SEO system guide         | Comprehensive SEO implementation guide     |
-| [CODE_QUALITY.md](./CODE_QUALITY.md)             | Code quality standards   | Quality guidelines and best practices      |
-| [COMMENTS_GUIDE.md](./COMMENTS_GUIDE.md)         | Commenting standards     | Code documentation guidelines              |
-| [DYNAMIC_SEO_GUIDE.md](./DYNAMIC_SEO_GUIDE.md)   | SEO implementation       | SEO best practices and examples            |
-| [QUALITY_HOOKS.md](./QUALITY_HOOKS.md)           | Git hooks guide          | Automation and quality workflows           |
-| [SEO_OPTIMIZATION.md](./SEO_OPTIMIZATION.md)     | SEO optimization         | SEO strategies and techniques              |
+| Arquivo                                          | Descrição                      | Propósito                                           |
+| ------------------------------------------------ | ------------------------------ | --------------------------------------------------- |
+| [PACKAGE.md](./PACKAGE.md)                       | Documentação de dependências   | Guia completo para todas as dependências do projeto |
+| [SEO_DYNAMIC_SYSTEM.md](./SEO_DYNAMIC_SYSTEM.md) | Guia do sistema SEO            | Guia abrangente de implementação SEO                |
+| [CODE_QUALITY.md](./CODE_QUALITY.md)             | Padrões de qualidade de código | Diretrizes de qualidade e melhores práticas         |
+| [COMMENTS_GUIDE.md](./COMMENTS_GUIDE.md)         | Padrões de comentários         | Diretrizes de documentação de código                |
+| [DYNAMIC_SEO_GUIDE.md](./DYNAMIC_SEO_GUIDE.md)   | Implementação SEO              | Melhores práticas SEO e exemplos                    |
+| [QUALITY_HOOKS.md](./QUALITY_HOOKS.md)           | Guia de git hooks              | Automação e workflows de qualidade                  |
+| [SEO_OPTIMIZATION.md](./SEO_OPTIMIZATION.md)     | Otimização SEO                 | Estratégias e técnicas SEO                          |
 
-### **🔧 Configuration Files**
+### **🔧 Arquivos de Configuração**
 
-| File               | Description              | Purpose                             |
-| ------------------ | ------------------------ | ----------------------------------- |
-| `package.json`     | Project configuration    | Dependencies, scripts, and metadata |
-| `tsconfig.json`    | TypeScript configuration | Compiler options and paths          |
-| `.eslintrc.json`   | ESLint configuration     | Code linting rules                  |
-| `.prettierrc.json` | Prettier configuration   | Code formatting rules               |
-| `jest.config.js`   | Jest configuration       | Testing framework setup             |
-| `lefthook.yml`     | Git hooks configuration  | Automated workflows                 |
+| Arquivo            | Descrição                 | Propósito                           |
+| ------------------ | ------------------------- | ----------------------------------- |
+| `package.json`     | Configuração do projeto   | Dependências, scripts e metadados   |
+| `tsconfig.json`    | Configuração TypeScript   | Opções do compilador e paths        |
+| `.eslintrc.json`   | Configuração ESLint       | Regras de linting de código         |
+| `.prettierrc.json` | Configuração Prettier     | Regras de formatação de código      |
+| `jest.config.js`   | Configuração Jest         | Configuração do framework de testes |
+| `lefthook.yml`     | Configuração de git hooks | Workflows automatizados             |
 
-## 📚 Resources & Documentation
+## 📚 Recursos & Documentação
 
-### **📖 Official Documentation**
+### **📖 Documentação Oficial**
 
-| Resource       | Description                     | Link                                             |
-| -------------- | ------------------------------- | ------------------------------------------------ |
-| **Next.js**    | React framework with App Router | [Docs](https://nextjs.org/docs)                  |
-| **React**      | JavaScript library for UIs      | [Docs](https://react.dev/)                       |
-| **TypeScript** | Static typing for JavaScript    | [Handbook](https://www.typescriptlang.org/docs/) |
+| Recurso        | Descrição                        | Link                                             |
+| -------------- | -------------------------------- | ------------------------------------------------ |
+| **Next.js**    | Framework React com App Router   | [Docs](https://nextjs.org/docs)                  |
+| **React**      | Biblioteca JavaScript para UIs   | [Docs](https://react.dev/)                       |
+| **TypeScript** | Tipagem estática para JavaScript | [Handbook](https://www.typescriptlang.org/docs/) |
 
-### **🏢 Aqua9 Resources**
+### **🏢 Recursos da Aqua9**
 
-| Resource          | Description              | Link                                                             |
-| ----------------- | ------------------------ | ---------------------------------------------------------------- |
-| **Official Site** | Visit our site           | [aqua9.com.br](https://aqua9.com.br)                             |
-| **GitHub**        | Our open-source projects | [github.com/aqua9](https://github.com/aqua9)                     |
-| **Contact**       | Get in touch             | [contato@aqua9.com.br](mailto:contato@aqua9.com.br)              |
-| **LinkedIn**      | Follow us                | [linkedin.com/company/aqua9](https://linkedin.com/company/aqua9) |
+| Recurso          | Descrição                   | Link                                                             |
+| ---------------- | --------------------------- | ---------------------------------------------------------------- |
+| **Site Oficial** | Visite nosso site           | [aqua9.com.br](https://aqua9.com.br)                             |
+| **GitHub**       | Nossos projetos open-source | [github.com/aqua9](https://github.com/aqua9)                     |
+| **Contato**      | Entre em contato            | [contato@aqua9.com.br](mailto:contato@aqua9.com.br)              |
+| **LinkedIn**     | Siga-nos                    | [linkedin.com/company/aqua9](https://linkedin.com/company/aqua9) |
 
-### **🛠️ Used Tools**
+### **🛠️ Ferramentas Utilizadas**
 
-| Tool          | Category                  | Documentation                         |
-| ------------- | ------------------------- | ------------------------------------- |
-| **Vitest**    | Test framework            | [Docs](https://vitest.dev/guide/)     |
-| **Storybook** | Component documentation   | [Docs](https://storybook.js.org/docs) |
-| **PostHog**   | Analytics & feature flags | [Docs](https://posthog.com/docs)      |
+| Ferramenta    | Categoria                   | Documentação                                     |
+| ------------- | --------------------------- | ------------------------------------------------ |
+| **Vitest**    | Framework de testes         | [Docs](https://vitest.dev/guide/)                |
+| **Storybook** | Documentação de componentes | [Docs](https://storybook.js.org/docs)            |
+| **PostHog**   | Analytics & feature flags   | [Docs](https://posthog.com/docs)                 |
+| **Sentry**    | Monitoramento de erros      | [Docs](https://docs.sentry.io/)                  |
+| **Husky**     | Git hooks                   | [Docs](https://typicode.github.io/husky/)        |
+| **Lefthook**  | Gerenciador de git hooks    | [Docs](https://github.com/evilmartians/lefthook) |
 
-## 🎯 **Latest Improvements - v2.0.0**
+## 🎯 **Melhorias Mais Recentes - v2.0.0**
 
-### **📈 Enhanced Test Coverage**
+### **📈 Cobertura de Testes Aprimorada**
 
-#### **🧪 Comprehensive Testing Suite**
+#### **🧪 Suite de Testes Abrangente**
 
-- ✅ **44 Total Tests** - Extensive test coverage across all components
-- ✅ **85%+ Coverage** - High test coverage ensuring code quality
-- ✅ **Component Tests** - 11 tests for Main component with full prop coverage
-- ✅ **Page Tests** - 9 tests covering all application pages
-- ✅ **Utility Tests** - 18 tests for SEO utilities and edge cases
-- ✅ **Integration Tests** - 10 tests for DynamicSEO component
-- ✅ **Structured Data Tests** - 10 tests for JsonLd component
+- ✅ **44 Testes Totais** - Cobertura extensa de testes em todos os componentes
+- ✅ **85%+ de Cobertura** - Alta cobertura de testes garantindo qualidade de código
+- ✅ **Testes de Componentes** - 11 testes para componente Main com cobertura completa de props
+- ✅ **Testes de Páginas** - 9 testes cobrindo todas as páginas da aplicação
+- ✅ **Testes de Utilitários** - 18 testes para utilitários SEO e casos extremos
+- ✅ **Testes de Integração** - 10 testes para componente DynamicSEO
+- ✅ **Testes de Dados Estruturados** - 10 testes para componente JsonLd
 
-#### **🔧 New Development Scripts**
+#### **🔧 Novos Scripts de Desenvolvimento**
 
-- ✅ **`npm run test:ui`** - Vitest UI interface for better debugging
-- ✅ **`npm run test:coverage:html`** - HTML coverage reports
-- ✅ **`npm run test:coverage:badge`** - Coverage badge generation
-- ✅ **`npm run lint:strict`** - Zero-warning linting
-- ✅ **`npm run type-check:strict`** - Strict TypeScript checking
-- ✅ **`npm run quality:strict`** - Maximum quality enforcement
-- ✅ **`npm run check-deps:fix`** - Auto-fix unused dependencies
+- ✅ **`npm run test:ui`** - Interface UI do Vitest para melhor debugging
+- ✅ **`npm run test:coverage:html`** - Relatórios HTML de cobertura
+- ✅ **`npm run test:coverage:badge`** - Geração de badge de cobertura
+- ✅ **`npm run lint:strict`** - Linting com zero avisos
+- ✅ **`npm run type-check:strict`** - Verificação estrita de TypeScript
+- ✅ **`npm run quality:strict`** - Aplicação máxima de qualidade
+- ✅ **`npm run check-deps:fix`** - Auto-correção de dependências não utilizadas
 
-#### **🚀 Performance Optimizations**
+#### **🚀 Otimizações de Performance**
 
-- ✅ **Next.js Image Component** - Optimized image loading
-- ✅ **Priority Loading** - Critical images load first
-- ✅ **Bundle Analysis** - `npm run build:analyze` for optimization
-- ✅ **Turbo Mode** - `npm run dev:turbo` for faster development
+- ✅ **Componente Next.js Image** - Carregamento otimizado de imagens
+- ✅ **Carregamento Prioritário** - Imagens críticas carregam primeiro
+- ✅ **Análise de Bundle** - `npm run build:analyze` para otimização
+- ✅ **Modo Turbo** - `npm run dev:turbo` para desenvolvimento mais rápido
 
-#### **📊 Quality Enhancements**
+#### **📊 Aprimoramentos de Qualidade**
 
-- ✅ **Enhanced Pre-commit Hooks** - Comprehensive quality gates
-- ✅ **Strict Mode Testing** - Zero-tolerance for quality issues
-- ✅ **Automated Dependency Management** - Clean dependency tracking
-- ✅ **SEO Validation** - Lighthouse integration for SEO checks
-  | **Sentry** | Error monitoring | [Docs](https://docs.sentry.io/) |
-  | **Husky** | Git hooks | [Docs](https://typicode.github.io/husky/) |
-  | **Lefthook** | Git hooks manager | [Docs](https://github.com/evilmartians/lefthook) |
+- ✅ **Hooks Pré-commit Aprimorados** - Gates de qualidade abrangentes
+- ✅ **Testes em Modo Estrito** - Tolerância zero para problemas de qualidade
+- ✅ **Gerenciamento Automatizado de Dependências** - Rastreamento limpo de dependências
+- ✅ **Validação SEO** - Integração Lighthouse para verificações SEO
 
-## 🚀 Deploy & Production
+## 🚀 Deploy & Produção
 
-### **☁️ Recommended Platforms**
+### **☁️ Plataformas Recomendadas**
 
-#### **Vercel (Recommended)**
+#### **Vercel (Recomendado)**
 
-The easiest, most optimized way to deploy Next.js apps.
+A forma mais fácil e otimizada de fazer deploy de apps Next.js.
 
 ```bash
-# Deploy with Vercel CLI
+# Deploy com Vercel CLI
 npm i -g vercel
 vercel
 
-# Or connect your GitHub repository
+# Ou conecte seu repositório GitHub
 # https://vercel.com/new
 ```
 
-**Advantages:**
+**Vantagens:**
 
-- ⚡ Auto deploy on every push
-- 🔧 Zero configuration
-- 📊 Built-in analytics
-- 🌍 Global CDN
-- 🔒 Automatic SSL
+- ⚡ Deploy automático a cada push
+- 🔧 Zero configuração
+- 📊 Analytics integrado
+- 🌍 CDN global
+- 🔒 SSL automático
 
-#### **Other Options**
+#### **Outras Opções**
 
-| Platform         | Type      | Features                |
-| ---------------- | --------- | ----------------------- |
-| **Netlify**      | PaaS      | Native Next.js support  |
-| **Railway**      | PaaS      | Simple, fast deploy     |
-| **AWS Amplify**  | Cloud     | For enterprise projects |
-| **Docker**       | Container | For custom environments |
-| **DigitalOcean** | VPS       | Full server control     |
+| Plataforma       | Tipo      | Recursos                    |
+| ---------------- | --------- | --------------------------- |
+| **Netlify**      | PaaS      | Suporte nativo Next.js      |
+| **Railway**      | PaaS      | Deploy simples e rápido     |
+| **AWS Amplify**  | Cloud     | Para projetos enterprise    |
+| **Docker**       | Container | Para ambientes customizados |
+| **DigitalOcean** | VPS       | Controle total do servidor  |
 
-### **🔧 Production Configuration**
+### **🔧 Configuração de Produção**
 
-#### **Environment Variables**
+#### **Variáveis de Ambiente**
 
 ```bash
 # .env.production
-NEXT_PUBLIC_APP_URL=https://your-domain.com
+NEXT_PUBLIC_APP_URL=https://seu-dominio.com
 NEXT_PUBLIC_POSTHOG_KEY=phc_...
 SENTRY_DSN=https://...
 ```
 
-#### **Recommended Optimizations**
+#### **Otimizações Recomendadas**
 
-- ✅ **Compression**: Enable Gzip/Brotli
-- ✅ **Caching**: Optimized headers
-- ✅ **Images**: Automatic optimization
-- ✅ **Bundle**: Automatic code splitting
+- ✅ **Compressão**: Ativar Gzip/Brotli
+- ✅ **Cache**: Headers otimizados
+- ✅ **Imagens**: Otimização automática
+- ✅ **Bundle**: Code splitting automático
 
-## 🤝 Contributing
+## 🤝 Contribuindo
 
-Contributions are welcome! This project is maintained by **Aqua9** and we accept community contributions.
+Contribuições são bem-vindas! Este projeto é mantido pela **Aqua9** e aceitamos contribuições da comunidade.
 
-### **📋 How to Contribute**
+### **📋 Como Contribuir**
 
-1. **Fork the project**
-2. **Create a branch** for your feature (`git checkout -b feature/AmazingFeature`)
-3. **Commit your changes** (`git commit -m 'Add some AmazingFeature'`)
-4. **Push to the branch** (`git push origin feature/AmazingFeature`)
-5. **Open a Pull Request**
+1. **Faça um fork do projeto**
+2. **Crie uma branch** para sua feature (`git checkout -b feature/AmazingFeature`)
+3. **Commit suas mudanças** (`git commit -m 'Add some AmazingFeature'`)
+4. **Push para a branch** (`git push origin feature/AmazingFeature`)
+5. **Abra um Pull Request**
 
-### **📝 Contribution Guidelines**
+### **📝 Diretrizes de Contribuição**
 
-- ✅ **Clean, well-documented code**
-- ✅ **Tests** for new features
-- ✅ **TypeScript** for proper typing
-- ✅ **Semantic commits** following Conventional Commits
-- ✅ **Pull requests** with clear description
+- ✅ **Código limpo e bem documentado**
+- ✅ **Testes** para novas features
+- ✅ **TypeScript** para tipagem adequada
+- ✅ **Commits semânticos** seguindo Conventional Commits
+- ✅ **Pull requests** com descrição clara
 
-### **🐛 Reporting Bugs**
+### **🐛 Reportando Bugs**
 
-If you encounter a bug, please:
+Se você encontrar um bug, por favor:
 
-1. Check if it's already reported
-2. Use the issue template
-3. Include steps to reproduce
-4. Add screenshots if relevant
+1. Verifique se já foi reportado
+2. Use o template de issue
+3. Inclua passos para reproduzir
+4. Adicione screenshots se relevante
 
-## 📝 Version History
+## 📝 Histórico de Versões
 
-### **v2.0.0 - Major Update**
+### **v2.0.0 - Atualização Principal**
 
-#### **✨ New Features**
+#### **✨ Novas Funcionalidades**
 
-- 🔍 **Dynamic SEO System** - Complete SEO optimization with Open Graph and Twitter Cards
-- 📊 **JSON-LD Structured Data** - Rich snippets and Schema.org support
-- 🗺️ **Automatic Sitemap** - Dynamic sitemap generation
-- 🤖 **Robots.txt** - Configurable robots.txt generation
-- 📚 **Enhanced Documentation** - PACKAGE.md and SEO_DYNAMIC_SYSTEM.md
+- 🔍 **Sistema SEO Dinâmico** - Otimização SEO completa com Open Graph e Twitter Cards
+- 📊 **Dados Estruturados JSON-LD** - Rich snippets e suporte Schema.org
+- 🗺️ **Sitemap Automático** - Geração dinâmica de sitemap
+- 🤖 **Robots.txt** - Geração configurável de robots.txt
+- 📚 **Documentação Aprimorada** - PACKAGE.md e SEO_DYNAMIC_SYSTEM.md
 
-#### **🔄 Major Changes**
+#### **🔄 Mudanças Principais**
 
-- 🎨 **Removed Tailwind CSS** - Replaced with inline styles for better performance
-- 🧩 **Removed styled-components** - Simplified styling approach
-- ⚡ **Updated to React 19** - Latest React features and performance
-- 🧪 **Switched to Vitest** - Fast, modern testing framework with React support
-- 📦 **Updated Dependencies** - All packages updated to latest versions
+- 🎨 **Removido Tailwind CSS** - Substituído por estilos inline para melhor performance
+- 🧩 **Removido styled-components** - Abordagem de styling simplificada
+- ⚡ **Atualizado para React 19** - Últimas features e performance do React
+- 🧪 **Mudança para Vitest** - Framework de testes rápido e moderno com suporte React
+- 📦 **Dependências Atualizadas** - Todos os pacotes atualizados para versões mais recentes
 
-#### **🚀 Performance Improvements**
+#### **🚀 Melhorias de Performance**
 
-- ⚡ **Faster Build Times** - Removed CSS-in-JS overhead
-- 📈 **Better SEO Scores** - Comprehensive SEO optimization
-- 🎯 **Improved Core Web Vitals** - Optimized for performance metrics
-- 🔧 **Simplified Architecture** - Cleaner, more maintainable codebase
+- ⚡ **Tempos de Build Mais Rápidos** - Removido overhead de CSS-in-JS
+- 📈 **Melhores Pontuações SEO** - Otimização SEO abrangente
+- 🎯 **Core Web Vitals Melhorados** - Otimizado para métricas de performance
+- 🔧 **Arquitetura Simplificada** - Codebase mais limpo e mantível
 
-#### **📚 Documentation**
+#### **📚 Documentação**
 
-- 📖 **PACKAGE.md** - Complete dependency documentation
-- 🔍 **SEO_DYNAMIC_SYSTEM.md** - Comprehensive SEO guide
-- 💬 **Enhanced Comments** - Detailed code documentation
-- 🎯 **Usage Examples** - Practical implementation guides
+- 📖 **PACKAGE.md** - Documentação completa de dependências
+- 🔍 **SEO_DYNAMIC_SYSTEM.md** - Guia abrangente de SEO
+- 💬 **Comentários Aprimorados** - Documentação detalhada de código
+- 🎯 **Exemplos de Uso** - Guias de implementação práticos
 
-### **v1.0.0 - Initial Release**
+### **v1.0.0 - Lançamento Inicial**
 
-- ✅ Next.js 15 with App Router
+- ✅ Next.js 15 com App Router
 - ✅ TypeScript 5.x
-- ✅ ESLint and Prettier configuration
-- ✅ Jest testing setup
-- ✅ Storybook documentation
-- ✅ Git hooks with Lefthook
-- ✅ Quality automation tools
+- ✅ Configuração ESLint e Prettier
+- ✅ Setup de testes Jest
+- ✅ Documentação Storybook
+- ✅ Git hooks com Lefthook
+- ✅ Ferramentas de automação de qualidade
 
-## 📄 License
+## 📄 Licença
 
-This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) file for details.
+Este projeto está licenciado sob a **Licença MIT** - veja o arquivo [LICENSE](LICENSE) para detalhes.
 
-### **📋 License Terms**
+### **📋 Termos da Licença**
 
-- ✅ **Commercial use** allowed
-- ✅ **Modification** allowed
-- ✅ **Distribution** allowed
-- ✅ **Private use** allowed
-- ✅ **No warranty**
+- ✅ **Uso comercial** permitido
+- ✅ **Modificação** permitida
+- ✅ **Distribuição** permitida
+- ✅ **Uso privado** permitido
+- ✅ **Sem garantia**
 
 ---
 
 <div align="center">
 
-**Developed with ❤️ by [Aqua9](https://aqua9.com.br)**
+**Desenvolvido com ❤️ pela [Aqua9](https://aqua9.com.br)**
 
 [![Website](https://img.shields.io/badge/Website-aqua9.com.br-blue?style=flat-square)](https://aqua9.com.br)
 [![Email](https://img.shields.io/badge/Email-contato@aqua9.com.br-red?style=flat-square)](mailto:contato@aqua9.com.br)

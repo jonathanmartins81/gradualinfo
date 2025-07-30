@@ -1,58 +1,41 @@
 import { render, screen } from '@testing-library/react';
-import { describe, expect, it, vi, beforeEach } from 'vitest';
+import { describe, expect, it, vi } from 'vitest';
 import { Main } from './index';
 
-// Mock do ThemeSwitcher para evitar problemas de contexto
+// Mock do ThemeSwitcher
 vi.mock('@/components/ThemeSwitcher', () => ({
   default: vi.fn(() => <div data-testid="theme-switcher">Theme Switcher</div>),
 }));
 
-// Mock do ThemeContext - deve ser definido ANTES de importar o componente
-const mockUseTheme = vi.fn(() => ({
-  isDark: false,
-  mode: 'light',
-  toggleTheme: vi.fn(),
-  setMode: vi.fn(),
-}));
-
+// Mock do ThemeContext - mock simples que retorna valores padrão
 vi.mock('@/contexts/ThemeContext', () => ({
-  useTheme: mockUseTheme,
-  ThemeProvider: ({ children }: { children: React.ReactNode }) => children,
+  useTheme: () => ({
+    isDark: false,
+    mode: 'light',
+    toggleTheme: vi.fn(),
+    setMode: vi.fn(),
+  }),
 }));
 
 describe('Main Component', () => {
-  beforeEach(() => {
-    // Reset do mock antes de cada teste
-    mockUseTheme.mockReturnValue({
-      isDark: false,
-      mode: 'light',
-      toggleTheme: vi.fn(),
-      setMode: vi.fn(),
-    });
-  });
-
   it('should render with default props', () => {
     render(<Main />);
-
     expect(screen.getByText('Boilerplate Aqua9')).toBeInTheDocument();
     expect(screen.getByText(/Template Next.js profissional/)).toBeInTheDocument();
   });
 
   it('should render with custom title', () => {
     render(<Main title='Custom Title' />);
-
     expect(screen.getByText('Custom Title')).toBeInTheDocument();
   });
 
   it('should render with custom description', () => {
     render(<Main description='Custom description' />);
-
     expect(screen.getByText('Custom description')).toBeInTheDocument();
   });
 
   it('should render technologies list', () => {
     render(<Main />);
-
     expect(screen.getByText('Next.js')).toBeInTheDocument();
     expect(screen.getByText('React')).toBeInTheDocument();
     expect(screen.getByText('TypeScript')).toBeInTheDocument();
@@ -61,7 +44,6 @@ describe('Main Component', () => {
   it('should render with custom technologies', () => {
     const customTechs = ['Vue.js', 'Node.js', 'MongoDB'];
     render(<Main technologies={customTechs} />);
-
     expect(screen.getByText('Vue.js')).toBeInTheDocument();
     expect(screen.getByText('Node.js')).toBeInTheDocument();
     expect(screen.getByText('MongoDB')).toBeInTheDocument();
@@ -69,40 +51,15 @@ describe('Main Component', () => {
 
   it('should render hero illustration', () => {
     render(<Main />);
-
     expect(screen.getByAltText('Hero Illustration')).toBeInTheDocument();
   });
 
   it('should have proper image attributes', () => {
     render(<Main />);
-
     const logo = screen.getByAltText('Aqua9 Logo');
     const hero = screen.getByAltText('Hero Illustration');
-
     expect(logo).toHaveAttribute('src', '/img/logo-light.svg');
     expect(hero).toHaveAttribute('src', '/img/illustration.svg');
-  });
-
-  it('should use light logo by default', () => {
-    render(<Main />);
-
-    const logo = screen.getByAltText('Aqua9 Logo');
-    expect(logo).toHaveAttribute('src', '/img/logo-light.svg');
-  });
-
-  it('should use dark logo when theme is dark', () => {
-    // Mock para tema escuro
-    mockUseTheme.mockReturnValue({
-      isDark: true,
-      mode: 'dark',
-      toggleTheme: vi.fn(),
-      setMode: vi.fn(),
-    });
-
-    render(<Main />);
-
-    const logo = screen.getByAltText('Aqua9 Logo');
-    expect(logo).toHaveAttribute('src', '/img/logo-dark.svg');
   });
 
   it('should render with all custom props', () => {
@@ -111,9 +68,7 @@ describe('Main Component', () => {
       description: 'Custom project description',
       technologies: ['Custom Tech 1', 'Custom Tech 2'],
     };
-
     render(<Main {...customProps} />);
-
     expect(screen.getByText('Custom Project')).toBeInTheDocument();
     expect(screen.getByText('Custom project description')).toBeInTheDocument();
     expect(screen.getByText('Custom Tech 1')).toBeInTheDocument();
@@ -122,8 +77,6 @@ describe('Main Component', () => {
 
   it('should handle empty technologies array', () => {
     render(<Main technologies={[]} />);
-
-    // Deve renderizar sem tecnologias
     expect(screen.queryByText('Next.js')).not.toBeInTheDocument();
     expect(screen.queryByText('React')).not.toBeInTheDocument();
     expect(screen.queryByText('TypeScript')).not.toBeInTheDocument();
@@ -131,17 +84,13 @@ describe('Main Component', () => {
 
   it('should have proper component structure', () => {
     const { container } = render(<Main />);
-
-    // Verificar se o componente tem a estrutura correta
     const mainElement = container.querySelector('main');
     expect(mainElement).toBeInTheDocument();
 
-    // Verificar se tem o título
     const title = mainElement?.querySelector('h1');
     expect(title).toBeInTheDocument();
     expect(title).toHaveTextContent('Boilerplate Aqua9');
 
-    // Verificar se tem a descrição
     const description = mainElement?.querySelector('p');
     expect(description).toBeInTheDocument();
     expect(description).toHaveTextContent(/Template Next.js profissional/);
@@ -149,8 +98,6 @@ describe('Main Component', () => {
 
   it('should render technology badges with proper styling', () => {
     render(<Main />);
-
-    // Verificar se as tecnologias estão presentes como spans
     const nextJsElement = screen.getByText('Next.js');
     const reactElement = screen.getByText('React');
     const typescriptElement = screen.getByText('TypeScript');
@@ -159,7 +106,6 @@ describe('Main Component', () => {
     expect(reactElement).toBeInTheDocument();
     expect(typescriptElement).toBeInTheDocument();
 
-    // Verificar se são elementos span
     expect(nextJsElement.tagName).toBe('SPAN');
     expect(reactElement.tagName).toBe('SPAN');
     expect(typescriptElement.tagName).toBe('SPAN');

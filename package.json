@@ -1,0 +1,124 @@
+{
+  "name": "boilerplate-aqua9-v2",
+  "version": "2.0.0",
+  "description": "Boilerplate Next.js profissional da Aqua9 v2 para projetos internos. Template moderno com TypeScript, SEO otimizado e ferramentas de qualidade de código.",
+  "keywords": [
+    "boilerplate",
+    "nextjs",
+    "react",
+    "typescript",
+    "aqua9",
+    "jonathan simão",
+    "template",
+    "fullstack",
+    "web development",
+    "frontend",
+    "backend",
+    "seo",
+    "performance",
+    "modern web",
+    "developer tools",
+    "code quality",
+    "testing",
+    "storybook",
+    "drizzleorm",
+    "posthog",
+    "sentry"
+  ],
+  "author": {
+    "name": "Jonathan Simão",
+    "email": "contato@aqua9.com.br",
+    "url": "https://aqua9.com.br"
+  },
+  "license": "MIT",
+  "homepage": "https://aqua9.com.br",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/aqua9/boilerplate_aqua9.git"
+  },
+  "bugs": {
+    "url": "https://github.com/aqua9/boilerplate_aqua9/issues"
+  },
+  "funding": {
+    "type": "individual",
+    "url": "https://aqua9.com.br"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=8.0.0"
+  },
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "test": "vitest",
+    "test:watch": "vitest --watch",
+    "test:ci": "vitest run --coverage",
+    "test:coverage": "vitest run --coverage",
+    "lint": "next lint",
+    "lint:fix": "next lint --fix",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "type-check": "tsc --noEmit",
+    "check-deps": "knip",
+    "quality": "npm run lint && npm run format:check && npm run type-check",
+    "quality:full": "npm run quality && npm run check-deps && npm run test:ci",
+    "prepare": "lefthook install",
+    "generate": "npx plop --plopfile generators/plopfile.js",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build"
+  },
+  "dependencies": {
+    "@types/node": "^24.1.0",
+    "@types/react": "^19.1.8",
+    "@types/react-dom": "^19.1.6",
+    "eslint-config-next": "^15.4.4",
+    "next": "^15.4.4",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
+    "typescript": "^5.8.3"
+  },
+  "devDependencies": {
+    "@storybook/addon-essentials": "^8.6.14",
+    "@storybook/addon-interactions": "^8.6.14",
+    "@storybook/addon-links": "^8.6.14",
+    "@storybook/addon-onboarding": "^8.6.14",
+    "@storybook/blocks": "^8.6.14",
+    "@storybook/nextjs": "^8.6.14",
+    "@storybook/react": "^8.6.14",
+    "@storybook/testing-library": "^0.2.0",
+    "@swc/jest": "^0.2.39",
+    "@testing-library/dom": "^10.4.1",
+    "@testing-library/jest-dom": "^6.6.4",
+    "@testing-library/react": "^16.3.0",
+    "@testing-library/user-event": "^14.6.1",
+    "@typescript-eslint/eslint-plugin": "^8.38.0",
+    "@typescript-eslint/parser": "^8.38.0",
+    "@vitejs/plugin-react": "^4.7.0",
+    "@vitest/coverage-v8": "^3.2.4",
+    "babel-jest": "^30.0.5",
+    "eslint": "^9.32.0",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-react": "^7.37.5",
+    "eslint-plugin-storybook": "^0.6.13",
+    "husky": "^9.1.7",
+    "jsdom": "^26.1.0",
+    "knip": "^5.62.0",
+    "lefthook": "^1.12.2",
+    "lint-staged": "^16.1.2",
+    "plop": "^4.0.1",
+    "prettier": "^3.6.2",
+    "storybook": "^8.6.14",
+    "vite-tsconfig-paths": "^5.1.4",
+    "vitest": "^3.2.4"
+  },
+  "browserslist": [
+    ">0.3%",
+    "not dead",
+    "not op_mini all"
+  ],
+  "publishConfig": {
+    "access": "public"
+  }
+}

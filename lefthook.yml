@@ -1,0 +1,72 @@
+# Lefthook - Git Hooks para Qualidade de Código
+# https://github.com/evilmartians/lefthook
+#
+# Este arquivo configura hooks do Git para garantir qualidade de código
+# antes de commits e pushes.
+
+# Hooks executados antes do commit
+pre-commit:
+  parallel: true
+  commands:
+    # Formatação com Prettier
+    format:
+      glob: '*.{js,jsx,ts,tsx,json,css,md,yml,yaml}'
+      run: npx prettier --write {staged_files}
+
+    # Linting com ESLint
+    lint:
+      glob: '*.{js,jsx,ts,tsx}'
+      run: npx eslint --fix {staged_files}
+
+    # Verificação de tipos TypeScript
+    type-check:
+      glob: '*.{ts,tsx}'
+      run: npx tsc --noEmit
+
+    # Verificação de dependências não utilizadas
+    check-deps:
+      run: npx knip --reporter=json
+
+    # Testes unitários para arquivos alterados
+    test:
+      glob: '*.{js,jsx,ts,tsx}'
+      run: npx jest --bail --findRelatedTests {staged_files} --passWithNoTests
+
+# Hooks executados antes do push
+pre-push:
+  parallel: false
+  commands:
+    # Verificação completa de qualidade
+    quality-full:
+      run: npm run quality:full
+
+    # Build de produção
+    build:
+      run: npm run build
+
+    # Verificação de vulnerabilidades
+    audit:
+      run: npm audit --audit-level=moderate
+
+# Hooks executados após o commit
+post-commit:
+  commands:
+    # Relatório de qualidade
+    quality-report:
+      run: |
+        echo "🎉 Commit realizado com sucesso!"
+        echo "✅ Código formatado e validado"
+        echo "🧪 Testes executados"
+        echo "🔍 Dependências verificadas"
+        echo "📊 Qualidade garantida"
+
+# Hooks executados após o merge
+post-merge:
+  commands:
+    # Instalar dependências após merge
+    install:
+      run: npm install
+
+    # Verificar se tudo está funcionando
+    verify:
+      run: npm run quality

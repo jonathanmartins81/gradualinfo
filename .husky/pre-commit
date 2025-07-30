@@ -1,0 +1,23 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+echo "🔍 Executando verificações de qualidade..."
+
+# Executar lint-staged para formatar e lintar arquivos alterados
+echo "📝 Formatando e lintando arquivos alterados..."
+npx --no-install lint-staged
+
+# Verificar tipos TypeScript
+echo "🔧 Verificando tipos TypeScript..."
+npm run type-check
+
+# Executar testes unitários com Vitest
+echo "🧪 Executando testes unitários com Vitest..."
+npm run test:ci
+
+# Verificar qualidade geral do código (sem check-deps para desenvolvimento)
+echo "✅ Verificando qualidade geral do código..."
+npm run lint && npm run format:check
+
+echo "🎉 Verificações básicas passaram! Commit permitido."
+echo "💡 Para verificação completa, execute: npm run quality && npm run check-deps"

@@ -1,0 +1,56 @@
+{
+  "compilerOptions": {
+    // ===== CONFIGURAÇÕES DE TARGET =====
+    "target": "ES2017", // Versão do JavaScript para compilação
+    "lib": ["dom", "dom.iterable", "es6"], // Bibliotecas TypeScript incluídas
+    "allowJs": true, // Permite arquivos JavaScript
+    "skipLibCheck": true, // Pula verificação de tipos em arquivos de biblioteca
+
+    // ===== CONFIGURAÇÕES DE MÓDULOS =====
+    "strict": true, // Habilita todas as verificações de tipo estritas
+    "noEmit": true, // Não gera arquivos de saída (Next.js cuida disso)
+    "esModuleInterop": true, // Permite importação de módulos CommonJS
+    "module": "esnext", // Sistema de módulos ES6+
+    "moduleResolution": "bundler", // Resolução de módulos para bundlers
+    "resolveJsonModule": true, // Permite importar arquivos JSON
+    "isolatedModules": true, // Garante que cada arquivo pode ser compilado independentemente
+
+    // ===== CONFIGURAÇÕES DE JSX =====
+    "jsx": "preserve", // Preserva JSX para o Next.js processar
+    "incremental": true, // Compilação incremental para melhor performance
+
+    // ===== CONFIGURAÇÕES DE IMPORTS =====
+    "plugins": [
+      {
+        "name": "next" // Plugin do Next.js para TypeScript
+      }
+    ],
+    "baseUrl": ".", // Diretório base para resolução de imports
+    "paths": {
+      // ===== ALIAS DE IMPORTS =====
+      "@/*": ["./src/*"], // Alias @ para pasta src
+      "@/components/*": ["./src/components/*"], // Alias para componentes
+      "@/lib/*": ["./src/lib/*"], // Alias para bibliotecas
+      "@/utils/*": ["./src/utils/*"], // Alias para utilitários
+      "@/types/*": ["./src/types/*"], // Alias para tipos
+      "@/styles/*": ["./src/styles/*"] // Alias para estilos
+    }
+  },
+  "include": [
+    // ===== ARQUIVOS INCLUÍDOS NA COMPILAÇÃO =====
+    "next-env.d.ts", // Tipos do Next.js
+    "**/*.ts", // Todos os arquivos TypeScript
+    "**/*.tsx", // Todos os arquivos TypeScript React
+    ".next/types/**/*.ts", // Tipos gerados pelo Next.js
+    "vitest.config.ts" // Configuração do Vitest
+  ],
+  "types": ["vitest/globals"],
+  "exclude": [
+    // ===== ARQUIVOS EXCLUÍDOS DA COMPILAÇÃO =====
+    "node_modules", // Dependências do npm
+    "**/*.test.ts", // Arquivos de teste
+    "**/*.test.tsx", // Arquivos de teste React
+    "**/*.spec.ts", // Arquivos de teste
+    "**/*.spec.tsx" // Arquivos de teste React
+  ]
+}

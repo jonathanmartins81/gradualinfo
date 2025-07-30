@@ -7,6 +7,17 @@ vi.mock('@/components/ThemeSwitcher', () => ({
   default: vi.fn(() => <div data-testid="theme-switcher">Theme Switcher</div>),
 }));
 
+// Mock do ThemeContext
+vi.mock('@/contexts/ThemeContext', () => ({
+  useTheme: vi.fn(() => ({
+    isDark: false,
+    mode: 'light',
+    toggleTheme: vi.fn(),
+    setMode: vi.fn(),
+  })),
+  ThemeProvider: ({ children }: { children: React.ReactNode }) => children,
+}));
+
 describe('Main Component', () => {
   it('should render with default props', () => {
     render(<Main />);
@@ -56,8 +67,15 @@ describe('Main Component', () => {
     const logo = screen.getByAltText('Aqua9 Logo');
     const hero = screen.getByAltText('Hero Illustration');
 
-    expect(logo).toHaveAttribute('src', '/img/logo.svg');
+    expect(logo).toHaveAttribute('src', '/img/logo-light.svg');
     expect(hero).toHaveAttribute('src', '/img/illustration.svg');
+  });
+
+  it('should use light logo by default', () => {
+    render(<Main />);
+
+    const logo = screen.getByAltText('Aqua9 Logo');
+    expect(logo).toHaveAttribute('src', '/img/logo-light.svg');
   });
 
   it('should render with all custom props', () => {

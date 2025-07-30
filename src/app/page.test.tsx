@@ -7,6 +7,17 @@ vi.mock('@/components/ThemeSwitcher', () => ({
   default: vi.fn(() => <div data-testid="theme-switcher">Theme Switcher</div>),
 }));
 
+// Mock do ThemeContext
+vi.mock('@/contexts/ThemeContext', () => ({
+  useTheme: vi.fn(() => ({
+    isDark: false,
+    mode: 'light',
+    toggleTheme: vi.fn(),
+    setMode: vi.fn(),
+  })),
+  ThemeProvider: ({ children }: { children: React.ReactNode }) => children,
+}));
+
 describe('Home Page', () => {
   it('should render without crashing', () => {
     render(<HomePage />);
@@ -30,5 +41,11 @@ describe('Home Page', () => {
     const { container } = render(<HomePage />);
     const mainElement = container.querySelector('main');
     expect(mainElement).toBeInTheDocument();
+  });
+
+  it('should use light logo by default', () => {
+    render(<HomePage />);
+    const logo = screen.getByAltText('Aqua9 Logo');
+    expect(logo).toHaveAttribute('src', '/img/logo-light.svg');
   });
 });

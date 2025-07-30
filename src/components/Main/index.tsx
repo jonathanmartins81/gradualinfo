@@ -1,4 +1,5 @@
 import ThemeSwitcher from '@/components/ThemeSwitcher';
+import { useTheme } from '@/contexts/ThemeContext';
 import Image from 'next/image';
 
 interface MainProps {
@@ -12,6 +13,11 @@ export function Main({
   description = 'Template Next.js profissional com TypeScript e SEO otimizado',
   technologies = ['Next.js', 'React', 'TypeScript'],
 }: MainProps) {
+  const { isDark } = useTheme();
+
+  // Selecionar logo baseado no tema
+  const logoSrc = isDark ? '/img/logo-dark.svg' : '/img/logo-light.svg';
+
   return (
     <main className="relative flex flex-col items-center justify-center min-h-screen p-8 text-center bg-gradient-to-br from-cyan-500 via-blue-600 to-indigo-700 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 transition-all duration-500">
       {/* Theme Switcher no canto superior direito */}
@@ -24,11 +30,11 @@ export function Main({
       </div>
 
       <Image
-        src="/img/logo.svg"
+        src={logoSrc}
         alt="Aqua9 Logo"
         width={120}
         height={64}
-        className="mb-8 filter dark:invert transition-all duration-300"
+        className="mb-8 transition-all duration-300"
         priority
       />
 

@@ -14,7 +14,7 @@ vi.mock('react', async () => {
 // Mock do console.error
 const mockConsoleError = vi
   .spyOn(console, 'error')
-  .mockImplementation(() => { });
+  .mockImplementation(() => {});
 
 describe('Error Page', () => {
   const mockError = {

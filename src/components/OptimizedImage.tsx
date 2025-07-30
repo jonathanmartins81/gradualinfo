@@ -1,3 +1,5 @@
+'use client';
+
 import Image from 'next/image';
 import { useState } from 'react';
 
@@ -79,9 +81,8 @@ export function OptimizedImage({
         alt={alt}
         width={fill ? undefined : width}
         height={fill ? undefined : height}
-        className={`transition-opacity duration-300 ${
-          isLoading ? 'opacity-0' : 'opacity-100'
-        }`}
+        className={`transition-opacity duration-300 ${isLoading ? 'opacity-0' : 'opacity-100'
+          }`}
         priority={priority}
         placeholder={placeholder}
         blurDataURL={blurDataURL}

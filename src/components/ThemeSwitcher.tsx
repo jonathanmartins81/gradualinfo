@@ -106,7 +106,7 @@ export default function ThemeSwitcher({
       className={baseClasses}
       aria-label={`Switch to ${isDark ? 'light' : 'dark'} theme`}
       title={`Switch to ${isDark ? 'light' : 'dark'} theme`}
-      data-testid="theme-switcher"
+      data-testid='theme-switcher'
     >
       {/* Ícone com animação de rotação */}
       <div
@@ -275,9 +275,10 @@ export function ThemeSwitcherWithMenu({
                 transition-colors
                 duration-200
                 ease-in-out
-                ${mode === option.value
-                  ? 'bg-cyan-50 dark:bg-cyan-900/20 text-cyan-700 dark:text-cyan-300'
-                  : 'hover:bg-gray-50 dark:hover:bg-gray-700 text-gray-700 dark:text-gray-300'
+                ${
+                  mode === option.value
+                    ? 'bg-cyan-50 dark:bg-cyan-900/20 text-cyan-700 dark:text-cyan-300'
+                    : 'hover:bg-gray-50 dark:hover:bg-gray-700 text-gray-700 dark:text-gray-300'
                 }
               `}
             >

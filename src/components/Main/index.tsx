@@ -21,7 +21,6 @@ export function Main({
 
   return (
     <main className='relative flex flex-col items-center justify-center min-h-screen p-8 text-center bg-white dark:bg-gradient-to-br dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 transition-all duration-500'>
-
       <Image
         src={logoSrc}
         alt='Aqua9 Logo'

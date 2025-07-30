@@ -4,8 +4,6 @@ import type { Metadata, Viewport } from 'next';
 import './globals.css';
 import { Providers } from './providers';
 
-
-
 export const metadata: Metadata = generateDynamicSEO('/');
 
 export const viewport: Viewport = {
@@ -25,7 +23,7 @@ export default function RootLayout({
       <head>
         <JsonLd />
       </head>
-      <body className="font-sans">
+      <body className='font-sans'>
         <Providers>
           <Navigation />
           {children}

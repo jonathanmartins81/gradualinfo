@@ -1,8 +1,10 @@
+'use client';
+
 /**
- * Componente de Demonstração - Tailwind CSS
+ * Componente de demonstração do Tailwind CSS
  *
- * Este componente demonstra as funcionalidades do Tailwind CSS
- * implementado no boilerplate, incluindo componentes customizados,
+ * Este componente mostra as principais funcionalidades do Tailwind CSS:
+ * cores, tipografia, espaçamentos, sombras, gradientes,
  * animações, responsividade e design system.
  */
 

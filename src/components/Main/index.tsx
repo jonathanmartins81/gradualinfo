@@ -12,80 +12,41 @@ export function Main({
   technologies = ['Next.js', 'React', 'TypeScript'],
 }: MainProps) {
   return (
-    <main
-      style={{
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        justifyContent: 'center',
-        minHeight: '100vh',
-        padding: '2rem',
-        textAlign: 'center',
-      }}
-    >
+    <main className="flex flex-col items-center justify-center min-h-screen p-8 text-center bg-gradient-primary">
       <Image
-        src='/img/logo-aqua9.svg'
-        alt='Aqua9 Logo'
+        src="/img/logo.svg"
+        alt="Aqua9 Logo"
         width={120}
         height={64}
-        style={{
-          marginBottom: '2rem',
-        }}
+        className="mb-8"
         priority
       />
-      <h1
-        style={{
-          fontSize: '3rem',
-          fontWeight: 'bold',
-          marginBottom: '1rem',
-          color: '#ffffff',
-        }}
-      >
+
+      <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 text-white animate-fade-in">
         {title}
       </h1>
-      <p
-        style={{
-          fontSize: '1.2rem',
-          marginBottom: '2rem',
-          color: '#e5e7eb',
-          maxWidth: '600px',
-        }}
-      >
+
+      <p className="text-lg md:text-xl mb-8 text-gray-100 max-w-2xl leading-relaxed animate-fade-in">
         {description}
       </p>
-      <div
-        style={{
-          display: 'flex',
-          flexWrap: 'wrap',
-          gap: '0.5rem',
-          justifyContent: 'center',
-          marginBottom: '3rem',
-        }}
-      >
+
+      <div className="flex flex-wrap gap-2 justify-center mb-12 animate-fade-in">
         {technologies.map((tech, index) => (
           <span
             key={index}
-            style={{
-              background: 'rgba(59, 130, 246, 0.2)',
-              color: '#60a5fa',
-              padding: '0.5rem 1rem',
-              borderRadius: '0.5rem',
-              fontSize: '0.9rem',
-              border: '1px solid rgba(59, 130, 246, 0.3)',
-            }}
+            className="badge-primary border border-primary-300/30 text-sm px-4 py-2"
           >
             {tech}
           </span>
         ))}
       </div>
+
       <Image
-        src='/img/illustration.svg'
-        alt='Hero Illustration'
+        src="/img/illustration.svg"
+        alt="Hero Illustration"
         width={300}
         height={200}
-        style={{
-          opacity: '0.8',
-        }}
+        className="opacity-80 animate-bounce-in"
       />
     </main>
   );

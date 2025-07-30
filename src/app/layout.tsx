@@ -1,10 +1,10 @@
 import { JsonLd } from '@/components/JsonLd';
 import { generateDynamicSEO } from '@/utils/SEO';
 import type { Metadata, Viewport } from 'next';
-import { Inter } from 'next/font/google';
+import './globals.css';
 import { Providers } from './providers';
 
-const inter = Inter({ subsets: ['latin'] });
+
 
 export const metadata: Metadata = generateDynamicSEO('/');
 
@@ -25,7 +25,7 @@ export default function RootLayout({
       <head>
         <JsonLd />
       </head>
-      <body className={inter.className}>
+      <body className="font-sans">
         <Providers>{children}</Providers>
       </body>
     </html>

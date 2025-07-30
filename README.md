@@ -2,6 +2,7 @@
 
 <img src="public/img/logo-gh.svg" alt="Aqua9 Logo" width="300" height="64" />
 
+</div>
 # 🚀 Aqua9 Boilerplate v2 - Next.js Professional
 
 [![Next.js](https://img.shields.io/badge/Next.js-15.4.5-black?style=flat-square&logo=next.js)](https://nextjs.org/)
@@ -23,6 +24,7 @@
 ## 🎯 **Características Principais**
 
 ### **🔒 Segurança Robusta**
+
 - ✅ **Autenticação JWT** com tokens seguros
 - ✅ **Autorização granular** por roles e permissões
 - ✅ **Proteção de rotas** automática
@@ -33,6 +35,7 @@
 - ✅ **Logs de segurança** detalhados
 
 ### **🚀 Performance Otimizada**
+
 - ✅ **Next.js 15** com App Router
 - ✅ **TypeScript** para type safety
 - ✅ **Tailwind CSS** para styling
@@ -41,6 +44,7 @@
 - ✅ **SEO otimizado** com metadata dinâmico
 
 ### **🧪 Qualidade Garantida**
+
 - ✅ **Testes unitários** com Vitest + RTL
 - ✅ **Testes E2E** com Playwright
 - ✅ **ESLint + Prettier** para qualidade
@@ -49,6 +53,7 @@
 - ✅ **CI/CD** com GitHub Actions
 
 ### **📚 Documentação Completa**
+
 - ✅ **README** detalhado
 - ✅ **Guia de segurança** completo
 - ✅ **Templates** de PR/Issue
@@ -98,17 +103,17 @@ O projeto utiliza um **design system centralizado** em `src/styles/theme.ts`:
 ```typescript
 // Paleta de cores completa
 export const colors = {
-  primary: { 50: '#eff6ff', 100: '#dbeafe', /* ... */ },
-  secondary: { 50: '#ecfdf5', 100: '#d1fae5', /* ... */ },
-  accent: { 50: '#faf5ff', 100: '#f3e8ff', /* ... */ },
+  primary: { 50: '#eff6ff', 100: '#dbeafe' /* ... */ },
+  secondary: { 50: '#ecfdf5', 100: '#d1fae5' /* ... */ },
+  accent: { 50: '#faf5ff', 100: '#f3e8ff' /* ... */ },
   // ... mais cores
 };
 
 // Tipografia padronizada
 export const typography = {
   fontFamily: { sans: ['Inter', 'sans-serif'] },
-  fontSize: { xs: '0.75rem', sm: '0.875rem', /* ... */ },
-  fontWeight: { normal: 400, medium: 500, /* ... */ },
+  fontSize: { xs: '0.75rem', sm: '0.875rem' /* ... */ },
+  fontWeight: { normal: 400, medium: 500 /* ... */ },
 };
 
 // Breakpoints responsivos
@@ -319,10 +324,7 @@ npm run security     # Verificação de segurança
 ```javascript
 // eslint.config.js
 module.exports = {
-  extends: [
-    'next/core-web-vitals',
-    'plugin:@typescript-eslint/recommended',
-  ],
+  extends: ['next/core-web-vitals', 'plugin:@typescript-eslint/recommended'],
   rules: {
     // Regras customizadas
   },
@@ -337,10 +339,10 @@ pre-commit:
   parallel: true
   commands:
     lint:
-      glob: "*.{js,jsx,ts,tsx}"
+      glob: '*.{js,jsx,ts,tsx}'
       run: npx eslint {staged_files}
     format:
-      glob: "*.{js,jsx,ts,tsx,json,md}"
+      glob: '*.{js,jsx,ts,tsx,json,md}'
       run: npx prettier --check {staged_files}
 ```
 

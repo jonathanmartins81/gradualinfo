@@ -8,9 +8,40 @@
  * todos os tokens visuais do projeto.
  */
 
-// ===== PALETA DE CORES =====
+// ===== TIPOS =====
+export type ThemeMode = 'light' | 'dark' | 'system';
+
+export interface ThemeColors {
+  // Cores base
+  background: string;
+  foreground: string;
+  card: string;
+  cardForeground: string;
+  popover: string;
+  popoverForeground: string;
+  primary: string;
+  primaryForeground: string;
+  secondary: string;
+  secondaryForeground: string;
+  muted: string;
+  mutedForeground: string;
+  accent: string;
+  accentForeground: string;
+  destructive: string;
+  destructiveForeground: string;
+  border: string;
+  input: string;
+  ring: string;
+  chart: string;
+  chart2: string;
+  chart3: string;
+  chart4: string;
+  chart5: string;
+}
+
+// ===== CORES BASE =====
 export const colors = {
-  // Cores primárias - Cyan (moderno e profissional)
+  // Cores primárias (Cyan)
   primary: {
     50: '#ecfeff',
     100: '#cffafe',
@@ -25,7 +56,7 @@ export const colors = {
     950: '#083344',
   },
 
-  // Cores secundárias - Indigo (complementar e elegante)
+  // Cores secundárias (Indigo)
   secondary: {
     50: '#eef2ff',
     100: '#e0e7ff',
@@ -40,7 +71,7 @@ export const colors = {
     950: '#1e1b4b',
   },
 
-  // Cores de acento - Amber (energético e atrativo)
+  // Cores de acento (Amber)
   accent: {
     50: '#fffbeb',
     100: '#fef3c7',
@@ -55,7 +86,7 @@ export const colors = {
     950: '#451a03',
   },
 
-  // Cores neutras - Slate (moderno e versátil)
+  // Cores neutras (Slate)
   gray: {
     50: '#f8fafc',
     100: '#f1f5f9',
@@ -70,7 +101,7 @@ export const colors = {
     950: '#020617',
   },
 
-  // Cores de estado - Success (verde)
+  // Cores de estado
   success: {
     50: '#f0fdf4',
     100: '#dcfce7',
@@ -85,22 +116,20 @@ export const colors = {
     950: '#052e16',
   },
 
-  // Cores de estado - Warning (laranja)
   warning: {
-    50: '#fff7ed',
-    100: '#ffedd5',
-    200: '#fed7aa',
-    300: '#fdba74',
-    400: '#fb923c',
-    500: '#f97316',
-    600: '#ea580c',
-    700: '#c2410c',
-    800: '#9a3412',
-    900: '#7c2d12',
-    950: '#431407',
+    50: '#fffbeb',
+    100: '#fef3c7',
+    200: '#fde68a',
+    300: '#fcd34d',
+    400: '#fbbf24',
+    500: '#f59e0b',
+    600: '#d97706',
+    700: '#b45309',
+    800: '#92400e',
+    900: '#78350f',
+    950: '#451a03',
   },
 
-  // Cores de estado - Error (vermelho)
   error: {
     50: '#fef2f2',
     100: '#fee2e2',
@@ -115,7 +144,6 @@ export const colors = {
     950: '#450a0a',
   },
 
-  // Cores de estado - Info (azul)
   info: {
     50: '#eff6ff',
     100: '#dbeafe',
@@ -131,9 +159,63 @@ export const colors = {
   },
 };
 
+// ===== TEMAS CLARO E ESCURO =====
+export const lightTheme: ThemeColors = {
+  background: '#ffffff',
+  foreground: '#0f172a',
+  card: '#ffffff',
+  cardForeground: '#0f172a',
+  popover: '#ffffff',
+  popoverForeground: '#0f172a',
+  primary: colors.primary[600],
+  primaryForeground: '#ffffff',
+  secondary: colors.secondary[600],
+  secondaryForeground: '#ffffff',
+  muted: colors.gray[100],
+  mutedForeground: colors.gray[600],
+  accent: colors.accent[500],
+  accentForeground: '#ffffff',
+  destructive: colors.error[500],
+  destructiveForeground: '#ffffff',
+  border: colors.gray[200],
+  input: colors.gray[200],
+  ring: colors.primary[500],
+  chart: colors.primary[500],
+  chart2: colors.secondary[500],
+  chart3: colors.accent[500],
+  chart4: colors.success[500],
+  chart5: colors.warning[500],
+};
+
+export const darkTheme: ThemeColors = {
+  background: '#0f172a',
+  foreground: '#f8fafc',
+  card: '#1e293b',
+  cardForeground: '#f8fafc',
+  popover: '#1e293b',
+  popoverForeground: '#f8fafc',
+  primary: colors.primary[400],
+  primaryForeground: '#0f172a',
+  secondary: colors.secondary[400],
+  secondaryForeground: '#0f172a',
+  muted: colors.gray[800],
+  mutedForeground: colors.gray[400],
+  accent: colors.accent[400],
+  accentForeground: '#0f172a',
+  destructive: colors.error[400],
+  destructiveForeground: '#0f172a',
+  border: colors.gray[700],
+  input: colors.gray[700],
+  ring: colors.primary[400],
+  chart: colors.primary[400],
+  chart2: colors.secondary[400],
+  chart3: colors.accent[400],
+  chart4: colors.success[400],
+  chart5: colors.warning[400],
+};
+
 // ===== TIPOGRAFIA =====
 export const typography = {
-  // Famílias de fontes
   fontFamily: {
     sans: [
       'Inter',
@@ -148,19 +230,13 @@ export const typography = {
       'Noto Sans',
       'sans-serif',
     ],
-    heading: [
-      'Poppins',
-      'Inter',
-      'ui-sans-serif',
-      'system-ui',
-      '-apple-system',
-      'BlinkMacSystemFont',
-      'Segoe UI',
-      'Roboto',
-      'Helvetica Neue',
-      'Arial',
-      'Noto Sans',
-      'sans-serif',
+    serif: [
+      'ui-serif',
+      'Georgia',
+      'Cambria',
+      'Times New Roman',
+      'Times',
+      'serif',
     ],
     mono: [
       'Fira Code',
@@ -173,17 +249,7 @@ export const typography = {
       'Courier New',
       'monospace',
     ],
-    serif: [
-      'ui-serif',
-      'Georgia',
-      'Cambria',
-      'Times New Roman',
-      'Times',
-      'serif',
-    ],
   },
-
-  // Tamanhos de fonte
   fontSize: {
     xs: ['0.75rem', { lineHeight: '1rem' }],
     sm: ['0.875rem', { lineHeight: '1.25rem' }],
@@ -199,8 +265,6 @@ export const typography = {
     '8xl': ['6rem', { lineHeight: '1' }],
     '9xl': ['8rem', { lineHeight: '1' }],
   },
-
-  // Pesos de fonte
   fontWeight: {
     thin: '100',
     extralight: '200',
@@ -212,8 +276,6 @@ export const typography = {
     extrabold: '800',
     black: '900',
   },
-
-  // Espaçamento entre linhas
   lineHeight: {
     none: '1',
     tight: '1.25',
@@ -226,16 +288,10 @@ export const typography = {
 
 // ===== ESPAÇAMENTOS =====
 export const spacing = {
-  // Espaçamentos base (baseado em 0.25rem = 4px)
-  px: '1px',
   0: '0',
-  0.5: '0.125rem',
   1: '0.25rem',
-  1.5: '0.375rem',
   2: '0.5rem',
-  2.5: '0.625rem',
   3: '0.75rem',
-  3.5: '0.875rem',
   4: '1rem',
   5: '1.25rem',
   6: '1.5rem',
@@ -289,6 +345,7 @@ export const borderRadius = {
 
 // ===== SHADOWS =====
 export const shadows = {
+  none: 'none',
   sm: '0 1px 2px 0 rgb(0 0 0 / 0.05)',
   base: '0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1)',
   md: '0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1)',
@@ -296,43 +353,29 @@ export const shadows = {
   xl: '0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1)',
   '2xl': '0 25px 50px -12px rgb(0 0 0 / 0.25)',
   inner: 'inset 0 2px 4px 0 rgb(0 0 0 / 0.05)',
-  none: 'none',
-
-  // Shadows customizados
   soft: '0 2px 15px -3px rgba(0, 0, 0, 0.07), 0 10px 20px -2px rgba(0, 0, 0, 0.04)',
   medium:
     '0 4px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)',
   strong:
-    '0 10px 40px -10px rgba(0, 0, 0, 0.15), 0 2px 10px -2px rgba(0, 0, 0, 0.05)',
+    '0 10px 40px -10px rgba(0, 0, 0, 0.15), 0 2px 10px -2px rgba(0, 0, 0, 0.04)',
   glow: '0 0 20px rgba(6, 182, 212, 0.3)',
-  'glow-success': '0 0 20px rgba(34, 197, 94, 0.3)',
-  'glow-warning': '0 0 20px rgba(245, 158, 11, 0.3)',
-  'glow-error': '0 0 20px rgba(239, 68, 68, 0.3)',
 };
 
 // ===== ANIMAÇÕES =====
 export const animations = {
-  // Durações
   duration: {
-    75: '75ms',
-    100: '100ms',
-    150: '150ms',
-    200: '200ms',
-    300: '300ms',
-    500: '500ms',
-    700: '700ms',
-    1000: '1000ms',
+    fast: '150ms',
+    normal: '300ms',
+    slow: '500ms',
+    slower: '700ms',
+    slowest: '1000ms',
   },
-
-  // Easing functions
   easing: {
     linear: 'linear',
     in: 'cubic-bezier(0.4, 0, 1, 1)',
     out: 'cubic-bezier(0, 0, 0.2, 1)',
     inOut: 'cubic-bezier(0.4, 0, 0.2, 1)',
   },
-
-  // Keyframes customizados
   keyframes: {
     fadeIn: {
       '0%': { opacity: '0' },
@@ -436,11 +479,19 @@ export const utils = {
 
   // Função para obter gradiente
   getGradient: (gradient: keyof typeof gradients) => gradients[gradient],
+
+  // Função para obter tema baseado no modo
+  getTheme: (mode: ThemeMode): ThemeColors => {
+    if (mode === 'dark') return darkTheme;
+    return lightTheme;
+  },
 };
 
 // ===== TEMA COMPLETO =====
 export const theme = {
   colors,
+  lightTheme,
+  darkTheme,
   typography,
   spacing,
   breakpoints,

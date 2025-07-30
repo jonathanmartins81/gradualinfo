@@ -38,14 +38,10 @@ show_progress "Verificando tipos TypeScript"
 npm run type-check > /dev/null 2>&1
 show_status "TypeScript type-check"
 
-# 3. Testes unitários com Vitest (apenas para arquivos alterados)
-show_progress "Executando testes unitários"
-if [ -n "$(git diff --cached --name-only --diff-filter=ACM | grep -E '\.(ts|tsx|js|jsx)$')" ]; then
-    npx vitest run --reporter=verbose --run --coverage=false > /dev/null 2>&1
-    show_status "Testes unitários"
-else
-    echo "${PURPLE}⏭️  Nenhum arquivo de teste alterado, pulando testes${NC}"
-fi
+# 3. Testes unitários com Vitest (OBRIGATÓRIO para todos os commits)
+show_progress "Executando testes unitários (OBRIGATÓRIO)"
+npx vitest run --reporter=verbose --run --coverage=false
+show_status "Testes unitários"
 
 # 4. Verificação de qualidade geral
 show_progress "Verificando qualidade geral do código"

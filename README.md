@@ -47,22 +47,23 @@ This project uses a modern, robust stack, carefully selected for quality, perfor
 
 ### **🔧 Development & Quality**
 
-| Tool                                                 | Purpose                   | Configuration          |
-| ---------------------------------------------------- | ------------------------- | ---------------------- |
-| [ESLint](https://eslint.org/)                        | Linting & static analysis | Strict configuration   |
-| [Prettier](https://prettier.io/)                     | Code formatting           | Consistent standards   |
-| [EditorConfig](https://editorconfig.org/)            | Editor settings           | Standardized workspace |
-| [Lefthook](https://github.com/evilmartians/lefthook) | Git hooks                 | Automated code quality |
+| Tool                                                 | Purpose                   | Configuration          | Features                                    |
+| ---------------------------------------------------- | ------------------------- | ---------------------- | ------------------------------------------- |
+| [ESLint](https://eslint.org/)                        | Linting & static analysis | Strict configuration   | 🔍 Error detection, 🎯 Best practices, ⚡ Auto-fix |
+| [Prettier](https://prettier.io/)                     | Code formatting           | Consistent standards   | 🎨 Auto-format, 📏 Consistent style, 🔄 Format on save |
+| [EditorConfig](https://editorconfig.org/)            | Editor settings           | Standardized workspace | ⚙️ Universal config, 📝 Consistent indentation, 🌍 Cross-platform |
+| [Lefthook](https://github.com/evilmartians/lefthook) | Git hooks                 | Automated code quality | 🚀 Fast execution, 🔧 Flexible config, 🎯 Pre-commit checks |
+| [Husky](https://typicode.github.io/husky/)           | Git hooks manager         | Pre-commit automation  | 🛡️ Quality gates, 🧪 Test enforcement, 📋 Commit validation |
 
 ### **🧪 Testing & Documentation**
 
-| Tool                                                  | Type            | Description                                    | Features                                    |
-| ----------------------------------------------------- | --------------- | ---------------------------------------------- | ------------------------------------------- |
-| [Vitest](https://vitest.dev/)                         | Unit tests      | Fast, modern test framework                    | ⚡ Native ESM, 🔥 Hot reload, 📊 Coverage   |
-| [React Testing Library](https://testing-library.com/) | Component tests | Focuses on user behavior                       | 🎯 User-centric, 🧪 Accessible, 🔍 Queries  |
-| [Playwright](https://playwright.dev/)                 | E2E tests       | Cross-browser automation                       | 🌐 Multi-browser, 📱 Mobile, 🎬 Recording   |
-| [@vitejs/plugin-react](https://vitejs.dev/)           | React support   | Reliable React testing                         | ⚛️ JSX support, 🔧 Fast refresh, 📦 Bundling |
-| [Storybook](https://storybook.js.org/)                | Documentation   | Isolated component development                  | 📚 Interactive docs, 🎨 Visual testing      |
+| Tool                                                  | Type            | Description                    | Features                                     |
+| ----------------------------------------------------- | --------------- | ------------------------------ | -------------------------------------------- |
+| [Vitest](https://vitest.dev/)                         | Unit tests      | Fast, modern test framework    | ⚡ Native ESM, 🔥 Hot reload, 📊 Coverage    |
+| [React Testing Library](https://testing-library.com/) | Component tests | Focuses on user behavior       | 🎯 User-centric, 🧪 Accessible, 🔍 Queries   |
+| [Playwright](https://playwright.dev/)                 | E2E tests       | Cross-browser automation       | 🌐 Multi-browser, 📱 Mobile, 🎬 Recording    |
+| [@vitejs/plugin-react](https://vitejs.dev/)           | React support   | Reliable React testing         | ⚛️ JSX support, 🔧 Fast refresh, 📦 Bundling |
+| [Storybook](https://storybook.js.org/)                | Documentation   | Isolated component development | 📚 Interactive docs, 🎨 Visual testing       |
 
 ### **🔍 SEO & Performance**
 
@@ -130,6 +131,77 @@ Each route has its own SEO configuration with:
 - Priority and update frequency
 
 For detailed documentation, see [SEO_DYNAMIC_SYSTEM.md](./SEO_DYNAMIC_SYSTEM.md).
+
+## 🛡️ Quality Gates & Test Enforcement
+
+The Aqua9 Boilerplate v2 implements **mandatory quality gates** that **prevent commits** if any test fails or quality standards are not met.
+
+### **🚫 Commit Blocking System**
+
+```
+┌─────────────────┐    ┌─────────────────┐    ┌─────────────────┐
+│   Git Commit    │───▶│  Pre-commit     │───▶│   Quality       │
+│   Attempt       │    │   Hook          │    │   Gates         │
+└─────────────────┘    └─────────────────┘    └─────────────────┘
+                                │                       │
+                                ▼                       ▼
+                       ┌─────────────────┐    ┌─────────────────┐
+                       │   Lint-staged   │    │   Test Suite    │
+                       │   (Format)      │    │   (Vitest)      │
+                       └─────────────────┘    └─────────────────┘
+                                │                       │
+                                ▼                       ▼
+                       ┌─────────────────┐    ┌─────────────────┐
+                       │   TypeScript    │    │   ESLint +      │
+                       │   Type-check    │    │   Prettier      │
+                       └─────────────────┘    └─────────────────┘
+```
+
+### **🔒 Mandatory Checks**
+
+#### **1. Lint-staged (Formatting)**
+- ✅ **Auto-format** files before commit
+- ✅ **Consistent code style** across the project
+- ✅ **Prettier integration** for formatting
+- ❌ **Blocks commit** if formatting fails
+
+#### **2. TypeScript Type-check**
+- ✅ **Static type verification**
+- ✅ **Compile-time error detection**
+- ✅ **Type safety enforcement**
+- ❌ **Blocks commit** if type errors found
+
+#### **3. Test Suite (Vitest)**
+- ✅ **All tests must pass**
+- ✅ **Unit tests execution**
+- ✅ **Component tests validation**
+- ❌ **Blocks commit** if any test fails
+
+#### **4. Code Quality (ESLint + Prettier)**
+- ✅ **Linting rules compliance**
+- ✅ **Code style validation**
+- ✅ **Best practices enforcement**
+- ❌ **Blocks commit** if quality issues found
+
+### **🎯 Benefits of Quality Gates**
+
+#### **For Developers**
+- 🛡️ **Prevents broken code** from reaching the repository
+- ⚡ **Immediate feedback** on quality issues
+- 🎯 **Enforces standards** automatically
+- 📈 **Improves code quality** over time
+
+#### **For Teams**
+- 🔒 **Consistent quality** across all contributions
+- 🚫 **No broken builds** in CI/CD
+- 📊 **Measurable standards** enforcement
+- 🎯 **Reduced code review** overhead
+
+#### **For the Project**
+- 🛡️ **Stable codebase** with fewer bugs
+- 📈 **Maintainable code** structure
+- 🚀 **Reliable deployments** without issues
+- 💰 **Reduced maintenance** costs
 
 ## 🎯 Automated Code Quality
 
@@ -235,6 +307,7 @@ The Aqua9 Boilerplate v2 implements a comprehensive **testing pyramid** ensuring
 ### **🎯 Test Types**
 
 #### **🧪 Unit Tests (Vitest + React Testing Library)**
+
 - ✅ **Fast execution** - Run in milliseconds
 - ✅ **Isolated testing** - Test individual components
 - ✅ **User behavior focus** - Test what users see and do
@@ -242,12 +315,14 @@ The Aqua9 Boilerplate v2 implements a comprehensive **testing pyramid** ensuring
 - ✅ **Coverage reports** - Track test coverage metrics
 
 #### **🔍 Integration Tests**
+
 - ✅ **Component interaction** - Test component relationships
 - ✅ **API integration** - Test data flow and state management
 - ✅ **User workflows** - Test complete user journeys
 - ✅ **Error handling** - Test error scenarios and edge cases
 
 #### **🎯 End-to-End Tests (Playwright)**
+
 - ✅ **Cross-browser testing** - Chrome, Firefox, Safari, Edge
 - ✅ **Mobile testing** - Responsive design validation
 - ✅ **Real user scenarios** - Complete user workflows
@@ -257,18 +332,21 @@ The Aqua9 Boilerplate v2 implements a comprehensive **testing pyramid** ensuring
 ### **🚀 Testing Benefits**
 
 #### **For Developers**
+
 - ⚡ **Fast feedback** - Immediate test results
 - 🔍 **Bug prevention** - Catch issues early
 - 🎯 **Confidence** - Safe refactoring and changes
 - 📚 **Documentation** - Tests as living documentation
 
 #### **For Users**
+
 - 🛡️ **Reliability** - Stable, bug-free application
 - ⚡ **Performance** - Optimized user experience
 - 🎯 **Usability** - Tested user workflows
 - 📱 **Accessibility** - Inclusive design for all users
 
 #### **For Business**
+
 - 💰 **Cost reduction** - Fewer bugs in production
 - 🚀 **Faster delivery** - Confident deployments
 - 📈 **Quality metrics** - Measurable quality standards
@@ -338,15 +416,15 @@ The page will reload as you edit files.
 
 ### **🧪 Tests**
 
-| Command                 | Type     | Description                    | Environment |
-| ----------------------- | -------- | ------------------------------ | ----------- |
-| `npm run test`          | Unit     | Full test run                  | Development |
-| `npm run test:watch`    | Unit     | Dev mode (watch)               | Development |
-| `npm run test:ci`       | Unit     | Sequential testing             | CI/CD       |
-| `npm run test:coverage` | Unit     | Detailed coverage report       | CI/CD       |
-| `npm run test:e2e`      | E2E      | Playwright end-to-end tests    | Development |
-| `npm run test:e2e:ui`   | E2E      | Playwright with UI mode        | Development |
-| `npm run test:e2e:ci`   | E2E      | E2E tests for CI/CD            | CI/CD       |
+| Command                 | Type | Description                 | Environment |
+| ----------------------- | ---- | --------------------------- | ----------- |
+| `npm run test`          | Unit | Full test run               | Development |
+| `npm run test:watch`    | Unit | Dev mode (watch)            | Development |
+| `npm run test:ci`       | Unit | Sequential testing          | CI/CD       |
+| `npm run test:coverage` | Unit | Detailed coverage report    | CI/CD       |
+| `npm run test:e2e`      | E2E  | Playwright end-to-end tests | Development |
+| `npm run test:e2e:ui`   | E2E  | Playwright with UI mode     | Development |
+| `npm run test:e2e:ci`   | E2E  | E2E tests for CI/CD         | CI/CD       |
 
 ### **📚 Documentation**
 

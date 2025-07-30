@@ -6,7 +6,7 @@
  * animações, responsividade e design system.
  */
 
-import { DynamicSEO } from '@/components/DynamicSEO';
+import { DynamicSEO } from '@/components';
 import TailwindDemo from '@/components/TailwindDemo';
 import { generateDynamicSEO } from '@/utils/SEO';
 import type { Metadata } from 'next';

@@ -1,4 +1,4 @@
-import { DynamicSEO } from '@/components/DynamicSEO';
+import { DynamicSEO } from '@/components';
 import ThemeSwitcher, {
   CompactThemeSwitcher,
   ThemeSwitcherWithMenu,

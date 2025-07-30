@@ -11,7 +11,7 @@
  * - Structured data para projetos
  */
 
-import { DynamicSEO } from '@/components/DynamicSEO';
+import { DynamicSEO } from '@/components';
 import { generateDynamicSEO } from '@/utils/SEO';
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';

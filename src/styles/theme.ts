@@ -403,19 +403,6 @@ export const zIndex = {
   tooltip: 1800,
 };
 
-// ===== TEMA COMPLETO =====
-export const theme = {
-  colors,
-  typography,
-  spacing,
-  breakpoints,
-  borderRadius,
-  shadows,
-  animations,
-  gradients,
-  zIndex,
-};
-
 // ===== UTILITÁRIOS =====
 export const utils = {
   // Função para obter cor com opacidade
@@ -449,6 +436,20 @@ export const utils = {
 
   // Função para obter gradiente
   getGradient: (gradient: keyof typeof gradients) => gradients[gradient],
+};
+
+// ===== TEMA COMPLETO =====
+export const theme = {
+  colors,
+  typography,
+  spacing,
+  breakpoints,
+  borderRadius,
+  shadows,
+  animations,
+  gradients,
+  zIndex,
+  utils,
 };
 
 // ===== EXPORTS =====

@@ -2,9 +2,6 @@
 
 <img src="public/img/logo-gh.svg" alt="Aqua9 Logo" width="300" height="64" />
 
-</div>
-# 🚀 Aqua9 Boilerplate v2 - Next.js Professional
-
 [![Next.js](https://img.shields.io/badge/Next.js-15.4.5-black?style=flat-square&logo=next.js)](https://nextjs.org/)
 [![React](https://img.shields.io/badge/React-18.2.0-blue?style=flat-square&logo=react)](https://reactjs.org/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.3.3-blue?style=flat-square&logo=typescript)](https://www.typescriptlang.org/)
@@ -16,6 +13,10 @@
 [![Code Quality](https://img.shields.io/badge/Code%20Quality-A%2B-brightgreen?style=flat-square)](https://github.com/jonathanmartins81/boilerplate_aqua9_v2)
 [![Security](https://img.shields.io/badge/Security-Audit%20Passed-brightgreen?style=flat-square)](https://github.com/jonathanmartins81/boilerplate_aqua9_v2)
 [![E2E Tests](https://img.shields.io/badge/E2E%20Tests-Passing-brightgreen?style=flat-square)](https://github.com/jonathanmartins81/boilerplate_aqua9_v2)
+
+</div>
+
+# 🚀 Aqua9 Boilerplate v2 - Next.js Professional
 
 > **Boilerplate Next.js profissional** com foco em **qualidade**, **segurança**, **performance** e **escalabilidade**. Ideal para times que buscam uma base sólida e moderna para aplicações web.
 

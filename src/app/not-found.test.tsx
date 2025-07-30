@@ -41,8 +41,10 @@ describe('NotFound Page', () => {
 
     const container = screen.getByText('404').closest('div')?.parentElement;
     expect(container).toBeInTheDocument();
-    expect(container).toHaveClass('min-h-screen');
-    expect(container).toHaveClass('justify-center');
+    // Verificar se o container pai tem as classes corretas
+    const parentContainer = container?.parentElement;
+    expect(parentContainer).toHaveClass('min-h-screen');
+    expect(parentContainer).toHaveClass('justify-center');
   });
 
   it('should display Aqua9 branding', () => {

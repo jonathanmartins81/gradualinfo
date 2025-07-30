@@ -1,7 +1,15 @@
 import { describe, expect, it } from 'vitest';
 import theme from './theme';
 
-const { colors, typography, spacing, breakpoints, borderRadius, shadows, utils } = theme;
+const {
+  colors,
+  typography,
+  spacing,
+  breakpoints,
+  borderRadius,
+  shadows,
+  utils,
+} = theme;
 
 describe('Design System', () => {
   describe('Colors', () => {

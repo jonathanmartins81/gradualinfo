@@ -32,7 +32,9 @@ export default function LoginPage() {
       }
 
       // Salvar token no localStorage
-      localStorage.setItem('authToken', data.token);
+      if (typeof window !== 'undefined') {
+        localStorage.setItem('authToken', data.token);
+      }
 
       // Redirecionar para dashboard
       router.push('/dashboard');

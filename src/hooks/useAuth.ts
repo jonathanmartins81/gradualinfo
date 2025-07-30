@@ -29,7 +29,8 @@ export function useAuth() {
 
   // Verificar autenticação
   const checkAuth = useCallback(async () => {
-    const token = localStorage.getItem('authToken');
+    const token =
+      typeof window !== 'undefined' ? localStorage.getItem('authToken') : null;
 
     if (!token) {
       setAuthState({
@@ -60,8 +61,10 @@ export function useAuth() {
         isAuthenticated: true,
         error: null,
       });
-    } catch (error) {
-      localStorage.removeItem('authToken');
+    } catch {
+      if (typeof window !== 'undefined') {
+        localStorage.removeItem('authToken');
+      }
       setAuthState({
         user: null,
         isLoading: false,
@@ -90,7 +93,9 @@ export function useAuth() {
         throw new Error(data.message || 'Erro no login');
       }
 
-      localStorage.setItem('authToken', data.token);
+      if (typeof window !== 'undefined') {
+        localStorage.setItem('authToken', data.token);
+      }
 
       setAuthState({
         user: data.user,
@@ -114,7 +119,9 @@ export function useAuth() {
 
   // Logout
   const logout = useCallback(() => {
-    localStorage.removeItem('authToken');
+    if (typeof window !== 'undefined') {
+      localStorage.removeItem('authToken');
+    }
     setAuthState({
       user: null,
       isLoading: false,

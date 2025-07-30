@@ -20,7 +20,10 @@ export default function DashboardPage() {
 
   useEffect(() => {
     const checkAuth = async () => {
-      const token = localStorage.getItem('authToken');
+      const token =
+        typeof window !== 'undefined'
+          ? localStorage.getItem('authToken')
+          : null;
 
       if (!token) {
         router.push('/login');
@@ -40,9 +43,11 @@ export default function DashboardPage() {
 
         const userData = await response.json();
         setUser(userData);
-      } catch (err) {
+      } catch {
         setError('Erro na autenticação');
-        localStorage.removeItem('authToken');
+        if (typeof window !== 'undefined') {
+          localStorage.removeItem('authToken');
+        }
         router.push('/login');
       } finally {
         setIsLoading(false);
@@ -53,7 +58,9 @@ export default function DashboardPage() {
   }, [router]);
 
   const handleLogout = () => {
-    localStorage.removeItem('authToken');
+    if (typeof window !== 'undefined') {
+      localStorage.removeItem('authToken');
+    }
     router.push('/login');
   };
 

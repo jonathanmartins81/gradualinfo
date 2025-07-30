@@ -375,11 +375,11 @@ import { protectAPI } from '@/lib/auth';
 
 export async function GET(request: NextRequest) {
   const { user, isAuthorized } = await protectAPI(request, '/api/admin/users');
-  
+
   if (!isAuthorized) {
     return new NextResponse('Unauthorized', { status: 403 });
   }
-  
+
   // Lógica da API
 }
 ```
@@ -391,11 +391,11 @@ import { useAuth } from '@/hooks/useAuth';
 
 export default function MyComponent() {
   const { user, hasPermission } = useAuth();
-  
+
   if (hasPermission('write:posts')) {
     return <CreatePostButton />;
   }
-  
+
   return <ReadOnlyView />;
 }
 ```
@@ -521,7 +521,7 @@ O sistema de segurança está **100% implementado** e pronto para uso em produç
 
 ---
 
-**Desenvolvido por:** Jonathan Simão  
-**Empresa:** Aqua9  
-**Data:** $(date)  
-**Versão:** 2.0.0 
+**Desenvolvido por:** Jonathan Simão
+**Empresa:** Aqua9
+**Data:** $(date)
+**Versão:** 2.0.0

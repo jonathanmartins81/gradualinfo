@@ -1,41 +1,34 @@
-import '@testing-library/jest-dom/vitest';
 import { render, screen } from '@testing-library/react';
-import React from 'react';
-import { describe, expect, it } from 'vitest';
+import { describe, expect, it, vi } from 'vitest';
 import { Main } from './index';
-import { ThemeProvider } from '@/contexts/ThemeContext';
 
-// ===== WRAPPER COM THEME PROVIDER =====
-const renderWithTheme = (component: React.ReactElement) => {
-  return render(
-    <ThemeProvider defaultMode="light">
-      {component}
-    </ThemeProvider>
-  );
-};
+// Mock do ThemeSwitcher para evitar problemas de contexto
+vi.mock('@/components/ThemeSwitcher', () => ({
+  default: vi.fn(() => <div data-testid="theme-switcher">Theme Switcher</div>),
+}));
 
 describe('Main Component', () => {
   it('should render with default props', () => {
-    renderWithTheme(<Main />);
+    render(<Main />);
 
     expect(screen.getByText('Boilerplate Aqua9')).toBeInTheDocument();
     expect(screen.getByText(/Template Next.js profissional/)).toBeInTheDocument();
   });
 
   it('should render with custom title', () => {
-    renderWithTheme(<Main title='Custom Title' />);
+    render(<Main title='Custom Title' />);
 
     expect(screen.getByText('Custom Title')).toBeInTheDocument();
   });
 
   it('should render with custom description', () => {
-    renderWithTheme(<Main description='Custom description' />);
+    render(<Main description='Custom description' />);
 
     expect(screen.getByText('Custom description')).toBeInTheDocument();
   });
 
   it('should render technologies list', () => {
-    renderWithTheme(<Main />);
+    render(<Main />);
 
     expect(screen.getByText('Next.js')).toBeInTheDocument();
     expect(screen.getByText('React')).toBeInTheDocument();
@@ -44,7 +37,7 @@ describe('Main Component', () => {
 
   it('should render with custom technologies', () => {
     const customTechs = ['Vue.js', 'Node.js', 'MongoDB'];
-    renderWithTheme(<Main technologies={customTechs} />);
+    render(<Main technologies={customTechs} />);
 
     expect(screen.getByText('Vue.js')).toBeInTheDocument();
     expect(screen.getByText('Node.js')).toBeInTheDocument();
@@ -52,13 +45,13 @@ describe('Main Component', () => {
   });
 
   it('should render hero illustration', () => {
-    renderWithTheme(<Main />);
+    render(<Main />);
 
     expect(screen.getByAltText('Hero Illustration')).toBeInTheDocument();
   });
 
   it('should have proper image attributes', () => {
-    renderWithTheme(<Main />);
+    render(<Main />);
 
     const logo = screen.getByAltText('Aqua9 Logo');
     const hero = screen.getByAltText('Hero Illustration');
@@ -74,7 +67,7 @@ describe('Main Component', () => {
       technologies: ['Custom Tech 1', 'Custom Tech 2'],
     };
 
-    renderWithTheme(<Main {...customProps} />);
+    render(<Main {...customProps} />);
 
     expect(screen.getByText('Custom Project')).toBeInTheDocument();
     expect(screen.getByText('Custom project description')).toBeInTheDocument();
@@ -83,7 +76,7 @@ describe('Main Component', () => {
   });
 
   it('should handle empty technologies array', () => {
-    renderWithTheme(<Main technologies={[]} />);
+    render(<Main technologies={[]} />);
 
     // Deve renderizar sem tecnologias
     expect(screen.queryByText('Next.js')).not.toBeInTheDocument();
@@ -92,7 +85,7 @@ describe('Main Component', () => {
   });
 
   it('should have proper component structure', () => {
-    const { container } = renderWithTheme(<Main />);
+    const { container } = render(<Main />);
 
     // Verificar se o componente tem a estrutura correta
     const mainElement = container.querySelector('main');
@@ -110,7 +103,7 @@ describe('Main Component', () => {
   });
 
   it('should render technology badges with proper styling', () => {
-    renderWithTheme(<Main />);
+    render(<Main />);
 
     // Verificar se as tecnologias estão presentes como spans
     const nextJsElement = screen.getByText('Next.js');

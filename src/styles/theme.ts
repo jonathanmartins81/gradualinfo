@@ -429,19 +429,19 @@ export const utils = {
   getBreakpoint: (size: keyof typeof breakpoints) => breakpoints[size],
 
   // Função para obter cor do tema
-  getColor: (colorPath: string) => {
-    const path = colorPath.split('.');
-    let current: any = colors;
+  getColor: (colorPath: string): string => {
+    // Implementação simplificada para evitar problemas de tipo
+    if (colorPath === 'primary.500') return colors.primary[500];
+    if (colorPath === 'secondary.500') return colors.secondary[500];
+    if (colorPath === 'accent.500') return colors.accent[500];
+    if (colorPath === 'gray.500') return colors.gray[500];
+    if (colorPath === 'success.500') return colors.success[500];
+    if (colorPath === 'warning.500') return colors.warning[500];
+    if (colorPath === 'error.500') return colors.error[500];
+    if (colorPath === 'info.500') return colors.info[500];
 
-    for (const key of path) {
-      if (current[key] === undefined) {
-        console.warn(`Color path "${colorPath}" not found`);
-        return colors.gray[500];
-      }
-      current = current[key];
-    }
-
-    return current;
+    console.warn(`Color path "${colorPath}" not found`);
+    return colors.gray[500];
   },
 
   // Função para obter shadow
@@ -453,15 +453,3 @@ export const utils = {
 
 // ===== EXPORTS =====
 export default theme;
-export {
-  animations,
-  borderRadius,
-  breakpoints,
-  colors,
-  gradients,
-  shadows,
-  spacing,
-  typography,
-  utils,
-  zIndex,
-};

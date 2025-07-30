@@ -56,7 +56,7 @@ describe('Main Component', () => {
     const logo = screen.getByAltText('Aqua9 Logo');
     const hero = screen.getByAltText('Hero Illustration');
 
-    expect(logo).toHaveAttribute('src', '/img/logo-aqua9.svg');
+    expect(logo).toHaveAttribute('src', '/img/logo.svg');
     expect(hero).toHaveAttribute('src', '/img/illustration.svg');
   });
 

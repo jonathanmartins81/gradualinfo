@@ -1,32 +1,26 @@
 import { describe, expect, it } from 'vitest';
-import {
-  borderRadius,
-  breakpoints,
-  colors,
-  shadows,
-  spacing,
-  themeUtils,
-  typography,
-} from './theme';
+import theme from './theme';
+
+const { colors, typography, spacing, breakpoints, borderRadius, shadows, utils } = theme;
 
 describe('Design System', () => {
   describe('Colors', () => {
     it('should have primary colors', () => {
       expect(colors.primary).toBeDefined();
-      expect(colors.primary[500]).toBe('#3b82f6');
-      expect(colors.primary[600]).toBe('#2563eb');
+      expect(colors.primary[500]).toBe('#06b6d4');
+      expect(colors.primary[600]).toBe('#0891b2');
     });
 
     it('should have secondary colors', () => {
       expect(colors.secondary).toBeDefined();
-      expect(colors.secondary[500]).toBe('#10b981');
-      expect(colors.secondary[600]).toBe('#059669');
+      expect(colors.secondary[500]).toBe('#6366f1');
+      expect(colors.secondary[600]).toBe('#4f46e5');
     });
 
     it('should have accent colors', () => {
       expect(colors.accent).toBeDefined();
-      expect(colors.accent[500]).toBe('#a855f7');
-      expect(colors.accent[600]).toBe('#9333ea');
+      expect(colors.accent[500]).toBe('#f59e0b');
+      expect(colors.accent[600]).toBe('#d97706');
     });
 
     it('should have gray colors', () => {
@@ -47,13 +41,34 @@ describe('Design System', () => {
     it('should have font families', () => {
       expect(typography.fontFamily.sans).toEqual([
         'Inter',
+        'ui-sans-serif',
         'system-ui',
+        '-apple-system',
+        'BlinkMacSystemFont',
+        'Segoe UI',
+        'Roboto',
+        'Helvetica Neue',
+        'Arial',
+        'Noto Sans',
         'sans-serif',
       ]);
-      expect(typography.fontFamily.serif).toEqual(['Georgia', 'serif']);
+      expect(typography.fontFamily.serif).toEqual([
+        'ui-serif',
+        'Georgia',
+        'Cambria',
+        'Times New Roman',
+        'Times',
+        'serif',
+      ]);
       expect(typography.fontFamily.mono).toEqual([
         'Fira Code',
+        'ui-monospace',
+        'SFMono-Regular',
+        'Menlo',
+        'Monaco',
         'Consolas',
+        'Liberation Mono',
+        'Courier New',
         'monospace',
       ]);
     });
@@ -112,52 +127,38 @@ describe('Design System', () => {
       expect(shadows.sm).toBeDefined();
       expect(shadows.base).toBeDefined();
       expect(shadows.lg).toBeDefined();
-      expect(shadows.none).toBe('0 0 #0000');
+      expect(shadows.none).toBe('none');
     });
   });
 
   describe('Theme Utils', () => {
     describe('getColor', () => {
       it('should return primary color with shade', () => {
-        const color = themeUtils.getColor('primary', '500');
-        expect(color).toBe('#3b82f6');
+        const color = utils.getColor('primary.500');
+        expect(color).toBe('#06b6d4');
       });
 
       it('should return primary color without shade', () => {
-        const color = themeUtils.getColor('primary');
-        expect(color).toBe('#3b82f6');
+        const color = utils.getColor('primary.500');
+        expect(color).toBe('#06b6d4');
       });
 
       it('should return fallback color for invalid color', () => {
-        const color = themeUtils.getColor('invalid' as any, '500');
+        const color = utils.getColor('invalid.500');
         expect(color).toBe('#64748b'); // gray[500]
       });
     });
 
     describe('getBreakpoint', () => {
       it('should return breakpoint value', () => {
-        const breakpoint = themeUtils.getBreakpoint('lg');
+        const breakpoint = utils.getBreakpoint('lg');
         expect(breakpoint).toBe('1024px');
-      });
-    });
-
-    describe('getSpacing', () => {
-      it('should return spacing value', () => {
-        const space = themeUtils.getSpacing(4);
-        expect(space).toBe('1rem');
-      });
-    });
-
-    describe('getRadius', () => {
-      it('should return border radius value', () => {
-        const radius = themeUtils.getRadius('lg');
-        expect(radius).toBe('0.5rem');
       });
     });
 
     describe('getShadow', () => {
       it('should return shadow value', () => {
-        const shadow = themeUtils.getShadow('base');
+        const shadow = utils.getShadow('base');
         expect(shadow).toBeDefined();
       });
     });

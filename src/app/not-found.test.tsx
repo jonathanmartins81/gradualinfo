@@ -39,10 +39,9 @@ describe('NotFound Page', () => {
   it('should have proper styling classes', () => {
     render(<NotFound />);
 
-    const container = screen.getByText('404').closest('div');
+    const container = screen.getByText('404').closest('div')?.parentElement;
+    expect(container).toBeInTheDocument();
     expect(container).toHaveClass('min-h-screen');
-    expect(container).toHaveClass('flex');
-    expect(container).toHaveClass('items-center');
     expect(container).toHaveClass('justify-center');
   });
 

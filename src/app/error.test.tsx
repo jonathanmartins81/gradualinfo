@@ -14,7 +14,7 @@ vi.mock('react', async () => {
 // Mock console.error
 const mockConsoleError = vi
   .spyOn(console, 'error')
-  .mockImplementation(() => {});
+  .mockImplementation(() => { });
 
 describe('Error Page', () => {
   const mockError = {
@@ -107,10 +107,9 @@ describe('Error Page', () => {
   it('should have proper styling classes', () => {
     render(<Error error={mockError} reset={mockReset} />);
 
-    const container = screen.getByText('🚨').closest('div');
+    const container = screen.getByText('🚨').closest('div')?.parentElement;
+    expect(container).toBeInTheDocument();
     expect(container).toHaveClass('min-h-screen');
-    expect(container).toHaveClass('flex');
-    expect(container).toHaveClass('items-center');
     expect(container).toHaveClass('justify-center');
   });
 

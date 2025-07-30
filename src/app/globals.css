@@ -232,21 +232,7 @@
   }
 
   /* ===== ANIMAÇÕES ===== */
-  .animate-fade-in {
-    @apply animate-fade-in;
-  }
-
-  .animate-slide-in {
-    @apply animate-slide-in;
-  }
-
-  .animate-bounce-in {
-    @apply animate-bounce-in;
-  }
-
-  .animate-scale-in {
-    @apply animate-scale-in;
-  }
+  /* As animações são definidas no tailwind.config.ts e não precisam de classes customizadas aqui */
 
   /* ===== UTILITÁRIOS DE LAYOUT ===== */
   .flex-center {

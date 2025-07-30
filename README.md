@@ -1,119 +1,119 @@
-# 🚀 Aqua9 Boilerplate - Professional Next.js
+# 🚀 Aqua9 Boilerplate - Next.js Profissional
 
 <div align="center">
 
 <img src="public/img/logo-gh.svg" alt="Aqua9 Logo" width="300" height="64" />
 
-**Modern Next.js template optimized for professional projects by Aqua9**
+**Template Next.js moderno otimizado para projetos profissionais pela Aqua9**
 
 [![Build Status](https://github.com/aqua9/boilerplate_aqua9_v2/workflows/ci/badge.svg)](https://github.com/aqua9/boilerplate_aqua9_v2/actions)
 [![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=flat-square&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
 [![Next.js](https://img.shields.io/badge/Next.js-000000?style=flat-square&logo=next.js&logoColor=white)](https://nextjs.org/)
 
-**Developed by**: [Jonathan Simão](https://aqua9.com.br)
+**Desenvolvido por**: [Jonathan Simão](https://aqua9.com.br)
 **Website**: [aqua9.com.br](https://aqua9.com.br)
-**Version**: 2.0.0
+**Versão**: 2.0.0
 
 </div>
 
 ---
 
-## 📋 About the Project
+## 📋 Sobre o Projeto
 
-This is a professional Next.js boilerplate v2 developed by **Aqua9** to accelerate the creation of modern web projects. The template includes best development practices, code quality tools, automated testing, SEO optimization, and optimized production settings.
+Este é um boilerplate Next.js profissional v2 desenvolvido pela **Aqua9** para acelerar a criação de projetos web modernos. O template inclui as melhores práticas de desenvolvimento, ferramentas de qualidade de código, testes automatizados, otimização de SEO e configurações otimizadas para produção.
 
-### ✨ **Main Features**
+### ✨ **Principais Funcionalidades**
 
-- ⚡ **Optimized performance** with Next.js 15 and App Router
-- 🎨 **Design system** using inline styles and CSS modules
-- 🔍 **Dynamic SEO system** with Open Graph and Twitter Cards
-- 📊 **Complete analytics** with PostHog and Sentry
-- 🧪 **Automated testing** with Jest and React Testing Library
-- 📚 **Documentation** via Storybook
-- 🚀 **Deploy ready** for Vercel and other platforms
-- 🎯 **Automated, standardized code quality**
+- ⚡ **Performance otimizada** com Next.js 15 e App Router
+- 🎨 **Sistema de design** usando estilos inline e CSS modules
+- 🔍 **Sistema SEO dinâmico** com Open Graph e Twitter Cards
+- 📊 **Analytics completo** com PostHog e Sentry
+- 🧪 **Testes automatizados** com Jest e React Testing Library
+- 📚 **Documentação** via Storybook
+- 🚀 **Pronto para deploy** no Vercel e outras plataformas
+- 🎯 **Qualidade de código automatizada e padronizada**
 
-## 🛠️ Technology Stack
+## 🛠️ Stack Tecnológica
 
-This project uses a modern, robust stack, carefully selected for quality, performance and scalability.
+Este projeto utiliza uma stack moderna e robusta, cuidadosamente selecionada para qualidade, performance e escalabilidade.
 
-### **🎯 Core Framework**
+### **🎯 Framework Principal**
 
-| Technology                                    | Version | Description                             |
-| --------------------------------------------- | ------- | --------------------------------------- |
-| [Next.js](https://nextjs.org/)                | 15.x    | React framework with App Router and SSR |
-| [React](https://reactjs.org/)                 | 19.x    | JavaScript library for UIs              |
-| [TypeScript](https://www.typescriptlang.org/) | 5.x     | Static typing for JavaScript            |
+| Tecnologia                                    | Versão | Descrição                             |
+| --------------------------------------------- | ------ | ------------------------------------- |
+| [Next.js](https://nextjs.org/)                | 15.x   | Framework React com App Router e SSR |
+| [React](https://reactjs.org/)                 | 19.x   | Biblioteca JavaScript para UIs       |
+| [TypeScript](https://www.typescriptlang.org/) | 5.x    | Tipagem estática para JavaScript     |
 
-### **🔧 Development & Quality**
+### **🔧 Desenvolvimento & Qualidade**
 
-| Tool                                                 | Purpose                   | Configuration          | Features                                                          |
+| Ferramenta                                           | Propósito                 | Configuração           | Funcionalidades                                                   |
 | ---------------------------------------------------- | ------------------------- | ---------------------- | ----------------------------------------------------------------- |
-| [ESLint](https://eslint.org/)                        | Linting & static analysis | Strict configuration   | 🔍 Error detection, 🎯 Best practices, ⚡ Auto-fix                |
-| [Prettier](https://prettier.io/)                     | Code formatting           | Consistent standards   | 🎨 Auto-format, 📏 Consistent style, 🔄 Format on save            |
-| [EditorConfig](https://editorconfig.org/)            | Editor settings           | Standardized workspace | ⚙️ Universal config, 📝 Consistent indentation, 🌍 Cross-platform |
-| [Lefthook](https://github.com/evilmartians/lefthook) | Git hooks                 | Automated code quality | 🚀 Fast execution, 🔧 Flexible config, 🎯 Pre-commit checks       |
-| [Husky](https://typicode.github.io/husky/)           | Git hooks manager         | Pre-commit automation  | 🛡️ Quality gates, 🧪 Test enforcement, 📋 Commit validation       |
+| [ESLint](https://eslint.org/)                        | Linting & análise estática | Configuração estrita   | 🔍 Detecção de erros, 🎯 Melhores práticas, ⚡ Auto-correção      |
+| [Prettier](https://prettier.io/)                     | Formatação de código      | Padrões consistentes   | 🎨 Auto-formatação, 📏 Estilo consistente, 🔄 Formatar ao salvar  |
+| [EditorConfig](https://editorconfig.org/)            | Configurações do editor   | Workspace padronizado  | ⚙️ Config universal, 📝 Indentação consistente, 🌍 Cross-platform |
+| [Lefthook](https://github.com/evilmartians/lefthook) | Git hooks                 | Qualidade automatizada | 🚀 Execução rápida, 🔧 Config flexível, 🎯 Checks pré-commit      |
+| [Husky](https://typicode.github.io/husky/)           | Gerenciador de git hooks  | Automação pré-commit   | 🛡️ Gates de qualidade, 🧪 Forçar testes, 📋 Validação de commits |
 
-### **🧪 Testing & Documentation**
+### **🧪 Testes & Documentação**
 
-| Tool                                                     | Type            | Description                    | Features                                     |
+| Ferramenta                                               | Tipo            | Descrição                      | Funcionalidades                               |
 | -------------------------------------------------------- | --------------- | ------------------------------ | -------------------------------------------- |
-| [Vitest](https://vitest.dev/)                            | Unit tests      | Fast, modern test framework    | ⚡ Native ESM, 🔥 Hot reload, 📊 Coverage    |
-| [React Testing Library](https://testing-library.com/)    | Component tests | Focuses on user behavior       | 🎯 User-centric, 🧪 Accessible, 🔍 Queries   |
-| [Playwright](https://playwright.dev/)                    | E2E tests       | Cross-browser automation       | 🌐 Multi-browser, 📱 Mobile, 🎬 Recording    |
-| [@vitejs/plugin-react](https://vitejs.dev/)              | React support   | Reliable React testing         | ⚛️ JSX support, 🔧 Fast refresh, 📦 Bundling |
-| [Storybook](https://storybook.js.org/)                   | Documentation   | Isolated component development | 📚 Interactive docs, 🎨 Visual testing       |
-| [@vitest/coverage-v8](https://vitest.dev/guide/coverage) | Coverage        | Test coverage reporting        | 📊 Detailed reports, 🎯 Coverage thresholds  |
+| [Vitest](https://vitest.dev/)                            | Testes unitários | Framework de testes rápido e moderno | ⚡ ESM nativo, 🔥 Hot reload, 📊 Cobertura    |
+| [React Testing Library](https://testing-library.com/)    | Testes de componentes | Foca no comportamento do usuário | 🎯 Centrado no usuário, 🧪 Acessível, 🔍 Queries |
+| [Playwright](https://playwright.dev/)                    | Testes E2E      | Automação cross-browser        | 🌐 Multi-browser, 📱 Mobile, 🎬 Gravação     |
+| [@vitejs/plugin-react](https://vitejs.dev/)              | Suporte React   | Testes React confiáveis        | ⚛️ Suporte JSX, 🔧 Fast refresh, 📦 Bundling |
+| [Storybook](https://storybook.js.org/)                   | Documentação    | Desenvolvimento isolado de componentes | 📚 Docs interativos, 🎨 Testes visuais       |
+| [@vitest/coverage-v8](https://vitest.dev/guide/coverage) | Cobertura       | Relatórios de cobertura de testes | 📊 Relatórios detalhados, 🎯 Thresholds de cobertura |
 
 ### **🔍 SEO & Performance**
 
-| Technology                                                                             | Purpose          | Features                     |
+| Tecnologia                                                                             | Propósito        | Funcionalidades              |
 | -------------------------------------------------------------------------------------- | ---------------- | ---------------------------- |
-| [Dynamic SEO](https://nextjs.org/docs/app/api-reference/functions/generate-metadata)   | SEO Optimization | Open Graph, Twitter Cards    |
-| [JSON-LD](https://schema.org/)                                                         | Structured Data  | Rich snippets, Schema.org    |
-| [Sitemap](https://nextjs.org/docs/app/api-reference/file-conventions/metadata/sitemap) | Search Indexing  | Automatic sitemap generation |
+| [Dynamic SEO](https://nextjs.org/docs/app/api-reference/functions/generate-metadata)   | Otimização SEO   | Open Graph, Twitter Cards    |
+| [JSON-LD](https://schema.org/)                                                         | Dados Estruturados | Rich snippets, Schema.org    |
+| [Sitemap](https://nextjs.org/docs/app/api-reference/file-conventions/metadata/sitemap) | Indexação de Busca | Geração automática de sitemap |
 
-### **📊 Analytics & Monitoring**
+### **📊 Analytics & Monitoramento**
 
-| Service                                  | Functionality             | Integration |
-| ---------------------------------------- | ------------------------- | ----------- |
-| [PostHog](https://posthog.com/)          | Analytics & Feature Flags | Automatic   |
-| [Sentry](https://sentry.io/)             | Error monitoring          | Real-time   |
-| [Better Stack](https://betterstack.com/) | Logs & Observability      | Centralized |
+| Serviço                                  | Funcionalidade            | Integração |
+| ---------------------------------------- | ------------------------- | ---------- |
+| [PostHog](https://posthog.com/)          | Analytics & Feature Flags | Automática |
+| [Sentry](https://sentry.io/)             | Monitoramento de erros    | Tempo real |
+| [Better Stack](https://betterstack.com/) | Logs & Observabilidade    | Centralizada |
 
-### **🔒 Security & Quality**
+### **🔒 Segurança & Qualidade**
 
-| Tool                                                 | Protection          | Benefit                 |
-| ---------------------------------------------------- | ------------------- | ----------------------- |
-| [Husky](https://typicode.github.io/husky/)           | Git hooks           | Code quality automation |
-| [Lefthook](https://github.com/evilmartians/lefthook) | Git hooks manager   | Automated workflows     |
-| [Knip](https://github.com/webpro/knip)               | Dependency analysis | Clean dependencies      |
+| Ferramenta                                             | Proteção           | Benefício               |
+| ------------------------------------------------------ | ------------------ | ----------------------- |
+| [Husky](https://typicode.github.io/husky/)             | Git hooks          | Automação de qualidade de código |
+| [Lefthook](https://github.com/evilmartians/lefthook)   | Gerenciador de git hooks | Workflows automatizados |
+| [Knip](https://github.com/webpro/knip)                 | Análise de dependências | Dependências limpas     |
 
-## 🔍 Dynamic SEO System
+## 🔍 Sistema SEO Dinâmico
 
-The Aqua9 Boilerplate v2 includes a comprehensive dynamic SEO system that automatically optimizes your pages for search engines and social media sharing.
+O Boilerplate Aqua9 v2 inclui um sistema SEO dinâmico abrangente que otimiza automaticamente suas páginas para mecanismos de busca e compartilhamento em redes sociais.
 
-### **✨ SEO Features**
+### **✨ Funcionalidades SEO**
 
-- 🔍 **Dynamic metadata** generation based on routes
-- 📱 **Open Graph** optimization for social media
-- 🐦 **Twitter Cards** with custom configurations
-- 📊 **JSON-LD structured data** for rich snippets
-- 🗺️ **Automatic sitemap** generation
-- 🤖 **Robots.txt** configuration
-- 🎯 **Canonical URLs** and meta tags
-- 📈 **Performance optimization** for Core Web Vitals
+- 🔍 **Metadados dinâmicos** gerados baseados nas rotas
+- 📱 **Open Graph** otimizado para redes sociais
+- 🐦 **Twitter Cards** com configurações personalizadas
+- 📊 **Dados estruturados JSON-LD** para rich snippets
+- 🗺️ **Geração automática de sitemap**
+- 🤖 **Configuração robots.txt**
+- 🎯 **URLs canônicas** e meta tags
+- 📈 **Otimização de performance** para Core Web Vitals
 
-### **🛠️ How It Works**
+### **🛠️ Como Funciona**
 
-The SEO system automatically applies optimized metadata to each page based on the route configuration:
+O sistema SEO aplica automaticamente metadados otimizados a cada página baseado na configuração da rota:
 
 ```typescript
-// Automatic SEO for each route
+// SEO automático para cada rota
 export const metadata: Metadata = generateDynamicSEO('/');
 
-// Dynamic SEO for dynamic pages
+// SEO dinâmico para páginas dinâmicas
 export async function generateMetadata({ params }) {
   return generateDynamicSEO(`/portfolio/${slug}`, {
     slug: project.title,
@@ -121,34 +121,34 @@ export async function generateMetadata({ params }) {
 }
 ```
 
-### **📄 SEO Configuration**
+### **📄 Configuração SEO**
 
-Each route has its own SEO configuration with:
+Cada rota tem sua própria configuração SEO com:
 
-- Unique titles and descriptions
-- Optimized keywords
-- Social media images
-- Structured data
-- Priority and update frequency
+- Títulos e descrições únicos
+- Palavras-chave otimizadas
+- Imagens para redes sociais
+- Dados estruturados
+- Prioridade e frequência de atualização
 
-For detailed documentation, see [SEO_DYNAMIC_SYSTEM.md](./SEO_DYNAMIC_SYSTEM.md).
+Para documentação detalhada, veja [SEO_DYNAMIC_SYSTEM.md](./SEO_DYNAMIC_SYSTEM.md).
 
-## 🛡️ Quality Gates & Test Enforcement
+## 🛡️ Gates de Qualidade & Forçar Testes
 
-The Aqua9 Boilerplate v2 implements **mandatory quality gates** that **prevent commits** if any test fails or quality standards are not met.
+O Boilerplate Aqua9 v2 implementa **gates de qualidade obrigatórios** que **impedem commits** se qualquer teste falhar ou os padrões de qualidade não forem atendidos.
 
-### **🚫 Commit Blocking System**
+### **🚫 Sistema de Bloqueio de Commits**
 
 ```
 ┌─────────────────┐    ┌─────────────────┐    ┌─────────────────┐
-│   Git Commit    │───▶│  Pre-commit     │───▶│   Quality       │
-│   Attempt       │    │   Hook          │    │   Gates         │
+│   Tentativa de  │───▶│  Hook Pré-      │───▶│   Gates de      │
+│   Git Commit    │    │   commit        │    │   Qualidade     │
 └─────────────────┘    └─────────────────┘    └─────────────────┘
                                 │                       │
                                 ▼                       ▼
                        ┌─────────────────┐    ┌─────────────────┐
-                       │   Lint-staged   │    │   Test Suite    │
-                       │   (Format)      │    │   (Vitest)      │
+                       │   Lint-staged   │    │   Suite de      │
+                       │   (Formatação)  │    │   Testes        │
                        └─────────────────┘    └─────────────────┘
                                 │                       │
                                 ▼                       ▼
@@ -158,169 +158,169 @@ The Aqua9 Boilerplate v2 implements **mandatory quality gates** that **prevent c
                        └─────────────────┘    └─────────────────┘
 ```
 
-### **🔒 Mandatory Checks**
+### **🔒 Verificações Obrigatórias**
 
-#### **1. Lint-staged (Formatting)**
+#### **1. Lint-staged (Formatação)**
 
-- ✅ **Auto-format** files before commit
-- ✅ **Consistent code style** across the project
-- ✅ **Prettier integration** for formatting
-- ❌ **Blocks commit** if formatting fails
+- ✅ **Auto-formatação** de arquivos antes do commit
+- ✅ **Estilo de código consistente** em todo o projeto
+- ✅ **Integração Prettier** para formatação
+- ❌ **Bloqueia commit** se a formatação falhar
 
 #### **2. TypeScript Type-check**
 
-- ✅ **Static type verification**
-- ✅ **Compile-time error detection**
-- ✅ **Type safety enforcement**
-- ❌ **Blocks commit** if type errors found
+- ✅ **Verificação de tipos estáticos**
+- ✅ **Detecção de erros em tempo de compilação**
+- ✅ **Forçar segurança de tipos**
+- ❌ **Bloqueia commit** se erros de tipo forem encontrados
 
-#### **3. Test Suite (Vitest)**
+#### **3. Suite de Testes (Vitest)**
 
-- ✅ **All tests must pass**
-- ✅ **Unit tests execution**
-- ✅ **Component tests validation**
-- ❌ **Blocks commit** if any test fails
+- ✅ **Todos os testes devem passar**
+- ✅ **Execução de testes unitários**
+- ✅ **Validação de testes de componentes**
+- ❌ **Bloqueia commit** se qualquer teste falhar
 
-#### **4. Code Quality (ESLint + Prettier)**
+#### **4. Qualidade de Código (ESLint + Prettier)**
 
-- ✅ **Linting rules compliance**
-- ✅ **Code style validation**
-- ✅ **Best practices enforcement**
-- ❌ **Blocks commit** if quality issues found
+- ✅ **Conformidade com regras de linting**
+- ✅ **Validação de estilo de código**
+- ✅ **Forçar melhores práticas**
+- ❌ **Bloqueia commit** se problemas de qualidade forem encontrados
 
-### **🎯 Benefits of Quality Gates**
+### **🎯 Benefícios dos Gates de Qualidade**
 
-#### **For Developers**
+#### **Para Desenvolvedores**
 
-- 🛡️ **Prevents broken code** from reaching the repository
-- ⚡ **Immediate feedback** on quality issues
-- 🎯 **Enforces standards** automatically
-- 📈 **Improves code quality** over time
+- 🛡️ **Impede código quebrado** de chegar ao repositório
+- ⚡ **Feedback imediato** sobre problemas de qualidade
+- 🎯 **Força padrões** automaticamente
+- 📈 **Melhora a qualidade do código** ao longo do tempo
 
-#### **For Teams**
+#### **Para Equipes**
 
-- 🔒 **Consistent quality** across all contributions
-- 🚫 **No broken builds** in CI/CD
-- 📊 **Measurable standards** enforcement
-- 🎯 **Reduced code review** overhead
+- 🔒 **Qualidade consistente** em todas as contribuições
+- 🚫 **Sem builds quebrados** no CI/CD
+- 📊 **Padrões mensuráveis** forçados
+- 🎯 **Reduz overhead** de code review
 
-#### **For the Project**
+#### **Para o Projeto**
 
-- 🛡️ **Stable codebase** with fewer bugs
-- 📈 **Maintainable code** structure
-- 🚀 **Reliable deployments** without issues
-- 💰 **Reduced maintenance** costs
+- 🛡️ **Codebase estável** com menos bugs
+- 📈 **Estrutura de código** mantível
+- 🚀 **Deployments confiáveis** sem problemas
+- 💰 **Custos de manutenção** reduzidos
 
-## 🎯 Automated Code Quality
+## 🎯 Qualidade de Código Automatizada
 
-This boilerplate implements a complete code quality system ensuring **automatic standardization** and **continuous correction** of all code in the project, including test files.
+Este boilerplate implementa um sistema completo de qualidade de código garantindo **padronização automática** e **correção contínua** de todo o código no projeto, incluindo arquivos de teste.
 
-### **🛠️ Quality Tools**
+### **🛠️ Ferramentas de Qualidade**
 
 #### **Prettier**
 
-- ✅ **Automatic code formatting**
-- ✅ **Consistent standards** via `.prettierrc`
-- ✅ **Global config** for spacing, quotes, semicolons
-- ✅ **Editor integration** for format on save
-- ✅ **Manual command**: `npm run format`
+- ✅ **Formatação automática de código**
+- ✅ **Padrões consistentes** via `.prettierrc`
+- ✅ **Configuração global** para espaçamento, aspas, ponto e vírgula
+- ✅ **Integração com editor** para formatar ao salvar
+- ✅ **Comando manual**: `npm run format`
 
 #### **ESLint**
 
-- ✅ **Static code analysis** for JS/TS
-- ✅ **Error detection** and best practices
-- ✅ **Specialized plugins** for React, TypeScript
-- ✅ **Strict configuration** for maximum quality
-- ✅ **Auto-fix:** `npm run lint:fix`
+- ✅ **Análise estática de código** para JS/TS
+- ✅ **Detecção de erros** e melhores práticas
+- ✅ **Plugins especializados** para React, TypeScript
+- ✅ **Configuração estrita** para máxima qualidade
+- ✅ **Auto-correção:** `npm run lint:fix`
 
 #### **EditorConfig**
 
-- ✅ **Editor standardization** on all systems
-- ✅ **Consistent config** for indents and EOLs
-- ✅ **Universal support** for various IDEs
-- ✅ **Automatic config** via `.editorconfig`
+- ✅ **Padronização de editores** em todos os sistemas
+- ✅ **Configuração consistente** para indentação e EOLs
+- ✅ **Suporte universal** para vários IDEs
+- ✅ **Configuração automática** via `.editorconfig`
 
 #### **Lefthook (Git Hooks)**
 
-- ✅ **Automated quality** before each commit
-- ✅ **Automatic lint/format execution**
-- ✅ **TypeScript type checks**
-- ✅ **Prevent commiting non-standard code**
+- ✅ **Qualidade automatizada** antes de cada commit
+- ✅ **Execução automática** de lint/formatação
+- ✅ **Verificações de tipo TypeScript**
+- ✅ **Impede commits** de código não padronizado
 
-### **🚀 Automation Benefits**
+### **🚀 Benefícios da Automação**
 
-#### **For Developers**
+#### **Para Desenvolvedores**
 
-- ⚡ **Zero manual configuration** needed for formatting
-- 🔄 **Autosave correction** on file changes
-- 🚫 **Impossible** to commit non-standard code
-- 📈 **Increased productivity** with less overhead
+- ⚡ **Zero configuração manual** necessária para formatação
+- 🔄 **Correção automática** ao salvar mudanças
+- 🚫 **Impossível** commitar código não padronizado
+- 📈 **Produtividade aumentada** com menos overhead
 
-#### **For Teams**
+#### **Para Equipes**
 
-- 🎯 **Consistent standards** across the codebase
-- 🔍 **Early detection** of quality issues
-- 🚀 **Simplified onboarding** for new devs
-- 📊 **Automated quality metrics**
+- 🎯 **Padrões consistentes** em todo o codebase
+- 🔍 **Detecção precoce** de problemas de qualidade
+- 🚀 **Onboarding simplificado** para novos devs
+- 📊 **Métricas de qualidade** automatizadas
 
-#### **For the Project**
+#### **Para o Projeto**
 
-- 🛡️ **Bug prevention** via static analysis
-- 📝 **Readable, well-structured code**
-- 🔧 **Increased maintainability**
-- 🚀 **Optimized performance** via best practices
+- 🛡️ **Prevenção de bugs** via análise estática
+- 📝 **Código legível e bem estruturado**
+- 🔧 **Mantibilidade aumentada**
+- 🚀 **Performance otimizada** via melhores práticas
 
-### **📋 How It Works in Practice**
+### **📋 Como Funciona na Prática**
 
-1. **During development:**
-   - Editor auto-formats on save
-   - ESLint shows errors in real-time
-   - TypeScript checks types continuously
+1. **Durante o desenvolvimento:**
+   - Editor auto-formata ao salvar
+   - ESLint mostra erros em tempo real
+   - TypeScript verifica tipos continuamente
 
-2. **Before commit:**
-   - Lefthook auto-runs lint and format tasks
-   - TypeScript type check
-   - Blocks commits with errors
+2. **Antes do commit:**
+   - Lefthook executa automaticamente tarefas de lint e formatação
+   - Verificação de tipos TypeScript
+   - Bloqueia commits com erros
 
-3. **In CI/CD:**
-   - Quality verification on pull requests
-   - Test coverage reports
-   - Automated security analysis
+3. **No CI/CD:**
+   - Verificação de qualidade em pull requests
+   - Relatórios de cobertura de testes
+   - Análise de segurança automatizada
 
-### **🔧 Custom Configuration**
+### **🔧 Configuração Personalizada**
 
-All tools can be configured through these files:
+Todas as ferramentas podem ser configuradas através destes arquivos:
 
-- `.prettierrc` - Prettier settings
-- `.eslintrc.js` - ESLint rules
-- `.editorconfig` - Editor configs
+- `.prettierrc` - Configurações do Prettier
+- `.eslintrc.js` - Regras do ESLint
+- `.editorconfig` - Configurações do editor
 - `lefthook.yml` - Git hooks
 
-## 🧪 Testing Strategy
+## 🧪 Estratégia de Testes
 
-The Aqua9 Boilerplate v2 implements a comprehensive **testing pyramid** ensuring code quality and reliability across all levels.
+O Boilerplate Aqua9 v2 implementa uma **pirâmide de testes** abrangente garantindo qualidade e confiabilidade do código em todos os níveis.
 
-### **📊 Testing Pyramid**
+### **📊 Pirâmide de Testes**
 
 ```
-    🎯 E2E Tests (Playwright)
+    🎯 Testes E2E (Playwright)
          /     \
         /       \
-   🔍 Integration Tests
+   🔍 Testes de Integração
       /           \
      /             \
-🧪 Unit Tests (Vitest + RTL)
+🧪 Testes Unitários (Vitest + RTL)
 ```
 
-### **🎯 Test Types**
+### **🎯 Tipos de Testes**
 
-#### **🧪 Unit Tests (Vitest + React Testing Library)**
+#### **🧪 Testes Unitários (Vitest + React Testing Library)**
 
-- ✅ **Fast execution** - Run in milliseconds
-- ✅ **Isolated testing** - Test individual components
-- ✅ **User behavior focus** - Test what users see and do
-- ✅ **Accessibility testing** - Ensure inclusive design
-- ✅ **Coverage reports** - Track test coverage metrics
+- ✅ **Execução rápida** - Executa em milissegundos
+- ✅ **Testes isolados** - Testa componentes individuais
+- ✅ **Foco no comportamento do usuário** - Testa o que os usuários veem e fazem
+- ✅ **Testes de acessibilidade** - Garante design inclusivo
+- ✅ **Relatórios de cobertura** - Acompanha métricas de cobertura de testes
 
 #### **🔍 Integration Tests**
 

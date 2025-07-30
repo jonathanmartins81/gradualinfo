@@ -1,5 +1,5 @@
 import { render, screen } from '@testing-library/react';
-import { describe, expect, it, vi } from 'vitest';
+import { beforeEach, describe, expect, it, vi } from 'vitest';
 import HomePage from './page';
 
 // Mock do ThemeSwitcher para evitar problemas de contexto
@@ -7,18 +7,30 @@ vi.mock('@/components/ThemeSwitcher', () => ({
   default: vi.fn(() => <div data-testid="theme-switcher">Theme Switcher</div>),
 }));
 
-// Mock do ThemeContext
+// Mock do ThemeContext - deve ser definido ANTES de importar o componente
+const mockUseTheme = vi.fn(() => ({
+  isDark: false,
+  mode: 'light',
+  toggleTheme: vi.fn(),
+  setMode: vi.fn(),
+}));
+
 vi.mock('@/contexts/ThemeContext', () => ({
-  useTheme: vi.fn(() => ({
-    isDark: false,
-    mode: 'light',
-    toggleTheme: vi.fn(),
-    setMode: vi.fn(),
-  })),
+  useTheme: mockUseTheme,
   ThemeProvider: ({ children }: { children: React.ReactNode }) => children,
 }));
 
 describe('Home Page', () => {
+  beforeEach(() => {
+    // Reset do mock antes de cada teste
+    mockUseTheme.mockReturnValue({
+      isDark: false,
+      mode: 'light',
+      toggleTheme: vi.fn(),
+      setMode: vi.fn(),
+    });
+  });
+
   it('should render without crashing', () => {
     render(<HomePage />);
     expect(screen.getByText('Boilerplate Aqua9')).toBeInTheDocument();
@@ -47,5 +59,19 @@ describe('Home Page', () => {
     render(<HomePage />);
     const logo = screen.getByAltText('Aqua9 Logo');
     expect(logo).toHaveAttribute('src', '/img/logo-light.svg');
+  });
+
+  it('should use dark logo when theme is dark', () => {
+    // Mock para tema escuro
+    mockUseTheme.mockReturnValue({
+      isDark: true,
+      mode: 'dark',
+      toggleTheme: vi.fn(),
+      setMode: vi.fn(),
+    });
+
+    render(<HomePage />);
+    const logo = screen.getByAltText('Aqua9 Logo');
+    expect(logo).toHaveAttribute('src', '/img/logo-dark.svg');
   });
 });

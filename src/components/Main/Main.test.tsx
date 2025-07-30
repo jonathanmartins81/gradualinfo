@@ -7,18 +7,30 @@ vi.mock('@/components/ThemeSwitcher', () => ({
   default: vi.fn(() => <div data-testid="theme-switcher">Theme Switcher</div>),
 }));
 
-// Mock do ThemeContext
+// Mock do ThemeContext - deve ser definido ANTES de importar o componente
+const mockUseTheme = vi.fn(() => ({
+  isDark: false,
+  mode: 'light',
+  toggleTheme: vi.fn(),
+  setMode: vi.fn(),
+}));
+
 vi.mock('@/contexts/ThemeContext', () => ({
-  useTheme: vi.fn(() => ({
-    isDark: false,
-    mode: 'light',
-    toggleTheme: vi.fn(),
-    setMode: vi.fn(),
-  })),
+  useTheme: mockUseTheme,
   ThemeProvider: ({ children }: { children: React.ReactNode }) => children,
 }));
 
 describe('Main Component', () => {
+  beforeEach(() => {
+    // Reset do mock antes de cada teste
+    mockUseTheme.mockReturnValue({
+      isDark: false,
+      mode: 'light',
+      toggleTheme: vi.fn(),
+      setMode: vi.fn(),
+    });
+  });
+
   it('should render with default props', () => {
     render(<Main />);
 
@@ -76,6 +88,21 @@ describe('Main Component', () => {
 
     const logo = screen.getByAltText('Aqua9 Logo');
     expect(logo).toHaveAttribute('src', '/img/logo-light.svg');
+  });
+
+  it('should use dark logo when theme is dark', () => {
+    // Mock para tema escuro
+    mockUseTheme.mockReturnValue({
+      isDark: true,
+      mode: 'dark',
+      toggleTheme: vi.fn(),
+      setMode: vi.fn(),
+    });
+
+    render(<Main />);
+
+    const logo = screen.getByAltText('Aqua9 Logo');
+    expect(logo).toHaveAttribute('src', '/img/logo-dark.svg');
   });
 
   it('should render with all custom props', () => {

@@ -18,6 +18,15 @@ export default [
           jsx: true,
         },
       },
+      globals: {
+        React: 'readonly',
+        console: 'readonly',
+        document: 'readonly',
+        window: 'readonly',
+        URL: 'readonly',
+        HTMLMetaElement: 'readonly',
+        HTMLLinkElement: 'readonly',
+      },
     },
     plugins: {
       '@typescript-eslint': typescriptPlugin,

@@ -47,13 +47,13 @@ This project uses a modern, robust stack, carefully selected for quality, perfor
 
 ### **🔧 Development & Quality**
 
-| Tool                                                 | Purpose                   | Configuration          | Features                                    |
-| ---------------------------------------------------- | ------------------------- | ---------------------- | ------------------------------------------- |
-| [ESLint](https://eslint.org/)                        | Linting & static analysis | Strict configuration   | 🔍 Error detection, 🎯 Best practices, ⚡ Auto-fix |
-| [Prettier](https://prettier.io/)                     | Code formatting           | Consistent standards   | 🎨 Auto-format, 📏 Consistent style, 🔄 Format on save |
+| Tool                                                 | Purpose                   | Configuration          | Features                                                          |
+| ---------------------------------------------------- | ------------------------- | ---------------------- | ----------------------------------------------------------------- |
+| [ESLint](https://eslint.org/)                        | Linting & static analysis | Strict configuration   | 🔍 Error detection, 🎯 Best practices, ⚡ Auto-fix                |
+| [Prettier](https://prettier.io/)                     | Code formatting           | Consistent standards   | 🎨 Auto-format, 📏 Consistent style, 🔄 Format on save            |
 | [EditorConfig](https://editorconfig.org/)            | Editor settings           | Standardized workspace | ⚙️ Universal config, 📝 Consistent indentation, 🌍 Cross-platform |
-| [Lefthook](https://github.com/evilmartians/lefthook) | Git hooks                 | Automated code quality | 🚀 Fast execution, 🔧 Flexible config, 🎯 Pre-commit checks |
-| [Husky](https://typicode.github.io/husky/)           | Git hooks manager         | Pre-commit automation  | 🛡️ Quality gates, 🧪 Test enforcement, 📋 Commit validation |
+| [Lefthook](https://github.com/evilmartians/lefthook) | Git hooks                 | Automated code quality | 🚀 Fast execution, 🔧 Flexible config, 🎯 Pre-commit checks       |
+| [Husky](https://typicode.github.io/husky/)           | Git hooks manager         | Pre-commit automation  | 🛡️ Quality gates, 🧪 Test enforcement, 📋 Commit validation       |
 
 ### **🧪 Testing & Documentation**
 
@@ -160,24 +160,28 @@ The Aqua9 Boilerplate v2 implements **mandatory quality gates** that **prevent c
 ### **🔒 Mandatory Checks**
 
 #### **1. Lint-staged (Formatting)**
+
 - ✅ **Auto-format** files before commit
 - ✅ **Consistent code style** across the project
 - ✅ **Prettier integration** for formatting
 - ❌ **Blocks commit** if formatting fails
 
 #### **2. TypeScript Type-check**
+
 - ✅ **Static type verification**
 - ✅ **Compile-time error detection**
 - ✅ **Type safety enforcement**
 - ❌ **Blocks commit** if type errors found
 
 #### **3. Test Suite (Vitest)**
+
 - ✅ **All tests must pass**
 - ✅ **Unit tests execution**
 - ✅ **Component tests validation**
 - ❌ **Blocks commit** if any test fails
 
 #### **4. Code Quality (ESLint + Prettier)**
+
 - ✅ **Linting rules compliance**
 - ✅ **Code style validation**
 - ✅ **Best practices enforcement**
@@ -186,18 +190,21 @@ The Aqua9 Boilerplate v2 implements **mandatory quality gates** that **prevent c
 ### **🎯 Benefits of Quality Gates**
 
 #### **For Developers**
+
 - 🛡️ **Prevents broken code** from reaching the repository
 - ⚡ **Immediate feedback** on quality issues
 - 🎯 **Enforces standards** automatically
 - 📈 **Improves code quality** over time
 
 #### **For Teams**
+
 - 🔒 **Consistent quality** across all contributions
 - 🚫 **No broken builds** in CI/CD
 - 📊 **Measurable standards** enforcement
 - 🎯 **Reduced code review** overhead
 
 #### **For the Project**
+
 - 🛡️ **Stable codebase** with fewer bugs
 - 📈 **Maintainable code** structure
 - 🚀 **Reliable deployments** without issues

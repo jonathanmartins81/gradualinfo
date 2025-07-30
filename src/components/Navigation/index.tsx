@@ -1,5 +1,7 @@
 'use client';
 
+import { useTheme } from '@/contexts/ThemeContext';
+import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useState } from 'react';
@@ -115,6 +117,7 @@ export default function Navigation() {
   const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false);
   const [activeCategory, setActiveCategory] = useState<string | null>(null);
+  const { isDark } = useTheme();
 
   // Agrupar itens por categoria
   const groupedItems = navigationItems.reduce((acc, item) => {
@@ -135,9 +138,16 @@ export default function Navigation() {
           <div className='flex-shrink-0'>
             <Link
               href='/'
-              className='flex items-center space-x-2 text-xl font-bold text-gray-900 dark:text-white'
+              className='flex items-center space-x-3 text-xl font-bold text-gray-900 dark:text-white'
             >
-              <span className='text-blue-600 dark:text-blue-400'>Aqua9</span>
+              <Image
+                src={isDark ? '/img/logo-dark.svg' : '/img/logo-light.svg'}
+                alt='Aqua9 Logo'
+                width={120}
+                height={32}
+                className='h-8 w-auto'
+                priority
+              />
               <span className='text-gray-600 dark:text-gray-300'>Boilerplate</span>
             </Link>
           </div>

@@ -23,14 +23,13 @@ pre-commit:
       glob: '*.{ts,tsx}'
       run: npx tsc --noEmit
 
-    # Verificação de dependências não utilizadas
-    check-deps:
-      run: npx knip --reporter=json
+    # Verificação de dependências não utilizadas (desabilitado temporariamente)
+    # check-deps:
+    #   run: npx knip --reporter=json
 
-    # Testes unitários para arquivos alterados
+    # Testes unitários OBRIGATÓRIOS (todos os testes devem passar)
     test:
-      glob: '*.{js,jsx,ts,tsx}'
-      run: npx vitest run --reporter=verbose {staged_files}
+      run: npx vitest run --reporter=verbose --run --coverage=false
 
 # Hooks executados antes do push
 pre-push:

@@ -7,7 +7,7 @@
  */
 
 import { DynamicSEO } from '@/components/DynamicSEO';
-import { TailwindDemo } from '@/components/TailwindDemo';
+import TailwindDemo from '@/components/TailwindDemo';
 import { generateDynamicSEO } from '@/utils/SEO';
 import type { Metadata } from 'next';
 
@@ -28,8 +28,8 @@ export default function TailwindDemoPage() {
     <>
       {/* SEO dinâmico para esta página */}
       <DynamicSEO
-        title="Tailwind CSS Demo - Boilerplate Aqua9"
-        description="Demonstração das funcionalidades do Tailwind CSS implementado no boilerplate, incluindo componentes customizados, animações e design system."
+        title='Tailwind CSS Demo - Boilerplate Aqua9'
+        description='Demonstração das funcionalidades do Tailwind CSS implementado no boilerplate, incluindo componentes customizados, animações e design system.'
         keywords={[
           'tailwind',
           'css',
@@ -40,13 +40,13 @@ export default function TailwindDemoPage() {
           'boilerplate',
           'aqua9',
         ]}
-        type="website"
-        image="/og-image.svg"
-        canonical="https://aqua9.com.br/tailwind-demo"
+        type='website'
+        image='/og-image.svg'
+        canonical='https://aqua9.com.br/tailwind-demo'
       />
 
       {/* Componente de demonstração */}
-      <TailwindDemo title="Tailwind CSS Demo" />
+      <TailwindDemo />
     </>
   );
 }

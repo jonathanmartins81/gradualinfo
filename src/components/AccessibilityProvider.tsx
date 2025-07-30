@@ -1,172 +1,237 @@
 'use client';
 
-import { createContext, useContext, useEffect, useState } from 'react';
+import React, { createContext, useContext, useEffect, useState } from 'react';
 
-interface AccessibilityContextType {
-  isKeyboardNavigation: boolean;
-  isHighContrast: boolean;
-  isReducedMotion: boolean;
+// ===== TIPOS =====
+interface AccessibilityState {
+  highContrast: boolean;
   fontSize: 'small' | 'medium' | 'large';
-  setFontSize: (size: 'small' | 'medium' | 'large') => void;
-  toggleHighContrast: () => void;
-  toggleReducedMotion: () => void;
+  reducedMotion: boolean;
 }
 
+interface AccessibilityContextType extends AccessibilityState {
+  setHighContrast: (enabled: boolean) => void;
+  setFontSize: (size: 'small' | 'medium' | 'large') => void;
+  setReducedMotion: (enabled: boolean) => void;
+  resetSettings: () => void;
+}
+
+// ===== CONTEXTO =====
 const AccessibilityContext = createContext<
   AccessibilityContextType | undefined
 >(undefined);
 
-interface AccessibilityProviderProps {
-  children: React.ReactNode;
-}
-
-/**
- * Provider de acessibilidade
- *
- * Gerencia configurações de acessibilidade como navegação por teclado,
- * contraste alto, movimento reduzido e tamanho de fonte.
- */
+// ===== PROVIDER =====
 export function AccessibilityProvider({
   children,
-}: AccessibilityProviderProps) {
-  const [isKeyboardNavigation, setIsKeyboardNavigation] = useState(false);
-  const [isHighContrast, setIsHighContrast] = useState(false);
-  const [isReducedMotion, setIsReducedMotion] = useState(false);
+}: {
+  children: React.ReactNode;
+}) {
+  const [highContrast, setHighContrast] = useState(false);
   const [fontSize, setFontSize] = useState<'small' | 'medium' | 'large'>(
     'medium'
   );
+  const [reducedMotion, setReducedMotion] = useState(false);
+  const [mounted, setMounted] = useState(false);
 
-  // Detectar navegação por teclado
+  // ===== CARREGAMENTO INICIAL =====
   useEffect(() => {
-    const handleKeyDown = () => {
-      setIsKeyboardNavigation(true);
-    };
+    setMounted(true);
 
-    const handleMouseDown = () => {
-      setIsKeyboardNavigation(false);
-    };
+    // Carregar configurações do localStorage apenas no cliente
+    if (typeof window !== 'undefined') {
+      const savedHighContrast = window.localStorage.getItem(
+        'accessibility-highContrast'
+      );
+      const savedFontSize = window.localStorage.getItem(
+        'accessibility-fontSize'
+      );
+      const savedReducedMotion = window.localStorage.getItem(
+        'accessibility-reducedMotion'
+      );
 
-    document.addEventListener('keydown', handleKeyDown);
-    document.addEventListener('mousedown', handleMouseDown);
-
-    return () => {
-      document.removeEventListener('keydown', handleKeyDown);
-      document.removeEventListener('mousedown', handleMouseDown);
-    };
-  }, []);
-
-  // Detectar preferências do usuário
-  useEffect(() => {
-    // Verificar preferência de movimento reduzido
-    const prefersReducedMotion = window.matchMedia(
-      '(prefers-reduced-motion: reduce)'
-    ).matches;
-    setIsReducedMotion(prefersReducedMotion);
-
-    // Verificar preferência de contraste alto
-    const prefersHighContrast = window.matchMedia(
-      '(prefers-contrast: high)'
-    ).matches;
-    setIsHighContrast(prefersHighContrast);
-
-    // Aplicar classes CSS baseadas nas preferências
-    if (prefersReducedMotion) {
-      document.documentElement.classList.add('reduced-motion');
-    }
-
-    if (prefersHighContrast) {
-      document.documentElement.classList.add('high-contrast');
+      if (savedHighContrast) setHighContrast(JSON.parse(savedHighContrast));
+      if (savedFontSize)
+        setFontSize(savedFontSize as 'small' | 'medium' | 'large');
+      if (savedReducedMotion) setReducedMotion(JSON.parse(savedReducedMotion));
     }
   }, []);
 
-  // Aplicar tamanho de fonte
+  // ===== PERSISTÊNCIA =====
   useEffect(() => {
-    const fontSizeClasses = {
-      small: 'text-sm',
-      medium: 'text-base',
-      large: 'text-lg',
-    };
+    if (!mounted || typeof window === 'undefined') return;
 
-    // Remover classes anteriores
-    document.documentElement.classList.remove(
-      'text-sm',
-      'text-base',
-      'text-lg'
+    window.localStorage.setItem(
+      'accessibility-highContrast',
+      JSON.stringify(highContrast)
     );
+  }, [highContrast, mounted]);
 
-    // Adicionar nova classe
-    document.documentElement.classList.add(fontSizeClasses[fontSize]);
-  }, [fontSize]);
+  useEffect(() => {
+    if (!mounted || typeof window === 'undefined') return;
 
-  const toggleHighContrast = () => {
-    const newValue = !isHighContrast;
-    setIsHighContrast(newValue);
+    window.localStorage.setItem('accessibility-fontSize', fontSize);
+  }, [fontSize, mounted]);
 
-    if (newValue) {
-      document.documentElement.classList.add('high-contrast');
+  useEffect(() => {
+    if (!mounted || typeof window === 'undefined') return;
+
+    window.localStorage.setItem(
+      'accessibility-reducedMotion',
+      JSON.stringify(reducedMotion)
+    );
+  }, [reducedMotion, mounted]);
+
+  // ===== APLICAÇÃO DE ESTILOS =====
+  useEffect(() => {
+    if (!mounted) return;
+
+    const root = document.documentElement;
+
+    // Aplicar alto contraste
+    if (highContrast) {
+      root.classList.add('high-contrast');
     } else {
-      document.documentElement.classList.remove('high-contrast');
+      root.classList.remove('high-contrast');
     }
+
+    // Aplicar tamanho da fonte
+    root.classList.remove(
+      'font-size-small',
+      'font-size-medium',
+      'font-size-large'
+    );
+    root.classList.add(`font-size-${fontSize}`);
+
+    // Aplicar redução de movimento
+    if (reducedMotion) {
+      root.classList.add('reduced-motion');
+    } else {
+      root.classList.remove('reduced-motion');
+    }
+  }, [highContrast, fontSize, reducedMotion, mounted]);
+
+  // ===== FUNÇÕES DE CONTROLE =====
+  const resetSettings = () => {
+    setHighContrast(false);
+    setFontSize('medium');
+    setReducedMotion(false);
   };
 
-  const toggleReducedMotion = () => {
-    const newValue = !isReducedMotion;
-    setIsReducedMotion(newValue);
+  // ===== CONTROLES DE ACESSIBILIDADE =====
+  const AccessibilityControls = () => {
+    if (!mounted) return null;
 
-    if (newValue) {
-      document.documentElement.classList.add('reduced-motion');
-    } else {
-      document.documentElement.classList.remove('reduced-motion');
-    }
+    return (
+      <div className='fixed bottom-4 right-4 z-50 bg-white dark:bg-gray-800 rounded-lg shadow-lg border border-gray-200 dark:border-gray-600 p-4 min-w-[280px]'>
+        <h3 className='text-sm font-semibold text-gray-900 dark:text-gray-100 mb-3'>
+          Configurações de Acessibilidade
+        </h3>
+
+        <div className='space-y-3'>
+          {/* Alto Contraste */}
+          <div className='flex items-center justify-between'>
+            <label className='text-sm text-gray-700 dark:text-gray-300'>
+              Alto Contraste
+            </label>
+            <button
+              onClick={() => setHighContrast(!highContrast)}
+              className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors ${
+                highContrast ? 'bg-blue-600' : 'bg-gray-200 dark:bg-gray-600'
+              }`}
+              aria-label={`${highContrast ? 'Desativar' : 'Ativar'} alto contraste`}
+            >
+              <span
+                className={`inline-block h-4 w-4 transform rounded-full bg-white transition-transform ${
+                  highContrast ? 'translate-x-6' : 'translate-x-1'
+                }`}
+              />
+            </button>
+          </div>
+
+          {/* Tamanho da Fonte */}
+          <div>
+            <label className='text-sm text-gray-700 dark:text-gray-300 mb-2 block'>
+              Tamanho da Fonte
+            </label>
+            <div className='flex gap-2'>
+              {(['small', 'medium', 'large'] as const).map(size => (
+                <button
+                  key={size}
+                  onClick={() => setFontSize(size)}
+                  className={`px-3 py-1 text-xs rounded-md transition-colors ${
+                    fontSize === size
+                      ? 'bg-blue-600 text-white'
+                      : 'bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-600'
+                  }`}
+                >
+                  {size === 'small' && 'A'}
+                  {size === 'medium' && 'A'}
+                  {size === 'large' && 'A'}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          {/* Redução de Movimento */}
+          <div className='flex items-center justify-between'>
+            <label className='text-sm text-gray-700 dark:text-gray-300'>
+              Reduzir Movimento
+            </label>
+            <button
+              onClick={() => setReducedMotion(!reducedMotion)}
+              className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors ${
+                reducedMotion ? 'bg-blue-600' : 'bg-gray-200 dark:bg-gray-600'
+              }`}
+              aria-label={`${reducedMotion ? 'Desativar' : 'Ativar'} redução de movimento`}
+            >
+              <span
+                className={`inline-block h-4 w-4 transform rounded-full bg-white transition-transform ${
+                  reducedMotion ? 'translate-x-6' : 'translate-x-1'
+                }`}
+              />
+            </button>
+          </div>
+
+          {/* Reset */}
+          <button
+            onClick={resetSettings}
+            className='w-full px-3 py-2 text-sm text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200 transition-colors'
+          >
+            Restaurar Padrões
+          </button>
+        </div>
+      </div>
+    );
   };
 
   const value: AccessibilityContextType = {
-    isKeyboardNavigation,
-    isHighContrast,
-    isReducedMotion,
+    highContrast,
     fontSize,
+    reducedMotion,
+    setHighContrast,
     setFontSize,
-    toggleHighContrast,
-    toggleReducedMotion,
+    setReducedMotion,
+    resetSettings,
   };
 
   return (
     <AccessibilityContext.Provider value={value}>
       {children}
+      <AccessibilityControls />
     </AccessibilityContext.Provider>
   );
 }
 
-/**
- * Hook para usar o contexto de acessibilidade
- */
+// ===== HOOK =====
 export function useAccessibility() {
   const context = useContext(AccessibilityContext);
-
   if (context === undefined) {
     throw new Error(
-      'useAccessibility must be used within an AccessibilityProvider'
+      'useAccessibility deve ser usado dentro de um AccessibilityProvider'
     );
   }
-
   return context;
-}
-
-/**
- * Componente para adicionar focus visible
- */
-export function FocusVisible() {
-  const { isKeyboardNavigation } = useAccessibility();
-
-  useEffect(() => {
-    if (isKeyboardNavigation) {
-      document.documentElement.classList.add('focus-visible');
-    } else {
-      document.documentElement.classList.remove('focus-visible');
-    }
-  }, [isKeyboardNavigation]);
-
-  return null;
 }
 
 /**

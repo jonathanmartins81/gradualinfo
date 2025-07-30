@@ -1,15 +1,15 @@
 'use client';
 
-import { darkTheme, lightTheme, ThemeColors, ThemeMode } from '@/styles/theme';
-import { createContext, ReactNode, useContext, useEffect, useState } from 'react';
+import React, { createContext, useContext, useEffect, useState } from 'react';
 
 // ===== TIPOS =====
+type ThemeMode = 'light' | 'dark' | 'system';
+
 interface ThemeContextType {
   mode: ThemeMode;
-  theme: ThemeColors;
-  isDark: boolean;
-  toggleTheme: () => void;
   setMode: (mode: ThemeMode) => void;
+  toggleMode: () => void;
+  isDark: boolean;
 }
 
 // ===== CONTEXTO =====
@@ -17,77 +17,46 @@ const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
 // ===== PROVIDER =====
 interface ThemeProviderProps {
-  children: ReactNode;
+  children: React.ReactNode;
   defaultMode?: ThemeMode;
 }
 
 export function ThemeProvider({
   children,
-  defaultMode = 'system'
+  defaultMode = 'dark',
 }: ThemeProviderProps) {
   const [mode, setMode] = useState<ThemeMode>(defaultMode);
   const [mounted, setMounted] = useState(false);
 
-  // ===== DETECÇÃO DE TEMA DO SISTEMA =====
+  // ===== DETECÇÃO DO TEMA DO SISTEMA =====
   const getSystemTheme = (): 'light' | 'dark' => {
     if (typeof window === 'undefined') return 'light';
-    return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    return window.matchMedia('(prefers-color-scheme: dark)').matches
+      ? 'dark'
+      : 'light';
   };
 
-  // ===== OBTENÇÃO DO TEMA ATUAL =====
-  const getCurrentTheme = (): ThemeColors => {
-    if (mode === 'system') {
-      return getSystemTheme() === 'dark' ? darkTheme : lightTheme;
-    }
-    return mode === 'dark' ? darkTheme : lightTheme;
-  };
-
-  // ===== PERSISTÊNCIA NO LOCAL STORAGE =====
-  const saveTheme = (newMode: ThemeMode) => {
-    if (typeof window !== 'undefined') {
-      localStorage.setItem('theme-mode', newMode);
-    }
-  };
-
-  const loadTheme = (): ThemeMode => {
-    if (typeof window === 'undefined') return defaultMode;
-
-    const saved = localStorage.getItem('theme-mode') as ThemeMode;
-    if (saved && ['light', 'dark', 'system'].includes(saved)) {
-      return saved;
-    }
-    return defaultMode;
-  };
-
-  // ===== INICIALIZAÇÃO =====
+  // ===== CARREGAMENTO INICIAL =====
   useEffect(() => {
-    const savedMode = loadTheme();
-    setMode(savedMode);
     setMounted(true);
+
+    // Carregar tema do localStorage apenas no cliente
+    if (typeof window !== 'undefined') {
+      const savedMode = window.localStorage.getItem('theme-mode') as ThemeMode;
+      if (savedMode && ['light', 'dark', 'system'].includes(savedMode)) {
+        setMode(savedMode);
+      }
+    }
   }, []);
 
-  // ===== SALVAR MUDANÇAS =====
+  // ===== PERSISTÊNCIA =====
   useEffect(() => {
-    if (mounted) {
-      saveTheme(mode);
-    }
+    if (!mounted || typeof window === 'undefined') return;
+
+    window.localStorage.setItem('theme-mode', mode);
   }, [mode, mounted]);
 
-  // ===== LISTENER PARA MUDANÇAS DO SISTEMA =====
-  useEffect(() => {
-    if (mode !== 'system') return;
-
-    const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
-    const handleChange = () => {
-      // Força re-render quando o tema do sistema muda
-      setMode('system');
-    };
-
-    mediaQuery.addEventListener('change', handleChange);
-    return () => mediaQuery.removeEventListener('change', handleChange);
-  }, [mode]);
-
-  // ===== APLICAR TEMA NO DOCUMENT =====
+  // ===== APLICAÇÃO DO TEMA =====
   useEffect(() => {
     if (!mounted) return;
 
@@ -96,7 +65,8 @@ export function ThemeProvider({
 
     // Aplicar classes CSS
     root.classList.remove('light', 'dark');
-    root.classList.add(getSystemTheme());
+    const currentMode = mode === 'system' ? getSystemTheme() : mode;
+    root.classList.add(currentMode);
 
     // Aplicar variáveis CSS customizadas
     Object.entries(currentTheme).forEach(([key, value]) => {
@@ -104,77 +74,59 @@ export function ThemeProvider({
     });
 
     // Aplicar atributo data-theme
-    root.setAttribute('data-theme', getSystemTheme());
+    root.setAttribute('data-theme', currentMode);
   }, [mode, mounted]);
 
   // ===== FUNÇÕES DE CONTROLE =====
-  const toggleTheme = () => {
-    setMode(current => {
-      if (current === 'system') {
-        return getSystemTheme() === 'dark' ? 'light' : 'dark';
-      }
-      return current === 'dark' ? 'light' : 'dark';
+  const getCurrentTheme = () => {
+    const actualMode = mode === 'system' ? getSystemTheme() : mode;
+
+    return actualMode === 'dark'
+      ? {
+          'primary-color': '#4F8CFF',
+          'secondary-color': '#A5B4FC',
+          'accent-color': '#FFC145',
+          'background-color': '#181920',
+          'text-color': '#FAFAFA',
+          'border-color': '#222327',
+          'card-color': '#23242BF6',
+        }
+      : {
+          'primary-color': '#0070f3',
+          'secondary-color': '#5856D6',
+          'accent-color': '#FFAD05',
+          'background-color': '#FAFAFA',
+          'text-color': '#1A1A1A',
+          'border-color': '#E5E5E5',
+          'card-color': '#FFFFFFF6',
+        };
+  };
+
+  const toggleMode = () => {
+    setMode(prev => {
+      if (prev === 'light') return 'dark';
+      if (prev === 'dark') return 'system';
+      return 'light';
     });
   };
 
-  const handleSetMode = (newMode: ThemeMode) => {
-    setMode(newMode);
-  };
-
-  // ===== VALORES DO CONTEXTO =====
-  const contextValue: ThemeContextType = {
+  const value: ThemeContextType = {
     mode,
-    theme: getCurrentTheme(),
-    isDark: getCurrentTheme() === darkTheme,
-    toggleTheme,
-    setMode: handleSetMode,
+    setMode,
+    toggleMode,
+    isDark: mode === 'system' ? getSystemTheme() === 'dark' : mode === 'dark',
   };
-
-  // ===== PREVENIR HYDRATION MISMATCH =====
-  if (!mounted) {
-    return (
-      <ThemeContext.Provider value={contextValue}>
-        <div style={{ visibility: 'hidden' }}>{children}</div>
-      </ThemeContext.Provider>
-    );
-  }
 
   return (
-    <ThemeContext.Provider value={contextValue}>
-      {children}
-    </ThemeContext.Provider>
+    <ThemeContext.Provider value={value}>{children}</ThemeContext.Provider>
   );
 }
 
-// ===== HOOK PERSONALIZADO =====
+// ===== HOOK =====
 export function useTheme() {
   const context = useContext(ThemeContext);
-
   if (context === undefined) {
     throw new Error('useTheme deve ser usado dentro de um ThemeProvider');
   }
-
   return context;
 }
-
-// ===== HOOK PARA DETECTAR MUDANÇAS DO SISTEMA =====
-export function useSystemTheme() {
-  const [systemTheme, setSystemTheme] = useState<'light' | 'dark'>('light');
-
-  useEffect(() => {
-    const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
-
-    const updateTheme = () => {
-      setSystemTheme(mediaQuery.matches ? 'dark' : 'light');
-    };
-
-    updateTheme();
-    mediaQuery.addEventListener('change', updateTheme);
-
-    return () => mediaQuery.removeEventListener('change', updateTheme);
-  }, []);
-
-  return systemTheme;
-}
-
-export default ThemeContext;

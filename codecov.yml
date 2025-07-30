@@ -1,0 +1,182 @@
+# ===== CONFIGURAÇÃO DO CODECOV =====
+# Arquivo de configuração para integração com Codecov
+# https://docs.codecov.io/docs/codecov-yaml
+
+# ===== CONFIGURAÇÕES GERAIS =====
+coverage:
+  # Cobertura mínima global
+  minimum: 80
+  # Precisão das casas decimais
+  precision: 2
+  # Arredondamento
+  round: down
+  # Status de cobertura
+  status:
+    # Projeto principal
+    project:
+      # Cobertura mínima para o projeto
+      target: 80%
+      # Se deve falhar se não atingir o target
+      threshold: 5%
+    # Cobertura de patches (mudanças)
+    patch:
+      # Cobertura mínima para patches
+      target: 80%
+      # Se deve falhar se não atingir o target
+      threshold: 5%
+
+# ===== CONFIGURAÇÕES DE RELATÓRIO =====
+comment:
+  # Layout do comentário
+  layout: 'reach, diff, flags, files'
+  # Comportamento
+  behavior: default
+  # Requer aprovação
+  require_changes: false
+
+# ===== CONFIGURAÇÕES DE ARQUIVOS =====
+ignore:
+  # Ignorar arquivos de teste
+  - '**/*.test.ts'
+  - '**/*.test.tsx'
+  - '**/*.spec.ts'
+  - '**/*.spec.tsx'
+  - '**/__tests__/**'
+  - '**/tests/**'
+  - '**/test/**'
+  # Ignorar arquivos de configuração
+  - '**/*.config.js'
+  - '**/*.config.ts'
+  - '**/next.config.js'
+  - '**/tailwind.config.js'
+  - '**/postcss.config.js'
+  - '**/vitest.config.ts'
+  - '**/playwright.config.ts'
+  # Ignorar arquivos de build
+  - '**/.next/**'
+  - '**/out/**'
+  - '**/dist/**'
+  - '**/build/**'
+  # Ignorar arquivos de documentação
+  - '**/*.md'
+  - '**/docs/**'
+  # Ignorar arquivos de tipos
+  - '**/*.d.ts'
+  # Ignorar arquivos de configuração do projeto
+  - '**/package.json'
+  - '**/package-lock.json'
+  - '**/yarn.lock'
+  - '**/pnpm-lock.yaml'
+  - '**/.gitignore'
+  - '**/.env*'
+  - '**/.eslintrc*'
+  - '**/.prettierrc*'
+  - '**/tsconfig.json'
+  - '**/jest.config.*'
+  - '**/vite.config.*'
+  # Ignorar arquivos de CI/CD
+  - '**/.github/**'
+  - '**/.gitlab-ci.yml'
+  - '**/azure-pipelines.yml'
+  - '**/circle.yml'
+  - '**/travis.yml'
+  - '**/appveyor.yml'
+  # Ignorar arquivos de dependências
+  - '**/node_modules/**'
+  - '**/vendor/**'
+  # Ignorar arquivos temporários
+  - '**/*.tmp'
+  - '**/*.temp'
+  - '**/.tmp/**'
+  - '**/.temp/**'
+  # Ignorar arquivos de cache
+  - '**/.cache/**'
+  - '**/coverage/**'
+  # Ignorar arquivos de logs
+  - '**/*.log'
+  - '**/logs/**'
+  # Ignorar arquivos de IDE
+  - '**/.vscode/**'
+  - '**/.idea/**'
+  - '**/*.swp'
+  - '**/*.swo'
+  - '**/*~'
+  # Ignorar arquivos de sistema
+  - '**/.DS_Store'
+  - '**/Thumbs.db'
+  - '**/desktop.ini'
+
+# ===== CONFIGURAÇÕES DE FLAGS =====
+flags:
+  # Flag para testes unitários
+  unit:
+    # Cobertura mínima para testes unitários
+    target: 85%
+    # Se deve falhar se não atingir o target
+    threshold: 5%
+  # Flag para testes de integração
+  integration:
+    # Cobertura mínima para testes de integração
+    target: 75%
+    # Se deve falhar se não atingir o target
+    threshold: 10%
+  # Flag para testes E2E
+  e2e:
+    # Cobertura mínima para testes E2E
+    target: 60%
+    # Se deve falhar se não atingir o target
+    threshold: 15%
+
+# ===== CONFIGURAÇÕES DE NOTIFICAÇÕES =====
+notify:
+  # Notificações por email
+  email:
+    # Habilitar notificações por email
+    enabled: false
+  # Notificações por Slack
+  slack:
+    # Habilitar notificações por Slack
+    enabled: false
+  # Notificações por webhook
+  webhook:
+    # Habilitar notificações por webhook
+    enabled: false
+
+# ===== CONFIGURAÇÕES DE PARALELISMO =====
+parsers:
+  # Parser para arquivos JavaScript/TypeScript
+  javascript:
+    # Habilitar parser para JS/TS
+    enable_partials: true
+  # Parser para arquivos Python
+  python:
+    # Habilitar parser para Python
+    enable_partials: true
+
+# ===== CONFIGURAÇÕES DE CACHE =====
+cache:
+  # Habilitar cache
+  enabled: true
+  # Tempo de expiração do cache (em segundos)
+  expire: 3600
+
+# ===== CONFIGURAÇÕES DE SEGURANÇA =====
+security:
+  # Habilitar verificações de segurança
+  enabled: true
+  # Verificar vulnerabilidades conhecidas
+  check_vulnerabilities: true
+
+# ===== CONFIGURAÇÕES DE PERFORMANCE =====
+performance:
+  # Habilitar métricas de performance
+  enabled: true
+  # Tempo limite para upload (em segundos)
+  upload_timeout: 300
+
+# ===== CONFIGURAÇÕES DE DEBUG =====
+debug:
+  # Habilitar modo debug
+  enabled: false
+  # Nível de log
+  level: info

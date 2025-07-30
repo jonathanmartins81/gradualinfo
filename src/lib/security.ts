@@ -297,12 +297,14 @@ export const SanitizationUtils = {
 
     for (const key in sanitized) {
       if (typeof sanitized[key] === 'string') {
-        sanitized[key] = this.sanitizeString(sanitized[key]);
+        sanitized[key] = this.sanitizeString(sanitized[key] as string);
       } else if (
         typeof sanitized[key] === 'object' &&
         sanitized[key] !== null
       ) {
-        sanitized[key] = this.sanitizeObject(sanitized[key]);
+        sanitized[key] = this.sanitizeObject(
+          sanitized[key] as Record<string, any>
+        );
       }
     }
 

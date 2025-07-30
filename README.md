@@ -10,6 +10,7 @@
 [![Playwright](https://img.shields.io/badge/Playwright-1.40.0-green?style=flat-square&logo=playwright)](https://playwright.dev/)
 
 [![Test Coverage](https://img.shields.io/badge/Test%20Coverage-85%25-brightgreen?style=flat-square)](https://github.com/jonathanmartins81/boilerplate_aqua9_v2)
+[![Codecov](https://img.shields.io/codecov/c/github/jonathanmartins81/boilerplate_aqua9_v2?style=flat-square)](https://codecov.io/gh/jonathanmartins81/boilerplate_aqua9_v2)
 [![Code Quality](https://img.shields.io/badge/Code%20Quality-A%2B-brightgreen?style=flat-square)](https://github.com/jonathanmartins81/boilerplate_aqua9_v2)
 [![Security](https://img.shields.io/badge/Security-Audit%20Passed-brightgreen?style=flat-square)](https://github.com/jonathanmartins81/boilerplate_aqua9_v2)
 [![E2E Tests](https://img.shields.io/badge/E2E%20Tests-Passing-brightgreen?style=flat-square)](https://github.com/jonathanmartins81/boilerplate_aqua9_v2)
@@ -48,6 +49,7 @@
 
 - ✅ **Testes unitários** com Vitest + RTL
 - ✅ **Testes E2E** com Playwright
+- ✅ **Cobertura de testes** com Codecov
 - ✅ **ESLint + Prettier** para qualidade
 - ✅ **Type checking** automático
 - ✅ **Git hooks** com Lefthook
@@ -224,11 +226,35 @@ npm run test:e2e
 npm run test:e2e:ui
 ```
 
-### **Cobertura de Testes**
+### **Cobertura de Testes (Codecov)**
 
-- **Unitários:** Vitest + React Testing Library
-- **E2E:** Playwright
-- **Cobertura:** 85%+ (meta: 90%)
+```bash
+# Executar cobertura para CI
+npm run test:coverage:ci
+
+# Upload para Codecov
+npm run codecov
+
+# Relatório HTML local
+npm run test:coverage:report
+```
+
+O projeto está integrado com o [Codecov](https://codecov.io) para monitoramento contínuo da cobertura de testes:
+
+- 📊 **Relatórios detalhados** de cobertura
+- 🎯 **Metas de cobertura** configuráveis (80% mínimo)
+- 📈 **Histórico de cobertura** ao longo do tempo
+- 🔍 **Análise de diffs** em Pull Requests
+- 📱 **Badges** para README e documentação
+- 🚨 **Alertas** quando a cobertura diminui
+
+**Configuração:**
+
+- **Cobertura mínima:** 80%
+- **Threshold:** 5%
+- **Flags:** unit, integration, e2e
+- **Relatórios:** HTML, JSON, Text
+- **Token:** Configurado e funcional
 
 ---
 

@@ -1,322 +1,354 @@
 'use client';
 
-import Link from 'next/link';
-import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
 
+// ===== TIPOS =====
 interface User {
   id: string;
-  email: string;
   name: string;
+  email: string;
   role: string;
-  permissions: string[];
+  status: string;
+  createdAt: string;
 }
 
+interface Post {
+  id: string;
+  title: string;
+  author: string;
+  status: string;
+  createdAt: string;
+}
+
+// ===== DADOS MOCK =====
+const mockUsers: User[] = [
+  {
+    id: '1',
+    name: 'João Silva',
+    email: 'joao@example.com',
+    role: 'admin',
+    status: 'ativo',
+    createdAt: '2024-01-15',
+  },
+  {
+    id: '2',
+    name: 'Maria Santos',
+    email: 'maria@example.com',
+    role: 'user',
+    status: 'ativo',
+    createdAt: '2024-01-20',
+  },
+  {
+    id: '3',
+    name: 'Pedro Costa',
+    email: 'pedro@example.com',
+    role: 'moderator',
+    status: 'inativo',
+    createdAt: '2024-01-25',
+  },
+];
+
+const mockPosts: Post[] = [
+  {
+    id: '1',
+    title: 'Como configurar o Next.js',
+    author: 'João Silva',
+    status: 'publicado',
+    createdAt: '2024-01-15',
+  },
+  {
+    id: '2',
+    title: 'Melhores práticas de TypeScript',
+    author: 'Maria Santos',
+    status: 'rascunho',
+    createdAt: '2024-01-20',
+  },
+  {
+    id: '3',
+    title: 'Otimização de performance',
+    author: 'Pedro Costa',
+    status: 'publicado',
+    createdAt: '2024-01-25',
+  },
+];
+
 export default function AdminPage() {
-  const [user, setUser] = useState<User | null>(null);
-  const [isLoading, setIsLoading] = useState(true);
-  const [error, setError] = useState('');
-  const router = useRouter();
+  const [users, setUsers] = useState<User[]>([]);
+  const [posts, setPosts] = useState<Post[]>([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const checkAuth = async () => {
-      const token =
-        typeof window !== 'undefined'
-          ? localStorage.getItem('authToken')
-          : null;
+    // Simular carregamento de dados
+    const loadData = () => {
+      if (typeof window !== 'undefined') {
+        const timer = window.setTimeout(() => {
+          setUsers(mockUsers);
+          setPosts(mockPosts);
+          setLoading(false);
+        }, 1000);
 
-      if (!token) {
-        router.push('/login');
-        return;
-      }
-
-      try {
-        const response = await fetch('/api/auth/me', {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        });
-
-        if (!response.ok) {
-          throw new Error('Token inválido');
-        }
-
-        const userData = await response.json();
-
-        // Verificar se é admin
-        if (userData.role !== 'admin') {
-          router.push('/unauthorized');
-          return;
-        }
-
-        setUser(userData);
-      } catch {
-        setError('Erro na autenticação');
-        if (typeof window !== 'undefined') {
-          localStorage.removeItem('authToken');
-        }
-        router.push('/login');
-      } finally {
-        setIsLoading(false);
+        return () => window.clearTimeout(timer);
       }
     };
 
-    checkAuth();
-  }, [router]);
+    loadData();
+  }, []);
 
-  const handleLogout = () => {
-    if (typeof window !== 'undefined') {
-      localStorage.removeItem('authToken');
-    }
-    router.push('/login');
-  };
-
-  if (isLoading) {
+  if (loading) {
     return (
-      <div className='min-h-screen flex items-center justify-center'>
+      <div className='min-h-screen bg-white dark:bg-gray-50 flex items-center justify-center'>
         <div className='text-center'>
-          <div className='animate-spin rounded-full h-12 w-12 border-b-2 border-red-600 mx-auto'></div>
-          <p className='mt-4 text-gray-600'>Verificando permissões...</p>
+          <div className='animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto mb-4'></div>
+          <p className='text-gray-600 dark:text-gray-400'>Carregando...</p>
         </div>
       </div>
     );
-  }
-
-  if (error) {
-    return (
-      <div className='min-h-screen flex items-center justify-center'>
-        <div className='text-center'>
-          <p className='text-red-600'>{error}</p>
-        </div>
-      </div>
-    );
-  }
-
-  if (!user) {
-    return null;
   }
 
   return (
-    <div className='min-h-screen bg-gray-50'>
-      {/* Header */}
-      <header className='bg-red-600 shadow-sm'>
-        <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
-          <div className='flex justify-between items-center h-16'>
+    <div className='min-h-screen bg-white dark:bg-gray-50 p-6'>
+      <div className='max-w-7xl mx-auto'>
+        {/* Header */}
+        <div className='mb-8'>
+          <h1 className='text-3xl font-bold text-gray-900 dark:text-gray-100 mb-2'>
+            Painel Administrativo
+          </h1>
+          <p className='text-gray-600 dark:text-gray-400'>
+            Gerencie usuários, posts e configurações do sistema
+          </p>
+        </div>
+
+        {/* Stats Cards */}
+        <div className='grid grid-cols-1 md:grid-cols-4 gap-6 mb-8'>
+          <div className='bg-white dark:bg-gray-800 rounded-lg shadow p-6'>
             <div className='flex items-center'>
-              <h1 className='text-xl font-semibold text-white'>
-                Painel Administrativo
-              </h1>
-            </div>
-            <div className='flex items-center space-x-4'>
-              <span className='text-sm text-red-100'>Admin: {user.name}</span>
-              <Link
-                href='/dashboard'
-                className='text-red-100 hover:text-white text-sm'
-              >
-                Dashboard
-              </Link>
-              <button
-                onClick={handleLogout}
-                className='bg-red-700 text-white px-4 py-2 rounded-lg text-sm hover:bg-red-800 transition-colors'
-              >
-                Sair
-              </button>
-            </div>
-          </div>
-        </div>
-      </header>
-
-      {/* Main Content */}
-      <main className='max-w-7xl mx-auto py-6 sm:px-6 lg:px-8'>
-        <div className='px-4 py-6 sm:px-0'>
-          {/* Welcome Card */}
-          <div className='bg-white overflow-hidden shadow rounded-lg mb-6'>
-            <div className='px-4 py-5 sm:p-6'>
-              <h3 className='text-lg leading-6 font-medium text-gray-900 mb-4'>
-                Bem-vindo ao Painel Administrativo
-              </h3>
-              <p className='text-gray-600'>
-                Você tem acesso total ao sistema. Use com responsabilidade.
-              </p>
+              <div className='p-2 bg-blue-100 dark:bg-blue-900 rounded-lg'>
+                <svg
+                  className='w-6 h-6 text-blue-600 dark:text-blue-400'
+                  fill='none'
+                  stroke='currentColor'
+                  viewBox='0 0 24 24'
+                >
+                  <path
+                    strokeLinecap='round'
+                    strokeLinejoin='round'
+                    strokeWidth={2}
+                    d='M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197m13.5-9a2.5 2.5 0 11-5 0 2.5 2.5 0 015 0z'
+                  />
+                </svg>
+              </div>
+              <div className='ml-4'>
+                <p className='text-sm font-medium text-gray-600 dark:text-gray-400'>
+                  Total de Usuários
+                </p>
+                <p className='text-2xl font-semibold text-gray-900 dark:text-gray-100'>
+                  {users.length}
+                </p>
+              </div>
             </div>
           </div>
 
-          {/* Admin Actions */}
-          <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6'>
-            {/* User Management */}
-            <div className='bg-white overflow-hidden shadow rounded-lg'>
-              <div className='px-4 py-5 sm:p-6'>
-                <h4 className='text-lg font-medium text-gray-900 mb-4'>
-                  Gerenciamento de Usuários
-                </h4>
-                <div className='space-y-3'>
-                  <Link
-                    href='/admin/users'
-                    className='block w-full text-left px-4 py-2 border border-gray-300 rounded-lg hover:border-blue-300 hover:bg-blue-50 transition-colors'
-                  >
-                    Ver Todos os Usuários
-                  </Link>
-                  <Link
-                    href='/admin/users/new'
-                    className='block w-full text-left px-4 py-2 border border-gray-300 rounded-lg hover:border-blue-300 hover:bg-blue-50 transition-colors'
-                  >
-                    Criar Novo Usuário
-                  </Link>
-                  <Link
-                    href='/admin/users/roles'
-                    className='block w-full text-left px-4 py-2 border border-gray-300 rounded-lg hover:border-blue-300 hover:bg-blue-50 transition-colors'
-                  >
-                    Gerenciar Roles
-                  </Link>
-                </div>
+          <div className='bg-white dark:bg-gray-800 rounded-lg shadow p-6'>
+            <div className='flex items-center'>
+              <div className='p-2 bg-green-100 dark:bg-green-900 rounded-lg'>
+                <svg
+                  className='w-6 h-6 text-green-600 dark:text-green-400'
+                  fill='none'
+                  stroke='currentColor'
+                  viewBox='0 0 24 24'
+                >
+                  <path
+                    strokeLinecap='round'
+                    strokeLinejoin='round'
+                    strokeWidth={2}
+                    d='M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z'
+                  />
+                </svg>
+              </div>
+              <div className='ml-4'>
+                <p className='text-sm font-medium text-gray-600 dark:text-gray-400'>
+                  Total de Posts
+                </p>
+                <p className='text-2xl font-semibold text-gray-900 dark:text-gray-100'>
+                  {posts.length}
+                </p>
               </div>
             </div>
+          </div>
 
-            {/* Content Management */}
-            <div className='bg-white overflow-hidden shadow rounded-lg'>
-              <div className='px-4 py-5 sm:p-6'>
-                <h4 className='text-lg font-medium text-gray-900 mb-4'>
-                  Gerenciamento de Conteúdo
-                </h4>
-                <div className='space-y-3'>
-                  <Link
-                    href='/admin/posts'
-                    className='block w-full text-left px-4 py-2 border border-gray-300 rounded-lg hover:border-blue-300 hover:bg-blue-50 transition-colors'
-                  >
-                    Gerenciar Posts
-                  </Link>
-                  <Link
-                    href='/admin/comments'
-                    className='block w-full text-left px-4 py-2 border border-gray-300 rounded-lg hover:border-blue-300 hover:bg-blue-50 transition-colors'
-                  >
-                    Moderar Comentários
-                  </Link>
-                  <Link
-                    href='/admin/media'
-                    className='block w-full text-left px-4 py-2 border border-gray-300 rounded-lg hover:border-blue-300 hover:bg-blue-50 transition-colors'
-                  >
-                    Gerenciar Mídia
-                  </Link>
-                </div>
+          <div className='bg-white dark:bg-gray-800 rounded-lg shadow p-6'>
+            <div className='flex items-center'>
+              <div className='p-2 bg-yellow-100 dark:bg-yellow-900 rounded-lg'>
+                <svg
+                  className='w-6 h-6 text-yellow-600 dark:text-yellow-400'
+                  fill='none'
+                  stroke='currentColor'
+                  viewBox='0 0 24 24'
+                >
+                  <path
+                    strokeLinecap='round'
+                    strokeLinejoin='round'
+                    strokeWidth={2}
+                    d='M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z'
+                  />
+                </svg>
+              </div>
+              <div className='ml-4'>
+                <p className='text-sm font-medium text-gray-600 dark:text-gray-400'>
+                  Posts Publicados
+                </p>
+                <p className='text-2xl font-semibold text-gray-900 dark:text-gray-100'>
+                  {posts.filter(post => post.status === 'publicado').length}
+                </p>
               </div>
             </div>
+          </div>
 
-            {/* System Settings */}
-            <div className='bg-white overflow-hidden shadow rounded-lg'>
-              <div className='px-4 py-5 sm:p-6'>
-                <h4 className='text-lg font-medium text-gray-900 mb-4'>
-                  Configurações do Sistema
-                </h4>
-                <div className='space-y-3'>
-                  <Link
-                    href='/admin/settings'
-                    className='block w-full text-left px-4 py-2 border border-gray-300 rounded-lg hover:border-blue-300 hover:bg-blue-50 transition-colors'
-                  >
-                    Configurações Gerais
-                  </Link>
-                  <Link
-                    href='/admin/security'
-                    className='block w-full text-left px-4 py-2 border border-gray-300 rounded-lg hover:border-blue-300 hover:bg-blue-50 transition-colors'
-                  >
-                    Configurações de Segurança
-                  </Link>
-                  <Link
-                    href='/admin/logs'
-                    className='block w-full text-left px-4 py-2 border border-gray-300 rounded-lg hover:border-blue-300 hover:bg-blue-50 transition-colors'
-                  >
-                    Logs do Sistema
-                  </Link>
-                </div>
+          <div className='bg-white dark:bg-gray-800 rounded-lg shadow p-6'>
+            <div className='flex items-center'>
+              <div className='p-2 bg-red-100 dark:bg-red-900 rounded-lg'>
+                <svg
+                  className='w-6 h-6 text-red-600 dark:text-red-400'
+                  fill='none'
+                  stroke='currentColor'
+                  viewBox='0 0 24 24'
+                >
+                  <path
+                    strokeLinecap='round'
+                    strokeLinejoin='round'
+                    strokeWidth={2}
+                    d='M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L3.732 16.5c-.77.833.192 2.5 1.732 2.5z'
+                  />
+                </svg>
               </div>
-            </div>
-
-            {/* Analytics */}
-            <div className='bg-white overflow-hidden shadow rounded-lg'>
-              <div className='px-4 py-5 sm:p-6'>
-                <h4 className='text-lg font-medium text-gray-900 mb-4'>
-                  Analytics e Relatórios
-                </h4>
-                <div className='space-y-3'>
-                  <Link
-                    href='/admin/analytics'
-                    className='block w-full text-left px-4 py-2 border border-gray-300 rounded-lg hover:border-blue-300 hover:bg-blue-50 transition-colors'
-                  >
-                    Dashboard Analytics
-                  </Link>
-                  <Link
-                    href='/admin/reports'
-                    className='block w-full text-left px-4 py-2 border border-gray-300 rounded-lg hover:border-blue-300 hover:bg-blue-50 transition-colors'
-                  >
-                    Relatórios
-                  </Link>
-                  <Link
-                    href='/admin/backups'
-                    className='block w-full text-left px-4 py-2 border border-gray-300 rounded-lg hover:border-blue-300 hover:bg-blue-50 transition-colors'
-                  >
-                    Backups
-                  </Link>
-                </div>
-              </div>
-            </div>
-
-            {/* Security */}
-            <div className='bg-white overflow-hidden shadow rounded-lg'>
-              <div className='px-4 py-5 sm:p-6'>
-                <h4 className='text-lg font-medium text-gray-900 mb-4'>
-                  Segurança
-                </h4>
-                <div className='space-y-3'>
-                  <Link
-                    href='/admin/security/audit'
-                    className='block w-full text-left px-4 py-2 border border-gray-300 rounded-lg hover:border-blue-300 hover:bg-blue-50 transition-colors'
-                  >
-                    Auditoria de Segurança
-                  </Link>
-                  <Link
-                    href='/admin/security/threats'
-                    className='block w-full text-left px-4 py-2 border border-gray-300 rounded-lg hover:border-blue-300 hover:bg-blue-50 transition-colors'
-                  >
-                    Ameaças Detectadas
-                  </Link>
-                  <Link
-                    href='/admin/security/ips'
-                    className='block w-full text-left px-4 py-2 border border-gray-300 rounded-lg hover:border-blue-300 hover:bg-blue-50 transition-colors'
-                  >
-                    IPs Bloqueados
-                  </Link>
-                </div>
-              </div>
-            </div>
-
-            {/* Quick Stats */}
-            <div className='bg-white overflow-hidden shadow rounded-lg'>
-              <div className='px-4 py-5 sm:p-6'>
-                <h4 className='text-lg font-medium text-gray-900 mb-4'>
-                  Estatísticas Rápidas
-                </h4>
-                <div className='space-y-4'>
-                  <div className='flex justify-between'>
-                    <span className='text-gray-600'>Usuários Ativos:</span>
-                    <span className='font-semibold'>1,234</span>
-                  </div>
-                  <div className='flex justify-between'>
-                    <span className='text-gray-600'>Posts Publicados:</span>
-                    <span className='font-semibold'>567</span>
-                  </div>
-                  <div className='flex justify-between'>
-                    <span className='text-gray-600'>Comentários:</span>
-                    <span className='font-semibold'>890</span>
-                  </div>
-                  <div className='flex justify-between'>
-                    <span className='text-gray-600'>Acessos Hoje:</span>
-                    <span className='font-semibold'>12,345</span>
-                  </div>
-                </div>
+              <div className='ml-4'>
+                <p className='text-sm font-medium text-gray-600 dark:text-gray-400'>
+                  Usuários Inativos
+                </p>
+                <p className='text-2xl font-semibold text-gray-900 dark:text-gray-100'>
+                  {users.filter(user => user.status === 'inativo').length}
+                </p>
               </div>
             </div>
           </div>
         </div>
-      </main>
+
+        {/* Recent Users */}
+        <div className='bg-white dark:bg-gray-800 rounded-lg shadow mb-8'>
+          <div className='px-6 py-4 border-b border-gray-200 dark:border-gray-700'>
+            <h2 className='text-lg font-semibold text-gray-900 dark:text-gray-100'>
+              Usuários Recentes
+            </h2>
+          </div>
+          <div className='overflow-x-auto'>
+            <table className='min-w-full divide-y divide-gray-200 dark:divide-gray-700'>
+              <thead className='bg-gray-50 dark:bg-gray-700'>
+                <tr>
+                  <th className='px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider'>
+                    Nome
+                  </th>
+                  <th className='px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider'>
+                    Email
+                  </th>
+                  <th className='px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider'>
+                    Função
+                  </th>
+                  <th className='px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider'>
+                    Status
+                  </th>
+                  <th className='px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider'>
+                    Data
+                  </th>
+                </tr>
+              </thead>
+              <tbody className='bg-white dark:bg-gray-800 divide-y divide-gray-200 dark:divide-gray-700'>
+                {users.map(user => (
+                  <tr key={user.id}>
+                    <td className='px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 dark:text-gray-100'>
+                      {user.name}
+                    </td>
+                    <td className='px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-400'>
+                      {user.email}
+                    </td>
+                    <td className='px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-400'>
+                      {user.role}
+                    </td>
+                    <td className='px-6 py-4 whitespace-nowrap'>
+                      <span
+                        className={`inline-flex px-2 py-1 text-xs font-semibold rounded-full ${
+                          user.status === 'ativo'
+                            ? 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200'
+                            : 'bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-200'
+                        }`}
+                      >
+                        {user.status}
+                      </span>
+                    </td>
+                    <td className='px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-400'>
+                      {user.createdAt}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        {/* Recent Posts */}
+        <div className='bg-white dark:bg-gray-800 rounded-lg shadow'>
+          <div className='px-6 py-4 border-b border-gray-200 dark:border-gray-700'>
+            <h2 className='text-lg font-semibold text-gray-900 dark:text-gray-100'>
+              Posts Recentes
+            </h2>
+          </div>
+          <div className='overflow-x-auto'>
+            <table className='min-w-full divide-y divide-gray-200 dark:divide-gray-700'>
+              <thead className='bg-gray-50 dark:bg-gray-700'>
+                <tr>
+                  <th className='px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider'>
+                    Título
+                  </th>
+                  <th className='px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider'>
+                    Autor
+                  </th>
+                  <th className='px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider'>
+                    Status
+                  </th>
+                  <th className='px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider'>
+                    Data
+                  </th>
+                </tr>
+              </thead>
+              <tbody className='bg-white dark:bg-gray-800 divide-y divide-gray-200 dark:divide-gray-700'>
+                {posts.map(post => (
+                  <tr key={post.id}>
+                    <td className='px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 dark:text-gray-100'>
+                      {post.title}
+                    </td>
+                    <td className='px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-400'>
+                      {post.author}
+                    </td>
+                    <td className='px-6 py-4 whitespace-nowrap'>
+                      <span
+                        className={`inline-flex px-2 py-1 text-xs font-semibold rounded-full ${
+                          post.status === 'publicado'
+                            ? 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200'
+                            : 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-200'
+                        }`}
+                      >
+                        {post.status}
+                      </span>
+                    </td>
+                    <td className='px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-400'>
+                      {post.createdAt}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }

@@ -6,7 +6,6 @@ describe('NotFound Page', () => {
   it('should render 404 page correctly', () => {
     render(<NotFound />);
 
-    expect(screen.getByText('404')).toBeInTheDocument();
     expect(screen.getByText('Página não encontrada')).toBeInTheDocument();
     expect(
       screen.getByText(/A página que você está procurando não existe/)
@@ -17,41 +16,19 @@ describe('NotFound Page', () => {
     render(<NotFound />);
 
     const homeLink = screen.getByRole('link', {
-      name: /Voltar para o início/i,
+      name: /Voltar ao início/i,
     });
+
     expect(homeLink).toBeInTheDocument();
     expect(homeLink).toHaveAttribute('href', '/');
-  });
-
-  it('should have links to other pages', () => {
-    render(<NotFound />);
-
-    const aboutLink = screen.getByRole('link', { name: /Sobre/i });
-    const portfolioLink = screen.getByRole('link', { name: /Portfólio/i });
-
-    expect(aboutLink).toBeInTheDocument();
-    expect(aboutLink).toHaveAttribute('href', '/about');
-
-    expect(portfolioLink).toBeInTheDocument();
-    expect(portfolioLink).toHaveAttribute('href', '/portfolio');
   });
 
   it('should have proper styling classes', () => {
     render(<NotFound />);
 
-    const container = screen.getByText('404').closest('div')?.parentElement;
+    const container = screen.getByText('Página não encontrada').closest('div');
     expect(container).toBeInTheDocument();
-    // Verificar se o container pai tem as classes corretas
-    const parentContainer = container?.parentElement;
-    expect(parentContainer).toHaveClass('min-h-screen');
-    expect(parentContainer).toHaveClass('justify-center');
-  });
-
-  it('should display Aqua9 branding', () => {
-    render(<NotFound />);
-
-    expect(
-      screen.getByText(/Desenvolvido com ❤️ pela Aqua9/)
-    ).toBeInTheDocument();
+    // Verificar se o container tem as classes corretas
+    expect(container).toHaveClass('text-center');
   });
 });

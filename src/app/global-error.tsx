@@ -1,29 +1,6 @@
 'use client';
 
-import { Metadata } from 'next';
 import { useEffect } from 'react';
-
-export const metadata: Metadata = {
-  title: 'Erro do Servidor - Aqua9 Boilerplate v2',
-  description:
-    'Ocorreu um erro interno no servidor. Nossa equipe foi notificada e está trabalhando para resolver o problema.',
-  robots: {
-    index: false,
-    follow: false,
-  },
-  openGraph: {
-    title: 'Erro do Servidor - Aqua9 Boilerplate v2',
-    description: 'Ocorreu um erro interno no servidor.',
-    type: 'website',
-    images: ['/og-image.svg'],
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'Erro do Servidor - Aqua9 Boilerplate v2',
-    description: 'Ocorreu um erro interno no servidor.',
-    images: ['/og-image.svg'],
-  },
-};
 
 interface GlobalErrorProps {
   error: Error & { digest?: string };
@@ -32,66 +9,41 @@ interface GlobalErrorProps {
 
 export default function GlobalError({ error, reset }: GlobalErrorProps) {
   useEffect(() => {
-    // Log do erro para monitoramento
-    console.error('Global Error:', error);
+    // Log do erro apenas no cliente
+    if (typeof window !== 'undefined') {
+      console.error('Global Error:', error);
+    }
   }, [error]);
 
   return (
-    <html lang='pt-BR'>
+    <html>
       <body>
-        <div className='min-h-screen flex items-center justify-center bg-gradient-to-br from-red-50 to-red-100'>
-          <div className='max-w-md w-full mx-auto text-center px-4'>
+        <div className='min-h-screen bg-white dark:bg-gradient-to-br dark:from-red-50 dark:to-red-100 flex items-center justify-center p-4'>
+          <div className='max-w-md w-full text-center'>
             <div className='mb-8'>
-              <div className='text-6xl mb-4'>💥</div>
-              <h1 className='text-3xl font-bold text-red-700 mb-4'>
-                Erro do Servidor
+              <h1 className='text-4xl font-bold text-gray-900 dark:text-red-900 mb-4'>
+                Erro Crítico
               </h1>
-              <p className='text-red-600 mb-4'>
-                Ocorreu um erro interno no servidor. Nossa equipe foi
-                notificada.
+              <p className='text-lg text-gray-600 dark:text-red-800 mb-6'>
+                Ocorreu um erro crítico na aplicação. Tente recarregar a página.
               </p>
-              {process.env.NODE_ENV === 'development' && (
-                <details className='text-left bg-red-50 p-4 rounded-lg mb-4'>
-                  <summary className='cursor-pointer font-medium text-red-700 mb-2'>
-                    Detalhes do erro (desenvolvimento)
-                  </summary>
-                  <pre className='text-xs text-red-600 overflow-auto'>
-                    {error.message}
-                    {error.digest && `\nDigest: ${error.digest}`}
-                  </pre>
-                </details>
-              )}
             </div>
+
+            {error.digest && (
+              <div className='mb-6 p-4 bg-gray-100 dark:bg-red-200 rounded-lg'>
+                <p className='text-sm text-gray-700 dark:text-red-900'>
+                  Erro ID: {error.digest}
+                </p>
+              </div>
+            )}
 
             <div className='space-y-4'>
               <button
                 onClick={reset}
-                className='inline-block bg-red-600 text-white px-6 py-3 rounded-lg font-medium hover:bg-red-700 transition-colors duration-200'
+                className='w-full bg-blue-600 dark:bg-red-600 text-white py-3 px-6 rounded-lg hover:bg-blue-700 dark:hover:bg-red-700 transition-colors'
               >
                 Tentar novamente
               </button>
-
-              <div className='text-sm text-red-500'>
-                <p>Se o problema persistir:</p>
-                <div className='mt-2 space-x-4'>
-                  <a href='/' className='text-red-600 hover:underline'>
-                    Voltar ao início
-                  </a>
-                  <a
-                    href='mailto:contato@aqua9.com.br'
-                    className='text-red-600 hover:underline'
-                  >
-                    Contatar suporte
-                  </a>
-                </div>
-              </div>
-            </div>
-
-            <div className='mt-12 text-xs text-red-400'>
-              <p>Desenvolvido com ❤️ pela Aqua9</p>
-              {error.digest && (
-                <p className='mt-1'>ID do erro: {error.digest}</p>
-              )}
             </div>
           </div>
         </div>

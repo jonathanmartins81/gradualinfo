@@ -87,7 +87,7 @@
   ],
   "bracket-pair-colorizer-2.showBracketsInGutter": true,
   "bracket-pair-colorizer-2.showBracketsInRuler": true,
-  "workbench.colorTheme": "One Dark Pro",
+  "workbench.colorTheme": "Dracula Theme",
   "workbench.iconTheme": "material-icon-theme",
   "workbench.preferredDarkColorTheme": "One Dark Pro",
   "workbench.preferredLightColorTheme": "One Light Pro",
@@ -159,5 +159,6 @@
   "testing.autoRun.onWalkthrough": false,
   "testing.autoRun.onWebview": false,
   "testing.autoRun.onNotebook": false,
-  "testing.autoRun.onChat": false
+  "testing.autoRun.onChat": false,
+  "testing.automaticallyOpenTestResults": "never"
 }

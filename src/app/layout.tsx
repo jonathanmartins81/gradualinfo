@@ -1,4 +1,5 @@
 import { JsonLd } from '@/components/JsonLd';
+import Navigation from '@/components/Navigation';
 import { generateDynamicSEO } from '@/utils/SEO';
 import type { Metadata, Viewport } from 'next';
 import './globals.css';

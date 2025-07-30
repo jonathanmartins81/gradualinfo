@@ -1,4 +1,5 @@
 import { render, screen } from '@testing-library/react';
+import React from 'react';
 import { afterAll, afterEach, describe, expect, it, vi } from 'vitest';
 import Error from './error';
 
@@ -7,14 +8,17 @@ vi.mock('react', async () => {
   const actual = await vi.importActual('react');
   return {
     ...actual,
-    useEffect: vi.fn(callback => callback()),
+    useEffect: vi.fn((callback) => {
+      callback();
+      return undefined;
+    }),
   };
 });
 
 // Mock do console.error
 const mockConsoleError = vi
   .spyOn(console, 'error')
-  .mockImplementation(() => {});
+  .mockImplementation(() => { });
 
 describe('Error Page', () => {
   const mockError = {

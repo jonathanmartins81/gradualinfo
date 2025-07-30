@@ -129,7 +129,7 @@ describe('Design System', () => {
       });
 
       it('should return fallback color for invalid color', () => {
-        const color = themeUtils.getColor('invalid' as any);
+        const color = themeUtils.getColor('invalid' as any, '500');
         expect(color).toBe('#64748b'); // gray[500]
       });
     });

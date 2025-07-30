@@ -68,7 +68,9 @@ function cleanupRateLimitCache() {
 }
 
 // Limpar cache a cada 5 minutos
-setInterval(cleanupRateLimitCache, 5 * 60 * 1000);
+if (typeof window !== 'undefined') {
+  setInterval(cleanupRateLimitCache, 5 * 60 * 1000);
+}
 
 export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;

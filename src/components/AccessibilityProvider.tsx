@@ -194,11 +194,11 @@ export function ScreenReaderAnnouncement({ message }: { message: string }) {
       setAnnouncement(message);
 
       // Limpar após 1 segundo
-      const timer = setTimeout(() => {
+      const timer = window.setTimeout(() => {
         setAnnouncement('');
       }, 1000);
 
-      return () => clearTimeout(timer);
+      return () => window.clearTimeout(timer);
     }
   }, [message]);
 

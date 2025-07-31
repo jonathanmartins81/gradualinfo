@@ -1,36 +1,65 @@
-import { ButtonSize, ButtonVariant } from './types';
+import { ButtonProps } from './types';
 
-// Variantes do botão baseadas nos tokens do theme.ts
-export const buttonVariants: Record<ButtonVariant, string> = {
+// Função utilitária para combinar classes CSS
+const cn = (...classes: (string | boolean | undefined | null)[]) => {
+  return classes.filter(Boolean).join(' ');
+};
+
+// Estilos base do botão
+const buttonBase =
+  'inline-flex items-center justify-center font-medium rounded-lg transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed';
+
+// Variantes de botão
+const buttonVariants = {
   primary:
-    'bg-cyan-600 hover:bg-cyan-700 text-white border-cyan-600 hover:border-cyan-700 shadow-md hover:shadow-lg',
-  secondary:
-    'bg-indigo-600 hover:bg-indigo-700 text-white border-indigo-600 hover:border-indigo-700 shadow-md hover:shadow-lg',
-  danger:
-    'bg-red-500 hover:bg-red-600 text-white border-red-500 hover:border-red-600 shadow-md hover:shadow-lg',
-  ghost:
-    'bg-transparent hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-700 dark:text-gray-300 border-transparent',
+    'bg-primary-600 text-white hover:bg-primary-700 focus:ring-primary-500 shadow-soft hover:shadow-medium',
+  secondary: 'bg-gray-600 text-white hover:bg-gray-700 focus:ring-gray-500',
+  danger: 'bg-red-600 text-white hover:bg-red-700 focus:ring-red-500',
+  ghost: 'text-gray-700 hover:bg-gray-100 focus:ring-gray-500',
   outline:
-    'bg-transparent border-2 border-cyan-600 text-cyan-600 hover:bg-cyan-600 hover:text-white',
+    'border-2 border-primary-600 text-primary-600 hover:bg-primary-50 focus:ring-primary-500',
 };
 
-// Tamanhos do botão
-export const buttonSizes: Record<ButtonSize, string> = {
-  sm: 'px-3 py-1.5 text-sm rounded-md',
-  md: 'px-4 py-2 text-base rounded-lg',
-  lg: 'px-6 py-3 text-lg rounded-xl',
+// Tamanhos de botão
+const buttonSizes = {
+  sm: 'px-3 py-1.5 text-sm',
+  md: 'px-4 py-2 text-base',
+  lg: 'px-6 py-3 text-lg',
 };
 
-// Classes base do botão
-export const buttonBase =
-  'inline-flex items-center justify-center font-medium transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed';
+// Estilos adicionais
+const buttonFullWidth = 'w-full';
+const buttonLoading = 'cursor-wait';
 
-// Classes para loading
-export const buttonLoading = 'animate-pulse cursor-wait';
+/**
+ * Função otimizada para gerar estilos do botão
+ * @param props - Propriedades do botão
+ * @returns String com classes CSS combinadas
+ */
+export const getButtonStyles = ({
+  variant = 'primary',
+  size = 'md',
+  fullWidth = false,
+  loading = false,
+  disabled = false,
+}: Pick<
+  ButtonProps,
+  'variant' | 'size' | 'fullWidth' | 'loading' | 'disabled'
+>) => {
+  return cn(
+    buttonBase,
+    buttonVariants[variant],
+    buttonSizes[size],
+    fullWidth && buttonFullWidth,
+    loading && buttonLoading
+  );
+};
 
-// Classes para full width
-export const buttonFullWidth = 'w-full';
-
-// Classes para ícones
-export const buttonIconLeft = 'mr-2';
-export const buttonIconRight = 'ml-2';
+// Exportações para compatibilidade
+export {
+  buttonBase,
+  buttonFullWidth,
+  buttonLoading,
+  buttonSizes,
+  buttonVariants,
+};

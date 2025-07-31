@@ -9,6 +9,12 @@ export default defineConfig({
     setupFiles: './.vitest/setup.ts',
     globals: true,
     css: true,
+    exclude: [
+      '**/node_modules/**',
+      '**/tests/e2e/**',
+      '**/playwright-report/**',
+      '**/test-results/**',
+    ],
     coverage: {
       provider: 'v8',
       reporter: ['text', 'json', 'html'],

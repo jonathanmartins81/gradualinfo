@@ -1,142 +1,109 @@
 'use client';
 
-import {
-  inputBase,
-  inputContainer,
-  inputContainerFullWidth,
-  inputError,
-  inputErrorBorder,
-  inputHelperText,
-  inputLabel,
-  inputLabelRequired,
-  inputLeftIcon,
-  inputLoading,
-  inputRightIcon,
-  inputSizes,
-  inputVariants,
-  inputWithBothIcons,
-  inputWithLeftIcon,
-  inputWithRightIcon,
-} from './styles';
+import React from 'react';
+import { getInputStyles } from './styles';
 import { InputProps } from './types';
 
-// Função utilitária para combinar classes CSS
-const cn = (...classes: (string | boolean | undefined | null)[]) => {
-  return classes.filter(Boolean).join(' ');
-};
+const Input = React.memo<InputProps>(
+  ({
+    label,
+    error,
+    helperText,
+    leftIcon,
+    rightIcon,
+    required = false,
+    disabled = false,
+    loading = false,
+    fullWidth = false,
+    variant = 'default',
+    size = 'md',
+    type = 'text',
+    className = '',
+    containerClassName = '',
+    ...props
+  }) => {
+    const inputStyles = getInputStyles({
+      variant,
+      size,
+      error,
+      disabled,
+      loading,
+      fullWidth,
+    });
+    const combinedInputClassName = `${inputStyles} ${className}`.trim();
+    const combinedContainerClassName =
+      `relative ${fullWidth ? 'w-full' : ''} ${containerClassName}`.trim();
 
-/**
- * Componente Input reutilizável e responsivo
- *
- * @example
- * ```tsx
- * <Input
- *   label="Email"
- *   type="email"
- *   placeholder="seu@email.com"
- *   required
- * />
- *
- * <Input
- *   label="Senha"
- *   type="password"
- *   leftIcon={<LockIcon />}
- *   error="Senha é obrigatória"
- * />
- * ```
- */
-const Input = ({
-  label,
-  variant = 'default',
-  size = 'md',
-  type = 'text',
-  error,
-  helperText,
-  leftIcon,
-  rightIcon,
-  fullWidth = false,
-  required = false,
-  disabled = false,
-  loading = false,
-  className,
-  containerClassName,
-  ...rest
-}: InputProps) => {
-  const hasLeftIcon = !!leftIcon;
-  const hasRightIcon = !!rightIcon;
-  const hasError = !!error;
-
-  const getInputClasses = () => {
-    const baseClasses = [
-      inputBase,
-      inputVariants[variant],
-      inputSizes[size],
-    ];
-
-    // Adicionar classes para ícones
-    if (hasLeftIcon && hasRightIcon) {
-      baseClasses.push(inputWithBothIcons);
-    } else if (hasLeftIcon) {
-      baseClasses.push(inputWithLeftIcon);
-    } else if (hasRightIcon) {
-      baseClasses.push(inputWithRightIcon);
-    }
-
-    // Adicionar classes para erro
-    if (hasError) {
-      baseClasses.push(inputErrorBorder);
-    }
-
-    // Adicionar classes para loading
-    if (loading) {
-      baseClasses.push(inputLoading);
-    }
-
-    return cn(...baseClasses, className);
-  };
-
-  const getContainerClasses = () => {
-    return cn(
-      inputContainer,
-      fullWidth && inputContainerFullWidth,
-      containerClassName
-    );
-  };
-
-  return (
-    <div className={getContainerClasses()}>
-      {label && (
-        <label className={cn(inputLabel, required && inputLabelRequired)}>
-          {label}
-          {required && <span className="text-red-500 ml-1">*</span>}
-        </label>
-      )}
-
-      <div className="relative">
-        {leftIcon && (
-          <div className={inputLeftIcon}>
-            {leftIcon}
-          </div>
+    return (
+      <div className={combinedContainerClassName}>
+        {label && (
+          <label className='block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1'>
+            {label}
+            {required && <span className='text-red-500 ml-1'>*</span>}
+          </label>
         )}
 
-        <input
-          type={type}
-          disabled={disabled || loading}
-          className={getInputClasses()}
-          {...rest}
-        />
+        <div className='relative'>
+          {leftIcon && (
+            <div className='absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none'>
+              <span className='text-gray-400'>{leftIcon}</span>
+            </div>
+          )}
 
-        {rightIcon && (
-          <div className={inputRightIcon}>
-            {rightIcon}
-          </div>
+          <input
+            type={type}
+            className={combinedInputClassName}
+            disabled={disabled || loading}
+            required={required}
+            {...props}
+          />
+
+          {rightIcon && (
+            <div className='absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none'>
+              <span className='text-gray-400'>{rightIcon}</span>
+            </div>
+          )}
+
+          {loading && (
+            <div className='absolute inset-y-0 right-0 pr-3 flex items-center'>
+              <svg
+                className='animate-spin h-4 w-4 text-gray-400'
+                xmlns='http://www.w3.org/2000/svg'
+                fill='none'
+                viewBox='0 0 24 24'
+              >
+                <circle
+                  className='opacity-25'
+                  cx='12'
+                  cy='12'
+                  r='10'
+                  stroke='currentColor'
+                  strokeWidth='4'
+                />
+                <path
+                  className='opacity-75'
+                  fill='currentColor'
+                  d='M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z'
+                />
+              </svg>
+            </div>
+          )}
+        </div>
+
+        {error && (
+          <p className='mt-1 text-sm text-red-600 dark:text-red-400'>{error}</p>
+        )}
+
+        {helperText && !error && (
+          <p className='mt-1 text-sm text-gray-500 dark:text-gray-400'>
+            {helperText}
+          </p>
         )}
       </div>
+    );
+  }
+);
 
-      {error && <p className={inputError}>{error}</p>}
-      {helperText && !error && <p className={inputHelperText}>{helperText}</p>}
-    </div>
-  );
-};
+Input.displayName = 'Input';
 
 export default Input;

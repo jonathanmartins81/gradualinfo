@@ -1,60 +1,83 @@
-import { InputSize, InputVariant } from './types';
+import { InputProps } from './types';
 
-// Variantes do input
-export const inputVariants: Record<InputVariant, string> = {
-  default:
-    'bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 focus:border-cyan-500 focus:ring-cyan-500',
-  outlined:
-    'bg-transparent border-2 border-gray-300 dark:border-gray-600 focus:border-cyan-500 focus:ring-cyan-500',
-  filled:
-    'bg-gray-50 dark:bg-gray-700 border-0 focus:ring-2 focus:ring-cyan-500',
-  ghost: 'bg-transparent border-0 focus:ring-2 focus:ring-cyan-500',
+// Função utilitária para combinar classes CSS
+const cn = (...classes: (string | boolean | undefined | null)[]) => {
+  return classes.filter(Boolean).join(' ');
 };
 
-// Tamanhos do input
-export const inputSizes: Record<InputSize, string> = {
+// Estilos base do input
+const inputBase =
+  'block w-full border border-gray-300 dark:border-gray-600 rounded-lg transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-primary-500 disabled:opacity-50 disabled:cursor-not-allowed bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100';
+
+// Variantes de input
+const inputVariants = {
+  default: 'border-gray-300 dark:border-gray-600',
+  filled: 'bg-gray-50 dark:bg-gray-700 border-gray-300 dark:border-gray-600',
+  outlined: 'border-2 border-gray-300 dark:border-gray-600',
+};
+
+// Tamanhos de input
+const inputSizes = {
   sm: 'px-3 py-1.5 text-sm',
   md: 'px-4 py-2 text-base',
   lg: 'px-6 py-3 text-lg',
 };
 
-// Classes base do input
-export const inputBase =
-  'w-full rounded-lg transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed';
+// Estilos para ícones
+const inputWithLeftIcon = 'pl-10';
+const inputWithRightIcon = 'pr-10';
+const inputWithBothIcons = 'pl-10 pr-10';
 
-// Classes para o container
-export const inputContainer = 'relative';
+// Estilos para estados
+const inputError =
+  'border-red-500 dark:border-red-400 focus:ring-red-500 focus:border-red-500';
+const inputLoading = 'cursor-wait';
 
-export const inputContainerFullWidth = 'w-full';
+/**
+ * Função otimizada para gerar estilos do input
+ * @param props - Propriedades do input
+ * @returns String com classes CSS combinadas
+ */
+export const getInputStyles = ({
+  variant = 'default',
+  size = 'md',
+  error = false,
+  disabled = false,
+  loading = false,
+  fullWidth = false,
+  leftIcon = false,
+  rightIcon = false,
+}: Pick<
+  InputProps,
+  'variant' | 'size' | 'error' | 'disabled' | 'loading' | 'fullWidth'
+> & {
+  leftIcon?: boolean;
+  rightIcon?: boolean;
+}) => {
+  const hasLeftIcon = !!leftIcon;
+  const hasRightIcon = !!rightIcon;
+  const hasError = !!error;
 
-// Classes para o label
-export const inputLabel =
-  'block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1';
+  return cn(
+    inputBase,
+    inputVariants[variant],
+    inputSizes[size],
+    hasLeftIcon && inputWithLeftIcon,
+    hasRightIcon && inputWithRightIcon,
+    hasLeftIcon && hasRightIcon && inputWithBothIcons,
+    hasError && inputError,
+    loading && inputLoading
+  );
+};
 
-export const inputLabelRequired = 'text-red-500';
-
-// Classes para o input com ícones
-export const inputWithLeftIcon = 'pl-10';
-
-export const inputWithRightIcon = 'pr-10';
-
-export const inputWithBothIcons = 'px-10';
-
-// Classes para ícones
-export const inputLeftIcon =
-  'absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400';
-
-export const inputRightIcon =
-  'absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400';
-
-// Classes para texto de ajuda
-export const inputHelperText = 'mt-1 text-sm text-gray-600 dark:text-gray-400';
-
-// Classes para erro
-export const inputError = 'mt-1 text-sm text-red-600 dark:text-red-400';
-
-export const inputErrorBorder =
-  'border-red-500 focus:border-red-500 focus:ring-red-500';
-
-// Classes para loading
-export const inputLoading = 'animate-pulse';
+// Exportações para compatibilidade
+export {
+  inputBase,
+  inputError,
+  inputLoading,
+  inputSizes,
+  inputVariants,
+  inputWithBothIcons,
+  inputWithLeftIcon,
+  inputWithRightIcon,
+};

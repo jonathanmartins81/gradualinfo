@@ -1,15 +1,16 @@
 {
-  "name": "boilerplate-aqua9-v2",
-  "version": "2.0.0",
-  "description": "Boilerplate Next.js profissional da Aqua9 v2 para projetos internos. Template moderno com TypeScript, SEO otimizado e ferramentas de qualidade de código.",
+  "name": "gradualinfo-website",
+  "version": "1.0.0",
+  "description": "Website oficial da Gradual Info - Desenvolvido pela Aqua9. Site moderno com TypeScript, SEO otimizado e ferramentas de qualidade de código.",
   "keywords": [
-    "boilerplate",
+    "gradualinfo",
+    "gradual info",
     "nextjs",
     "react",
     "typescript",
     "aqua9",
     "jonathan simão",
-    "template",
+    "website",
     "fullstack",
     "web development",
     "frontend",
@@ -21,8 +22,6 @@
     "code quality",
     "testing",
     "storybook",
-    "drizzleorm",
-    "posthog",
     "sentry"
   ],
   "author": {

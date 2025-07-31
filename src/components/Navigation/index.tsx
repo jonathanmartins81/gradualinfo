@@ -72,12 +72,18 @@ const navigationItems: NavigationItem[] = [
     description: 'Demonstração do sistema de temas',
     category: 'demos',
   },
-  {
-    label: 'Componentes Demo',
-    href: '/components-demo',
-    description: 'Demonstração dos componentes reutilizáveis',
-    category: 'demos',
-  },
+        {
+        label: 'Componentes Demo',
+        href: '/components-demo',
+        description: 'Demonstração dos componentes reutilizáveis',
+        category: 'demos',
+      },
+      {
+        label: 'Showcase Completo',
+        href: '/components-showcase',
+        description: 'Showcase completo de todos os componentes',
+        category: 'demos',
+      },
 
   // Componentes
   {

@@ -29,12 +29,14 @@ git status
 ### 3. Configurações Adicionais
 
 #### Configurar GitHub Pages (Opcional)
+
 - Vá em Settings > Pages
 - Source: Deploy from a branch
 - Branch: main/master
 - Folder: / (root)
 
 #### Configurar Actions (Opcional)
+
 - O projeto já tem workflows configurados
 - Eles serão ativados automaticamente após o primeiro push
 
@@ -49,9 +51,10 @@ git status
 ## 📞 Suporte
 
 Se precisar de ajuda, entre em contato:
+
 - **Email:** jonathan@aqua9.com.br
 - **Website:** https://aqua9.com.br
 
 ---
 
-**Desenvolvido com ❤️ pela Aqua9** 
+**Desenvolvido com ❤️ pela Aqua9**

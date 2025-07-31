@@ -9,17 +9,17 @@
 [![Vitest](https://img.shields.io/badge/Vitest-1.2.0-yellow?style=flat-square&logo=vitest)](https://vitest.dev/)
 [![Playwright](https://img.shields.io/badge/Playwright-1.40.0-green?style=flat-square&logo=playwright)](https://playwright.dev/)
 
-[![Test Coverage](https://img.shields.io/badge/Test%20Coverage-85%25-brightgreen?style=flat-square)](https://github.com/jonathanmartins81/boilerplate_aqua9_v2)
-[![Codecov](https://img.shields.io/codecov/c/github/jonathanmartins81/boilerplate_aqua9_v2?style=flat-square)](https://codecov.io/gh/jonathanmartins81/boilerplate_aqua9_v2)
-[![Code Quality](https://img.shields.io/badge/Code%20Quality-A%2B-brightgreen?style=flat-square)](https://github.com/jonathanmartins81/boilerplate_aqua9_v2)
-[![Security](https://img.shields.io/badge/Security-Audit%20Passed-brightgreen?style=flat-square)](https://github.com/jonathanmartins81/boilerplate_aqua9_v2)
-[![E2E Tests](https://img.shields.io/badge/E2E%20Tests-Passing-brightgreen?style=flat-square)](https://github.com/jonathanmartins81/boilerplate_aqua9_v2)
+[![Test Coverage](https://img.shields.io/badge/Test%20Coverage-85%25-brightgreen?style=flat-square)](https://github.com/jonathanmartins81/gradualinfo)
+[![Codecov](https://img.shields.io/codecov/c/github/jonathanmartins81/gradualinfo?style=flat-square)](https://codecov.io/gh/jonathanmartins81/gradualinfo)
+[![Code Quality](https://img.shields.io/badge/Code%20Quality-A%2B-brightgreen?style=flat-square)](https://github.com/jonathanmartins81/gradualinfo)
+[![Security](https://img.shields.io/badge/Security-Audit%20Passed-brightgreen?style=flat-square)](https://github.com/jonathanmartins81/gradualinfo)
+[![E2E Tests](https://img.shields.io/badge/E2E%20Tests-Passing-brightgreen?style=flat-square)](https://github.com/jonathanmartins81/gradualinfo)
 
 </div>
 
-# 🚀 Aqua9 Boilerplate v2 - Next.js Professional
+# 🚀 Gradual Info - Website Oficial
 
-> **Boilerplate Next.js profissional** com foco em **qualidade**, **segurança**, **performance** e **escalabilidade**. Ideal para times que buscam uma base sólida e moderna para aplicações web.
+> **Website oficial da Gradual Info** desenvolvido pela **Aqua9** com foco em **qualidade**, **segurança**, **performance** e **escalabilidade**. Site moderno e profissional para a Gradual Info.
 
 ---
 

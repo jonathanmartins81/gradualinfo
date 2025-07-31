@@ -5,6 +5,7 @@ Esta documentação descreve a **biblioteca completa de componentes reutilizáve
 ## 🎯 Visão Geral
 
 A biblioteca de componentes foi desenvolvida com foco em:
+
 - ✅ **Reutilização** - Componentes modulares e flexíveis
 - ✅ **Consistência** - Padrão unificado em todos os componentes
 - ✅ **Tipagem** - TypeScript completo para type safety
@@ -81,7 +82,7 @@ import { Card } from '@/components';
 </Card>
 
 // Card com imagem
-<Card 
+<Card
   title="Card com Imagem"
   image={{ src: "/image.jpg", alt: "Descrição" }}
 >
@@ -89,7 +90,7 @@ import { Card } from '@/components';
 </Card>
 
 // Card clicável
-<Card 
+<Card
   title="Card Clicável"
   hoverable
   onClick={() => alert('Clicado!')}
@@ -111,14 +112,14 @@ import { Header } from '@/components';
 <Header title="Página Principal" subtitle="Bem-vindo" />
 
 // Header hero
-<Header 
+<Header
   variant="hero"
   title="Título Hero"
   logo={{ src: "/logo.svg", alt: "Logo" }}
 />
 
 // Header com ações
-<Header 
+<Header
   title="Dashboard"
   actions={<Button>Nova Ação</Button>}
 />
@@ -167,14 +168,14 @@ import { Input } from '@/components';
 <Input label="Email" type="email" placeholder="seu@email.com" />
 
 // Input com erro
-<Input 
-  label="Senha" 
-  type="password" 
+<Input
+  label="Senha"
+  type="password"
   error="Senha é obrigatória"
 />
 
 // Input com ícone
-<Input 
+<Input
   label="Buscar"
   leftIcon={<SearchIcon />}
   placeholder="Digite para buscar..."
@@ -191,8 +192,8 @@ import { Input } from '@/components';
 import { Modal } from '@/components';
 
 // Modal básico
-<Modal 
-  isOpen={isOpen} 
+<Modal
+  isOpen={isOpen}
   onClose={() => setIsOpen(false)}
   title="Confirmação"
 >
@@ -200,8 +201,8 @@ import { Modal } from '@/components';
 </Modal>
 
 // Modal com footer
-<Modal 
-  isOpen={isOpen} 
+<Modal
+  isOpen={isOpen}
   onClose={() => setIsOpen(false)}
   title="Confirmação"
   footer={
@@ -227,13 +228,13 @@ import { Modal } from '@/components';
 import { DynamicSEO } from '@/components';
 
 // SEO básico
-<DynamicSEO 
+<DynamicSEO
   title="Página Principal"
   description="Descrição da página"
 />
 
 // SEO para artigo
-<DynamicSEO 
+<DynamicSEO
   title="Artigo"
   description="Descrição do artigo"
   type="article"
@@ -370,15 +371,19 @@ export const Primary: Story = {
 ## 🚀 Páginas de Demonstração
 
 ### `/components-demo`
+
 Demonstração básica dos componentes Button e Card.
 
 ### `/components-showcase`
+
 Showcase completo de todos os componentes com exemplos interativos.
 
 ### `/theme-demo`
+
 Demonstração do sistema de temas e responsividade.
 
 ### `/tailwind-demo`
+
 Demonstração das classes utilitárias do Tailwind CSS.
 
 ## 🔧 Como Usar
@@ -397,11 +402,13 @@ import { Button, Card, Header, Footer, Input, Modal } from '@/components';
 ### Configuração
 
 1. **Instale as dependências:**
+
    ```bash
    npm install
    ```
 
 2. **Execute o projeto:**
+
    ```bash
    npm run dev
    ```
@@ -424,14 +431,14 @@ import { Button, Card, Header, Footer, Input, Modal } from '@/components';
 interface ComponentProps {
   // Props obrigatórias primeiro
   children: ReactNode;
-  
+
   // Props opcionais com valores padrão
   variant?: 'default' | 'primary' | 'secondary';
   size?: 'sm' | 'md' | 'lg';
-  
+
   // Props de estilo
   className?: string;
-  
+
   // Props de evento
   onClick?: () => void;
 }
@@ -463,4 +470,4 @@ Para contribuir com novos componentes:
 
 ---
 
-**A biblioteca de componentes está em constante evolução. Contribuições são bem-vindas!** 🚀 
+**A biblioteca de componentes está em constante evolução. Contribuições são bem-vindas!** 🚀

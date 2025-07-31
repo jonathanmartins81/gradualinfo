@@ -1,11 +1,7 @@
 'use client';
 
 import { Button, Card, DynamicSEO, Footer, Header, Input, Modal } from '@/components';
-import { generateDynamicSEO } from '@/utils/SEO';
-import type { Metadata } from 'next';
 import { useState } from 'react';
-
-export const metadata: Metadata = generateDynamicSEO('components-showcase');
 
 export default function ComponentsShowcasePage() {
   return (

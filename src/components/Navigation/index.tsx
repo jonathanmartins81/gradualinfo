@@ -72,18 +72,18 @@ const navigationItems: NavigationItem[] = [
     description: 'Demonstração do sistema de temas',
     category: 'demos',
   },
-        {
-        label: 'Componentes Demo',
-        href: '/components-demo',
-        description: 'Demonstração dos componentes reutilizáveis',
-        category: 'demos',
-      },
-      {
-        label: 'Showcase Completo',
-        href: '/components-showcase',
-        description: 'Showcase completo de todos os componentes',
-        category: 'demos',
-      },
+  {
+    label: 'Componentes Demo',
+    href: '/components-demo',
+    description: 'Demonstração dos componentes reutilizáveis',
+    category: 'demos',
+  },
+  {
+    label: 'Showcase Completo',
+    href: '/components-showcase',
+    description: 'Showcase completo de todos os componentes',
+    category: 'demos',
+  },
 
   // Componentes
   {
@@ -181,11 +181,10 @@ export default function Navigation() {
               <div key={category} className='relative group'>
                 <button
                   onClick={() => setActiveCategory(category)}
-                  className={`px-3 py-2 rounded-md text-sm font-medium transition-colors ${
-                    activeCategory === category
-                      ? 'text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-900/20'
-                      : 'text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400'
-                  }`}
+                  className={`px-3 py-2 rounded-md text-sm font-medium transition-colors ${activeCategory === category
+                    ? 'text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-900/20'
+                    : 'text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400'
+                    }`}
                 >
                   {categoryLabels[category as keyof typeof categoryLabels]}
                 </button>
@@ -197,11 +196,10 @@ export default function Navigation() {
                       <Link
                         key={item.href}
                         href={item.href}
-                        className={`block px-4 py-2 text-sm transition-colors ${
-                          isActive(item.href)
-                            ? 'text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-900/20'
-                            : 'text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-gray-50 dark:hover:bg-gray-700'
-                        }`}
+                        className={`block px-4 py-2 text-sm transition-colors ${isActive(item.href)
+                          ? 'text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-900/20'
+                          : 'text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-gray-50 dark:hover:bg-gray-700'
+                          }`}
                       >
                         <div className='font-medium'>{item.label}</div>
                         <div className='text-xs text-gray-500 dark:text-gray-400 mt-1'>
@@ -266,11 +264,10 @@ export default function Navigation() {
                       key={item.href}
                       href={item.href}
                       onClick={() => setIsOpen(false)}
-                      className={`block px-3 py-2 rounded-md text-base font-medium transition-colors ${
-                        isActive(item.href)
-                          ? 'text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-900/20'
-                          : 'text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-gray-100 dark:hover:bg-gray-700'
-                      }`}
+                      className={`block px-3 py-2 rounded-md text-base font-medium transition-colors ${isActive(item.href)
+                        ? 'text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-900/20'
+                        : 'text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-gray-100 dark:hover:bg-gray-700'
+                        }`}
                     >
                       <div>{item.label}</div>
                       <div className='text-sm text-gray-500 dark:text-gray-400 mt-1'>

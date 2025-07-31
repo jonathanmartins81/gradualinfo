@@ -65,7 +65,7 @@ const Modal = ({
 }: ModalProps) => {
   // Fechar modal com ESC
   useEffect(() => {
-    const handleEscape = (event: KeyboardEvent) => {
+    const handleEscape = (event: { key: string }) => {
       if (event.key === 'Escape' && closeOnEscape && !preventClose) {
         onClose();
       }

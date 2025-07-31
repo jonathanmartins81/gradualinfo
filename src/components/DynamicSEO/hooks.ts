@@ -1,3 +1,5 @@
+'use client';
+
 import { DynamicSEOConfig } from '@/utils/SEO';
 import { useEffect } from 'react';
 import { UseDynamicSEOReturn } from './types';

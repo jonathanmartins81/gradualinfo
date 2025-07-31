@@ -11,8 +11,7 @@ export type InputType =
   | 'url'
   | 'search';
 
-export interface InputProps
-  extends Omit<InputHTMLAttributes<HTMLInputElement>, 'size'> {
+export interface InputProps extends Omit<InputHTMLAttributes<any>, 'size'> {
   label?: string;
   variant?: InputVariant;
   size?: InputSize;

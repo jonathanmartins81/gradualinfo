@@ -1,3 +1,5 @@
+'use client';
+
 import { Button, Card, DynamicSEO, Footer, Header, Input, Modal } from '@/components';
 import { generateDynamicSEO } from '@/utils/SEO';
 import type { Metadata } from 'next';

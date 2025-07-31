@@ -95,6 +95,9 @@ npm run generate:component  # Gera novo componente
 npm run generate:page       # Gera nova página
 npm run generate:hook       # Gera novo hook
 npm run generate:util       # Gera nova utilidade
+
+# Demonstrações
+npm run dev                 # Acesse http://localhost:3000/components-showcase
 ```
 
 ---
@@ -212,12 +215,55 @@ export const Button: React.FC<ButtonProps> = ({
 };
 ```
 
-#### CSS/Tailwind
+#### Padrões de Componentes
 
-- Use classes utilitárias do Tailwind CSS
-- Mantenha consistência com o design system
-- Use componentes customizados para padrões repetitivos
-- Prefira responsividade mobile-first
+Todos os componentes devem seguir o padrão estabelecido:
+
+```
+src/components/ComponentName/
+├── index.tsx          # Componente principal
+├── types.ts           # Tipagem TypeScript
+├── styles.ts          # Estilos Tailwind CSS
+├── ComponentName.test.tsx  # Testes unitários
+└── stories.tsx        # Storybook stories
+```
+
+**Estrutura de um Componente:**
+
+```typescript
+// types.ts
+export interface ComponentProps {
+  children: ReactNode;
+  variant?: 'default' | 'primary' | 'secondary';
+  size?: 'sm' | 'md' | 'lg';
+  className?: string;
+}
+
+// styles.ts
+export const componentVariants = {
+  default: 'bg-white border border-gray-300',
+  primary: 'bg-blue-600 text-white',
+  secondary: 'bg-gray-600 text-white',
+};
+
+// index.tsx
+'use client';
+
+import { ComponentProps } from './types';
+import { componentVariants } from './styles';
+
+const Component = ({ children, variant = 'default', ...props }: ComponentProps) => {
+  return (
+    <div className={componentVariants[variant]} {...props}>
+      {children}
+    </div>
+  );
+};
+
+export default Component;
+```
+
+#### CSS/Tailwind
 
 ```typescript
 // ✅ Bom

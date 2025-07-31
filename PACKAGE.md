@@ -81,6 +81,8 @@ Este arquivo documenta todas as dependências do projeto `package.json` com come
 }
 ```
 
+**Uso:** Documentação interativa da biblioteca de componentes em `/components-showcase`
+
 ### **Build & Transpilation**
 
 ```json

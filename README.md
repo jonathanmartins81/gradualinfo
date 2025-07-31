@@ -78,10 +78,16 @@ src/
 │   ├── error.tsx          # Error boundary global
 │   ├── layout.tsx         # Layout raiz
 │   └── page.tsx           # Página inicial
-├── components/            # Componentes React
-│   ├── DynamicSEO/        # SEO dinâmico
-│   ├── JsonLd/           # Schema.org
-│   ├── Main/             # Componentes principais
+├── components/            # Biblioteca de Componentes Reutilizáveis
+│   ├── Button/           # Componente de botão
+│   ├── Card/             # Componente de card
+│   ├── DynamicSEO/       # SEO dinâmico
+│   ├── Footer/           # Componente de rodapé
+│   ├── Header/           # Componente de cabeçalho
+│   ├── Input/            # Componente de entrada
+│   ├── Main/             # Componente principal
+│   ├── Modal/            # Componente de modal
+│   ├── Navigation/       # Componente de navegação
 │   └── ProtectedRoute/   # Proteção de rotas
 ├── hooks/                # Custom hooks
 │   └── useAuth.ts        # Hook de autenticação
@@ -99,9 +105,43 @@ src/
 └── middleware.ts         # Middleware global
 ```
 
-### **🎨 Design System**
+### **🎨 Design System & Biblioteca de Componentes**
 
-O projeto utiliza um **design system centralizado** em `src/styles/theme.ts`:
+O projeto utiliza um **design system centralizado** em `src/styles/theme.ts` e uma **biblioteca completa de componentes reutilizáveis**:
+
+#### **📚 Biblioteca de Componentes**
+
+Todos os componentes seguem um padrão consistente com:
+
+- **Tipagem TypeScript** completa
+- **Estilos modulares** com Tailwind CSS
+- **Variantes e tamanhos** configuráveis
+- **Acessibilidade** integrada
+- **Responsividade** nativa
+- **Tema dark/light** suporte
+
+```typescript
+// Importação centralizada
+import { Button, Card, Header, Footer, Input, Modal } from '@/components';
+
+// Exemplo de uso
+<Button variant="primary" size="lg" loading>
+  Salvar
+</Button>
+
+<Card title="Título" variant="elevated">
+  Conteúdo do card
+</Card>
+
+<Input
+  label="Email"
+  type="email"
+  required
+  error="Email inválido"
+/>
+```
+
+#### **🎨 Design System**
 
 ```typescript
 // Paleta de cores completa
@@ -195,6 +235,13 @@ npm run test:e2e
 - **Login:** http://localhost:3000/login
 - **Dashboard:** http://localhost:3000/dashboard (após login)
 - **Admin:** http://localhost:3000/admin (apenas admin)
+
+### **5. Páginas de Demonstração**
+
+- **Componentes Demo:** http://localhost:3000/components-demo
+- **Showcase Completo:** http://localhost:3000/components-showcase
+- **Tema Demo:** http://localhost:3000/theme-demo
+- **Tailwind Demo:** http://localhost:3000/tailwind-demo
 
 ---
 

@@ -6,7 +6,7 @@ import { MetadataRoute } from 'next';
  */
 export default function robots(): MetadataRoute.Robots {
   const baseUrl =
-    process.env.NEXT_PUBLIC_APP_URL || 'https://aqua9-boilerplate.vercel.app';
+    process.env.NEXT_PUBLIC_APP_URL || 'https://gradualinfo.com.br';
 
   // Configurações baseadas no ambiente
   const isProduction = process.env.NODE_ENV === 'production';
@@ -17,7 +17,7 @@ export default function robots(): MetadataRoute.Robots {
       rules: [
         {
           userAgent: '*',
-          allow: ['/', '/about', '/portfolio', '/contact', '/blog', '/docs'],
+          allow: ['/', '/about', '/services', '/team', '/technology', '/contact', '/blog', '/careers'],
           disallow: [
             '/api/',
             '/admin/',

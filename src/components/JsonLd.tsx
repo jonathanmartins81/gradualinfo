@@ -35,13 +35,13 @@ export function JsonLd() {
                 '@type': 'ListItem',
                 position: 1,
                 name: 'Home',
-                item: 'https://aqua9.com.br',
+                item: 'https://gradualinfo.com.br',
               },
               {
                 '@type': 'ListItem',
                 position: 2,
-                name: 'Boilerplate Aqua9',
-                item: 'https://aqua9.com.br',
+                name: 'Gradual Info',
+                item: 'https://gradualinfo.com.br',
               },
             ],
           }),
@@ -54,10 +54,10 @@ export function JsonLd() {
           __html: JSON.stringify({
             '@context': 'https://schema.org',
             '@type': 'WebSite',
-            name: 'Boilerplate Aqua9',
-            url: 'https://aqua9.com.br',
+            name: 'Gradual Info',
+            url: 'https://gradualinfo.com.br',
             description:
-              'Boilerplate Next.js profissional da Aqua9 para projetos internos',
+              'Website oficial da Gradual Info - Empresa especializada em soluções de informação e tecnologia',
             author: {
               '@type': 'Person',
               name: 'Jonathan Simão',
@@ -65,15 +65,15 @@ export function JsonLd() {
             },
             publisher: {
               '@type': 'Organization',
-              name: 'Aqua9',
-              url: 'https://aqua9.com.br',
+              name: 'Gradual Info',
+              url: 'https://gradualinfo.com.br',
             },
             potentialAction: {
               '@type': 'SearchAction',
               target: {
                 '@type': 'EntryPoint',
                 urlTemplate:
-                  'https://aqua9.com.br/search?q={search_term_string}',
+                  'https://gradualinfo.com.br/search?q={search_term_string}',
               },
               'query-input': 'required name=search_term_string',
             },

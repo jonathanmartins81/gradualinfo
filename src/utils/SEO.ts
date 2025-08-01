@@ -39,62 +39,77 @@ export const SEOConfig = {
 
   // Informações do projeto
   project: {
-    name: 'Aqua9 Boilerplate v2',
+    name: 'Gradual Info',
     description:
-      'Boilerplate Next.js profissional da Aqua9 v2 para projetos internos. Template moderno com TypeScript, SEO otimizado e ferramentas de qualidade de código.',
-    version: '2.0.0',
-    url: 'https://aqua9.com.br',
-    repository: 'https://github.com/aqua9/boilerplate_aqua9_v2',
+      'Website oficial da Gradual Info - Empresa especializada em soluções de informação e tecnologia. Desenvolvido pela Aqua9 com foco em qualidade e inovação.',
+    version: '1.0.0',
+    url: 'https://gradualinfo.com.br',
+    repository: 'https://github.com/jonathanmartins81/gradualinfo',
     license: 'MIT',
-    category: 'Web Development Tools',
+    category: 'Information Technology',
   },
 
   // Palavras-chave otimizadas para SEO
   keywords: [
-    // Tecnologias principais
-    'boilerplate',
+    // Marca principal
+    'gradualinfo',
+    'gradual info',
+    'gradual',
+    'info',
+
+    // Categorias de negócio
+    'tecnologia',
+    'informação',
+    'soluções',
+    'inovação',
+    'digital',
+    'transformação digital',
+
+    // Serviços
+    'consultoria',
+    'desenvolvimento',
+    'sistemas',
+    'software',
+    'aplicações',
+    'web',
+    'mobile',
+
+    // Localização
+    'brasil',
+    'são paulo',
+    'sp',
+    'brasileiro',
+
+    // Tecnologias
     'nextjs',
     'react',
     'typescript',
+    'javascript',
+    'nodejs',
+    'python',
+    'java',
 
-    // Marca e desenvolvedor
+    // Desenvolvedor
     'aqua9',
     'jonathan simão',
-    'template',
+    'desenvolvimento web',
+    'programação',
 
-    // Categorias
-    'fullstack',
-    'web development',
-    'frontend',
-    'backend',
-    'seo',
+    // Qualidade
+    'qualidade',
     'performance',
-    'modern web',
-
-    // Ferramentas de desenvolvimento
-    'developer tools',
-    'code quality',
-    'testing',
-    'storybook',
-    'eslint',
-    'prettier',
-    'jest',
-
-    // Tecnologias específicas
-    'drizzleorm',
-    'posthog',
-    'sentry',
-    'lefthook',
-    'husky',
+    'segurança',
+    'moderno',
+    'profissional',
   ],
 
-  // Configurações de tema para Open Graph
+  // Configurações de tema para Open Graph (Cores da Bandeira Brasileira)
   theme: {
-    primary: '#1e3a8a',
-    secondary: '#3b82f6',
-    accent: '#60a5fa',
-    background: '#ffffff',
-    text: '#1f2937',
+    primary: '#009c3b', // Verde da bandeira
+    secondary: '#ffdf00', // Amarelo da bandeira
+    accent: '#002776', // Azul da bandeira
+    background: '#ffffff', // Branco
+    text: '#1f2937', // Cinza escuro
   },
 
   // Configurações de localização
@@ -193,239 +208,366 @@ export interface DynamicSEOConfig {
 export const routeSEOConfig: Record<string, DynamicSEOConfig> = {
   // ===== PÁGINA INICIAL =====
   '/': {
-    title: 'Aqua9 Boilerplate v2 - Next.js Profissional',
+    title: 'Gradual Info - Soluções em Tecnologia e Informação',
     description:
-      'Boilerplate Next.js profissional da Aqua9 v2 para projetos internos. Template moderno com TypeScript, SEO otimizado e ferramentas de qualidade de código.',
+      'Website oficial da Gradual Info - Empresa especializada em soluções de informação e tecnologia. Desenvolvido pela Aqua9 com foco em qualidade e inovação.',
     keywords: [
-      'boilerplate',
-      'nextjs',
-      'react',
-      'typescript',
-      'aqua9',
-      'template',
+      'gradualinfo',
+      'gradual info',
+      'tecnologia',
+      'informação',
+      'soluções',
+      'inovação',
+      'brasil',
+      'são paulo',
     ],
     type: 'website',
     image: '/og-home.svg',
-    canonical: 'https://aqua9.com.br',
+    canonical: 'https://gradualinfo.com.br',
     priority: 1.0,
     changeFreq: 'weekly',
     openGraph: {
-      title: 'Aqua9 Boilerplate v2 - Next.js Profissional',
-      description: 'Template moderno com TypeScript e SEO otimizado',
+      title: 'Gradual Info - Soluções em Tecnologia e Informação',
+      description:
+        'Empresa especializada em soluções de informação e tecnologia',
       type: 'website',
-      siteName: 'Aqua9 Boilerplate',
+      siteName: 'Gradual Info',
       images: [
         {
           url: '/og-home.svg',
           width: 1200,
           height: 630,
-          alt: 'Aqua9 Boilerplate v2 - Next.js Profissional',
+          alt: 'Gradual Info - Soluções em Tecnologia e Informação',
         },
       ],
     },
     twitter: {
       card: 'summary_large_image',
-      title: 'Aqua9 Boilerplate v2 - Next.js Profissional',
-      description: 'Template moderno com TypeScript e SEO otimizado',
+      title: 'Gradual Info - Soluções em Tecnologia e Informação',
+      description:
+        'Empresa especializada em soluções de informação e tecnologia',
       image: '/og-home.svg',
-      creator: '@aqua9dev',
-      site: '@aqua9dev',
+      creator: '@gradualinfo',
+      site: '@gradualinfo',
     },
   },
 
   // ===== PÁGINA SOBRE =====
   '/about': {
-    title: 'Sobre - Aqua9 Boilerplate v2',
+    title: 'Sobre - Gradual Info',
     description:
-      'Conheça mais sobre o Aqua9 Boilerplate v2, desenvolvido por Jonathan Simão. Template profissional para projetos Next.js com foco em qualidade e performance.',
+      'Conheça mais sobre a Gradual Info - Empresa especializada em soluções de informação e tecnologia. Nossa missão é transformar dados em insights valiosos.',
     keywords: [
       'sobre',
-      'aqua9',
-      'jonathan simão',
-      'desenvolvedor',
-      'template',
-      'nextjs',
+      'gradualinfo',
+      'gradual info',
+      'empresa',
+      'tecnologia',
+      'informação',
+      'missão',
+      'valores',
     ],
     type: 'website',
     image: '/og-about.svg',
-    canonical: 'https://aqua9.com.br/about',
+    canonical: 'https://gradualinfo.com.br/about',
     priority: 0.8,
     changeFreq: 'monthly',
     openGraph: {
-      title: 'Sobre - Aqua9 Boilerplate v2',
-      description: 'Conheça mais sobre o projeto e o desenvolvedor',
+      title: 'Sobre - Gradual Info',
+      description: 'Conheça mais sobre nossa empresa e missão',
       type: 'website',
-      siteName: 'Aqua9 Boilerplate',
+      siteName: 'Gradual Info',
       images: [
         {
           url: '/og-about.svg',
           width: 1200,
           height: 630,
-          alt: 'Sobre - Aqua9 Boilerplate v2',
+          alt: 'Sobre - Gradual Info',
         },
       ],
     },
     twitter: {
       card: 'summary_large_image',
-      title: 'Sobre - Aqua9 Boilerplate v2',
-      description: 'Conheça mais sobre o projeto e o desenvolvedor',
+      title: 'Sobre - Gradual Info',
+      description: 'Conheça mais sobre nossa empresa e missão',
       image: '/og-about.svg',
-      creator: '@aqua9dev',
-      site: '@aqua9dev',
+      creator: '@gradualinfo',
+      site: '@gradualinfo',
     },
   },
 
-  // ===== PÁGINA PORTFÓLIO =====
-  '/portfolio': {
-    title: 'Portfólio - Aqua9 Boilerplate v2',
+  // ===== PÁGINA SERVIÇOS =====
+  '/services': {
+    title: 'Serviços - Gradual Info',
     description:
-      'Portfólio de projetos desenvolvidos com o Aqua9 Boilerplate v2. Exemplos de aplicações e sites profissionais com Next.js, TypeScript e SEO otimizado.',
+      'Conheça nossos serviços em tecnologia e informação. Desenvolvimento de sistemas, consultoria, análise de dados e soluções personalizadas para sua empresa.',
     keywords: [
-      'portfólio',
-      'projetos',
-      'aplicações',
-      'sites',
-      'exemplos',
-      'nextjs',
-      'typescript',
+      'serviços',
+      'tecnologia',
+      'informação',
+      'desenvolvimento',
+      'consultoria',
+      'análise de dados',
+      'sistemas',
+      'soluções',
     ],
     type: 'website',
-    image: '/og-portfolio.svg',
-    canonical: 'https://aqua9.com.br/portfolio',
+    image: '/og-services.svg',
+    canonical: 'https://gradualinfo.com.br/services',
     priority: 0.9,
     changeFreq: 'weekly',
     openGraph: {
-      title: 'Portfólio - Aqua9 Boilerplate v2',
-      description: 'Projetos desenvolvidos com o boilerplate',
+      title: 'Serviços - Gradual Info',
+      description: 'Soluções em tecnologia e informação',
       type: 'website',
-      siteName: 'Aqua9 Boilerplate',
+      siteName: 'Gradual Info',
       images: [
         {
-          url: '/og-portfolio.svg',
+          url: '/og-services.svg',
           width: 1200,
           height: 630,
-          alt: 'Portfólio - Aqua9 Boilerplate v2',
+          alt: 'Serviços - Gradual Info',
         },
       ],
     },
     twitter: {
       card: 'summary_large_image',
-      title: 'Portfólio - Aqua9 Boilerplate v2',
-      description: 'Projetos desenvolvidos com o boilerplate',
-      image: '/og-portfolio.svg',
-      creator: '@aqua9dev',
-      site: '@aqua9dev',
+      title: 'Serviços - Gradual Info',
+      description: 'Soluções em tecnologia e informação',
+      image: '/og-services.svg',
+      creator: '@gradualinfo',
+      site: '@gradualinfo',
     },
   },
 
-  // ===== PÁGINA DE PROJETO ESPECÍFICO (DINÂMICA) =====
-  '/portfolio/[slug]': {
-    title: 'Projeto {slug} - Aqua9 Boilerplate v2',
+  // ===== PÁGINA DE CASO DE USO ESPECÍFICO (DINÂMICA) =====
+  '/cases/[slug]': {
+    title: 'Caso de Uso {slug} - Gradual Info',
     description:
-      'Detalhes do projeto {slug} desenvolvido com o Aqua9 Boilerplate v2. Tecnologias, funcionalidades e resultados obtidos.',
+      'Detalhes do caso de uso {slug} desenvolvido pela Gradual Info. Soluções, tecnologias utilizadas e resultados obtidos para nossos clientes.',
     keywords: [
-      'projeto',
+      'caso de uso',
       'detalhes',
       'tecnologias',
-      'funcionalidades',
+      'soluções',
       'resultados',
+      'clientes',
     ],
     type: 'article',
-    image: '/og-project.svg',
-    canonical: 'https://aqua9.com.br/portfolio/{slug}',
+    image: '/og-case.svg',
+    canonical: 'https://gradualinfo.com.br/cases/{slug}',
     priority: 0.8,
     changeFreq: 'monthly',
     openGraph: {
-      title: 'Projeto {slug} - Aqua9 Boilerplate v2',
-      description: 'Detalhes do projeto {slug}',
+      title: 'Caso de Uso {slug} - Gradual Info',
+      description: 'Detalhes do caso de uso {slug}',
       type: 'article',
-      siteName: 'Aqua9 Boilerplate',
+      siteName: 'Gradual Info',
       images: [
         {
-          url: '/og-project.svg',
+          url: '/og-case.svg',
           width: 1200,
           height: 630,
-          alt: 'Projeto {slug} - Aqua9 Boilerplate v2',
+          alt: 'Caso de Uso {slug} - Gradual Info',
         },
       ],
     },
     twitter: {
       card: 'summary_large_image',
-      title: 'Projeto {slug} - Aqua9 Boilerplate v2',
-      description: 'Detalhes do projeto {slug}',
-      image: '/og-project.svg',
-      creator: '@aqua9dev',
-      site: '@aqua9dev',
+      title: 'Caso de Uso {slug} - Gradual Info',
+      description: 'Detalhes do caso de uso {slug}',
+      image: '/og-case.svg',
+      creator: '@gradualinfo',
+      site: '@gradualinfo',
     },
   },
 
-  // ===== PÁGINA DE DOCUMENTAÇÃO =====
-  '/docs': {
-    title: 'Documentação - Aqua9 Boilerplate v2',
+  // ===== PÁGINA DE BLOG =====
+  '/blog': {
+    title: 'Blog - Gradual Info',
     description:
-      'Documentação completa do Aqua9 Boilerplate v2. Guias, tutoriais e referências para usar o template em seus projetos.',
-    keywords: ['documentação', 'guias', 'tutoriais', 'referência', 'api'],
+      'Blog da Gradual Info com artigos sobre tecnologia, inovação e tendências do mercado. Insights e análises sobre transformação digital.',
+    keywords: [
+      'blog',
+      'artigos',
+      'tecnologia',
+      'inovação',
+      'tendências',
+      'insights',
+      'análises',
+    ],
     type: 'website',
-    image: '/og-docs.svg',
-    canonical: 'https://aqua9.com.br/docs',
+    image: '/og-blog.svg',
+    canonical: 'https://gradualinfo.com.br/blog',
     priority: 0.7,
     changeFreq: 'weekly',
     openGraph: {
-      title: 'Documentação - Aqua9 Boilerplate v2',
-      description: 'Guias e tutoriais do boilerplate',
+      title: 'Blog - Gradual Info',
+      description: 'Artigos sobre tecnologia e inovação',
       type: 'website',
-      siteName: 'Aqua9 Boilerplate',
+      siteName: 'Gradual Info',
       images: [
         {
-          url: '/og-docs.svg',
+          url: '/og-blog.svg',
           width: 1200,
           height: 630,
-          alt: 'Documentação - Aqua9 Boilerplate v2',
+          alt: 'Blog - Gradual Info',
         },
       ],
     },
     twitter: {
       card: 'summary_large_image',
-      title: 'Documentação - Aqua9 Boilerplate v2',
-      description: 'Guias e tutoriais do boilerplate',
-      image: '/og-docs.svg',
-      creator: '@aqua9dev',
-      site: '@aqua9dev',
+      title: 'Blog - Gradual Info',
+      description: 'Artigos sobre tecnologia e inovação',
+      image: '/og-blog.svg',
+      creator: '@gradualinfo',
+      site: '@gradualinfo',
     },
   },
 
   // ===== PÁGINA DE CONTATO =====
   '/contact': {
-    title: 'Contato - Aqua9 Boilerplate v2',
+    title: 'Contato - Gradual Info',
     description:
-      'Entre em contato com a equipe Aqua9. Suporte, dúvidas e parcerias relacionadas ao Boilerplate v2.',
-    keywords: ['contato', 'suporte', 'dúvidas', 'parcerias', 'aqua9'],
+      'Entre em contato com a Gradual Info. Solicite orçamentos, tire dúvidas sobre nossos serviços ou agende uma reunião.',
+    keywords: [
+      'contato',
+      'orçamento',
+      'dúvidas',
+      'reunião',
+      'gradualinfo',
+      'gradual info',
+    ],
     type: 'website',
     image: '/og-contact.svg',
-    canonical: 'https://aqua9.com.br/contact',
+    canonical: 'https://gradualinfo.com.br/contact',
     priority: 0.6,
     changeFreq: 'monthly',
     openGraph: {
-      title: 'Contato - Aqua9 Boilerplate v2',
+      title: 'Contato - Gradual Info',
       description: 'Entre em contato conosco',
       type: 'website',
-      siteName: 'Aqua9 Boilerplate',
+      siteName: 'Gradual Info',
       images: [
         {
           url: '/og-contact.svg',
           width: 1200,
           height: 630,
-          alt: 'Contato - Aqua9 Boilerplate v2',
+          alt: 'Contato - Gradual Info',
         },
       ],
     },
     twitter: {
       card: 'summary_large_image',
-      title: 'Contato - Aqua9 Boilerplate v2',
+      title: 'Contato - Gradual Info',
       description: 'Entre em contato conosco',
       image: '/og-contact.svg',
-      creator: '@aqua9dev',
-      site: '@aqua9dev',
+      creator: '@gradualinfo',
+      site: '@gradualinfo',
+    },
+
+  // ===== PÁGINA DE EQUIPE =====
+  '/team': {
+    title: 'Equipe - Gradual Info',
+    description:
+      'Conheça nossa equipe de especialistas em tecnologia e informação. Profissionais qualificados e experientes para transformar sua empresa.',
+    keywords: ['equipe', 'profissionais', 'especialistas', 'tecnologia', 'informação', 'qualificados'],
+    type: 'website',
+    image: '/og-team.svg',
+    canonical: 'https://gradualinfo.com.br/team',
+    priority: 0.7,
+    changeFreq: 'monthly',
+    openGraph: {
+      title: 'Equipe - Gradual Info',
+      description: 'Nossa equipe de especialistas',
+      type: 'website',
+      siteName: 'Gradual Info',
+      images: [
+        {
+          url: '/og-team.svg',
+          width: 1200,
+          height: 630,
+          alt: 'Equipe - Gradual Info',
+        },
+      ],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: 'Equipe - Gradual Info',
+      description: 'Nossa equipe de especialistas',
+      image: '/og-team.svg',
+      creator: '@gradualinfo',
+      site: '@gradualinfo',
+    },
+  },
+
+  // ===== PÁGINA DE TECNOLOGIA =====
+  '/technology': {
+    title: 'Tecnologia - Gradual Info',
+    description:
+      'Conheça as tecnologias que utilizamos para desenvolver soluções inovadoras. Stack moderna e ferramentas de ponta para seu projeto.',
+    keywords: ['tecnologia', 'stack', 'ferramentas', 'inovações', 'desenvolvimento', 'soluções'],
+    type: 'website',
+    image: '/og-technology.svg',
+    canonical: 'https://gradualinfo.com.br/technology',
+    priority: 0.8,
+    changeFreq: 'monthly',
+    openGraph: {
+      title: 'Tecnologia - Gradual Info',
+      description: 'Nossa stack de tecnologias',
+      type: 'website',
+      siteName: 'Gradual Info',
+      images: [
+        {
+          url: '/og-technology.svg',
+          width: 1200,
+          height: 630,
+          alt: 'Tecnologia - Gradual Info',
+        },
+      ],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: 'Tecnologia - Gradual Info',
+      description: 'Nossa stack de tecnologias',
+      image: '/og-technology.svg',
+      creator: '@gradualinfo',
+      site: '@gradualinfo',
+    },
+  },
+
+  // ===== PÁGINA DE CARREIRAS =====
+  '/careers': {
+    title: 'Carreiras - Gradual Info',
+    description:
+      'Junte-se à nossa equipe! Oportunidades de carreira na Gradual Info. Trabalhe com tecnologia de ponta e faça parte de projetos inovadores.',
+    keywords: ['carreiras', 'vagas', 'oportunidades', 'trabalho', 'tecnologia', 'inovação'],
+    type: 'website',
+    image: '/og-careers.svg',
+    canonical: 'https://gradualinfo.com.br/careers',
+    priority: 0.6,
+    changeFreq: 'weekly',
+    openGraph: {
+      title: 'Carreiras - Gradual Info',
+      description: 'Oportunidades de carreira',
+      type: 'website',
+      siteName: 'Gradual Info',
+      images: [
+        {
+          url: '/og-careers.svg',
+          width: 1200,
+          height: 630,
+          alt: 'Carreiras - Gradual Info',
+        },
+      ],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: 'Carreiras - Gradual Info',
+      description: 'Oportunidades de carreira',
+      image: '/og-careers.svg',
+      creator: '@gradualinfo',
+      site: '@gradualinfo',
     },
   },
 };
@@ -442,8 +584,8 @@ export const routeSEOConfig: Record<string, DynamicSEOConfig> = {
 export const defaultSEO: Metadata = {
   // Título da página com template dinâmico
   title: {
-    default: 'Aqua9 Boilerplate v2 - Next.js Profissional | Jonathan Simão',
-    template: '%s | Aqua9 Boilerplate v2',
+    default: 'Gradual Info - Soluções em Tecnologia e Informação',
+    template: '%s | Gradual Info',
   },
 
   // Descrição para SEO
@@ -455,7 +597,7 @@ export const defaultSEO: Metadata = {
   // Informações do autor
   authors: [{ name: SEOConfig.developer.name }],
   creator: SEOConfig.developer.name,
-  publisher: 'Aqua9',
+  publisher: 'Gradual Info',
 
   // Configuração de detecção automática
   formatDetection: {
@@ -477,15 +619,15 @@ export const defaultSEO: Metadata = {
     type: 'website',
     locale: 'pt_BR',
     url: SEOConfig.project.url,
-    title: 'Boilerplate Aqua9 - Next.js Profissional',
+    title: 'Gradual Info - Soluções em Tecnologia e Informação',
     description: SEOConfig.project.description,
-    siteName: 'Aqua9 Boilerplate',
+    siteName: 'Gradual Info',
     images: [
       {
         url: '/og-image.svg',
         width: 1200,
         height: 630,
-        alt: 'Boilerplate Aqua9 - Next.js Profissional',
+        alt: 'Gradual Info - Soluções em Tecnologia e Informação',
       },
     ],
   },
@@ -493,11 +635,11 @@ export const defaultSEO: Metadata = {
   // Configuração para compartilhamento no Twitter
   twitter: {
     card: 'summary_large_image',
-    title: 'Boilerplate Aqua9 - Next.js Profissional',
+    title: 'Gradual Info - Soluções em Tecnologia e Informação',
     description: SEOConfig.project.description,
     images: ['/og-image.svg'],
-    creator: SEOConfig.developer.twitter,
-    site: SEOConfig.developer.twitter,
+    creator: '@gradualinfo',
+    site: '@gradualinfo',
   },
 
   // Configuração de viewport (removido - será migrado para viewport export)
@@ -675,7 +817,7 @@ export const jsonLdConfig = {
     name: SEOConfig.project.name,
     description: SEOConfig.project.description,
     url: SEOConfig.project.url,
-    applicationCategory: 'DeveloperApplication',
+    applicationCategory: 'BusinessApplication',
     operatingSystem: 'Web Browser',
     author: {
       '@type': 'Person',
@@ -684,8 +826,8 @@ export const jsonLdConfig = {
     },
     publisher: {
       '@type': 'Organization',
-      name: 'Aqua9',
-      url: SEOConfig.developer.website,
+      name: 'Gradual Info',
+      url: SEOConfig.project.url,
     },
     offers: {
       '@type': 'Offer',
@@ -702,17 +844,18 @@ export const jsonLdConfig = {
   organization: {
     '@context': 'https://schema.org',
     '@type': 'Organization',
-    name: 'Aqua9',
-    url: SEOConfig.developer.website,
-    logo: `${SEOConfig.developer.website}/logo.png`,
+    name: 'Gradual Info',
+    url: SEOConfig.project.url,
+    logo: `${SEOConfig.project.url}/logo.png`,
     sameAs: [
-      `https://twitter.com/${SEOConfig.developer.twitter.replace('@', '')}`,
-      'https://github.com/aqua9',
+      'https://twitter.com/gradualinfo',
+      'https://linkedin.com/company/gradualinfo',
+      'https://github.com/jonathanmartins81/gradualinfo',
     ],
     contactPoint: {
       '@type': 'ContactPoint',
       contactType: 'customer service',
-      email: SEOConfig.developer.email,
+      email: 'contato@gradualinfo.com.br',
     },
   },
 
@@ -725,10 +868,10 @@ export const jsonLdConfig = {
     jobTitle: 'Full Stack Developer',
     worksFor: {
       '@type': 'Organization',
-      name: 'Aqua9',
+      name: 'Gradual Info',
     },
     sameAs: [
-      `https://twitter.com/${SEOConfig.developer.twitter.replace('@', '')}`,
+      'https://twitter.com/aqua9dev',
       'https://github.com/jonathansimao',
       'https://linkedin.com/in/jonathansimao',
     ],
@@ -760,10 +903,40 @@ export const sitemapConfig = {
       priority: 0.8,
     },
     {
-      url: '/counter',
+      url: '/services',
+      lastModified: new Date(),
+      changeFrequency: 'weekly' as const,
+      priority: 0.9,
+    },
+    {
+      url: '/team',
       lastModified: new Date(),
       changeFrequency: 'monthly' as const,
       priority: 0.7,
+    },
+    {
+      url: '/technology',
+      lastModified: new Date(),
+      changeFrequency: 'monthly' as const,
+      priority: 0.8,
+    },
+    {
+      url: '/contact',
+      lastModified: new Date(),
+      changeFrequency: 'monthly' as const,
+      priority: 0.6,
+    },
+    {
+      url: '/blog',
+      lastModified: new Date(),
+      changeFrequency: 'weekly' as const,
+      priority: 0.7,
+    },
+    {
+      url: '/careers',
+      lastModified: new Date(),
+      changeFrequency: 'weekly' as const,
+      priority: 0.6,
     },
     {
       url: '/portfolio',

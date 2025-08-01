@@ -24,7 +24,7 @@ import { MetadataRoute } from 'next';
  */
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl =
-    process.env.NEXT_PUBLIC_APP_URL || 'https://aqua9-boilerplate.vercel.app';
+    process.env.NEXT_PUBLIC_APP_URL || 'https://gradualinfo.com.br';
 
   // Rotas estáticas principais
   const staticRoutes = [
@@ -41,9 +41,21 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.8,
     },
     {
-      url: `${baseUrl}/portfolio`,
+      url: `${baseUrl}/services`,
       lastModified: new Date(),
       changeFrequency: 'weekly' as const,
+      priority: 0.9,
+    },
+    {
+      url: `${baseUrl}/team`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly' as const,
+      priority: 0.7,
+    },
+    {
+      url: `${baseUrl}/technology`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly' as const,
       priority: 0.8,
     },
     {
@@ -57,7 +69,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   // Rotas dinâmicas (exemplo: posts do blog)
   const dynamicRoutes = [
     // Aqui você pode adicionar rotas dinâmicas baseadas em dados
-    // Por exemplo, posts do blog, produtos, etc.
+    // Por exemplo, posts do blog, casos de uso, etc.
     {
       url: `${baseUrl}/blog`,
       lastModified: new Date(),
@@ -65,9 +77,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.7,
     },
     {
-      url: `${baseUrl}/docs`,
+      url: `${baseUrl}/careers`,
       lastModified: new Date(),
-      changeFrequency: 'monthly' as const,
+      changeFrequency: 'weekly' as const,
       priority: 0.6,
     },
   ];

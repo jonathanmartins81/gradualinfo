@@ -3,13 +3,16 @@
 ## 📋 Passos para Criar o Repositório
 
 ### 1. Acesse o GitHub
+
 Abra seu navegador e vá para: https://github.com/jonathanmartins81
 
 ### 2. Crie o Novo Repositório
+
 - Clique no botão **"New"** ou **"New repository"**
 - Configure o repositório:
 
 **Configurações Básicas:**
+
 - **Repository name:** `gradualinfo`
 - **Description:** `Website oficial da Gradual Info - Desenvolvido pela Aqua9`
 - **Visibility:** Public ✅
@@ -18,6 +21,7 @@ Abra seu navegador e vá para: https://github.com/jonathanmartins81
 - **Choose a license:** MIT License ✅
 
 **Configurações Avançadas:**
+
 - **Homepage:** `https://gradualinfo.com.br`
 - **Topics:** `gradualinfo`, `gradual info`, `nextjs`, `react`, `typescript`, `aqua9`
 
@@ -41,11 +45,13 @@ git status
 Se preferir usar o GitHub CLI, você pode:
 
 ### 1. Fazer Login (Interativo)
+
 ```bash
 gh auth login
 ```
 
 ### 2. Criar Repositório
+
 ```bash
 gh repo create jonathanmartins81/gradualinfo --public --description "Website oficial da Gradual Info - Desenvolvido pela Aqua9" --homepage "https://gradualinfo.com.br" --source=. --remote=origin --push
 ```
@@ -60,6 +66,7 @@ gh repo create jonathanmartins81/gradualinfo --public --description "Website ofi
    - **Scopes:** `repo` (todos os repositórios)
 4. Copie o token
 5. Configure no terminal:
+
 ```bash
 export GH_TOKEN=seu_token_aqui
 gh repo create jonathanmartins81/gradualinfo --public --description "Website oficial da Gradual Info - Desenvolvido pela Aqua9" --homepage "https://gradualinfo.com.br" --source=. --remote=origin --push
@@ -83,4 +90,4 @@ gh repo create jonathanmartins81/gradualinfo --public --description "Website ofi
 
 ---
 
-**Desenvolvido com ❤️ pela Aqua9** 
+**Desenvolvido com ❤️ pela Aqua9**

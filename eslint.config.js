@@ -28,6 +28,10 @@ export default [
         HTMLLinkElement: 'readonly',
         process: 'readonly',
         URLSearchParams: 'readonly',
+        setInterval: 'readonly',
+        clearInterval: 'readonly',
+        setTimeout: 'readonly',
+        clearTimeout: 'readonly',
       },
     },
     plugins: {

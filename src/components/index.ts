@@ -15,4 +15,19 @@ export { default as FixedComponents } from './FixedComponents';
 export { JsonLd } from './JsonLd';
 
 // ===== TIPOS =====
-export type { ProductCardShopeeProps } from './ProductCardShopee';
+export interface ProductCardShopeeProps {
+  product: {
+    id: number;
+    name: string;
+    originalPrice: string;
+    currentPrice: string;
+    discount: string;
+    badge?: string;
+    image: string;
+    sold: string;
+    rating: number;
+    reviews: number;
+    freeShipping?: boolean;
+    isNew?: boolean;
+  };
+}

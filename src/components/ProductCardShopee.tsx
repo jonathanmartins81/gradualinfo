@@ -23,11 +23,11 @@ interface ProductCardShopeeProps {
 export default function ProductCardShopee({ product }: ProductCardShopeeProps) {
   const handleAddToCart = () => {
     // Animação de confete ou feedback visual
-    console.log('Adicionado ao carrinho:', product.name);
+    // console.log('Adicionado ao carrinho:', product.name);
   };
 
   const handleFavorite = () => {
-    console.log('Adicionado aos favoritos:', product.name);
+    // console.log('Adicionado aos favoritos:', product.name);
   };
 
   return (

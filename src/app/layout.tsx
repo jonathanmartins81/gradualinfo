@@ -2,12 +2,15 @@ import BottomNav from '@/components/BottomNav';
 import FixedComponents from '@/components/FixedComponents';
 import HeaderShopee from '@/components/HeaderShopee';
 import { JsonLd } from '@/components/JsonLd';
-import { generateDynamicSEO } from '@/utils/SEO';
 import type { Metadata, Viewport } from 'next';
 import './globals.css';
 import { Providers } from './providers';
 
-export const metadata: Metadata = generateDynamicSEO('/');
+export const metadata: Metadata = {
+  title: 'Gradual Info Shop - Shopee Clone',
+  description: 'Clone completo da Shopee Brasil com foco em conversão e vendas',
+  keywords: 'shopee, clone, ecommerce, vendas, produtos, ofertas',
+};
 
 export const viewport: Viewport = {
   width: 'device-width',

@@ -17,9 +17,9 @@
 
 </div>
 
-# 🚀 Gradual Info - Website Oficial
+# 🚀 Gradual Info - Coleção 100K
 
-> **Website oficial da Gradual Info** desenvolvido pela **Aqua9** com foco em **qualidade**, **segurança**, **performance** e **escalabilidade**. Site moderno e profissional para a Gradual Info.
+> **Website oficial da Gradual Info** com a **Coleção 100K** como página principal. Desenvolvido pela **Aqua9** com foco em **qualidade**, **segurança**, **performance** e **escalabilidade**. Site moderno e profissional para a Gradual Info.
 
 ---
 
@@ -231,7 +231,7 @@ npm run test:e2e
 
 ### **4. Acesse a Aplicação**
 
-- **Homepage:** http://localhost:3000
+- **Página Principal (100K):** http://localhost:3000
 - **Login:** http://localhost:3000/login
 - **Dashboard:** http://localhost:3000/dashboard (após login)
 - **Admin:** http://localhost:3000/admin (apenas admin)

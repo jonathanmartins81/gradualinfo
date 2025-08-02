@@ -1,23 +1,11 @@
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Página não encontrada - Aqua9 Boilerplate v2',
+  title: 'Página não encontrada - Gradual Info Shop',
   description: 'A página que você está procurando não foi encontrada.',
   robots: {
     index: false,
     follow: false,
-  },
-  openGraph: {
-    title: 'Página não encontrada - Aqua9 Boilerplate v2',
-    description: 'A página que você está procurando não foi encontrada.',
-    type: 'website',
-    images: ['/og-image.svg'],
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'Página não encontrada - Aqua9 Boilerplate v2',
-    description: 'A página que você está procurando não foi encontrada.',
-    images: ['/og-image.svg'],
   },
 };
 

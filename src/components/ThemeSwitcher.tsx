@@ -1,7 +1,5 @@
 'use client';
 
-import { useTheme } from '@/contexts/ThemeContext';
-import React from 'react';
 
 // ===== ÍCONE SVG =====
 const MoonIcon = ({ className = '' }: { className?: string }) => (

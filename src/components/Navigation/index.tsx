@@ -5,7 +5,6 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useState } from 'react';
-import ThemeSwitcher from '../ThemeSwitcher';
 
 interface NavigationItem {
   label: string;
@@ -211,14 +210,10 @@ export default function Navigation() {
                 </div>
               </div>
             ))}
-
-            {/* Theme Switcher */}
-            <ThemeSwitcher size='sm' variant='minimal' />
           </div>
 
           {/* Mobile menu button */}
           <div className='md:hidden flex items-center space-x-4'>
-            <ThemeSwitcher size='sm' variant='minimal' />
             <button
               onClick={() => setIsOpen(!isOpen)}
               className='text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400'

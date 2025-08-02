@@ -20,30 +20,11 @@ test.describe('Home Page E2E Tests', () => {
   test('should have proper navigation', async ({ page }) => {
     await page.goto('/');
 
-    // Verificar se o theme switcher está presente (indicador de tema dark)
-    await expect(page.locator('[data-testid="theme-switcher"]')).toBeVisible();
+    // Verificar se a navegação está presente
+    await expect(page.locator('nav')).toBeVisible();
 
-    // Verificar se mostra que o tema dark está ativo
-    await expect(page.locator('[data-testid="theme-switcher"]')).toContainText(
-      'Dark'
-    );
-  });
-
-  test('should have theme indicator', async ({ page }) => {
-    await page.goto('/');
-
-    // Verificar se o theme switcher está presente como indicador
-    await expect(page.locator('[data-testid="theme-switcher"]')).toBeVisible();
-
-    // Verificar se tem o ícone de lua (tema dark)
-    await expect(
-      page.locator('[data-testid="theme-switcher"] svg')
-    ).toBeVisible();
-
-    // Verificar se mostra "Dark" como texto
-    await expect(page.locator('[data-testid="theme-switcher"]')).toContainText(
-      'Dark'
-    );
+    // Verificar se o logo está presente
+    await expect(page.locator('nav img[alt="Aqua9 Logo"]')).toBeVisible();
   });
 
   test('should have dark theme applied', async ({ page }) => {

@@ -67,7 +67,7 @@ export default function Navigation() {
                 />
               ) : (
                 <span className='text-blue-600 dark:text-blue-400 text-lg sm:text-xl font-bold'>
-                  Aqua9
+                  🛍️ Gradual Info Shop
                 </span>
               )}
             </Link>

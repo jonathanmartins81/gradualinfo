@@ -17,9 +17,9 @@
 
 </div>
 
-# 🚀 Gradual Info - Coleção 100K
+# 🚀 Gradual Info Shop
 
-> **Website oficial da Gradual Info** com a **Coleção 100K** como página principal. Desenvolvido pela **Aqua9** com foco em **qualidade**, **segurança**, **performance** e **escalabilidade**. Site moderno e profissional para a Gradual Info.
+> **Website oficial da Gradual Info Shop** - Loja online moderna e profissional. Desenvolvido pela **Aqua9** com foco em **qualidade**, **segurança**, **performance** e **escalabilidade**. Template de vendas inspirado na TikTok Shop com foco em conversão.
 
 ---
 
@@ -231,7 +231,7 @@ npm run test:e2e
 
 ### **4. Acesse a Aplicação**
 
-- **Página Principal (100K):** http://localhost:3000
+- **Página Principal (Gradual Info Shop):** http://localhost:3000
 - **Login:** http://localhost:3000/login
 - **Dashboard:** http://localhost:3000/dashboard (após login)
 - **Admin:** http://localhost:3000/admin (apenas admin)

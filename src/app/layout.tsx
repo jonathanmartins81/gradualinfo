@@ -1,6 +1,7 @@
+import BottomNav from '@/components/BottomNav';
 import FixedComponents from '@/components/FixedComponents';
+import HeaderShopee from '@/components/HeaderShopee';
 import { JsonLd } from '@/components/JsonLd';
-import Navigation from '@/components/Navigation';
 import { generateDynamicSEO } from '@/utils/SEO';
 import type { Metadata, Viewport } from 'next';
 import './globals.css';
@@ -31,8 +32,9 @@ export default function RootLayout({
       </head>
       <body className='font-sans'>
         <Providers>
-          <Navigation />
+          <HeaderShopee />
           {children}
+          <BottomNav />
           <FixedComponents />
         </Providers>
       </body>

@@ -28,7 +28,7 @@ export default function CategorySlider() {
     <section className="py-6 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-5 sm:grid-cols-8 lg:grid-cols-10 gap-4">
-          {categories.map((category, index) => (
+          {categories.map((category) => (
             <div
               key={category.id}
               className="text-center group cursor-pointer"
@@ -42,7 +42,7 @@ export default function CategorySlider() {
                 </h3>
                 <p className="text-xs text-gray-500">{category.count}</p>
               </Link>
-            </motion.div>
+            </div>
           ))}
         </div>
 

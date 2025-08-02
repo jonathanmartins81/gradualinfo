@@ -68,7 +68,10 @@ describe('ThemeSwitcher Component', () => {
     render(<ThemeSwitcher />);
 
     expect(screen.getByText('Dark')).toBeInTheDocument();
-    expect(screen.getByTestId('theme-switcher')).toHaveAttribute('aria-label', 'Dark theme active');
+    expect(screen.getByTestId('theme-switcher')).toHaveAttribute(
+      'aria-label',
+      'Dark theme active'
+    );
   });
 
   it('should handle localStorage errors gracefully', () => {
@@ -100,28 +103,31 @@ describe('ThemeSwitcher Component', () => {
     rerender(<ThemeSwitcher />);
 
     expect(screen.getByText('Dark')).toBeInTheDocument();
-    expect(screen.getByTestId('theme-switcher')).toHaveAttribute('aria-label', 'Dark theme active');
+    expect(screen.getByTestId('theme-switcher')).toHaveAttribute(
+      'aria-label',
+      'Dark theme active'
+    );
   });
 
   it('should render with different sizes', () => {
-    const { rerender } = render(<ThemeSwitcher size="sm" />);
+    const { rerender } = render(<ThemeSwitcher size='sm' />);
     expect(screen.getByTestId('theme-switcher')).toBeInTheDocument();
 
-    rerender(<ThemeSwitcher size="md" />);
+    rerender(<ThemeSwitcher size='md' />);
     expect(screen.getByTestId('theme-switcher')).toBeInTheDocument();
 
-    rerender(<ThemeSwitcher size="lg" />);
+    rerender(<ThemeSwitcher size='lg' />);
     expect(screen.getByTestId('theme-switcher')).toBeInTheDocument();
   });
 
   it('should render with different variants', () => {
-    const { rerender } = render(<ThemeSwitcher variant="default" />);
+    const { rerender } = render(<ThemeSwitcher variant='default' />);
     expect(screen.getByTestId('theme-switcher')).toBeInTheDocument();
 
-    rerender(<ThemeSwitcher variant="minimal" />);
+    rerender(<ThemeSwitcher variant='minimal' />);
     expect(screen.getByTestId('theme-switcher')).toBeInTheDocument();
 
-    rerender(<ThemeSwitcher variant="outline" />);
+    rerender(<ThemeSwitcher variant='outline' />);
     expect(screen.getByTestId('theme-switcher')).toBeInTheDocument();
   });
 

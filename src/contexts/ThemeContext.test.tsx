@@ -128,7 +128,7 @@ describe('ThemeContext', () => {
     );
 
     const root = document.documentElement;
-    
+
     expect(root.style.getPropertyValue('--primary-color')).toBe('#4F8CFF');
     expect(root.style.getPropertyValue('--secondary-color')).toBe('#A5B4FC');
     expect(root.style.getPropertyValue('--accent-color')).toBe('#FFC145');

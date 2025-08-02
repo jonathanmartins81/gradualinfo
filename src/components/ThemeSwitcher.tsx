@@ -37,8 +37,6 @@ export default function ThemeSwitcher({
   variant = 'default',
   animated = true,
 }: ThemeSwitcherProps) {
-  const { isDark } = useTheme();
-
   // ===== CLASSES DINÂMICAS =====
   const sizeClasses = {
     sm: 'w-8 h-8 text-sm',
@@ -49,10 +47,8 @@ export default function ThemeSwitcher({
   const variantClasses = {
     default:
       'bg-gradient-to-r from-blue-600 to-purple-600 text-white shadow-lg',
-    minimal:
-      'bg-transparent text-gray-300',
-    outline:
-      'border-2 border-gray-600 bg-transparent text-gray-300',
+    minimal: 'bg-transparent text-gray-300',
+    outline: 'border-2 border-gray-600 bg-transparent text-gray-300',
   };
 
   const baseClasses = `
@@ -104,8 +100,6 @@ export function CompactThemeSwitcher({
 }: {
   className?: string;
 }) {
-  const { isDark } = useTheme();
-
   return (
     <div
       className={`
@@ -136,8 +130,6 @@ export function ThemeSwitcherWithMenu({
 }: {
   className?: string;
 }) {
-  const { isDark } = useTheme();
-
   return (
     <div className={`relative ${className}`}>
       <div

@@ -9,27 +9,35 @@ export default function BannerCarousel() {
   const banners = [
     {
       id: 1,
-      title: 'Flash Sale - Até 90% OFF',
-      subtitle: 'Ofertas por tempo limitado',
-      image: '/img/illustration.svg',
+      title: '🔥 FLASH SALE - Até 90% OFF',
+      subtitle: 'Ofertas por tempo limitado - Não perca!',
+      image: 'https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=800&h=400&fit=crop&crop=center',
       color: 'from-red-500 to-pink-500',
       badge: '🔥 HOT'
     },
     {
       id: 2,
-      title: 'Frete Grátis',
-      subtitle: 'Em compras acima de R$ 99',
-      image: '/img/illustration.svg',
+      title: '🚚 Frete Grátis para Todo Brasil',
+      subtitle: 'Em compras acima de R$ 99 - Aproveite!',
+      image: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&h=400&fit=crop&crop=center',
       color: 'from-green-500 to-blue-500',
       badge: '🚚 GRÁTIS'
     },
     {
       id: 3,
-      title: 'Novidades Chegaram',
-      subtitle: 'Produtos exclusivos',
-      image: '/img/illustration.svg',
+      title: '✨ Novidades Exclusivas',
+      subtitle: 'Produtos únicos que você só encontra aqui',
+      image: 'https://images.unsplash.com/photo-1441984904996-e0b6ba687e04?w=800&h=400&fit=crop&crop=center',
       color: 'from-purple-500 to-indigo-500',
       badge: '✨ NOVO'
+    },
+    {
+      id: 4,
+      title: '💎 Coleção Premium',
+      subtitle: 'Produtos de alta qualidade com preços especiais',
+      image: 'https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=800&h=400&fit=crop&crop=center',
+      color: 'from-orange-500 to-red-500',
+      badge: '💎 PREMIUM'
     }
   ];
 
@@ -63,22 +71,36 @@ export default function BannerCarousel() {
                 key={banner.id}
                 className="w-full flex-shrink-0 relative"
               >
-                <div className={`bg-gradient-to-r ${banner.color} text-white p-6 rounded-xl`}>
-                  <div className="flex items-center justify-between">
+                <div className={`relative bg-gradient-to-r ${banner.color} text-white p-6 rounded-xl overflow-hidden`}>
+                  {/* Background Image */}
+                  <div className="absolute inset-0">
+                    <img
+                      src={banner.image}
+                      alt={banner.title}
+                      className="w-full h-full object-cover opacity-20"
+                      onError={(e) => {
+                        const target = e.target as HTMLImageElement;
+                        target.style.display = 'none';
+                      }}
+                    />
+                  </div>
+                  
+                  {/* Content Overlay */}
+                  <div className="relative z-10 flex items-center justify-between">
                     <div className="flex-1">
                       <div className="flex items-center mb-2">
-                        <span className="bg-white/20 text-white px-3 py-1 rounded-full text-sm font-bold mr-3">
+                        <span className="bg-white/20 backdrop-blur-sm text-white px-3 py-1 rounded-full text-sm font-bold mr-3">
                           {banner.badge}
                         </span>
                       </div>
-                      <h2 className="text-2xl font-bold mb-2">{banner.title}</h2>
-                      <p className="text-lg opacity-90 mb-4">{banner.subtitle}</p>
-                      <button className="bg-white text-orange-500 px-6 py-2 rounded-full font-semibold hover:bg-gray-100 transition-colors">
+                      <h2 className="text-2xl font-bold mb-2 drop-shadow-lg">{banner.title}</h2>
+                      <p className="text-lg opacity-90 mb-4 drop-shadow-md">{banner.subtitle}</p>
+                      <button className="bg-white text-orange-500 px-6 py-2 rounded-full font-semibold hover:bg-gray-100 transition-colors shadow-lg">
                         Ver Ofertas
                       </button>
                     </div>
                     <div className="hidden md:block">
-                      <div className="w-32 h-32 bg-white/10 rounded-full flex items-center justify-center">
+                      <div className="w-32 h-32 bg-white/10 backdrop-blur-sm rounded-full flex items-center justify-center">
                         <span className="text-4xl">🛍️</span>
                       </div>
                     </div>

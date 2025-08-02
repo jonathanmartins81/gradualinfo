@@ -71,7 +71,7 @@ export default function BannerCarousel() {
                 key={banner.id}
                 className="w-full flex-shrink-0 relative"
               >
-                <div className={`relative bg-gradient-to-r ${banner.color} text-white p-6 rounded-xl overflow-hidden`}>
+                <div className={`relative bg-gradient-to-r ${banner.color} text-white p-8 rounded-xl overflow-hidden`}>
                   {/* Background Image */}
                   <div className="absolute inset-0">
                     <img
@@ -84,22 +84,22 @@ export default function BannerCarousel() {
                       }}
                     />
                   </div>
-                  
+
                   {/* Content Overlay */}
                   <div className="relative z-10 flex items-center justify-between">
-                    <div className="flex-1">
-                      <div className="flex items-center mb-2">
+                    <div className="flex-1 pr-4">
+                      <div className="flex items-center mb-3">
                         <span className="bg-white/20 backdrop-blur-sm text-white px-3 py-1 rounded-full text-sm font-bold mr-3">
                           {banner.badge}
                         </span>
                       </div>
-                      <h2 className="text-2xl font-bold mb-2 drop-shadow-lg">{banner.title}</h2>
-                      <p className="text-lg opacity-90 mb-4 drop-shadow-md">{banner.subtitle}</p>
+                      <h2 className="text-2xl font-bold mb-3 drop-shadow-lg">{banner.title}</h2>
+                      <p className="text-lg opacity-90 mb-6 drop-shadow-md">{banner.subtitle}</p>
                       <button className="bg-white text-orange-500 px-6 py-2 rounded-full font-semibold hover:bg-gray-100 transition-colors shadow-lg">
                         Ver Ofertas
                       </button>
                     </div>
-                    <div className="hidden md:block">
+                    <div className="hidden md:block pl-4">
                       <div className="w-32 h-32 bg-white/10 backdrop-blur-sm rounded-full flex items-center justify-center">
                         <span className="text-4xl">🛍️</span>
                       </div>

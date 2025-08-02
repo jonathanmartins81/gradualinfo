@@ -36,7 +36,7 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 // Componente wrapper para demonstrar o modal
-const ModalWrapper = ({ children, ...props }: any) => {
+const ModalWrapper = ({ children, ...props }: Record<string, unknown>) => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (

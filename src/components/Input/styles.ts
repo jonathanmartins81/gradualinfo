@@ -42,15 +42,10 @@ export const getInputStyles = ({
   variant = 'default',
   size = 'md',
   error = false,
-  disabled = false,
   loading = false,
-  fullWidth = false,
   leftIcon = false,
   rightIcon = false,
-}: Pick<
-  InputProps,
-  'variant' | 'size' | 'error' | 'disabled' | 'loading' | 'fullWidth'
-> & {
+}: Pick<InputProps, 'variant' | 'size' | 'error' | 'loading'> & {
   leftIcon?: boolean;
   rightIcon?: boolean;
 }) => {

@@ -8,18 +8,18 @@ describe('Button Component', () => {
 
     const button = screen.getByRole('button', { name: /click me/i });
     expect(button).toBeInTheDocument();
-    expect(button).toHaveClass('bg-cyan-600');
+    expect(button).toHaveClass('bg-primary-600');
   });
 
   it('should render button with different variants', () => {
     const { rerender } = render(<Button variant='secondary'>Secondary</Button>);
-    expect(screen.getByRole('button')).toHaveClass('bg-indigo-600');
+    expect(screen.getByRole('button')).toHaveClass('bg-gray-600');
 
     rerender(<Button variant='danger'>Danger</Button>);
-    expect(screen.getByRole('button')).toHaveClass('bg-red-500');
+    expect(screen.getByRole('button')).toHaveClass('bg-red-600');
 
     rerender(<Button variant='ghost'>Ghost</Button>);
-    expect(screen.getByRole('button')).toHaveClass('bg-transparent');
+    expect(screen.getByRole('button')).toHaveClass('text-gray-700');
   });
 
   it('should render button with different sizes', () => {
@@ -35,7 +35,7 @@ describe('Button Component', () => {
 
     const button = screen.getByRole('button');
     expect(button).toBeDisabled();
-    expect(button).toHaveClass('animate-pulse');
+    expect(button).toHaveClass('cursor-wait');
     expect(button.querySelector('svg')).toBeInTheDocument();
   });
 

@@ -41,11 +41,7 @@ export const getButtonStyles = ({
   size = 'md',
   fullWidth = false,
   loading = false,
-  disabled = false,
-}: Pick<
-  ButtonProps,
-  'variant' | 'size' | 'fullWidth' | 'loading' | 'disabled'
->) => {
+}: Pick<ButtonProps, 'variant' | 'size' | 'fullWidth' | 'loading'>) => {
   return cn(
     buttonBase,
     buttonVariants[variant],

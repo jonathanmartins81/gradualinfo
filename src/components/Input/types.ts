@@ -1,5 +1,12 @@
 import { InputHTMLAttributes, ReactNode } from 'react';
 
+// Extensão para tipos globais do DOM
+declare global {
+  interface HTMLElementTagNameMap {
+    input: HTMLInputElement;
+  }
+}
+
 export type InputVariant = 'default' | 'outlined' | 'filled' | 'ghost';
 export type InputSize = 'sm' | 'md' | 'lg';
 export type InputType =
@@ -11,7 +18,8 @@ export type InputType =
   | 'url'
   | 'search';
 
-export interface InputProps extends Omit<InputHTMLAttributes<any>, 'size'> {
+export interface InputProps
+  extends Omit<InputHTMLAttributes<HTMLInputElement>, 'size'> {
   label?: string;
   variant?: InputVariant;
   size?: InputSize;

@@ -1,5 +1,5 @@
 /**
- * Sistema de SEO Dinâmico - Aqua9 Boilerplate v2
+ * Sistema de SEO Dinâmico - Gradual Info
  *
  * Este arquivo implementa um sistema completo de SEO dinâmico para o projeto,
  * incluindo metadados, Open Graph, Twitter Cards, JSON-LD e configurações
@@ -14,7 +14,7 @@
  * - Robots.txt configurável
  *
  * @author Jonathan Simão
- * @version 2.0.0
+ * @version 1.0.0
  * @since 2024-01-01
  */
 
@@ -103,21 +103,12 @@ export const SEOConfig = {
     'profissional',
   ],
 
-  // Configurações de tema para Open Graph (Cores da Bandeira Brasileira)
+  // Cores da bandeira brasileira
   theme: {
     primary: '#009c3b', // Verde da bandeira
     secondary: '#ffdf00', // Amarelo da bandeira
     accent: '#002776', // Azul da bandeira
-    background: '#ffffff', // Branco
-    text: '#1f2937', // Cinza escuro
-  },
-
-  // Configurações de localização
-  locale: {
-    language: 'pt-BR',
-    region: 'BR',
-    timezone: 'America/Sao_Paulo',
-    currency: 'BRL',
+    white: '#ffffff',
   },
 };
 
@@ -125,7 +116,7 @@ export const SEOConfig = {
  * Interface para configuração de SEO dinâmico
  *
  * Define a estrutura de dados para configurações de SEO
- * específicas de cada página ou rota.
+ * específicas de cada rota da aplicação.
  */
 export interface DynamicSEOConfig {
   // Metadados básicos
@@ -300,16 +291,15 @@ export const routeSEOConfig: Record<string, DynamicSEOConfig> = {
   '/services': {
     title: 'Serviços - Gradual Info',
     description:
-      'Conheça nossos serviços em tecnologia e informação. Desenvolvimento de sistemas, consultoria, análise de dados e soluções personalizadas para sua empresa.',
+      'Conheça nossos serviços de tecnologia e informação. Desenvolvimento de sistemas, consultoria em TI, soluções personalizadas para sua empresa.',
     keywords: [
       'serviços',
       'tecnologia',
-      'informação',
       'desenvolvimento',
       'consultoria',
-      'análise de dados',
-      'sistemas',
       'soluções',
+      'sistemas',
+      'software',
     ],
     type: 'website',
     image: '/og-services.svg',
@@ -340,61 +330,102 @@ export const routeSEOConfig: Record<string, DynamicSEOConfig> = {
     },
   },
 
-  // ===== PÁGINA DE CASO DE USO ESPECÍFICO (DINÂMICA) =====
-  '/cases/[slug]': {
-    title: 'Caso de Uso {slug} - Gradual Info',
+  // ===== PÁGINA EQUIPE =====
+  '/team': {
+    title: 'Equipe - Gradual Info',
     description:
-      'Detalhes do caso de uso {slug} desenvolvido pela Gradual Info. Soluções, tecnologias utilizadas e resultados obtidos para nossos clientes.',
+      'Conheça nossa equipe de profissionais especializados em tecnologia e informação. Especialistas qualificados para transformar suas ideias em realidade.',
     keywords: [
-      'caso de uso',
-      'detalhes',
-      'tecnologias',
-      'soluções',
-      'resultados',
-      'clientes',
+      'equipe',
+      'profissionais',
+      'especialistas',
+      'qualificados',
+      'tecnologia',
+      'desenvolvimento',
     ],
-    type: 'article',
-    image: '/og-case.svg',
-    canonical: 'https://gradualinfo.com.br/cases/{slug}',
-    priority: 0.8,
+    type: 'website',
+    image: '/og-team.svg',
+    canonical: 'https://gradualinfo.com.br/team',
+    priority: 0.7,
     changeFreq: 'monthly',
     openGraph: {
-      title: 'Caso de Uso {slug} - Gradual Info',
-      description: 'Detalhes do caso de uso {slug}',
-      type: 'article',
+      title: 'Equipe - Gradual Info',
+      description: 'Profissionais especializados em tecnologia',
+      type: 'website',
       siteName: 'Gradual Info',
       images: [
         {
-          url: '/og-case.svg',
+          url: '/og-team.svg',
           width: 1200,
           height: 630,
-          alt: 'Caso de Uso {slug} - Gradual Info',
+          alt: 'Equipe - Gradual Info',
         },
       ],
     },
     twitter: {
       card: 'summary_large_image',
-      title: 'Caso de Uso {slug} - Gradual Info',
-      description: 'Detalhes do caso de uso {slug}',
-      image: '/og-case.svg',
+      title: 'Equipe - Gradual Info',
+      description: 'Profissionais especializados em tecnologia',
+      image: '/og-team.svg',
       creator: '@gradualinfo',
       site: '@gradualinfo',
     },
   },
 
-  // ===== PÁGINA DE BLOG =====
+  // ===== PÁGINA TECNOLOGIA =====
+  '/technology': {
+    title: 'Tecnologia - Gradual Info',
+    description:
+      'Conheça as tecnologias que utilizamos para desenvolver soluções inovadoras. Stack moderna e ferramentas de ponta para projetos de qualidade.',
+    keywords: [
+      'tecnologia',
+      'stack',
+      'ferramentas',
+      'inovações',
+      'desenvolvimento',
+      'programação',
+    ],
+    type: 'website',
+    image: '/og-technology.svg',
+    canonical: 'https://gradualinfo.com.br/technology',
+    priority: 0.8,
+    changeFreq: 'monthly',
+    openGraph: {
+      title: 'Tecnologia - Gradual Info',
+      description: 'Stack moderna e ferramentas de ponta',
+      type: 'website',
+      siteName: 'Gradual Info',
+      images: [
+        {
+          url: '/og-technology.svg',
+          width: 1200,
+          height: 630,
+          alt: 'Tecnologia - Gradual Info',
+        },
+      ],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: 'Tecnologia - Gradual Info',
+      description: 'Stack moderna e ferramentas de ponta',
+      image: '/og-technology.svg',
+      creator: '@gradualinfo',
+      site: '@gradualinfo',
+    },
+  },
+
+  // ===== PÁGINA BLOG =====
   '/blog': {
     title: 'Blog - Gradual Info',
     description:
-      'Blog da Gradual Info com artigos sobre tecnologia, inovação e tendências do mercado. Insights e análises sobre transformação digital.',
+      'Blog da Gradual Info com artigos sobre tecnologia, inovação e tendências do mercado. Conteúdo atualizado sobre desenvolvimento e soluções digitais.',
     keywords: [
       'blog',
       'artigos',
       'tecnologia',
       'inovação',
       'tendências',
-      'insights',
-      'análises',
+      'desenvolvimento',
     ],
     type: 'website',
     image: '/og-blog.svg',
@@ -425,18 +456,18 @@ export const routeSEOConfig: Record<string, DynamicSEOConfig> = {
     },
   },
 
-  // ===== PÁGINA DE CONTATO =====
+  // ===== PÁGINA CONTATO =====
   '/contact': {
     title: 'Contato - Gradual Info',
     description:
-      'Entre em contato com a Gradual Info. Solicite orçamentos, tire dúvidas sobre nossos serviços ou agende uma reunião.',
+      'Entre em contato com a Gradual Info. Solicite um orçamento, tire suas dúvidas ou agende uma reunião para discutir seu projeto.',
     keywords: [
       'contato',
       'orçamento',
       'dúvidas',
       'reunião',
-      'gradualinfo',
-      'gradual info',
+      'projeto',
+      'consultoria',
     ],
     type: 'website',
     image: '/og-contact.svg',
@@ -465,83 +496,21 @@ export const routeSEOConfig: Record<string, DynamicSEOConfig> = {
       creator: '@gradualinfo',
       site: '@gradualinfo',
     },
-
-  // ===== PÁGINA DE EQUIPE =====
-  '/team': {
-    title: 'Equipe - Gradual Info',
-    description:
-      'Conheça nossa equipe de especialistas em tecnologia e informação. Profissionais qualificados e experientes para transformar sua empresa.',
-    keywords: ['equipe', 'profissionais', 'especialistas', 'tecnologia', 'informação', 'qualificados'],
-    type: 'website',
-    image: '/og-team.svg',
-    canonical: 'https://gradualinfo.com.br/team',
-    priority: 0.7,
-    changeFreq: 'monthly',
-    openGraph: {
-      title: 'Equipe - Gradual Info',
-      description: 'Nossa equipe de especialistas',
-      type: 'website',
-      siteName: 'Gradual Info',
-      images: [
-        {
-          url: '/og-team.svg',
-          width: 1200,
-          height: 630,
-          alt: 'Equipe - Gradual Info',
-        },
-      ],
-    },
-    twitter: {
-      card: 'summary_large_image',
-      title: 'Equipe - Gradual Info',
-      description: 'Nossa equipe de especialistas',
-      image: '/og-team.svg',
-      creator: '@gradualinfo',
-      site: '@gradualinfo',
-    },
   },
 
-  // ===== PÁGINA DE TECNOLOGIA =====
-  '/technology': {
-    title: 'Tecnologia - Gradual Info',
-    description:
-      'Conheça as tecnologias que utilizamos para desenvolver soluções inovadoras. Stack moderna e ferramentas de ponta para seu projeto.',
-    keywords: ['tecnologia', 'stack', 'ferramentas', 'inovações', 'desenvolvimento', 'soluções'],
-    type: 'website',
-    image: '/og-technology.svg',
-    canonical: 'https://gradualinfo.com.br/technology',
-    priority: 0.8,
-    changeFreq: 'monthly',
-    openGraph: {
-      title: 'Tecnologia - Gradual Info',
-      description: 'Nossa stack de tecnologias',
-      type: 'website',
-      siteName: 'Gradual Info',
-      images: [
-        {
-          url: '/og-technology.svg',
-          width: 1200,
-          height: 630,
-          alt: 'Tecnologia - Gradual Info',
-        },
-      ],
-    },
-    twitter: {
-      card: 'summary_large_image',
-      title: 'Tecnologia - Gradual Info',
-      description: 'Nossa stack de tecnologias',
-      image: '/og-technology.svg',
-      creator: '@gradualinfo',
-      site: '@gradualinfo',
-    },
-  },
-
-  // ===== PÁGINA DE CARREIRAS =====
+  // ===== PÁGINA CARREIRAS =====
   '/careers': {
     title: 'Carreiras - Gradual Info',
     description:
       'Junte-se à nossa equipe! Oportunidades de carreira na Gradual Info. Trabalhe com tecnologia de ponta e faça parte de projetos inovadores.',
-    keywords: ['carreiras', 'vagas', 'oportunidades', 'trabalho', 'tecnologia', 'inovação'],
+    keywords: [
+      'carreiras',
+      'vagas',
+      'oportunidades',
+      'trabalho',
+      'tecnologia',
+      'inovação',
+    ],
     type: 'website',
     image: '/og-careers.svg',
     canonical: 'https://gradualinfo.com.br/careers',
@@ -566,6 +535,48 @@ export const routeSEOConfig: Record<string, DynamicSEOConfig> = {
       title: 'Carreiras - Gradual Info',
       description: 'Oportunidades de carreira',
       image: '/og-careers.svg',
+      creator: '@gradualinfo',
+      site: '@gradualinfo',
+    },
+  },
+
+  // ===== PÁGINAS DINÂMICAS =====
+  '/cases/[slug]': {
+    title: 'Caso de Uso {slug} - Gradual Info',
+    description:
+      'Conheça os detalhes deste caso de uso desenvolvido pela Gradual Info. Tecnologias utilizadas, desafios superados e resultados alcançados.',
+    keywords: [
+      'caso de uso',
+      'detalhes',
+      'tecnologias',
+      'soluções',
+      'resultados',
+      'projeto',
+    ],
+    type: 'website',
+    image: '/og-case.svg',
+    canonical: 'https://gradualinfo.com.br/cases/{slug}',
+    priority: 0.8,
+    changeFreq: 'monthly',
+    openGraph: {
+      title: 'Caso de Uso {slug} - Gradual Info',
+      description: 'Detalhes do projeto e tecnologias utilizadas',
+      type: 'website',
+      siteName: 'Gradual Info',
+      images: [
+        {
+          url: '/og-case.svg',
+          width: 1200,
+          height: 630,
+          alt: 'Caso de Uso {slug} - Gradual Info',
+        },
+      ],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: 'Caso de Uso {slug} - Gradual Info',
+      description: 'Detalhes do projeto e tecnologias utilizadas',
+      image: '/og-case.svg',
       creator: '@gradualinfo',
       site: '@gradualinfo',
     },
@@ -641,9 +652,6 @@ export const defaultSEO: Metadata = {
     creator: '@gradualinfo',
     site: '@gradualinfo',
   },
-
-  // Configuração de viewport (removido - será migrado para viewport export)
-  // viewport: 'width=device-width, initial-scale=1',
 };
 
 /**
@@ -667,9 +675,10 @@ export function generateDynamicSEO(
   let config = routeConfig;
   if (!routeConfig && pathname.includes('/')) {
     // Busca por padrões dinâmicos (ex: /portfolio/[slug])
-    const dynamicPatterns = Object.keys(routeSEOConfig).filter(key =>
-      key.includes('[')
+    const dynamicPatterns = Object.keys(routeSEOConfig).filter(
+      key => key.includes('[') && key.includes(']')
     );
+
     for (const pattern of dynamicPatterns) {
       const regex = new RegExp(pattern.replace(/\[([^\]]+)\]/g, '([^/]+)'));
       if (regex.test(pathname)) {
@@ -679,83 +688,65 @@ export function generateDynamicSEO(
     }
   }
 
-  // Se não encontrou configuração, usa a padrão
+  // Se ainda não encontrou, usa configuração padrão
   if (!config) {
     config = routeSEOConfig['/'];
   }
 
-  // Substitui placeholders por dados dinâmicos
+  // Substitui placeholders com dados dinâmicos
   let title = config.title;
-  let description = config.description || SEOConfig.project.description;
-  let canonical = config.canonical || `${SEOConfig.project.url}${pathname}`;
+  let description = config.description;
+  let canonical = config.canonical;
 
   if (dynamicData) {
     Object.entries(dynamicData).forEach(([key, value]) => {
       const placeholder = `{${key}}`;
-      title = title.replace(placeholder, value);
-      description = description.replace(placeholder, value);
-      canonical = canonical.replace(placeholder, value);
+      title = title?.replace(new RegExp(placeholder, 'g'), value);
+      description = description?.replace(new RegExp(placeholder, 'g'), value);
+      canonical = canonical?.replace(new RegExp(placeholder, 'g'), value);
     });
   }
 
-  // Gera metadados combinando configurações padrão com específicas
-  return {
+  // Constrói metadados combinando configuração padrão com específica
+  const metadata: Metadata = {
     ...defaultSEO,
-    title,
-    description,
-    keywords: config.keywords || SEOConfig.keywords,
+    title: title || defaultSEO.title,
+    description: description || defaultSEO.description,
+    keywords: config.keywords || defaultSEO.keywords,
     alternates: {
-      canonical,
+      canonical: canonical || pathname,
     },
     openGraph: {
       ...defaultSEO.openGraph,
-      title,
-      description,
-      url: canonical,
-      images: config.image
-        ? [
-            {
-              url: config.image,
-              width: 1200,
-              height: 630,
-              alt: title,
-            },
-          ]
-        : defaultSEO.openGraph?.images,
+      title: title || defaultSEO.openGraph?.title,
+      description: description || defaultSEO.openGraph?.description,
+      url: `${SEOConfig.project.url}${pathname}`,
+      images: config.openGraph?.images || defaultSEO.openGraph?.images,
     },
     twitter: {
       ...defaultSEO.twitter,
-      title,
-      description,
-      images: config.image ? [config.image] : defaultSEO.twitter?.images,
-      card: config.twitter?.card || 'summary_large_image',
+      title: title || defaultSEO.twitter?.title,
+      description: description || defaultSEO.twitter?.description,
+      images: config.twitter?.image
+        ? [config.twitter.image]
+        : defaultSEO.twitter?.images,
     },
-    authors: config.author ? [{ name: config.author }] : defaultSEO.authors,
-    other: {
-      ...defaultSEO.other,
-      ...(config.publishedTime && {
-        'article:published_time': config.publishedTime,
-      }),
-      ...(config.modifiedTime && {
-        'article:modified_time': config.modifiedTime,
-      }),
-      ...(config.section && { 'article:section': config.section }),
-      ...(config.tags && { 'article:tag': config.tags.join(', ') }),
-    } as Record<string, string>,
   };
+
+  return metadata;
 }
 
 /**
- * Função para gerar metadados específicos de página
+ * Função para gerar metadados simples para uma página
  *
- * Permite criar metadados personalizados para páginas específicas,
- * mantendo a consistência com as configurações padrão.
+ * Versão simplificada para páginas que não precisam de configuração
+ * complexa de SEO dinâmico.
  *
  * @param title - Título da página
  * @param description - Descrição da página (opcional)
- * @param keywords - Palavras-chave específicas (opcional)
- * @param image - Imagem específica da página (opcional)
- * @returns Metadados personalizados para a página
+ * @param keywords - Palavras-chave (opcional)
+ * @param image - Imagem para Open Graph (opcional)
+ * @returns Metadados básicos para a página
  */
 export function generatePageSEO(
   title: string,
@@ -766,12 +757,12 @@ export function generatePageSEO(
   return {
     ...defaultSEO,
     title,
-    description: description || SEOConfig.project.description,
-    keywords: keywords || SEOConfig.keywords,
+    description: description || defaultSEO.description,
+    keywords: keywords || defaultSEO.keywords,
     openGraph: {
       ...defaultSEO.openGraph,
       title,
-      description: description || SEOConfig.project.description,
+      description: description || defaultSEO.openGraph?.description,
       images: image
         ? [{ url: image, width: 1200, height: 630, alt: title }]
         : defaultSEO.openGraph?.images,
@@ -779,74 +770,66 @@ export function generatePageSEO(
     twitter: {
       ...defaultSEO.twitter,
       title,
-      description: description || SEOConfig.project.description,
+      description: description || defaultSEO.twitter?.description,
       images: image ? [image] : defaultSEO.twitter?.images,
     },
   };
 }
 
 /**
- * Hook para SEO dinâmico em componentes
+ * Hook para usar SEO dinâmico em componentes React
  *
- * Hook que pode ser usado em componentes para gerar metadados dinâmicos
- * baseados no estado ou props do componente.
+ * Hook personalizado que facilita o uso de configurações de SEO
+ * dinâmicas em componentes React.
  *
  * @param config - Configuração de SEO dinâmico
- * @returns Função para atualizar metadados
+ * @returns Objeto com metadados prontos para uso
  */
 export function useDynamicSEO(config: DynamicSEOConfig) {
-  // Esta função seria implementada com next/head ou similar
-  // Por enquanto, retorna a configuração para uso manual
-  return {
-    updateSEO: () => config,
-    config,
-  };
+  return generatePageSEO(
+    config.title,
+    config.description,
+    config.keywords,
+    config.image
+  );
 }
 
 /**
- * Configuração para JSON-LD (Structured Data)
+ * Configuração para JSON-LD (Dados Estruturados)
  *
- * Dados estruturados que ajudam os motores de busca a entender
- * melhor o conteúdo e contexto da aplicação.
+ * Define os dados estruturados que serão incluídos nas páginas
+ * para melhorar a compreensão dos motores de busca.
  */
 export const jsonLdConfig = {
-  // Schema para SoftwareApplication
+  // Schema para aplicação de software
   softwareApplication: {
-    '@context': 'https://schema.org',
     '@type': 'SoftwareApplication',
     name: SEOConfig.project.name,
     description: SEOConfig.project.description,
-    url: SEOConfig.project.url,
     applicationCategory: 'BusinessApplication',
     operatingSystem: 'Web Browser',
-    author: {
-      '@type': 'Person',
-      name: SEOConfig.developer.name,
-      url: SEOConfig.developer.website,
-    },
+    url: SEOConfig.project.url,
+    version: SEOConfig.project.version,
     publisher: {
       '@type': 'Organization',
       name: 'Gradual Info',
       url: SEOConfig.project.url,
     },
-    offers: {
-      '@type': 'Offer',
-      price: '0',
-      priceCurrency: 'BRL',
+    author: {
+      '@type': 'Person',
+      name: SEOConfig.developer.name,
+      email: SEOConfig.developer.email,
+      url: SEOConfig.developer.website,
     },
-    softwareVersion: SEOConfig.project.version,
-    dateCreated: '2024-01-01',
-    dateModified: new Date().toISOString().split('T')[0],
-    keywords: SEOConfig.keywords.join(', '),
   },
 
-  // Schema para Organization
+  // Schema para organização
   organization: {
-    '@context': 'https://schema.org',
     '@type': 'Organization',
     name: 'Gradual Info',
     url: SEOConfig.project.url,
     logo: `${SEOConfig.project.url}/logo.png`,
+    description: SEOConfig.project.description,
     sameAs: [
       'https://twitter.com/gradualinfo',
       'https://linkedin.com/company/gradualinfo',
@@ -856,44 +839,42 @@ export const jsonLdConfig = {
       '@type': 'ContactPoint',
       contactType: 'customer service',
       email: 'contato@gradualinfo.com.br',
+      availableLanguage: 'Portuguese',
     },
   },
 
-  // Schema para Person (Jonathan Simão)
+  // Schema para pessoa (desenvolvedor)
   person: {
-    '@context': 'https://schema.org',
     '@type': 'Person',
     name: SEOConfig.developer.name,
+    email: SEOConfig.developer.email,
     url: SEOConfig.developer.website,
-    jobTitle: 'Full Stack Developer',
+    jobTitle: 'Desenvolvedor Full Stack',
     worksFor: {
       '@type': 'Organization',
       name: 'Gradual Info',
     },
     sameAs: [
-      'https://twitter.com/aqua9dev',
-      'https://github.com/jonathansimao',
-      'https://linkedin.com/in/jonathansimao',
+      SEOConfig.developer.twitter,
+      SEOConfig.developer.linkedin,
+      SEOConfig.developer.github,
     ],
   },
 };
 
 /**
- * Configuração para sitemap dinâmico
+ * Configuração para sitemap
  *
- * Define as páginas que devem ser incluídas no sitemap.xml
- * para ajudar os motores de busca a indexar o conteúdo.
- * Suporta geração dinâmica baseada em dados reais.
+ * Define as configurações para geração do sitemap.xml
+ * dinâmico da aplicação.
  */
 export const sitemapConfig = {
-  baseUrl: SEOConfig.project.url,
-
   // Páginas estáticas
   staticPages: [
     {
       url: '/',
       lastModified: new Date(),
-      changeFrequency: 'weekly' as const,
+      changeFrequency: 'daily' as const,
       priority: 1.0,
     },
     {
@@ -938,12 +919,6 @@ export const sitemapConfig = {
       changeFrequency: 'weekly' as const,
       priority: 0.6,
     },
-    {
-      url: '/portfolio',
-      lastModified: new Date(),
-      changeFrequency: 'weekly' as const,
-      priority: 0.9,
-    },
   ],
 
   // Função para gerar páginas dinâmicas
@@ -965,16 +940,16 @@ export const sitemapConfig = {
     // Aqui você pode buscar dados de uma API ou banco de dados
     // para gerar páginas dinâmicas (ex: posts de blog, projetos, etc.)
 
-    // Exemplo: projetos do portfólio
-    const projects = [
-      { slug: 'projeto-1', lastModified: new Date('2024-01-15') },
-      { slug: 'projeto-2', lastModified: new Date('2024-01-20') },
-      { slug: 'projeto-3', lastModified: new Date('2024-01-25') },
+    // Exemplo: casos de uso
+    const cases = [
+      { slug: 'caso-1', lastModified: new Date('2024-01-15') },
+      { slug: 'caso-2', lastModified: new Date('2024-01-20') },
+      { slug: 'caso-3', lastModified: new Date('2024-01-25') },
     ];
 
-    return projects.map(project => ({
-      url: `/portfolio/${project.slug}`,
-      lastModified: project.lastModified,
+    return cases.map(caseItem => ({
+      url: `/cases/${caseItem.slug}`,
+      lastModified: caseItem.lastModified,
       changeFrequency: 'monthly' as const,
       priority: 0.8,
     }));

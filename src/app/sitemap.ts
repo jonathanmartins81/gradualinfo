@@ -84,16 +84,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
   ];
 
-  // Rotas de API (não incluídas no sitemap)
-  const apiRoutes = [
-    // Rotas de API não devem ser incluídas no sitemap
-  ];
-
-  // Rotas protegidas (não incluídas no sitemap)
-  const protectedRoutes = [
-    // Rotas que requerem autenticação não devem ser incluídas
-    // /dashboard, /admin, /profile, etc.
-  ];
+  // Rotas de API e protegidas não são incluídas no sitemap
+  // /api/*, /dashboard, /admin, /profile, etc.
 
   // Combinar todas as rotas públicas
   const allRoutes = [...staticRoutes, ...dynamicRoutes];

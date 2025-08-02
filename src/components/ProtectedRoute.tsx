@@ -18,7 +18,7 @@ export function ProtectedRoute({
   fallback,
   redirectTo = '/unauthorized',
 }: ProtectedRouteProps) {
-  const { user, isLoading, isAuthenticated, hasAllPermissions, hasAnyRole } =
+  const { isLoading, isAuthenticated, hasAllPermissions, hasAnyRole } =
     useAuth();
 
   useEffect(() => {

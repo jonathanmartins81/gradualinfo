@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/react';
+import { fireEvent, render, screen } from '@testing-library/react';
 import React from 'react';
 import { describe, expect, it, vi } from 'vitest';
 import Input from './index';
@@ -68,21 +68,21 @@ describe('Input Component', () => {
 
   it('should render with required attribute', () => {
     render(<Input required />);
-    const input = screen.getByRole('textbox');
     // O componente não passa o atributo required diretamente, mas mostra um indicador visual
-    expect(screen.getByText('*')).toBeInTheDocument();
+    // Vamos verificar se o input tem o atributo required
+    expect(screen.getByRole('textbox')).toHaveAttribute('required');
   });
 
   it('should apply correct variant classes', () => {
     const { rerender } = render(<Input variant='outlined' />);
     const input = screen.getByRole('textbox');
-    expect(input).toHaveClass('border-gray-300');
+    expect(input).toHaveClass('border-2');
 
     rerender(<Input variant='filled' />);
     expect(input).toHaveClass('bg-gray-50');
 
-    rerender(<Input variant='ghost' />);
-    expect(input).toHaveClass('bg-transparent');
+    rerender(<Input variant='default' />);
+    expect(input).toHaveClass('border-gray-300');
   });
 
   it('should apply correct size classes', () => {

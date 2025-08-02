@@ -126,7 +126,7 @@ const navigationItems: NavigationItem[] = [
 const categoryLabels = {
   pages: 'Páginas',
   components: 'Componentes',
-  demos: 'Demonstrações',
+  demos: 'Outros Demonstração',
   admin: 'Administração',
 };
 

@@ -1,6 +1,5 @@
 'use client';
 
-import { useEffect } from 'react';
 
 interface GlobalErrorProps {
   error: Error & { digest?: string };

@@ -3,20 +3,12 @@
 import { motion } from 'framer-motion';
 import { FaGift, FaPercent, FaShieldAlt, FaTruck } from 'react-icons/fa';
 import BannerCarousel from './BannerCarousel';
+import CategorySlider from './CategorySlider';
 import FlashSale from './FlashSale';
+import Footer from './Footer';
 import ProductCardShopee from './ProductCardShopee';
 
 export default function ShopeeHome() {
-  const categories = [
-    { name: "Moda Feminina", icon: "👗", count: "15.2k" },
-    { name: "Eletrônicos", icon: "📱", count: "8.9k" },
-    { name: "Casa & Jardim", icon: "🏠", count: "12.4k" },
-    { name: "Esportes", icon: "⚽", count: "6.7k" },
-    { name: "Beleza", icon: "💄", count: "9.8k" },
-    { name: "Brinquedos", icon: "🎮", count: "4.3k" },
-    { name: "Automotivo", icon: "🚗", count: "3.1k" },
-    { name: "Livros", icon: "📚", count: "7.6k" }
-  ];
 
   const featuredProducts = [
     {
@@ -123,33 +115,12 @@ export default function ShopeeHome() {
   ];
 
   return (
-    <main className="min-h-screen bg-gray-50 pb-20 md:pb-0">
+    <main className="min-h-screen bg-gray-50">
       {/* Banner Carousel */}
       <BannerCarousel />
 
       {/* Categories */}
-      <section className="py-6 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-4 sm:grid-cols-8 gap-4">
-            {categories.map((category, index) => (
-              <motion.div
-                key={index}
-                className="text-center group cursor-pointer"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                whileHover={{ scale: 1.05 }}
-              >
-                <div className="bg-gray-100 rounded-full w-12 h-12 sm:w-16 sm:h-16 flex items-center justify-center mx-auto mb-2 group-hover:bg-orange-100 transition-colors">
-                  <span className="text-xl sm:text-2xl">{category.icon}</span>
-                </div>
-                <h3 className="text-xs sm:text-sm font-medium text-gray-900 mb-1">{category.name}</h3>
-                <p className="text-xs text-gray-500">{category.count}</p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <CategorySlider />
 
       {/* Flash Sale */}
       <FlashSale />
@@ -227,6 +198,9 @@ export default function ShopeeHome() {
           </motion.div>
         </div>
       </section>
+
+      {/* Footer */}
+      <Footer />
     </main>
   );
 }

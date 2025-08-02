@@ -1,7 +1,8 @@
 'use client';
 
 import Link from 'next/link';
-import { FaBell, FaHeart, FaSearch, FaShoppingCart, FaUser } from 'react-icons/fa';
+import { FaBell, FaHeart, FaShoppingCart, FaUser } from 'react-icons/fa';
+import SearchBar from './SearchBar';
 
 export default function HeaderShopee() {
   return (
@@ -25,21 +26,7 @@ export default function HeaderShopee() {
           </div>
 
           {/* Search Bar - Central */}
-          <div className="flex-1 max-w-2xl mx-8">
-            <div className="relative">
-              <div className="flex items-center bg-white rounded-full px-4 py-2 shadow-sm">
-                <FaSearch className="text-gray-400 w-4 h-4 mr-3" />
-                <input
-                  type="text"
-                  placeholder="O que você está procurando?"
-                  className="flex-1 bg-transparent text-gray-900 placeholder-gray-500 focus:outline-none text-sm"
-                />
-                <button className="bg-orange-500 text-white px-4 py-1 rounded-full text-sm font-medium hover:bg-orange-600 transition-colors">
-                  Buscar
-                </button>
-              </div>
-            </div>
-          </div>
+          <SearchBar />
 
           {/* Right Icons */}
           <div className="flex items-center space-x-4">

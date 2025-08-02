@@ -6,7 +6,9 @@ import Page100K from './page';
 vi.mock('framer-motion', () => ({
   motion: {
     div: ({ children, ...props }: any) => <div {...props}>{children}</div>,
-    button: ({ children, ...props }: any) => <button {...props}>{children}</button>,
+    button: ({ children, ...props }: any) => (
+      <button {...props}>{children}</button>
+    ),
   },
 }));
 
@@ -34,13 +36,19 @@ describe('Page100K', () => {
   it('should render the freight banner', () => {
     render(<Page100K />);
 
-    expect(screen.getByText(/FRETE GRÁTIS À PARTIR DE R\$299 REAIS/)).toBeInTheDocument();
+    expect(
+      screen.getByText(/FRETE GRÁTIS À PARTIR DE R\$299 REAIS/)
+    ).toBeInTheDocument();
   });
 
   it('should render the hero section with call to action', () => {
     render(<Page100K />);
 
-    expect(screen.getByText('Descubra nossa coleção exclusiva com produtos selecionados especialmente para você!')).toBeInTheDocument();
+    expect(
+      screen.getByText(
+        'Descubra nossa coleção exclusiva com produtos selecionados especialmente para você!'
+      )
+    ).toBeInTheDocument();
     expect(screen.getByText('EXPLORAR COLEÇÃO')).toBeInTheDocument();
   });
 
@@ -48,7 +56,9 @@ describe('Page100K', () => {
     render(<Page100K />);
 
     expect(screen.getByText('PRODUTOS EM DESTAQUE')).toBeInTheDocument();
-    expect(screen.getByText('Os produtos mais vendidos da nossa coleção 100K')).toBeInTheDocument();
+    expect(
+      screen.getByText('Os produtos mais vendidos da nossa coleção 100K')
+    ).toBeInTheDocument();
   });
 
   it('should render product cards with correct information', () => {
@@ -56,7 +66,9 @@ describe('Page100K', () => {
 
     // Verificar se os produtos estão sendo renderizados
     expect(screen.getByText('Blazer Preto Sem Botões')).toBeInTheDocument();
-    expect(screen.getByText('Vestido Amarelo de Manga Curta')).toBeInTheDocument();
+    expect(
+      screen.getByText('Vestido Amarelo de Manga Curta')
+    ).toBeInTheDocument();
     expect(screen.getByText('Calça Jeans Cintura Alta')).toBeInTheDocument();
 
     // Verificar preços
@@ -72,16 +84,28 @@ describe('Page100K', () => {
     expect(screen.getByText('Troca Fácil')).toBeInTheDocument();
     expect(screen.getByText('Qualidade Premium')).toBeInTheDocument();
 
-    expect(screen.getByText('Para compras acima de R$ 299')).toBeInTheDocument();
-    expect(screen.getByText('30 dias para troca ou devolução')).toBeInTheDocument();
-    expect(screen.getByText('Produtos selecionados com carinho')).toBeInTheDocument();
+    expect(
+      screen.getByText('Para compras acima de R$ 299')
+    ).toBeInTheDocument();
+    expect(
+      screen.getByText('30 dias para troca ou devolução')
+    ).toBeInTheDocument();
+    expect(
+      screen.getByText('Produtos selecionados com carinho')
+    ).toBeInTheDocument();
   });
 
   it('should render final CTA section', () => {
     render(<Page100K />);
 
-    expect(screen.getByText('NÃO PERCA AS OFERTAS ESPECIAIS!')).toBeInTheDocument();
-    expect(screen.getByText('Cadastre-se e receba ofertas exclusivas da coleção 100K')).toBeInTheDocument();
+    expect(
+      screen.getByText('NÃO PERCA AS OFERTAS ESPECIAIS!')
+    ).toBeInTheDocument();
+    expect(
+      screen.getByText(
+        'Cadastre-se e receba ofertas exclusivas da coleção 100K'
+      )
+    ).toBeInTheDocument();
     expect(screen.getByText('CADASTRAR-SE AGORA')).toBeInTheDocument();
   });
 

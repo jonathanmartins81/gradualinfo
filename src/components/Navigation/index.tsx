@@ -187,8 +187,8 @@ export default function Navigation() {
                 <button
                   onClick={() => setActiveCategory(category)}
                   className={`px-3 py-2 rounded-md text-sm font-medium transition-colors ${activeCategory === category
-                    ? 'text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-900/20'
-                    : 'text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400'
+                      ? 'text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-900/20'
+                      : 'text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400'
                     }`}
                 >
                   {categoryLabels[category as keyof typeof categoryLabels]}
@@ -202,8 +202,8 @@ export default function Navigation() {
                         key={item.href}
                         href={item.href}
                         className={`block px-4 py-2 text-sm transition-colors ${isActive(item.href)
-                          ? 'text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-900/20'
-                          : 'text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-gray-50 dark:hover:bg-gray-700'
+                            ? 'text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-900/20'
+                            : 'text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-gray-50 dark:hover:bg-gray-700'
                           }`}
                       >
                         <div className='font-medium'>{item.label}</div>
@@ -266,8 +266,8 @@ export default function Navigation() {
                       href={item.href}
                       onClick={() => setIsOpen(false)}
                       className={`block px-3 py-2 rounded-md text-base font-medium transition-colors ${isActive(item.href)
-                        ? 'text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-900/20'
-                        : 'text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-gray-100 dark:hover:bg-gray-700'
+                          ? 'text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-900/20'
+                          : 'text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-gray-100 dark:hover:bg-gray-700'
                         }`}
                     >
                       <div>{item.label}</div>

@@ -2,11 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import ProtectedRoute from './ProtectedRoute';
 
 // Mock do useAuth para as stories
-const MockAuthProvider = ({
-  children,
-}: {
-  children: React.ReactNode;
-}) => {
+const MockAuthProvider = ({ children }: { children: React.ReactNode }) => {
   // Mock do contexto de autenticação
 
   return <div data-testid='auth-provider'>{children}</div>;

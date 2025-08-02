@@ -1,4 +1,4 @@
-import { fireEvent, render, screen } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import React from 'react';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 import ThemeSwitcher from './ThemeSwitcher';
@@ -41,83 +41,34 @@ describe('ThemeSwitcher Component', () => {
     }).not.toThrow();
   });
 
-  it('should render theme toggle button', () => {
+  it('should render theme indicator', () => {
     render(<ThemeSwitcher />);
-    expect(screen.getByRole('button')).toBeInTheDocument();
+    expect(screen.getByTestId('theme-switcher')).toBeInTheDocument();
   });
 
-  it('should have correct aria-label', () => {
+  it('should have correct aria-label for dark theme', () => {
     render(<ThemeSwitcher />);
-    const button = screen.getByRole('button');
-    expect(button).toHaveAttribute('aria-label');
+    const indicator = screen.getByTestId('theme-switcher');
+    expect(indicator).toHaveAttribute('aria-label', 'Dark theme active');
   });
 
-  it('should toggle theme when clicked', () => {
+  it('should display dark theme text', () => {
     render(<ThemeSwitcher />);
-    const button = screen.getByRole('button');
-
-    fireEvent.click(button);
-
-    expect(localStorageMock.setItem).toHaveBeenCalledWith('theme', 'dark');
+    expect(screen.getByText('Dark')).toBeInTheDocument();
   });
 
-  it('should initialize with light theme by default', () => {
-    localStorageMock.getItem.mockReturnValue(null);
+  it('should show moon icon', () => {
     render(<ThemeSwitcher />);
-
-    // Verificar se o tema padrão é light
-    expect(document.documentElement).not.toHaveClass('dark');
+    const indicator = screen.getByTestId('theme-switcher');
+    expect(indicator.querySelector('svg')).toBeInTheDocument();
   });
 
-  it('should initialize with dark theme from localStorage', () => {
-    localStorageMock.getItem.mockReturnValue('dark');
+  it('should always show dark theme regardless of localStorage', () => {
+    localStorageMock.getItem.mockReturnValue('light');
     render(<ThemeSwitcher />);
 
-    // Verificar se o tema dark é aplicado
-    expect(document.documentElement).toHaveClass('dark');
-  });
-
-  it('should handle theme persistence', () => {
-    render(<ThemeSwitcher />);
-    const button = screen.getByRole('button');
-
-    // Clicar para alternar para dark
-    fireEvent.click(button);
-    expect(localStorageMock.setItem).toHaveBeenCalledWith('theme', 'dark');
-
-    // Clicar novamente para alternar para light
-    fireEvent.click(button);
-    expect(localStorageMock.setItem).toHaveBeenCalledWith('theme', 'light');
-  });
-
-  it('should handle system theme preference', () => {
-    // Mock matchMedia para simular preferência do sistema
-    Object.defineProperty(window, 'matchMedia', {
-      writable: true,
-      value: vi.fn().mockImplementation(query => ({
-        matches: query === '(prefers-color-scheme: dark)',
-        media: query,
-        onchange: null,
-        addListener: vi.fn(),
-        removeListener: vi.fn(),
-        addEventListener: vi.fn(),
-        removeEventListener: vi.fn(),
-        dispatchEvent: vi.fn(),
-      })),
-    });
-
-    localStorageMock.getItem.mockReturnValue('system');
-    render(<ThemeSwitcher />);
-
-    // Verificar se o tema do sistema é aplicado
-    expect(document.documentElement).toHaveClass('dark');
-  });
-
-  it('should handle invalid theme values gracefully', () => {
-    localStorageMock.getItem.mockReturnValue('invalid-theme');
-    expect(() => {
-      render(<ThemeSwitcher />);
-    }).not.toThrow();
+    expect(screen.getByText('Dark')).toBeInTheDocument();
+    expect(screen.getByTestId('theme-switcher')).toHaveAttribute('aria-label', 'Dark theme active');
   });
 
   it('should handle localStorage errors gracefully', () => {
@@ -128,70 +79,57 @@ describe('ThemeSwitcher Component', () => {
     expect(() => {
       render(<ThemeSwitcher />);
     }).not.toThrow();
+
+    expect(screen.getByText('Dark')).toBeInTheDocument();
   });
 
-  it('should handle localStorage setItem errors gracefully', () => {
-    localStorageMock.setItem.mockImplementation(() => {
-      throw new Error('localStorage setItem error');
-    });
-
+  it('should have proper accessibility attributes', () => {
     render(<ThemeSwitcher />);
-    const button = screen.getByRole('button');
+    const indicator = screen.getByTestId('theme-switcher');
 
-    expect(() => {
-      fireEvent.click(button);
-    }).not.toThrow();
+    expect(indicator).toHaveAttribute('aria-label', 'Dark theme active');
+    expect(indicator).toHaveAttribute('title', 'Dark theme active');
   });
 
-  it('should have proper keyboard accessibility', () => {
-    render(<ThemeSwitcher />);
-    const button = screen.getByRole('button');
-
-    // Verificar se o botão pode ser focado
-    button.focus();
-    expect(button).toHaveFocus();
-
-    // Verificar se pode ser ativado com Enter
-    fireEvent.keyDown(button, { key: 'Enter', code: 'Enter' });
-    expect(localStorageMock.setItem).toHaveBeenCalled();
-  });
-
-  it('should have proper mouse accessibility', () => {
-    render(<ThemeSwitcher />);
-    const button = screen.getByRole('button');
-
-    // Verificar se pode ser ativado com clique
-    fireEvent.mouseDown(button);
-    fireEvent.mouseUp(button);
-    fireEvent.click(button);
-
-    expect(localStorageMock.setItem).toHaveBeenCalled();
-  });
-
-  it('should handle multiple rapid clicks', () => {
-    render(<ThemeSwitcher />);
-    const button = screen.getByRole('button');
-
-    // Múltiplos cliques rápidos
-    fireEvent.click(button);
-    fireEvent.click(button);
-    fireEvent.click(button);
-
-    // Verificar se localStorage foi chamado múltiplas vezes
-    expect(localStorageMock.setItem).toHaveBeenCalledTimes(3);
-  });
-
-  it('should maintain theme state across re-renders', () => {
+  it('should maintain dark theme state across re-renders', () => {
     const { rerender } = render(<ThemeSwitcher />);
-    const button = screen.getByRole('button');
 
-    // Alternar para dark
-    fireEvent.click(button);
+    expect(screen.getByText('Dark')).toBeInTheDocument();
 
     // Re-renderizar o componente
     rerender(<ThemeSwitcher />);
 
-    // Verificar se o estado foi mantido
-    expect(localStorageMock.setItem).toHaveBeenCalledWith('theme', 'dark');
+    expect(screen.getByText('Dark')).toBeInTheDocument();
+    expect(screen.getByTestId('theme-switcher')).toHaveAttribute('aria-label', 'Dark theme active');
+  });
+
+  it('should render with different sizes', () => {
+    const { rerender } = render(<ThemeSwitcher size="sm" />);
+    expect(screen.getByTestId('theme-switcher')).toBeInTheDocument();
+
+    rerender(<ThemeSwitcher size="md" />);
+    expect(screen.getByTestId('theme-switcher')).toBeInTheDocument();
+
+    rerender(<ThemeSwitcher size="lg" />);
+    expect(screen.getByTestId('theme-switcher')).toBeInTheDocument();
+  });
+
+  it('should render with different variants', () => {
+    const { rerender } = render(<ThemeSwitcher variant="default" />);
+    expect(screen.getByTestId('theme-switcher')).toBeInTheDocument();
+
+    rerender(<ThemeSwitcher variant="minimal" />);
+    expect(screen.getByTestId('theme-switcher')).toBeInTheDocument();
+
+    rerender(<ThemeSwitcher variant="outline" />);
+    expect(screen.getByTestId('theme-switcher')).toBeInTheDocument();
+  });
+
+  it('should render with and without animation', () => {
+    const { rerender } = render(<ThemeSwitcher animated={true} />);
+    expect(screen.getByTestId('theme-switcher')).toBeInTheDocument();
+
+    rerender(<ThemeSwitcher animated={false} />);
+    expect(screen.getByTestId('theme-switcher')).toBeInTheDocument();
   });
 });

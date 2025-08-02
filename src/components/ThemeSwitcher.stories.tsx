@@ -23,53 +23,76 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   args: {},
-};
-
-export const WithCustomLabel: Story = {
-  args: {},
   parameters: {
     docs: {
       description: {
-        story:
-          'O ThemeSwitcher alterna automaticamente entre os temas light, dark e system.',
+        story: 'O ThemeSwitcher mostra que o tema dark está ativo.',
       },
     },
   },
 };
 
-export const InDarkMode: Story = {
-  args: {},
-  decorators: [
-    Story => (
-      <ThemeProvider defaultMode='dark'>
-        <div className='dark'>
-          <Story />
-        </div>
-      </ThemeProvider>
-    ),
-  ],
+export const Small: Story = {
+  args: {
+    size: 'sm',
+  },
+  parameters: {
+    docs: {
+      description: {
+        story: 'Versão pequena do indicador de tema dark.',
+      },
+    },
+  },
 };
 
-export const InLightMode: Story = {
-  args: {},
-  decorators: [
-    Story => (
-      <ThemeProvider defaultMode='light'>
-        <div className='light'>
-          <Story />
-        </div>
-      </ThemeProvider>
-    ),
-  ],
+export const Large: Story = {
+  args: {
+    size: 'lg',
+  },
+  parameters: {
+    docs: {
+      description: {
+        story: 'Versão grande do indicador de tema dark.',
+      },
+    },
+  },
 };
 
-export const SystemMode: Story = {
-  args: {},
-  decorators: [
-    Story => (
-      <ThemeProvider defaultMode='system'>
-        <Story />
-      </ThemeProvider>
-    ),
-  ],
+export const Minimal: Story = {
+  args: {
+    variant: 'minimal',
+  },
+  parameters: {
+    docs: {
+      description: {
+        story: 'Variante minimal do indicador de tema dark.',
+      },
+    },
+  },
+};
+
+export const Outline: Story = {
+  args: {
+    variant: 'outline',
+  },
+  parameters: {
+    docs: {
+      description: {
+        story: 'Variante outline do indicador de tema dark.',
+      },
+    },
+  },
+};
+
+export const WithoutAnimation: Story = {
+  args: {
+    animated: false,
+  },
+  parameters: {
+    docs: {
+      description: {
+        story: 'Indicador de tema dark sem animações.',
+      },
+    },
+  },
 };

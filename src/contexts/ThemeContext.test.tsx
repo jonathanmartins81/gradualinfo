@@ -1,4 +1,4 @@
-import { fireEvent, render, screen } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import React from 'react';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { ThemeProvider, useTheme } from './ThemeContext';
@@ -31,23 +31,12 @@ Object.defineProperty(window, 'matchMedia', {
 
 // Componente de teste para usar o contexto
 const TestComponent = () => {
-  const { mode, toggleMode, setMode } = useTheme();
+  const { mode, isDark } = useTheme();
 
   return (
     <div>
       <span data-testid='current-theme'>{mode}</span>
-      <button onClick={toggleMode} data-testid='toggle-theme'>
-        Toggle Theme
-      </button>
-      <button onClick={() => setMode('dark')} data-testid='set-dark'>
-        Set Dark
-      </button>
-      <button onClick={() => setMode('light')} data-testid='set-light'>
-        Set Light
-      </button>
-      <button onClick={() => setMode('system')} data-testid='set-system'>
-        Set System
-      </button>
+      <span data-testid='is-dark'>{isDark.toString()}</span>
     </div>
   );
 };
@@ -68,18 +57,19 @@ describe('ThemeContext', () => {
     }).not.toThrow();
   });
 
-  it('should initialize with light theme by default', () => {
+  it('should initialize with dark theme by default', () => {
     render(
       <ThemeProvider>
         <TestComponent />
       </ThemeProvider>
     );
 
-    expect(screen.getByTestId('current-theme')).toHaveTextContent('light');
+    expect(screen.getByTestId('current-theme')).toHaveTextContent('dark');
+    expect(screen.getByTestId('is-dark')).toHaveTextContent('true');
   });
 
-  it('should initialize with theme from localStorage', () => {
-    localStorageMock.getItem.mockReturnValue('dark');
+  it('should always return dark theme regardless of localStorage', () => {
+    localStorageMock.getItem.mockReturnValue('light');
 
     render(
       <ThemeProvider>
@@ -88,18 +78,7 @@ describe('ThemeContext', () => {
     );
 
     expect(screen.getByTestId('current-theme')).toHaveTextContent('dark');
-  });
-
-  it('should handle invalid localStorage theme gracefully', () => {
-    localStorageMock.getItem.mockReturnValue('invalid-theme');
-
-    render(
-      <ThemeProvider>
-        <TestComponent />
-      </ThemeProvider>
-    );
-
-    expect(screen.getByTestId('current-theme')).toHaveTextContent('light');
+    expect(screen.getByTestId('is-dark')).toHaveTextContent('true');
   });
 
   it('should handle localStorage errors gracefully', () => {
@@ -115,183 +94,59 @@ describe('ThemeContext', () => {
       );
     }).not.toThrow();
 
-    expect(screen.getByTestId('current-theme')).toHaveTextContent('light');
-  });
-
-  it('should toggle theme from light to dark', () => {
-    render(
-      <ThemeProvider>
-        <TestComponent />
-      </ThemeProvider>
-    );
-
-    expect(screen.getByTestId('current-theme')).toHaveTextContent('light');
-
-    fireEvent.click(screen.getByTestId('toggle-theme'));
-
     expect(screen.getByTestId('current-theme')).toHaveTextContent('dark');
-    expect(localStorageMock.setItem).toHaveBeenCalledWith('theme-mode', 'dark');
+    expect(screen.getByTestId('is-dark')).toHaveTextContent('true');
   });
 
-  it('should toggle theme from dark to light', () => {
-    localStorageMock.getItem.mockReturnValue('dark');
-
+  it('should apply dark theme classes to document element', () => {
     render(
       <ThemeProvider>
         <TestComponent />
       </ThemeProvider>
     );
 
-    expect(screen.getByTestId('current-theme')).toHaveTextContent('dark');
-
-    fireEvent.click(screen.getByTestId('toggle-theme'));
-
-    expect(screen.getByTestId('current-theme')).toHaveTextContent('light');
-    expect(localStorageMock.setItem).toHaveBeenCalledWith(
-      'theme-mode',
-      'light'
-    );
-  });
-
-  it('should set theme to dark', () => {
-    render(
-      <ThemeProvider>
-        <TestComponent />
-      </ThemeProvider>
-    );
-
-    fireEvent.click(screen.getByTestId('set-dark'));
-
-    expect(screen.getByTestId('current-theme')).toHaveTextContent('dark');
-    expect(localStorageMock.setItem).toHaveBeenCalledWith('theme', 'dark');
-  });
-
-  it('should set theme to light', () => {
-    localStorageMock.getItem.mockReturnValue('dark');
-
-    render(
-      <ThemeProvider>
-        <TestComponent />
-      </ThemeProvider>
-    );
-
-    fireEvent.click(screen.getByTestId('set-light'));
-
-    expect(screen.getByTestId('current-theme')).toHaveTextContent('light');
-    expect(localStorageMock.setItem).toHaveBeenCalledWith('theme', 'light');
-  });
-
-  it('should set theme to system', () => {
-    render(
-      <ThemeProvider>
-        <TestComponent />
-      </ThemeProvider>
-    );
-
-    fireEvent.click(screen.getByTestId('set-system'));
-
-    expect(screen.getByTestId('current-theme')).toHaveTextContent('system');
-    expect(localStorageMock.setItem).toHaveBeenCalledWith('theme', 'system');
-  });
-
-  it('should handle system theme preference', () => {
-    // Mock matchMedia para simular preferência do sistema
-    Object.defineProperty(window, 'matchMedia', {
-      writable: true,
-      value: vi.fn().mockImplementation(query => ({
-        matches: query === '(prefers-color-scheme: dark)',
-        media: query,
-        onchange: null,
-        addListener: vi.fn(),
-        removeListener: vi.fn(),
-        addEventListener: vi.fn(),
-        removeEventListener: vi.fn(),
-        dispatchEvent: vi.fn(),
-      })),
-    });
-
-    localStorageMock.getItem.mockReturnValue('system');
-
-    render(
-      <ThemeProvider>
-        <TestComponent />
-      </ThemeProvider>
-    );
-
-    expect(screen.getByTestId('current-theme')).toHaveTextContent('system');
-  });
-
-  it('should handle localStorage setItem errors gracefully', () => {
-    localStorageMock.setItem.mockImplementation(() => {
-      throw new Error('localStorage setItem error');
-    });
-
-    render(
-      <ThemeProvider>
-        <TestComponent />
-      </ThemeProvider>
-    );
-
-    expect(() => {
-      fireEvent.click(screen.getByTestId('toggle-theme'));
-    }).not.toThrow();
-
-    // Deve ainda funcionar mesmo com erro no localStorage
-    expect(screen.getByTestId('current-theme')).toHaveTextContent('dark');
-  });
-
-  it('should handle multiple theme changes', () => {
-    render(
-      <ThemeProvider>
-        <TestComponent />
-      </ThemeProvider>
-    );
-
-    // Múltiplas mudanças de tema
-    fireEvent.click(screen.getByTestId('set-dark'));
-    fireEvent.click(screen.getByTestId('set-light'));
-    fireEvent.click(screen.getByTestId('set-system'));
-    fireEvent.click(screen.getByTestId('toggle-theme'));
-
-    expect(localStorageMock.setItem).toHaveBeenCalledTimes(4);
-    expect(localStorageMock.setItem).toHaveBeenCalledWith('theme-mode', 'dark');
-    expect(localStorageMock.setItem).toHaveBeenCalledWith(
-      'theme-mode',
-      'light'
-    );
-    expect(localStorageMock.setItem).toHaveBeenCalledWith(
-      'theme-mode',
-      'system'
-    );
-    expect(localStorageMock.setItem).toHaveBeenCalledWith(
-      'theme-mode',
-      'light'
-    );
-  });
-
-  it('should apply theme classes to document element', () => {
-    render(
-      <ThemeProvider>
-        <TestComponent />
-      </ThemeProvider>
-    );
-
-    // Verificar se a classe light está aplicada inicialmente
-    expect(document.documentElement).not.toHaveClass('dark');
-
-    // Alternar para dark
-    fireEvent.click(screen.getByTestId('set-dark'));
+    // Verificar se a classe dark está aplicada
     expect(document.documentElement).toHaveClass('dark');
-
-    // Alternar para light
-    fireEvent.click(screen.getByTestId('set-light'));
-    expect(document.documentElement).not.toHaveClass('dark');
+    expect(document.documentElement).not.toHaveClass('light');
   });
 
-  it('should handle theme changes in nested components', () => {
+  it('should set data-theme attribute to dark', () => {
+    render(
+      <ThemeProvider>
+        <TestComponent />
+      </ThemeProvider>
+    );
+
+    expect(document.documentElement.getAttribute('data-theme')).toBe('dark');
+  });
+
+  it('should apply CSS custom properties for dark theme', () => {
+    render(
+      <ThemeProvider>
+        <TestComponent />
+      </ThemeProvider>
+    );
+
+    const root = document.documentElement;
+    
+    expect(root.style.getPropertyValue('--primary-color')).toBe('#4F8CFF');
+    expect(root.style.getPropertyValue('--secondary-color')).toBe('#A5B4FC');
+    expect(root.style.getPropertyValue('--accent-color')).toBe('#FFC145');
+    expect(root.style.getPropertyValue('--background-color')).toBe('#181920');
+    expect(root.style.getPropertyValue('--text-color')).toBe('#FAFAFA');
+    expect(root.style.getPropertyValue('--border-color')).toBe('#222327');
+    expect(root.style.getPropertyValue('--card-color')).toBe('#23242BF6');
+  });
+
+  it('should handle theme context in nested components', () => {
     const NestedComponent = () => {
-      const { theme } = useTheme();
-      return <span data-testid='nested-theme'>{theme}</span>;
+      const { mode, isDark } = useTheme();
+      return (
+        <div>
+          <span data-testid='nested-theme'>{mode}</span>
+          <span data-testid='nested-is-dark'>{isDark.toString()}</span>
+        </div>
+      );
     };
 
     render(
@@ -303,39 +158,20 @@ describe('ThemeContext', () => {
       </ThemeProvider>
     );
 
-    expect(screen.getByTestId('current-theme')).toHaveTextContent('light');
-    expect(screen.getByTestId('nested-theme')).toHaveTextContent('light');
-
-    fireEvent.click(screen.getByTestId('set-dark'));
-
     expect(screen.getByTestId('current-theme')).toHaveTextContent('dark');
+    expect(screen.getByTestId('is-dark')).toHaveTextContent('true');
     expect(screen.getByTestId('nested-theme')).toHaveTextContent('dark');
+    expect(screen.getByTestId('nested-is-dark')).toHaveTextContent('true');
   });
 
-  it('should handle rapid theme changes', () => {
-    render(
-      <ThemeProvider>
-        <TestComponent />
-      </ThemeProvider>
-    );
-
-    // Múltiplos cliques rápidos
-    fireEvent.click(screen.getByTestId('toggle-theme'));
-    fireEvent.click(screen.getByTestId('toggle-theme'));
-    fireEvent.click(screen.getByTestId('toggle-theme'));
-
-    // Deve ter feito múltiplas chamadas para localStorage
-    expect(localStorageMock.setItem).toHaveBeenCalledTimes(3);
-  });
-
-  it('should maintain theme state across re-renders', () => {
+  it('should maintain dark theme state across re-renders', () => {
     const { rerender } = render(
       <ThemeProvider>
         <TestComponent />
       </ThemeProvider>
     );
 
-    fireEvent.click(screen.getByTestId('set-dark'));
+    expect(screen.getByTestId('current-theme')).toHaveTextContent('dark');
 
     // Re-renderizar o componente
     rerender(
@@ -345,5 +181,12 @@ describe('ThemeContext', () => {
     );
 
     expect(screen.getByTestId('current-theme')).toHaveTextContent('dark');
+    expect(screen.getByTestId('is-dark')).toHaveTextContent('true');
+  });
+
+  it('should throw error when useTheme is used outside ThemeProvider', () => {
+    expect(() => {
+      render(<TestComponent />);
+    }).toThrow('useTheme deve ser usado dentro de um ThemeProvider');
   });
 });

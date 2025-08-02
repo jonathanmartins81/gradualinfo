@@ -16,15 +16,15 @@ interface NavigationItem {
 const navigationItems: NavigationItem[] = [
   // Páginas principais
   {
-    label: '100K',
-    href: '/100k',
+    label: 'Início',
+    href: '/',
     description: 'Página principal - Coleção especial 100K',
     category: 'pages',
   },
   {
-    label: 'Início',
-    href: '/',
-    description: 'Página inicial do boilerplate',
+    label: '100K',
+    href: '/100k',
+    description: 'Página especial 100K',
     category: 'pages',
   },
   {

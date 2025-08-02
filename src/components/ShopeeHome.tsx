@@ -58,7 +58,7 @@ export default function ShopeeHome() {
       currentPrice: "199,90",
       discount: "50% OFF",
       badge: "⭐ TOP",
-      image: "https://images.unsplash.com/photo-1551028719-00167b16eac5?w=400&h=400&fit=crop&crop=center",
+      image: "https://images.unsplash.com/photo-1521223890158-d9f7c5a5a7e8?w=400&h=400&fit=crop&crop=center",
       sold: "1.2k",
       rating: 4.7,
       reviews: 67,

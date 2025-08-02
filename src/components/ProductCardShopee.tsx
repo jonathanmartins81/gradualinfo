@@ -68,8 +68,22 @@ export default function ProductCardShopee({ product }: ProductCardShopeeProps) {
         </button>
 
         {/* Product Image */}
-        <div className="relative h-48 bg-gradient-to-br from-gray-100 to-gray-200">
-          <div className="absolute inset-0 flex items-center justify-center">
+        <div className="relative h-48 bg-gradient-to-br from-gray-100 to-gray-200 overflow-hidden">
+          <img
+            src={product.image}
+            alt={product.name}
+            className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+            onError={(e) => {
+              // Fallback para ícone se a imagem não carregar
+              const target = e.target as HTMLImageElement;
+              target.style.display = 'none';
+              const fallback = target.parentElement?.querySelector('.image-fallback') as HTMLElement;
+              if (fallback) {
+                fallback.style.display = 'flex';
+              }
+            }}
+          />
+          <div className="image-fallback absolute inset-0 flex items-center justify-center" style={{ display: 'none' }}>
             <div className="text-gray-400 text-4xl">👕</div>
           </div>
         </div>

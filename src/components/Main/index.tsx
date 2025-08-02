@@ -446,36 +446,41 @@ export function Main() {
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="bg-gray-900 text-white py-16">
+      {/* Footer - Estilo Shopee */}
+      <footer className="bg-white border-t border-gray-200 py-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
-            <div>
-              <h3 className="text-xl font-semibold text-orange-500 mb-4">Gradual Info Shop</h3>
-              <p className="text-gray-300 mb-4">
+          {/* Top Footer */}
+          <div className="grid grid-cols-1 md:grid-cols-5 gap-8 mb-8">
+            <div className="md:col-span-2">
+              <h3 className="text-lg font-semibold text-gray-900 mb-4">Gradual Info Shop</h3>
+              <p className="text-gray-600 mb-4 text-sm">
                 A melhor loja online do Brasil com milhões de produtos e os melhores preços!
               </p>
-              <div className="flex space-x-4">
-                <button className="bg-orange-500 text-white p-2 rounded-full hover:bg-orange-600 transition-colors">
-                  📱
+              <div className="flex space-x-3">
+                <button className="bg-black text-white px-4 py-2 rounded text-sm font-medium hover:bg-gray-800 transition-colors">
+                  📱 App Store
                 </button>
-                <button className="bg-green-600 text-white p-2 rounded-full hover:bg-green-700 transition-colors">
-                  🤖
+                <button className="bg-green-600 text-white px-4 py-2 rounded text-sm font-medium hover:bg-green-700 transition-colors">
+                  🤖 Google Play
                 </button>
               </div>
             </div>
             <div>
-              <h3 className="text-xl font-semibold text-orange-500 mb-4">Categorias</h3>
-              <ul className="space-y-2">
-                <li><a href="#" className="text-gray-300 hover:text-orange-500 transition-colors">Moda Feminina</a></li>
-                <li><a href="#" className="text-gray-300 hover:text-orange-500 transition-colors">Eletrônicos</a></li>
-                <li><a href="#" className="text-gray-300 hover:text-orange-500 transition-colors">Casa & Jardim</a></li>
-                <li><a href="#" className="text-gray-300 hover:text-orange-500 transition-colors">Esportes</a></li>
+              <h4 className="text-sm font-semibold text-gray-900 mb-3 uppercase tracking-wide">Categorias</h4>
+              <ul className="space-y-2 text-sm">
+                <li><a href="#" className="text-gray-600 hover:text-orange-500 transition-colors">Moda Feminina</a></li>
+                <li><a href="#" className="text-gray-600 hover:text-orange-500 transition-colors">Eletrônicos</a></li>
+                <li><a href="#" className="text-gray-600 hover:text-orange-500 transition-colors">Casa & Jardim</a></li>
+                <li><a href="#" className="text-gray-600 hover:text-orange-500 transition-colors">Esportes</a></li>
+                <li><a href="#" className="text-gray-600 hover:text-orange-500 transition-colors">Beleza</a></li>
+                <li><a href="#" className="text-gray-600 hover:text-orange-500 transition-colors">Brinquedos</a></li>
               </ul>
             </div>
             <div>
-              <h3 className="text-xl font-semibold text-orange-500 mb-4">Atendimento</h3>
-              <ul className="space-y-2 text-gray-300">
+              <h4 className="text-sm font-semibold text-gray-900 mb-3 uppercase tracking-wide">Atendimento</h4>
+              <ul className="space-y-2 text-sm text-gray-600">
+                <li>Central de Ajuda</li>
+                <li>Fale Conosco</li>
                 <li>Segunda a Sexta: 8h às 18h</li>
                 <li>Sábados: 9h às 13h</li>
                 <li>contato@gradualinfoshop.com.br</li>
@@ -483,18 +488,73 @@ export function Main() {
               </ul>
             </div>
             <div>
-              <h3 className="text-xl font-semibold text-orange-500 mb-4">Pagamento</h3>
-              <ul className="space-y-2 text-gray-300">
+              <h4 className="text-sm font-semibold text-gray-900 mb-3 uppercase tracking-wide">Pagamento</h4>
+              <ul className="space-y-2 text-sm text-gray-600">
                 <li>Cartão de Crédito</li>
                 <li>PIX</li>
                 <li>Boleto Bancário</li>
                 <li>Parcelamento em até 12x</li>
+                <li>Cartão de Débito</li>
+                <li>Transferência Bancária</li>
               </ul>
             </div>
           </div>
-          <div className="border-t border-gray-700 pt-8 text-center">
-            <p className="text-gray-400">© 2024 Gradual Info Shop - Todos os direitos reservados</p>
-            <p className="text-gray-400 text-sm mt-2">CNPJ: 00.000.000/0000-00</p>
+
+          {/* Middle Footer - Social Links */}
+          <div className="border-t border-gray-200 pt-8 mb-8">
+            <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
+              <div className="flex space-x-6">
+                <a href="#" className="text-gray-600 hover:text-orange-500 transition-colors text-sm">
+                  Sobre Nós
+                </a>
+                <a href="#" className="text-gray-600 hover:text-orange-500 transition-colors text-sm">
+                  Política de Privacidade
+                </a>
+                <a href="#" className="text-gray-600 hover:text-orange-500 transition-colors text-sm">
+                  Termos de Uso
+                </a>
+                <a href="#" className="text-gray-600 hover:text-orange-500 transition-colors text-sm">
+                  Trabalhe Conosco
+                </a>
+                <a href="#" className="text-gray-600 hover:text-orange-500 transition-colors text-sm">
+                  Blog
+                </a>
+              </div>
+              <div className="flex space-x-4">
+                <a href="#" className="text-gray-600 hover:text-orange-500 transition-colors">
+                  <span className="text-xl">📘</span>
+                </a>
+                <a href="#" className="text-gray-600 hover:text-orange-500 transition-colors">
+                  <span className="text-xl">📷</span>
+                </a>
+                <a href="#" className="text-gray-600 hover:text-orange-500 transition-colors">
+                  <span className="text-xl">🐦</span>
+                </a>
+                <a href="#" className="text-gray-600 hover:text-orange-500 transition-colors">
+                  <span className="text-xl">📺</span>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          {/* Bottom Footer */}
+          <div className="border-t border-gray-200 pt-8">
+            <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
+              <div className="text-center md:text-left">
+                <p className="text-gray-600 text-sm">© 2024 Gradual Info Shop - Todos os direitos reservados</p>
+                <p className="text-gray-500 text-xs mt-1">CNPJ: 00.000.000/0000-00</p>
+              </div>
+              <div className="flex items-center space-x-4">
+                <div className="flex items-center space-x-2">
+                  <span className="text-xs text-gray-500">Formas de Pagamento:</span>
+                  <div className="flex space-x-1">
+                    <span className="text-xs bg-gray-100 px-2 py-1 rounded">💳</span>
+                    <span className="text-xs bg-gray-100 px-2 py-1 rounded">📱</span>
+                    <span className="text-xs bg-gray-100 px-2 py-1 rounded">🏦</span>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </footer>

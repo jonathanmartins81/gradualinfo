@@ -26,6 +26,8 @@ export default [
         URL: 'readonly',
         HTMLMetaElement: 'readonly',
         HTMLLinkElement: 'readonly',
+        HTMLImageElement: 'readonly',
+        HTMLElement: 'readonly',
         process: 'readonly',
         URLSearchParams: 'readonly',
         setInterval: 'readonly',

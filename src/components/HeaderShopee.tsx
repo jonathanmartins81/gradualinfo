@@ -20,9 +20,9 @@ export default function HeaderShopee() {
             <Link href="/" className="flex items-center space-x-2">
               <div className="text-white text-2xl font-bold">🛍️</div>
               <div className="hidden sm:block">
-                <img 
-                  src="/img/logo-dark.svg" 
-                  alt="Gradual Info Shop" 
+                <img
+                  src="/img/logo-dark.svg"
+                  alt="Gradual Info Shop"
                   className="h-8 w-auto"
                   onError={(e) => {
                     // Fallback para texto se a imagem não carregar

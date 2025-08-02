@@ -67,12 +67,12 @@ export default function ProductCardShopee({ product }: ProductCardShopeeProps) {
           <FaHeart className="w-4 h-4 text-gray-600 hover:text-red-500 transition-colors" />
         </button>
 
-        {/* Product Image */}
-        <div className="relative h-48 bg-gradient-to-br from-gray-100 to-gray-200 overflow-hidden">
+        {/* Product Image - Maior e mais atrativa */}
+        <div className="relative h-56 bg-gradient-to-br from-gray-100 to-gray-200 overflow-hidden">
           <img
             src={product.image}
             alt={product.name}
-            className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+            className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
             onError={(e) => {
               // Fallback para ícone se a imagem não carregar
               const target = e.target as HTMLImageElement;
@@ -86,6 +86,13 @@ export default function ProductCardShopee({ product }: ProductCardShopeeProps) {
           <div className="image-fallback absolute inset-0 flex items-center justify-center" style={{ display: 'none' }}>
             <div className="text-gray-400 text-4xl">👕</div>
           </div>
+
+          {/* Overlay de "COMPRAR AGORA" no hover */}
+          <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-50 transition-all duration-300 flex items-center justify-center">
+            <button className="bg-red-500 text-white px-6 py-3 rounded-lg font-bold text-sm opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-4 group-hover:translate-y-0 hover:bg-red-600">
+              COMPRAR AGORA
+            </button>
+          </div>
         </div>
       </div>
 
@@ -96,15 +103,28 @@ export default function ProductCardShopee({ product }: ProductCardShopeeProps) {
           {product.name}
         </h3>
 
-        {/* Prices */}
-        <div className="flex items-center justify-between mb-3">
-          <div className="flex items-center space-x-2">
-            <span className="text-lg font-bold text-orange-500">R$ {product.currentPrice}</span>
-            <span className="text-sm text-gray-400 line-through">R$ {product.originalPrice}</span>
+        {/* Prices - Mais destacados */}
+        <div className="mb-3">
+          <div className="flex items-center justify-between mb-2">
+            <div className="flex items-baseline space-x-2">
+              <span className="text-2xl font-bold text-red-500">R$ {product.currentPrice}</span>
+              <span className="text-sm text-gray-400 line-through">R$ {product.originalPrice}</span>
+            </div>
+            <span className="bg-red-500 text-white px-3 py-1 rounded-full text-xs font-bold animate-pulse">
+              {product.discount}
+            </span>
           </div>
-          <span className="bg-red-500 text-white px-2 py-1 rounded text-xs font-bold">
-            {product.discount}
-          </span>
+
+          {/* Elementos de urgência */}
+          <div className="flex items-center justify-between text-xs text-gray-600">
+            <span className="flex items-center">
+              <span className="w-2 h-2 bg-green-500 rounded-full mr-1"></span>
+              {Math.floor(Math.random() * 50) + 10} pessoas compraram hoje
+            </span>
+            <span className="text-orange-600 font-semibold">
+              Apenas {Math.floor(Math.random() * 20) + 3} em estoque
+            </span>
+          </div>
         </div>
 
         {/* Rating and Sold */}

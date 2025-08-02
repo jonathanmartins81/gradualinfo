@@ -103,29 +103,29 @@ export default function FlashSale() {
         {/* Header */}
         <div className="flex items-center justify-between mb-6">
           <div className="flex items-center space-x-3">
-            <div className="bg-red-500 text-white p-2 rounded-full">
+            <div className="bg-red-500 text-white p-2 rounded-full animate-pulse">
               <FaFire className="w-5 h-5" />
             </div>
             <div>
-              <h2 className="text-2xl font-bold text-gray-900">Flash Sale</h2>
-              <p className="text-gray-600">Ofertas por tempo limitado</p>
+              <h2 className="text-2xl font-bold text-gray-900">🔥 FLASH SALE</h2>
+              <p className="text-gray-600">Ofertas relâmpago que terminam em breve!</p>
             </div>
           </div>
 
-          {/* Countdown Timer */}
-          <div className="flex items-center space-x-2 bg-white px-4 py-2 rounded-lg shadow-sm">
-            <FaClock className="text-red-500 w-4 h-4" />
-            <span className="text-sm font-medium text-gray-700">Termina em:</span>
+          {/* Countdown Timer - Mais atrativo */}
+          <div className="flex items-center space-x-2 bg-gradient-to-r from-red-500 to-red-600 text-white px-4 py-2 rounded-lg shadow-lg">
+            <FaClock className="text-white w-4 h-4" />
+            <span className="text-sm font-medium">⚡ TERMINA EM:</span>
             <div className="flex space-x-1">
-              <div className="bg-red-500 text-white px-2 py-1 rounded text-sm font-bold">
+              <div className="bg-white text-red-500 px-2 py-1 rounded text-sm font-bold animate-pulse">
                 {timeLeft.hours.toString().padStart(2, '0')}
               </div>
-              <span className="text-red-500 font-bold">:</span>
-              <div className="bg-red-500 text-white px-2 py-1 rounded text-sm font-bold">
+              <span className="text-white font-bold">:</span>
+              <div className="bg-white text-red-500 px-2 py-1 rounded text-sm font-bold animate-pulse">
                 {timeLeft.minutes.toString().padStart(2, '0')}
               </div>
-              <span className="text-red-500 font-bold">:</span>
-              <div className="bg-red-500 text-white px-2 py-1 rounded text-sm font-bold">
+              <span className="text-white font-bold">:</span>
+              <div className="bg-white text-red-500 px-2 py-1 rounded text-sm font-bold animate-pulse">
                 {timeLeft.seconds.toString().padStart(2, '0')}
               </div>
             </div>

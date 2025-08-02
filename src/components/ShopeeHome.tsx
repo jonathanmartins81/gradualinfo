@@ -2,9 +2,11 @@
 
 import { FaGift, FaPercent, FaShieldAlt, FaTruck } from 'react-icons/fa';
 import BannerCarousel from './BannerCarousel';
+import BestSellers from './BestSellers';
 import CategorySlider from './CategorySlider';
 import FlashSale from './FlashSale';
 import Footer from './Footer';
+import FreeShippingBanner from './FreeShippingBanner';
 import ProductCardShopee from './ProductCardShopee';
 
 export default function ShopeeHome() {
@@ -115,6 +117,9 @@ export default function ShopeeHome() {
 
   return (
     <main className="min-h-screen bg-gray-50">
+      {/* Free Shipping Banner */}
+      <FreeShippingBanner />
+
       {/* Banner Carousel */}
       <BannerCarousel />
 
@@ -123,6 +128,9 @@ export default function ShopeeHome() {
 
       {/* Flash Sale */}
       <FlashSale />
+
+      {/* Best Sellers */}
+      <BestSellers />
 
       {/* Featured Products */}
       <section className="py-8 bg-white">

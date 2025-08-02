@@ -1,6 +1,5 @@
 'use client';
 
-import { motion } from 'framer-motion';
 import { FaGift, FaPercent, FaShieldAlt, FaTruck } from 'react-icons/fa';
 import BannerCarousel from './BannerCarousel';
 import CategorySlider from './CategorySlider';
@@ -152,19 +151,16 @@ export default function ShopeeHome() {
           <h2 className="text-2xl font-bold text-gray-900 mb-8 text-center">Por que escolher a Gradual Info Shop?</h2>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
             {features.map((feature, index) => (
-              <motion.div
+              <div
                 key={index}
                 className="text-center"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
               >
                 <div className="bg-orange-100 w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-4">
                   <span className="text-orange-600 text-xl">{feature.icon}</span>
                 </div>
                 <h3 className="text-lg font-semibold text-gray-900 mb-2">{feature.title}</h3>
                 <p className="text-sm text-gray-600">{feature.description}</p>
-              </motion.div>
+              </div>
             ))}
           </div>
         </div>
@@ -173,11 +169,7 @@ export default function ShopeeHome() {
       {/* CTA Section */}
       <section className="py-12 bg-gradient-to-r from-orange-500 to-red-500 text-white">
         <div className="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-          >
+          <div>
             <h2 className="text-3xl sm:text-4xl font-bold mb-6">Não perca as melhores ofertas!</h2>
             <p className="text-xl mb-8 opacity-90">Cadastre-se e receba ofertas exclusivas em primeira mão</p>
             <div className="flex items-center justify-center space-x-4 mb-8">
@@ -195,7 +187,7 @@ export default function ShopeeHome() {
             <p className="mt-6 text-lg">
               <strong>Frete grátis</strong> para compras acima de R$ 99,90
             </p>
-          </motion.div>
+          </div>
         </div>
       </section>
 

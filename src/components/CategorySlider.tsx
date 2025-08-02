@@ -1,6 +1,5 @@
 'use client';
 
-import { motion } from 'framer-motion';
 import Link from 'next/link';
 
 interface Category {
@@ -30,13 +29,9 @@ export default function CategorySlider() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-5 sm:grid-cols-8 lg:grid-cols-10 gap-4">
           {categories.map((category, index) => (
-            <motion.div
+            <div
               key={category.id}
               className="text-center group cursor-pointer"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
-              whileHover={{ scale: 1.05 }}
             >
               <Link href={category.href} className="block">
                 <div className="bg-gray-100 rounded-full w-12 h-12 sm:w-16 sm:h-16 flex items-center justify-center mx-auto mb-2 group-hover:bg-orange-100 transition-colors">

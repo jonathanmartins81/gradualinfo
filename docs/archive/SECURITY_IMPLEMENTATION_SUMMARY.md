@@ -29,24 +29,29 @@ Implementamos um sistema de segurança robusto e abrangente que transforma o boi
 ## 📁 **Arquivos Implementados**
 
 ### **Core de Autenticação**
+
 - `src/lib/auth.ts` - Sistema principal de autenticação
 - `src/lib/security.ts` - Utilitários de segurança avançada
 - `src/middleware.ts` - Middleware de proteção global
 
 ### **APIs de Autenticação**
+
 - `src/app/api/auth/login/route.ts` - Login com JWT
 - `src/app/api/auth/me/route.ts` - Verificação de usuário
 
 ### **Páginas Protegidas**
+
 - `src/app/login/page.tsx` - Página de login
 - `src/app/dashboard/page.tsx` - Dashboard protegido
 - `src/app/admin/page.tsx` - Painel administrativo
 
 ### **Componentes e Hooks**
+
 - `src/hooks/useAuth.ts` - Hook de autenticação
 - `src/components/ProtectedRoute.tsx` - Componentes de proteção
 
 ### **Documentação**
+
 - `SECURITY_GUIDE.md` - Guia completo de segurança
 
 ---
@@ -54,6 +59,7 @@ Implementamos um sistema de segurança robusto e abrangente que transforma o boi
 ## 🔐 **Sistema de Autenticação**
 
 ### **JWT Implementation**
+
 ```typescript
 // Geração de token seguro
 const token = await generateToken({
@@ -62,7 +68,7 @@ const token = await generateToken({
   name: user.name,
   role: user.role,
   permissions: user.permissions,
-  isActive: user.isActive
+  isActive: user.isActive,
 });
 
 // Verificação de token
@@ -70,19 +76,28 @@ const user = await verifyToken(token);
 ```
 
 ### **Roles e Permissões**
+
 ```typescript
 export const ROLE_PERMISSIONS = {
   admin: [
-    'read:posts', 'write:posts', 'delete:posts',
-    'read:users', 'write:users', 'delete:users',
-    'admin:system', 'moderate:content'
+    'read:posts',
+    'write:posts',
+    'delete:posts',
+    'read:users',
+    'write:users',
+    'delete:users',
+    'admin:system',
+    'moderate:content',
   ],
   moderator: [
-    'read:posts', 'write:posts', 'delete:posts',
-    'read:users', 'moderate:content'
+    'read:posts',
+    'write:posts',
+    'delete:posts',
+    'read:users',
+    'moderate:content',
   ],
   user: ['read:posts', 'write:posts'],
-  guest: ['read:posts']
+  guest: ['read:posts'],
 };
 ```
 
@@ -91,21 +106,23 @@ export const ROLE_PERMISSIONS = {
 ## 🛡️ **Proteção de Rotas**
 
 ### **Middleware Automático**
+
 ```typescript
 // Proteção automática baseada em configuração
 export const PROTECTED_ROUTES = {
   '/admin': {
     requiredPermissions: ['admin:system'],
-    allowedRoles: ['admin']
+    allowedRoles: ['admin'],
   },
   '/dashboard': {
     requiredPermissions: ['read:posts'],
-    allowedRoles: ['admin', 'moderator', 'user']
-  }
+    allowedRoles: ['admin', 'moderator', 'user'],
+  },
 };
 ```
 
 ### **Componentes de Proteção**
+
 ```typescript
 // Proteção por role
 <AdminRoute>
@@ -119,6 +136,7 @@ export const PROTECTED_ROUTES = {
 ```
 
 ### **Hook de Autenticação**
+
 ```typescript
 const { user, isAuthenticated, hasPermission, hasRole } = useAuth();
 
@@ -132,6 +150,7 @@ if (hasPermission('write:posts')) {
 ## ⏱️ **Rate Limiting**
 
 ### **Configurações por Tipo**
+
 ```typescript
 const RATE_LIMIT_CONFIG = {
   sensitive: {
@@ -150,6 +169,7 @@ const RATE_LIMIT_CONFIG = {
 ```
 
 ### **Rate Limiting por Usuário**
+
 ```typescript
 // Rate limiting específico para usuários autenticados
 if (user && !checkRateLimit(user.id, 50, 15 * 60 * 1000)) {
@@ -162,6 +182,7 @@ if (user && !checkRateLimit(user.id, 50, 15 * 60 * 1000)) {
 ## 🛡️ **Headers de Segurança**
 
 ### **Headers Aplicados**
+
 ```typescript
 const securityHeaders = {
   'X-Content-Type-Options': 'nosniff',
@@ -175,6 +196,7 @@ const securityHeaders = {
 ```
 
 ### **Content Security Policy (CSP)**
+
 ```typescript
 const csp = [
   "default-src 'self'",
@@ -187,7 +209,7 @@ const csp = [
   "base-uri 'self'",
   "form-action 'self'",
   "frame-ancestors 'none'",
-  "upgrade-insecure-requests"
+  'upgrade-insecure-requests',
 ].join('; ');
 ```
 
@@ -196,6 +218,7 @@ const csp = [
 ## ✅ **Validação e Sanitização**
 
 ### **Validação de Entrada**
+
 ```typescript
 // Validação de email
 if (!ValidationUtils.isValidEmail(email)) {
@@ -215,6 +238,7 @@ if (!ValidationUtils.isValidCPF(cpf)) {
 ```
 
 ### **Sanitização de Dados**
+
 ```typescript
 // Sanitizar string
 const cleanInput = SanitizationUtils.sanitizeString(userInput);
@@ -231,6 +255,7 @@ const cleanObject = SanitizationUtils.sanitizeObject(userData);
 ## 🚨 **Detecção de Ataques**
 
 ### **Tipos Detectados**
+
 ```typescript
 // SQL Injection
 if (AttackDetection.detectSQLInjection(input)) {
@@ -262,6 +287,7 @@ if (AttackDetection.detectCommandInjection(input)) {
 ## 🔐 **Criptografia**
 
 ### **Hash de Senhas**
+
 ```typescript
 // Gerar salt e hash
 const salt = CryptoUtils.generateSalt();
@@ -272,6 +298,7 @@ const isValid = await CryptoUtils.verifyPassword(password, salt, hash);
 ```
 
 ### **Geração de Tokens Seguros**
+
 ```typescript
 // Gerar token JWT seguro
 const token = await new SignJWT(payload)
@@ -286,11 +313,12 @@ const token = await new SignJWT(payload)
 ## 📊 **Logs de Segurança**
 
 ### **Tipos de Logs**
+
 ```typescript
 // Log de tentativa de ataque
 SecurityLogger.logAttack(request, 'sql_injection', {
   input: userInput,
-  pattern: detectedPattern
+  pattern: detectedPattern,
 });
 
 // Log de acesso negado
@@ -302,6 +330,7 @@ SecurityLogger.logAuth('failed_login', email, { reason: 'invalid_password' });
 ```
 
 ### **Exemplo de Log**
+
 ```json
 {
   "type": "sql_injection",
@@ -322,6 +351,7 @@ SecurityLogger.logAuth('failed_login', email, { reason: 'invalid_password' });
 ## 🔍 **Auditoria de Dependências**
 
 ### **GitHub Actions**
+
 ```yaml
 # .github/workflows/security.yml
 name: Security Audit
@@ -339,14 +369,15 @@ jobs:
 ```
 
 ### **Dependabot**
+
 ```yaml
 # .github/dependabot.yml
 version: 2
 updates:
-  - package-ecosystem: "npm"
-    directory: "/"
+  - package-ecosystem: 'npm'
+    directory: '/'
     schedule:
-      interval: "weekly"
+      interval: 'weekly'
     open-pull-requests-limit: 10
 ```
 
@@ -355,6 +386,7 @@ updates:
 ## 🚀 **Como Usar**
 
 ### **1. Proteger uma Rota**
+
 ```typescript
 // pages/admin.tsx
 import { AdminRoute } from '@/components/ProtectedRoute';
@@ -369,6 +401,7 @@ export default function AdminPage() {
 ```
 
 ### **2. Proteger uma API**
+
 ```typescript
 // pages/api/admin/users.ts
 import { protectAPI } from '@/lib/auth';
@@ -385,6 +418,7 @@ export async function GET(request: NextRequest) {
 ```
 
 ### **3. Usar Hook de Autenticação**
+
 ```typescript
 // Componente qualquer
 import { useAuth } from '@/hooks/useAuth';
@@ -405,6 +439,7 @@ export default function MyComponent() {
 ## ⚙️ **Configuração**
 
 ### **Variáveis de Ambiente**
+
 ```env
 # JWT
 JWT_SECRET=your-super-secret-jwt-key-change-in-production
@@ -422,24 +457,25 @@ CSP_REPORT_URI=https://yourdomain.com/csp-report
 ```
 
 ### **Usuários de Teste**
+
 ```typescript
 // Credenciais para teste
 const USERS_DB = [
   {
     email: 'admin@aqua9.com.br',
     password: 'admin123',
-    role: 'admin'
+    role: 'admin',
   },
   {
     email: 'user@aqua9.com.br',
     password: 'user123',
-    role: 'user'
+    role: 'user',
   },
   {
     email: 'moderator@aqua9.com.br',
     password: 'mod123',
-    role: 'moderator'
-  }
+    role: 'moderator',
+  },
 ];
 ```
 
@@ -448,6 +484,7 @@ const USERS_DB = [
 ## 📈 **Métricas de Segurança**
 
 ### **Implementadas:**
+
 - ✅ **Autenticação JWT** com tokens seguros
 - ✅ **Autorização granular** por roles e permissões
 - ✅ **Proteção de rotas** automática
@@ -460,6 +497,7 @@ const USERS_DB = [
 - ✅ **Auditoria de dependências** automatizada
 
 ### **Cobertura:**
+
 - 🔒 **OWASP Top 10:** 100% coberto
 - 🛡️ **Headers de Segurança:** 15+ headers
 - ⏱️ **Rate Limiting:** 4 níveis diferentes
@@ -472,18 +510,21 @@ const USERS_DB = [
 ## 🎯 **Benefícios Alcançados**
 
 ### **Para Desenvolvedores:**
+
 - 🚀 **Setup rápido** de segurança
 - 🛡️ **Proteção automática** de rotas
 - 📚 **Documentação clara** e exemplos
 - 🔧 **Configuração flexível**
 
 ### **Para Aplicações:**
+
 - 🔒 **Segurança robusta** desde o início
 - 🚨 **Detecção proativa** de ameaças
 - 📊 **Monitoramento** em tempo real
 - ⚡ **Performance otimizada**
 
 ### **Para Empresas:**
+
 - 💰 **Redução de custos** com segurança
 - 🎯 **Compliance** com padrões internacionais
 - 📈 **Confiança** dos usuários
@@ -494,12 +535,14 @@ const USERS_DB = [
 ## 📞 **Suporte e Recursos**
 
 ### **Documentação:**
+
 - 📖 **SECURITY_GUIDE.md** - Guia completo
 - 🔧 **Exemplos práticos** em cada arquivo
 - 📚 **Boas práticas** documentadas
 - ⚙️ **Configuração** detalhada
 
 ### **Recursos Úteis:**
+
 - [OWASP Top 10](https://owasp.org/www-project-top-ten/)
 - [Next.js Security](https://nextjs.org/docs/advanced-features/security-headers)
 - [JWT Best Practices](https://auth0.com/blog/a-look-at-the-latest-draft-for-jwt-bcp/)
@@ -514,6 +557,7 @@ const USERS_DB = [
 O sistema de segurança está **100% implementado** e pronto para uso em produção. Todas as funcionalidades foram testadas e documentadas.
 
 **Próximos passos:**
+
 1. Configurar variáveis de ambiente
 2. Testar com usuários reais
 3. Monitorar logs de segurança

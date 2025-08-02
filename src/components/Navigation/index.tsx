@@ -22,6 +22,12 @@ const navigationItems: NavigationItem[] = [
     category: 'pages',
   },
   {
+    label: '100K',
+    href: '/100k',
+    description: 'Coleção especial 100K - Produtos exclusivos',
+    category: 'pages',
+  },
+  {
     label: 'Sobre',
     href: '/about',
     description: 'Página sobre o projeto',

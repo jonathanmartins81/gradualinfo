@@ -88,32 +88,38 @@ src/
 ### **🎯 Componentes Principais**
 
 #### **HeaderShopee**
+
 - Header fixo com logo e busca
 - Barra de categorias horizontal
 - Ícones de navegação (favoritos, carrinho, perfil)
 
 #### **BottomNav**
+
 - Navegação inferior para mobile
 - Ícones grandes com labels
 - Estados ativos destacados
 
 #### **BannerCarousel**
+
 - Carrossel automático de banners
 - Navegação com setas e dots
 - Gradientes coloridos atrativos
 
 #### **ProductCardShopee**
+
 - Cards de produtos estilo Shopee
 - Badges dinâmicos (HOT, FLASH, etc.)
 - Preços e avaliações destacados
 - Microanimações com Framer Motion
 
 #### **FlashSale**
+
 - Seção de ofertas relâmpago
 - Contador regressivo em tempo real
 - Grid de produtos em destaque
 
 #### **ShopeeHome**
+
 - Página principal completa
 - Integração de todos os componentes
 - Layout responsivo otimizado
@@ -123,10 +129,12 @@ src/
 ## 🚀 **Como Executar**
 
 ### **Pré-requisitos**
-- Node.js 18+ 
+
+- Node.js 18+
 - npm ou yarn
 
 ### **Instalação**
+
 ```bash
 # Clone o repositório
 git clone https://github.com/jonathanmartins81/gradualinfo.git
@@ -142,6 +150,7 @@ npm run dev
 ```
 
 ### **Scripts Disponíveis**
+
 ```bash
 npm run dev          # Desenvolvimento
 npm run build        # Build de produção
@@ -155,6 +164,7 @@ npm run type-check   # Verificar tipos
 ## 🎨 **Design System**
 
 ### **Cores Principais**
+
 - **Laranja Shopee:** `#ff5722`
 - **Branco:** `#ffffff`
 - **Cinza claro:** `#f8fafc`
@@ -162,11 +172,13 @@ npm run type-check   # Verificar tipos
 - **Verde:** `#22c55e`
 
 ### **Tipografia**
+
 - **Títulos:** Inter, sans-serif
 - **Corpo:** Inter, sans-serif
 - **Hierarquia:** H1-H6 bem definida
 
 ### **Espaçamentos**
+
 - **Grid:** 4px base
 - **Padding:** 16px, 24px, 32px
 - **Margin:** 8px, 16px, 24px, 32px
@@ -176,11 +188,13 @@ npm run type-check   # Verificar tipos
 ## 📱 **Responsividade**
 
 ### **Breakpoints**
+
 - **Mobile:** < 768px
 - **Tablet:** 768px - 1024px
 - **Desktop:** > 1024px
 
 ### **Grid System**
+
 - **Mobile:** 2 colunas
 - **Tablet:** 3-4 colunas
 - **Desktop:** 4-6 colunas

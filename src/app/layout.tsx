@@ -1,3 +1,4 @@
+import FixedComponents from '@/components/FixedComponents';
 import { JsonLd } from '@/components/JsonLd';
 import Navigation from '@/components/Navigation';
 import { generateDynamicSEO } from '@/utils/SEO';
@@ -32,6 +33,7 @@ export default function RootLayout({
         <Providers>
           <Navigation />
           {children}
+          <FixedComponents />
         </Providers>
       </body>
     </html>

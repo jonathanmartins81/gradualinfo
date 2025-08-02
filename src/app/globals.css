@@ -88,6 +88,109 @@
 
 /* ===== COMPONENTES CUSTOMIZADOS ===== */
 @layer components {
+  /* ===== BOTÃO FIXO DE COMPRA (MOBILE) ===== */
+  .fixed-buy-btn {
+    display: none;
+  }
+
+  @media (max-width: 768px) {
+    .fixed-buy-btn {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: fixed;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(45deg, #ff6b6b, #ff8e53);
+      color: #fff;
+      font-size: 1.2rem;
+      font-weight: bold;
+      padding: 18px;
+      z-index: 9999;
+      border-radius: 28px 28px 0 0;
+      box-shadow: 0 -4px 18px rgba(255, 107, 107, 0.1);
+      cursor: pointer;
+      text-align: center;
+      letter-spacing: 1px;
+      transition: all 0.3s ease;
+    }
+
+    .fixed-buy-btn:hover {
+      background: linear-gradient(45deg, #ff5252, #ff7043);
+      transform: translateY(-2px);
+      box-shadow: 0 -6px 24px rgba(255, 107, 107, 0.2);
+    }
+
+    .fixed-buy-btn:active {
+      transform: scale(0.98);
+    }
+  }
+
+  /* ===== NOTIFICAÇÕES FALSAS DE VENDAS ===== */
+  .fake-notif {
+    position: fixed;
+    left: 16px;
+    bottom: 84px;
+    background: #fff;
+    border: 1.5px solid #ff8e53;
+    color: #333;
+    font-size: 1rem;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.16);
+    border-radius: 16px;
+    padding: 10px 22px;
+    z-index: 10000;
+    animation: fadeInUp 0.7s;
+    font-weight: 500;
+  }
+
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(40px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @media (max-width: 768px) {
+    .fake-notif {
+      left: 8px;
+      right: 8px;
+      bottom: 90px;
+      font-size: 0.9rem;
+      padding: 8px 16px;
+    }
+  }
+
+  /* ===== BANNER DE URGÊNCIA ===== */
+  .urgency-banner {
+    background: rgba(255, 107, 107, 0.1);
+    color: #e53e3e;
+    margin-bottom: 18px;
+    font-size: 1rem;
+    font-weight: 500;
+    border-radius: 12px;
+    padding: 10px 16px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid rgba(255, 107, 107, 0.2);
+  }
+
+  /* ===== BOTÃO DE COMPRA DE PRODUTO ===== */
+  .product-buy-btn {
+    transition: all 0.18s cubic-bezier(0.32, 2, 0.55, 0.27);
+  }
+
+  .product-buy-btn:active {
+    transform: scale(0.95);
+    filter: brightness(0.94);
+  }
   /* ===== BOTÕES ===== */
   .btn {
     @apply inline-flex items-center justify-center px-4 py-2 text-sm font-medium rounded-lg transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed;

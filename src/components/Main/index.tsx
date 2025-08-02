@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { FaClock, FaFire, FaGift, FaHeadset, FaHeart, FaPercent, FaSearch, FaShieldAlt, FaShippingFast, FaShoppingCart, FaStar, FaTruck } from 'react-icons/fa';
+import { FaClock, FaExclamationTriangle, FaFire, FaGift, FaHeadset, FaHeart, FaPercent, FaSearch, FaShieldAlt, FaShippingFast, FaShoppingCart, FaStar, FaTruck } from 'react-icons/fa';
 
 export function Main() {
   const products = [
@@ -93,23 +93,23 @@ export function Main() {
   const features = [
     {
       icon: <FaTruck />,
-      title: "Entrega Rápida",
-      description: "Receba em até 3 dias úteis"
+      title: "Entrega Expressa",
+      description: "Receba em até 3 dias úteis para todo Brasil"
     },
     {
       icon: <FaStar />,
       title: "Qualidade Premium",
-      description: "Produtos de alta qualidade garantidos"
+      description: "Produtos de alta qualidade com garantia"
     },
     {
       icon: <FaHeadset />,
       title: "Suporte 24/7",
-      description: "Atendimento especializado"
+      description: "Atendimento especializado via WhatsApp"
     },
     {
       icon: <FaShieldAlt />,
-      title: "Compra Segura",
-      description: "Pagamento 100% protegido"
+      title: "Compra Segura com PIX",
+      description: "Pagamento 100% protegido e aprovado"
     }
   ];
 
@@ -157,6 +157,18 @@ export function Main() {
       {/* Hero Section - Estilo Shopee */}
       <section className="bg-gradient-to-r from-orange-500 via-red-500 to-pink-500 text-white py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          {/* Banner de Urgência */}
+          <motion.div
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="urgency-banner mb-8"
+          >
+            <FaExclamationTriangle className="w-4 h-4" />
+            <span>⚡️ Estoque quase esgotado! {Math.floor(Math.random() * 4 + 2)} unidades restantes</span>
+            <span>• Oferta termina em 01:23:07 ⏳</span>
+          </motion.div>
+
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <motion.div
               initial={{ opacity: 0, x: -20 }}
@@ -320,7 +332,11 @@ export function Main() {
                   </div>
 
                   {/* Botão de Comprar */}
-                  <button className="w-full bg-orange-500 text-white py-2 rounded-lg font-semibold hover:bg-orange-600 transition-colors flex items-center justify-center space-x-2">
+                  <button
+                    onClick={() => window.open(`https://wa.me/5599999999999?text=Tenho+interesse+no+produto+${encodeURIComponent(product.name)}`, '_blank')}
+                    className="w-full bg-orange-500 text-white py-2 rounded-lg font-semibold hover:bg-orange-600 transition-colors flex items-center justify-center space-x-2 product-buy-btn"
+                    aria-label={`Comprar ${product.name}`}
+                  >
                     <FaShoppingCart className="w-4 h-4" />
                     <span>Comprar Agora</span>
                   </button>

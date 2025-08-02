@@ -11,8 +11,14 @@ export const metadata: Metadata = {
   description: 'Clone completo da Shopee Brasil com foco em conversão e vendas',
   keywords: 'shopee, clone, ecommerce, vendas, produtos, ofertas',
   icons: {
-    icon: '/favicon.png',
-    apple: '/apple-touch-icon.png',
+    icon: [
+      { url: '/favicon.png', type: 'image/png', sizes: '32x32' },
+      { url: '/favicon.png', type: 'image/png', sizes: '16x16' },
+    ],
+    apple: [
+      { url: '/apple-touch-icon.png', sizes: '180x180', type: 'image/png' },
+    ],
+    shortcut: '/favicon.png',
   },
 };
 
@@ -35,6 +41,10 @@ export default function RootLayout({
   return (
     <html lang='pt-BR'>
       <head>
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png" />
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon.png" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+        <link rel="shortcut icon" href="/favicon.png" />
         <JsonLd />
       </head>
       <body className='font-sans'>

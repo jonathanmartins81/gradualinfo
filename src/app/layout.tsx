@@ -10,6 +10,10 @@ export const metadata: Metadata = {
   title: 'Gradual Info Shop - Shopee Clone',
   description: 'Clone completo da Shopee Brasil com foco em conversão e vendas',
   keywords: 'shopee, clone, ecommerce, vendas, produtos, ofertas',
+  icons: {
+    icon: '/favicon.png',
+    apple: '/apple-touch-icon.png',
+  },
 };
 
 export const viewport: Viewport = {

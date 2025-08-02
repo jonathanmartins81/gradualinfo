@@ -565,13 +565,29 @@ chore: atualizar dependências
 
 ---
 
+## 📚 **Documentação**
+
+### **Documentação Organizada**
+
+- 📖 **[Documentação Completa](./docs/)** - Índice geral da documentação
+- 🛠️ **[Guia de Desenvolvimento](./docs/guides/DEVELOPMENT_GUIDE.md)** - Padrões e boas práticas
+- 🔍 **[Guia de SEO](./docs/guides/SEO_GUIDE.md)** - Estratégias de SEO
+- 🔒 **[Guia de Segurança](./SECURITY_GUIDE.md)** - Medidas de segurança
+- 📋 **[Como Contribuir](./CONTRIBUTING.md)** - Guia de contribuição
+- ⚙️ **[Configuração](./SETUP_INSTRUCTIONS.md)** - Instruções de setup
+
+### **Relatórios e Status**
+
+- 📊 **[Relatórios Atuais](./docs/reports/)** - Status e análises do projeto
+- 📈 **[Roadmap de Melhorias](./docs/reports/IMPROVEMENTS_ROADMAP.md)** - Próximas funcionalidades
+- 🧪 **[Relatório de Testes](./docs/reports/RELATORIO_TESTE_PROJETO_TEMA.md)** - Resultados dos testes
+
 ## 📞 **Suporte**
 
 ### **Recursos**
 
-- 📖 **[Documentação](./docs/)** - Guias detalhados
-- 🐛 **[Issues](https://github.com/jonathanmartins81/boilerplate_aqua9_v2/issues)** - Reportar bugs
-- 💡 **[Discussions](https://github.com/jonathanmartins81/boilerplate_aqua9_v2/discussions)** - Discussões
+- 🐛 **[Issues](https://github.com/jonathanmartins81/gradualinfo/issues)** - Reportar bugs
+- 💡 **[Discussions](https://github.com/jonathanmartins81/gradualinfo/discussions)** - Discussões
 - 📧 **Email:** jonathan@aqua9.com.br
 
 ### **Comunidade**

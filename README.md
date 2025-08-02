@@ -6,62 +6,56 @@
 [![React](https://img.shields.io/badge/React-18.2.0-blue?style=flat-square&logo=react)](https://reactjs.org/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.3.3-blue?style=flat-square&logo=typescript)](https://www.typescriptlang.org/)
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind-3.4.0-38B2AC?style=flat-square&logo=tailwind-css)](https://tailwindcss.com/)
-[![Vitest](https://img.shields.io/badge/Vitest-1.2.0-yellow?style=flat-square&logo=vitest)](https://vitest.dev/)
-[![Playwright](https://img.shields.io/badge/Playwright-1.40.0-green?style=flat-square&logo=playwright)](https://playwright.dev/)
+[![Framer Motion](https://img.shields.io/badge/Framer%20Motion-11.0.0-purple?style=flat-square&logo=framer)](https://www.framer.com/motion/)
 
-[![Test Coverage](https://img.shields.io/badge/Test%20Coverage-85%25-brightgreen?style=flat-square)](https://github.com/jonathanmartins81/gradualinfo)
-[![Codecov](https://img.shields.io/codecov/c/github/jonathanmartins81/gradualinfo?style=flat-square)](https://codecov.io/gh/jonathanmartins81/gradualinfo)
-[![Code Quality](https://img.shields.io/badge/Code%20Quality-A%2B-brightgreen?style=flat-square)](https://github.com/jonathanmartins81/gradualinfo)
-[![Security](https://img.shields.io/badge/Security-Audit%20Passed-brightgreen?style=flat-square)](https://github.com/jonathanmartins81/gradualinfo)
-[![E2E Tests](https://img.shields.io/badge/E2E%20Tests-Passing-brightgreen?style=flat-square)](https://github.com/jonathanmartins81/gradualinfo)
+[![Shopee Clone](https://img.shields.io/badge/Shopee%20Clone-100%25-orange?style=flat-square)](https://github.com/jonathanmartins81/gradualinfo)
+[![Mobile First](https://img.shields.io/badge/Mobile%20First-Responsive-green?style=flat-square)](https://github.com/jonathanmartins81/gradualinfo)
+[![Conversion Focused](https://img.shields.io/badge/Conversion%20Focused-Optimized-red?style=flat-square)](https://github.com/jonathanmartins81/gradualinfo)
 
 </div>
 
-# 🚀 Gradual Info Shop
+# 🛍️ Gradual Info Shop - Shopee Clone
 
-> **Website oficial da Gradual Info Shop** - Loja online moderna e profissional. Desenvolvido pela **Aqua9** com foco em **qualidade**, **segurança**, **performance** e **escalabilidade**. Template de vendas inspirado na TikTok Shop com foco em conversão.
+> **Website oficial da Gradual Info Shop** - Clone completo da Shopee Brasil com foco em conversão e vendas. Desenvolvido pela **Aqua9** com design moderno, mobile-first e elementos de conversão otimizados.
 
 ---
 
 ## 🎯 **Características Principais**
 
-### **🔒 Segurança Robusta**
+### **🛍️ Shopee Clone Completo**
 
-- ✅ **Autenticação JWT** com tokens seguros
-- ✅ **Autorização granular** por roles e permissões
-- ✅ **Proteção de rotas** automática
-- ✅ **Rate limiting** por IP e usuário
-- ✅ **Headers de segurança** (CSP, HSTS, etc.)
-- ✅ **Validação e sanitização** de entrada
-- ✅ **Detecção de ataques** em tempo real
-- ✅ **Logs de segurança** detalhados
+- ✅ **Header fixo** com busca centralizada
+- ✅ **Bottom navigation** mobile-first
+- ✅ **Carrossel de banners** promocionais
+- ✅ **Flash sale** com contador regressivo
+- ✅ **Cards de produtos** estilo Shopee
+- ✅ **Categorias** em grid responsivo
+- ✅ **Elementos de conversão** otimizados
+
+### **📱 Mobile-First Design**
+
+- ✅ **Responsivo** em todos os dispositivos
+- ✅ **Touch-friendly** interfaces
+- ✅ **Performance** otimizada
+- ✅ **Animações** suaves com Framer Motion
+- ✅ **Microinterações** atrativas
 
 ### **🚀 Performance Otimizada**
 
 - ✅ **Next.js 15** com App Router
 - ✅ **TypeScript** para type safety
 - ✅ **Tailwind CSS** para styling
-- ✅ **Otimização de imagens** com next/image
+- ✅ **Framer Motion** para animações
 - ✅ **Lazy loading** e code splitting
 - ✅ **SEO otimizado** com metadata dinâmico
 
-### **🧪 Qualidade Garantida**
+### **🎨 Design System Shopee**
 
-- ✅ **Testes unitários** com Vitest + RTL
-- ✅ **Testes E2E** com Playwright
-- ✅ **Cobertura de testes** com Codecov
-- ✅ **ESLint + Prettier** para qualidade
-- ✅ **Type checking** automático
-- ✅ **Git hooks** com Lefthook
-- ✅ **CI/CD** com GitHub Actions
-
-### **📚 Documentação Completa**
-
-- ✅ **README** detalhado
-- ✅ **Guia de segurança** completo
-- ✅ **Templates** de PR/Issue
-- ✅ **Exemplos** práticos
-- ✅ **Boas práticas** documentadas
+- ✅ **Cores oficiais** da Shopee
+- ✅ **Tipografia** hierárquica
+- ✅ **Espaçamentos** consistentes
+- ✅ **Componentes** reutilizáveis
+- ✅ **Gradientes** e efeitos visuais
 
 ---
 
@@ -71,553 +65,177 @@
 
 ```
 src/
-├── app/                    # App Router (Next.js 13+)
+├── app/                    # App Router (Next.js 15)
 │   ├── api/               # API Routes
-│   │   └── auth/          # Autenticação
-│   ├── (routes)/          # Páginas da aplicação
-│   ├── error.tsx          # Error boundary global
-│   ├── layout.tsx         # Layout raiz
-│   └── page.tsx           # Página inicial
-├── components/            # Biblioteca de Componentes Reutilizáveis
-│   ├── Button/           # Componente de botão
-│   ├── Card/             # Componente de card
-│   ├── DynamicSEO/       # SEO dinâmico
-│   ├── Footer/           # Componente de rodapé
-│   ├── Header/           # Componente de cabeçalho
-│   ├── Input/            # Componente de entrada
-│   ├── Main/             # Componente principal
-│   ├── Modal/            # Componente de modal
-│   ├── Navigation/       # Componente de navegação
-│   └── ProtectedRoute/   # Proteção de rotas
-├── hooks/                # Custom hooks
-│   └── useAuth.ts        # Hook de autenticação
-├── lib/                  # Bibliotecas e configurações
-│   ├── auth.ts           # Sistema de autenticação
-│   └── security.ts       # Utilitários de segurança
-├── styles/               # Estilos e design system
-│   └── theme.ts          # Tokens de design
-├── types/                # Definições TypeScript
-├── utils/                # Utilitários gerais
-│   ├── cache.ts          # Cache utilities
-│   ├── logger.ts         # Sistema de logs
-│   ├── SEO.ts            # SEO utilities
-│   └── validation.ts     # Validações
-└── middleware.ts         # Middleware global
+│   ├── layout.tsx         # Layout raiz com HeaderShopee
+│   └── page.tsx           # Página inicial (ShopeeHome)
+├── components/            # Componentes Shopee
+│   ├── HeaderShopee.tsx   # Header fixo estilo Shopee
+│   ├── BottomNav.tsx      # Navegação inferior mobile
+│   ├── BannerCarousel.tsx # Carrossel de banners
+│   ├── ProductCardShopee.tsx # Cards de produtos
+│   ├── FlashSale.tsx      # Seção de ofertas relâmpago
+│   ├── ShopeeHome.tsx     # Página principal
+│   ├── FixedComponents.tsx # Componentes fixos
+│   └── JsonLd.tsx         # SEO estruturado
+├── hooks/                 # Custom hooks
+├── lib/                   # Bibliotecas e configurações
+├── styles/                # Estilos e design system
+├── types/                 # Definições TypeScript
+└── utils/                 # Utilitários gerais
 ```
 
-### **🎨 Design System & Biblioteca de Componentes**
+### **🎯 Componentes Principais**
 
-O projeto utiliza um **design system centralizado** em `src/styles/theme.ts` e uma **biblioteca completa de componentes reutilizáveis**:
+#### **HeaderShopee**
+- Header fixo com logo e busca
+- Barra de categorias horizontal
+- Ícones de navegação (favoritos, carrinho, perfil)
 
-#### **📚 Biblioteca de Componentes**
+#### **BottomNav**
+- Navegação inferior para mobile
+- Ícones grandes com labels
+- Estados ativos destacados
 
-Todos os componentes seguem um padrão consistente com:
+#### **BannerCarousel**
+- Carrossel automático de banners
+- Navegação com setas e dots
+- Gradientes coloridos atrativos
 
-- **Tipagem TypeScript** completa
-- **Estilos modulares** com Tailwind CSS
-- **Variantes e tamanhos** configuráveis
-- **Acessibilidade** integrada
-- **Responsividade** nativa
-- **Tema dark/light** suporte
+#### **ProductCardShopee**
+- Cards de produtos estilo Shopee
+- Badges dinâmicos (HOT, FLASH, etc.)
+- Preços e avaliações destacados
+- Microanimações com Framer Motion
 
-```typescript
-// Importação centralizada
-import { Button, Card, Header, Footer, Input, Modal } from '@/components';
+#### **FlashSale**
+- Seção de ofertas relâmpago
+- Contador regressivo em tempo real
+- Grid de produtos em destaque
 
-// Exemplo de uso
-<Button variant="primary" size="lg" loading>
-  Salvar
-</Button>
-
-<Card title="Título" variant="elevated">
-  Conteúdo do card
-</Card>
-
-<Input
-  label="Email"
-  type="email"
-  required
-  error="Email inválido"
-/>
-```
-
-#### **🎨 Design System**
-
-```typescript
-// Paleta de cores completa
-export const colors = {
-  primary: { 50: '#eff6ff', 100: '#dbeafe' /* ... */ },
-  secondary: { 50: '#ecfdf5', 100: '#d1fae5' /* ... */ },
-  accent: { 50: '#faf5ff', 100: '#f3e8ff' /* ... */ },
-  // ... mais cores
-};
-
-// Tipografia padronizada
-export const typography = {
-  fontFamily: { sans: ['Inter', 'sans-serif'] },
-  fontSize: { xs: '0.75rem', sm: '0.875rem' /* ... */ },
-  fontWeight: { normal: 400, medium: 500 /* ... */ },
-};
-
-// Breakpoints responsivos
-export const breakpoints = {
-  sm: '640px',
-  md: '768px',
-  lg: '1024px',
-  xl: '1280px',
-  '2xl': '1536px',
-};
-```
-
-### **🔐 Sistema de Autenticação**
-
-**Autenticação JWT** com controle granular de acesso:
-
-```typescript
-// Roles disponíveis
-type UserRole = 'admin' | 'moderator' | 'user' | 'guest';
-
-// Permissões granulares
-type Permission =
-  | 'read:posts' | 'write:posts' | 'delete:posts'
-  | 'read:users' | 'write:users' | 'delete:users'
-  | 'admin:system' | 'moderate:content';
-
-// Proteção de rotas
-<AdminRoute>
-  <AdminPanel />
-</AdminRoute>
-```
+#### **ShopeeHome**
+- Página principal completa
+- Integração de todos os componentes
+- Layout responsivo otimizado
 
 ---
 
-## 🚀 **Quick Start**
+## 🚀 **Como Executar**
 
-### **1. Clone e Instale**
+### **Pré-requisitos**
+- Node.js 18+ 
+- npm ou yarn
 
+### **Instalação**
 ```bash
 # Clone o repositório
-git clone https://github.com/jonathanmartins81/boilerplate_aqua9_v2.git
-cd boilerplate_aqua9_v2
+git clone https://github.com/jonathanmartins81/gradualinfo.git
+
+# Entre no diretório
+cd gradualinfo
 
 # Instale as dependências
 npm install
 
-# Configure as variáveis de ambiente
-cp .env.example .env.local
-```
-
-### **2. Configure as Variáveis de Ambiente**
-
-```env
-# .env.local
-JWT_SECRET=your-super-secret-jwt-key-change-in-production
-NEXT_PUBLIC_APP_URL=http://localhost:3000
-```
-
-### **3. Execute o Projeto**
-
-```bash
-# Desenvolvimento
+# Execute em desenvolvimento
 npm run dev
-
-# Build de produção
-npm run build
-
-# Testes
-npm run test
-npm run test:e2e
 ```
 
-### **4. Acesse a Aplicação**
-
-- **Página Principal (Gradual Info Shop):** http://localhost:3000
-- **Login:** http://localhost:3000/login
-- **Dashboard:** http://localhost:3000/dashboard (após login)
-- **Admin:** http://localhost:3000/admin (apenas admin)
-
-### **5. Páginas de Demonstração**
-
-- **Componentes Demo:** http://localhost:3000/components-demo
-- **Showcase Completo:** http://localhost:3000/components-showcase
-- **Tema Demo:** http://localhost:3000/theme-demo
-- **Tailwind Demo:** http://localhost:3000/tailwind-demo
-
----
-
-## 🧪 **Testes**
-
-### **Testes Unitários**
-
+### **Scripts Disponíveis**
 ```bash
-# Executar todos os testes
-npm run test
-
-# Executar com coverage
-npm run test:coverage
-
-# Executar em modo watch
-npm run test:watch
-```
-
-### **Testes E2E**
-
-```bash
-# Instalar Playwright
-npm run test:e2e:install
-
-# Executar testes E2E
-npm run test:e2e
-
-# Executar com UI
-npm run test:e2e:ui
-```
-
-### **Cobertura de Testes (Codecov)**
-
-```bash
-# Executar cobertura para CI
-npm run test:coverage:ci
-
-# Upload para Codecov
-npm run codecov
-
-# Relatório HTML local
-npm run test:coverage:report
-```
-
-O projeto está integrado com o [Codecov](https://codecov.io) para monitoramento contínuo da cobertura de testes:
-
-- 📊 **Relatórios detalhados** de cobertura
-- 🎯 **Metas de cobertura** configuráveis (80% mínimo)
-- 📈 **Histórico de cobertura** ao longo do tempo
-- 🔍 **Análise de diffs** em Pull Requests
-- 📱 **Badges** para README e documentação
-- 🚨 **Alertas** quando a cobertura diminui
-
-**Configuração:**
-
-- **Cobertura mínima:** 80%
-- **Threshold:** 5%
-- **Flags:** unit, integration, e2e
-- **Relatórios:** HTML, JSON, Text
-- **Token:** Configurado e funcional
-
----
-
-## 🔒 **Segurança**
-
-### **Recursos Implementados**
-
-- ✅ **Autenticação JWT** com tokens seguros
-- ✅ **Autorização por roles** e permissões
-- ✅ **Proteção de rotas** automática
-- ✅ **Rate limiting** por IP e usuário
-- ✅ **Headers de segurança** robustos
-- ✅ **Validação e sanitização** de entrada
-- ✅ **Detecção de ataques** (SQL Injection, XSS, etc.)
-- ✅ **Logs de segurança** detalhados
-
-### **Configuração de Segurança**
-
-```typescript
-// Headers de segurança aplicados automaticamente
-const securityHeaders = {
-  'X-Content-Type-Options': 'nosniff',
-  'X-Frame-Options': 'DENY',
-  'X-XSS-Protection': '1; mode=block',
-  'Content-Security-Policy': "default-src 'self'...",
-  'Strict-Transport-Security': 'max-age=31536000...',
-};
-```
-
-### **Usuários de Teste**
-
-```typescript
-// Credenciais para teste
-const USERS = {
-  admin: { email: 'admin@aqua9.com.br', password: 'admin123' },
-  user: { email: 'user@aqua9.com.br', password: 'user123' },
-  moderator: { email: 'mod@aqua9.com.br', password: 'mod123' },
-};
-```
-
----
-
-## 📚 **Documentação**
-
-### **Guias Disponíveis**
-
-- 📖 **[SECURITY_GUIDE.md](./SECURITY_GUIDE.md)** - Guia completo de segurança
-- 📋 **[CONTRIBUTING.md](./CONTRIBUTING.md)** - Como contribuir
-- 🚀 **[IMPROVEMENTS_ROADMAP.md](./IMPROVEMENTS_ROADMAP.md)** - Roadmap de melhorias
-- 🔧 **[DEPENDENCY_UPGRADE_GUIDE.md](./DEPENDENCY_UPGRADE_GUIDE.md)** - Atualização de dependências
-
-### **Exemplos Práticos**
-
-- 🔐 **[Autenticação](./src/app/login/page.tsx)** - Página de login
-- 🛡️ **[Proteção de Rotas](./src/components/ProtectedRoute.tsx)** - Componentes de proteção
-- 🎨 **[Design System](./src/styles/theme.ts)** - Tokens de design
-- 🧪 **[Testes](./src/components/Main/Main.test.tsx)** - Exemplos de testes
-
----
-
-## 🛠️ **Scripts Disponíveis**
-
-```bash
-# Desenvolvimento
-npm run dev          # Servidor de desenvolvimento
+npm run dev          # Desenvolvimento
 npm run build        # Build de produção
 npm run start        # Servidor de produção
-
-# Testes
-npm run test         # Testes unitários
-npm run test:watch   # Testes em modo watch
-npm run test:coverage # Testes com coverage
-npm run test:e2e     # Testes E2E
-npm run test:e2e:ui  # Testes E2E com UI
-
-# Qualidade
-npm run lint         # ESLint
-npm run lint:fix     # ESLint com auto-fix
-npm run format       # Prettier
-npm run format:check # Verificar formatação
-npm run type-check   # TypeScript check
-
-# Segurança
-npm run audit        # Auditoria de dependências
-npm run security     # Verificação de segurança
+npm run lint         # Verificar código
+npm run type-check   # Verificar tipos
 ```
 
 ---
 
-## 🔧 **Configuração Avançada**
+## 🎨 **Design System**
 
-### **ESLint e Prettier**
+### **Cores Principais**
+- **Laranja Shopee:** `#ff5722`
+- **Branco:** `#ffffff`
+- **Cinza claro:** `#f8fafc`
+- **Vermelho:** `#ef4444`
+- **Verde:** `#22c55e`
 
-```javascript
-// eslint.config.js
-module.exports = {
-  extends: ['next/core-web-vitals', 'plugin:@typescript-eslint/recommended'],
-  rules: {
-    // Regras customizadas
-  },
-};
-```
+### **Tipografia**
+- **Títulos:** Inter, sans-serif
+- **Corpo:** Inter, sans-serif
+- **Hierarquia:** H1-H6 bem definida
 
-### **Git Hooks (Lefthook)**
-
-```yaml
-# lefthook.yml
-pre-commit:
-  parallel: true
-  commands:
-    lint:
-      glob: '*.{js,jsx,ts,tsx}'
-      run: npx eslint {staged_files}
-    format:
-      glob: '*.{js,jsx,ts,tsx,json,md}'
-      run: npx prettier --check {staged_files}
-```
-
-### **GitHub Actions**
-
-```yaml
-# .github/workflows/ci.yml
-name: CI
-on: [push, pull_request]
-jobs:
-  test:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-      - run: npm ci
-      - run: npm run test
-      - run: npm run test:e2e
-```
+### **Espaçamentos**
+- **Grid:** 4px base
+- **Padding:** 16px, 24px, 32px
+- **Margin:** 8px, 16px, 24px, 32px
 
 ---
 
-## 🚀 **Deploy**
+## 📱 **Responsividade**
 
-### **Vercel (Recomendado)**
+### **Breakpoints**
+- **Mobile:** < 768px
+- **Tablet:** 768px - 1024px
+- **Desktop:** > 1024px
 
-```bash
-# Instalar Vercel CLI
-npm i -g vercel
+### **Grid System**
+- **Mobile:** 2 colunas
+- **Tablet:** 3-4 colunas
+- **Desktop:** 4-6 colunas
 
-# Deploy
-vercel
+---
 
-# Deploy de produção
-vercel --prod
-```
+## 🔧 **Tecnologias Utilizadas**
 
-### **Docker**
+- **Framework:** Next.js 15
+- **Linguagem:** TypeScript
+- **Styling:** Tailwind CSS
+- **Animações:** Framer Motion
+- **Ícones:** React Icons
+- **Deploy:** Vercel
 
-```dockerfile
-# Dockerfile
-FROM node:18-alpine
-WORKDIR /app
-COPY package*.json ./
-RUN npm ci --only=production
-COPY . .
-RUN npm run build
-EXPOSE 3000
-CMD ["npm", "start"]
-```
+---
 
-### **Railway**
+## 📊 **Performance**
 
-```bash
-# Deploy no Railway
-railway login
-railway init
-railway up
-```
+- **Lighthouse Score:** 95+
+- **Core Web Vitals:** Otimizados
+- **First Contentful Paint:** < 1.5s
+- **Largest Contentful Paint:** < 2.5s
+- **Cumulative Layout Shift:** < 0.1
 
 ---
 
 ## 🤝 **Contribuição**
 
-### **Como Contribuir**
-
-1. **Fork** o projeto
-2. **Crie** uma branch para sua feature (`git checkout -b feature/AmazingFeature`)
-3. **Commit** suas mudanças (`git commit -m 'Add some AmazingFeature'`)
-4. **Push** para a branch (`git push origin feature/AmazingFeature`)
-5. **Abra** um Pull Request
-
-### **Padrões de Commit**
-
-```bash
-# Convenção Conventional Commits
-feat: adicionar autenticação JWT
-fix: corrigir bug no middleware
-docs: atualizar README
-style: ajustar formatação
-refactor: refatorar sistema de logs
-test: adicionar testes para auth
-chore: atualizar dependências
-```
-
-### **Templates Disponíveis**
-
-- 📝 **[Pull Request Template](./.github/pull_request_template.md)**
-- 🐛 **[Bug Report Template](./.github/ISSUE_TEMPLATE/bug_report.md)**
-- 💡 **[Feature Request Template](./.github/ISSUE_TEMPLATE/feature_request.md)**
-
----
-
-## 📊 **Métricas e Status**
-
-### **Qualidade do Código**
-
-- ✅ **ESLint:** Sem erros
-- ✅ **Prettier:** Formatação consistente
-- ✅ **TypeScript:** Type safety completo
-- ✅ **Testes:** 85%+ cobertura
-- ✅ **Segurança:** Audit passed
-
-### **Performance**
-
-- 🚀 **Lighthouse:** 95+ score
-- ⚡ **Core Web Vitals:** Otimizados
-- 📱 **Responsividade:** 100% mobile-friendly
-- 🔍 **SEO:** 100% score
-
-### **Segurança**
-
-- 🔒 **OWASP Top 10:** 100% coberto
-- 🛡️ **Headers de Segurança:** 15+ headers
-- ⏱️ **Rate Limiting:** 4 níveis
-- 🚨 **Detecção de Ataques:** 4 tipos
-
----
-
-## 🎯 **Roadmap**
-
-### **Implementado ✅**
-
-- 🔒 Sistema completo de segurança
-- 🧪 Testes unitários e E2E
-- 📚 Documentação detalhada
-- 🎨 Design system centralizado
-- 🚀 Performance otimizada
-- 📱 Responsividade completa
-
-### **Em Desenvolvimento 🚧**
-
-- 🌙 Dark mode completo
-- 📊 Dashboard de métricas
-- 🔧 CLI para geração de componentes
-- 🌍 Internacionalização
-- 📈 Analytics integrado
-
-### **Planejado 📋**
-
-- 🎨 Storybook completo
-- 🔧 DevTools customizadas
-- 📱 PWA capabilities
-- 🌐 SSR/SSG otimizado
-- 🔗 Integração com CMS
-
----
-
-## 📚 **Documentação**
-
-### **Documentação Organizada**
-
-- 📖 **[Documentação Completa](./docs/)** - Índice geral da documentação
-- 🛠️ **[Guia de Desenvolvimento](./docs/guides/DEVELOPMENT_GUIDE.md)** - Padrões e boas práticas
-- 🔍 **[Guia de SEO](./docs/guides/SEO_GUIDE.md)** - Estratégias de SEO
-- 🔒 **[Guia de Segurança](./SECURITY_GUIDE.md)** - Medidas de segurança
-- 📋 **[Como Contribuir](./CONTRIBUTING.md)** - Guia de contribuição
-- ⚙️ **[Configuração](./SETUP_INSTRUCTIONS.md)** - Instruções de setup
-
-### **Relatórios e Status**
-
-- 📊 **[Relatórios Atuais](./docs/reports/)** - Status e análises do projeto
-- 📈 **[Roadmap de Melhorias](./docs/reports/IMPROVEMENTS_ROADMAP.md)** - Próximas funcionalidades
-- 🧪 **[Relatório de Testes](./docs/reports/RELATORIO_TESTE_PROJETO_TEMA.md)** - Resultados dos testes
-
-## 📞 **Suporte**
-
-### **Recursos**
-
-- 🐛 **[Issues](https://github.com/jonathanmartins81/gradualinfo/issues)** - Reportar bugs
-- 💡 **[Discussions](https://github.com/jonathanmartins81/gradualinfo/discussions)** - Discussões
-- 📧 **Email:** jonathan@aqua9.com.br
-
-### **Comunidade**
-
-- 🌟 **Star** o projeto se foi útil
-- 🔄 **Fork** para contribuir
-- 📢 **Compartilhe** com outros desenvolvedores
-- 💬 **Participe** das discussões
+1. Fork o projeto
+2. Crie uma branch para sua feature
+3. Commit suas mudanças
+4. Push para a branch
+5. Abra um Pull Request
 
 ---
 
 ## 📄 **Licença**
 
-Este projeto está licenciado sob a **MIT License** - veja o arquivo [LICENSE](./LICENSE) para detalhes.
+Este projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para mais detalhes.
 
 ---
 
-## 🙏 **Agradecimentos**
+## 👨‍💻 **Desenvolvido por**
 
-- **Next.js Team** - Framework incrível
-- **Vercel** - Deploy e hosting
-- **Tailwind CSS** - Framework de CSS
-- **Vitest** - Framework de testes
-- **Playwright** - Testes E2E
-- **Comunidade Open Source** - Inspiração e contribuições
+**Jonathan Simão** - [@aqua9dev](https://twitter.com/aqua9dev)
+
+**Aqua9** - Soluções em Tecnologia e Informação
 
 ---
 
-**Desenvolvido com ❤️ por [Jonathan Simão](https://github.com/jonathanmartins81) da [Aqua9](https://aqua9.com.br)**
+<div align="center">
 
-[![GitHub](https://img.shields.io/badge/GitHub-100000?style=flat-square&logo=github&logoColor=white)](https://github.com/jonathanmartins81)
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=flat-square&logo=linkedin&logoColor=white)](https://linkedin.com/in/jonathanmartins81)
-[![Website](https://img.shields.io/badge/Website-000000?style=flat-square&logo=About.me&logoColor=white)](https://aqua9.com.br)
+**⭐ Se este projeto te ajudou, considere dar uma estrela!**
+
+[![GitHub stars](https://img.shields.io/github/stars/jonathanmartins81/gradualinfo?style=social)](https://github.com/jonathanmartins81/gradualinfo)
+
+</div>

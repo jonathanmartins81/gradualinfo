@@ -19,7 +19,26 @@ export default function HeaderShopee() {
           <div className="flex-shrink-0">
             <Link href="/" className="flex items-center space-x-2">
               <div className="text-white text-2xl font-bold">🛍️</div>
-              <span className="text-white text-xl font-bold hidden sm:block">
+              <div className="hidden sm:block">
+                <img 
+                  src="/img/logo-dark.svg" 
+                  alt="Gradual Info Shop" 
+                  className="h-8 w-auto"
+                  onError={(e) => {
+                    // Fallback para texto se a imagem não carregar
+                    const target = e.target as HTMLImageElement;
+                    target.style.display = 'none';
+                    const textFallback = target.nextElementSibling as HTMLElement;
+                    if (textFallback) {
+                      textFallback.style.display = 'block';
+                    }
+                  }}
+                />
+                <span className="text-white text-xl font-bold" style={{ display: 'none' }}>
+                  Gradual Info Shop
+                </span>
+              </div>
+              <span className="text-white text-xl font-bold sm:hidden">
                 Gradual Info Shop
               </span>
             </Link>

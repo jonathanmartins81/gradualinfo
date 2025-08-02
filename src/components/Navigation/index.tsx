@@ -164,7 +164,7 @@ export default function Navigation() {
         </div>
       </div>
 
-            {/* Mobile Navigation */}
+      {/* Mobile Navigation */}
       {isOpen && (
         <div className='md:hidden bg-white border-t border-orange-400'>
           <div className='px-4 py-3 space-y-3'>
@@ -185,7 +185,7 @@ export default function Navigation() {
                 <FaUser className='w-5 h-5' />
               </button>
             </div>
-            
+
             {/* Mobile Categories */}
             <div className='grid grid-cols-2 gap-2 pt-3 border-t border-gray-200'>
               <Link href='#' className='text-gray-700 hover:text-orange-500 transition-colors text-sm py-2'>

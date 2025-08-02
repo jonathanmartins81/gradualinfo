@@ -48,10 +48,10 @@ export default function Navigation() {
   const isActive = (href: string) => pathname === href;
 
   return (
-    <nav className='bg-white shadow-sm border-b border-gray-200 sticky top-0 z-50'>
+    <nav className='bg-orange-500 sticky top-0 z-50'>
       <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
         {/* Top Bar - Promoção */}
-        <div className='bg-orange-500 text-white py-2 text-center text-sm font-medium'>
+        <div className='bg-orange-600 text-white py-2 text-center text-sm font-medium'>
           🎉 Frete grátis em compras acima de R$ 99! Aproveite as ofertas
         </div>
 
@@ -61,7 +61,7 @@ export default function Navigation() {
           <div className='flex-shrink-0'>
             <Link
               href='/'
-              className='flex items-center space-x-3 text-xl font-bold text-orange-500'
+              className='flex items-center space-x-3 text-xl font-bold text-white'
             >
               {!imageError ? (
                 <Image
@@ -74,7 +74,7 @@ export default function Navigation() {
                   onError={() => setImageError(true)}
                 />
               ) : (
-                <span className='text-orange-500 text-xl font-bold'>
+                <span className='text-white text-xl font-bold'>
                   🛍️ Gradual Info Shop
                 </span>
               )}
@@ -104,19 +104,19 @@ export default function Navigation() {
           <div className='flex items-center space-x-4'>
             {/* Desktop Navigation */}
             <div className='hidden md:flex items-center space-x-6'>
-              <button className='text-gray-600 hover:text-orange-500 transition-colors p-2'>
+              <button className='text-white hover:text-orange-200 transition-colors p-2'>
                 <FaHeart className='w-5 h-5' />
               </button>
-              <button className='text-gray-600 hover:text-orange-500 transition-colors p-2'>
+              <button className='text-white hover:text-orange-200 transition-colors p-2'>
                 <FaBell className='w-5 h-5' />
               </button>
-              <button className='text-gray-600 hover:text-orange-500 transition-colors p-2 relative'>
+              <button className='text-white hover:text-orange-200 transition-colors p-2 relative'>
                 <FaShoppingCart className='w-5 h-5' />
                 <span className='absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full w-4 h-4 flex items-center justify-center'>
                   3
                 </span>
               </button>
-              <button className='text-gray-600 hover:text-orange-500 transition-colors p-2'>
+              <button className='text-white hover:text-orange-200 transition-colors p-2'>
                 <FaUser className='w-5 h-5' />
               </button>
             </div>
@@ -125,7 +125,7 @@ export default function Navigation() {
             <div className='md:hidden'>
               <button
                 onClick={() => setIsOpen(!isOpen)}
-                className='text-gray-600 hover:text-orange-500 p-2'
+                className='text-white hover:text-orange-200 p-2'
               >
                 <FaBars className='w-5 h-5' />
               </button>
@@ -134,82 +134,82 @@ export default function Navigation() {
         </div>
 
         {/* Categories Bar */}
-        <div className='hidden md:block border-t border-gray-100'>
+        <div className='hidden md:block bg-white border-t border-orange-400'>
           <div className='flex items-center space-x-8 py-3 text-sm'>
-            <Link href='#' className='text-gray-600 hover:text-orange-500 transition-colors font-medium'>
+            <Link href='#' className='text-gray-700 hover:text-orange-500 transition-colors font-medium'>
               Moda Feminina
             </Link>
-            <Link href='#' className='text-gray-600 hover:text-orange-500 transition-colors font-medium'>
+            <Link href='#' className='text-gray-700 hover:text-orange-500 transition-colors font-medium'>
               Eletrônicos
             </Link>
-            <Link href='#' className='text-gray-600 hover:text-orange-500 transition-colors font-medium'>
+            <Link href='#' className='text-gray-700 hover:text-orange-500 transition-colors font-medium'>
               Casa & Jardim
             </Link>
-            <Link href='#' className='text-gray-600 hover:text-orange-500 transition-colors font-medium'>
+            <Link href='#' className='text-gray-700 hover:text-orange-500 transition-colors font-medium'>
               Esportes
             </Link>
-            <Link href='#' className='text-gray-600 hover:text-orange-500 transition-colors font-medium'>
+            <Link href='#' className='text-gray-700 hover:text-orange-500 transition-colors font-medium'>
               Beleza
             </Link>
-            <Link href='#' className='text-gray-600 hover:text-orange-500 transition-colors font-medium'>
+            <Link href='#' className='text-gray-700 hover:text-orange-500 transition-colors font-medium'>
               Brinquedos
             </Link>
-            <Link href='#' className='text-gray-600 hover:text-orange-500 transition-colors font-medium'>
+            <Link href='#' className='text-gray-700 hover:text-orange-500 transition-colors font-medium'>
               Automotivo
             </Link>
-            <Link href='#' className='text-gray-600 hover:text-orange-500 transition-colors font-medium'>
+            <Link href='#' className='text-gray-700 hover:text-orange-500 transition-colors font-medium'>
               Livros
             </Link>
           </div>
         </div>
       </div>
 
-      {/* Mobile Navigation */}
+            {/* Mobile Navigation */}
       {isOpen && (
-        <div className='md:hidden bg-white border-t border-gray-200'>
+        <div className='md:hidden bg-white border-t border-orange-400'>
           <div className='px-4 py-3 space-y-3'>
             <div className='flex items-center space-x-4'>
-              <button className='text-gray-600 hover:text-orange-500 transition-colors p-2'>
+              <button className='text-gray-700 hover:text-orange-500 transition-colors p-2'>
                 <FaHeart className='w-5 h-5' />
               </button>
-              <button className='text-gray-600 hover:text-orange-500 transition-colors p-2'>
+              <button className='text-gray-700 hover:text-orange-500 transition-colors p-2'>
                 <FaBell className='w-5 h-5' />
               </button>
-              <button className='text-gray-600 hover:text-orange-500 transition-colors p-2 relative'>
+              <button className='text-gray-700 hover:text-orange-500 transition-colors p-2 relative'>
                 <FaShoppingCart className='w-5 h-5' />
                 <span className='absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full w-4 h-4 flex items-center justify-center'>
                   3
                 </span>
               </button>
-              <button className='text-gray-600 hover:text-orange-500 transition-colors p-2'>
+              <button className='text-gray-700 hover:text-orange-500 transition-colors p-2'>
                 <FaUser className='w-5 h-5' />
               </button>
             </div>
-
+            
             {/* Mobile Categories */}
-            <div className='grid grid-cols-2 gap-2 pt-3 border-t border-gray-100'>
-              <Link href='#' className='text-gray-600 hover:text-orange-500 transition-colors text-sm py-2'>
+            <div className='grid grid-cols-2 gap-2 pt-3 border-t border-gray-200'>
+              <Link href='#' className='text-gray-700 hover:text-orange-500 transition-colors text-sm py-2'>
                 Moda Feminina
               </Link>
-              <Link href='#' className='text-gray-600 hover:text-orange-500 transition-colors text-sm py-2'>
+              <Link href='#' className='text-gray-700 hover:text-orange-500 transition-colors text-sm py-2'>
                 Eletrônicos
               </Link>
-              <Link href='#' className='text-gray-600 hover:text-orange-500 transition-colors text-sm py-2'>
+              <Link href='#' className='text-gray-700 hover:text-orange-500 transition-colors text-sm py-2'>
                 Casa & Jardim
               </Link>
-              <Link href='#' className='text-gray-600 hover:text-orange-500 transition-colors text-sm py-2'>
+              <Link href='#' className='text-gray-700 hover:text-orange-500 transition-colors text-sm py-2'>
                 Esportes
               </Link>
-              <Link href='#' className='text-gray-600 hover:text-orange-500 transition-colors text-sm py-2'>
+              <Link href='#' className='text-gray-700 hover:text-orange-500 transition-colors text-sm py-2'>
                 Beleza
               </Link>
-              <Link href='#' className='text-gray-600 hover:text-orange-500 transition-colors text-sm py-2'>
+              <Link href='#' className='text-gray-700 hover:text-orange-500 transition-colors text-sm py-2'>
                 Brinquedos
               </Link>
-              <Link href='#' className='text-gray-600 hover:text-orange-500 transition-colors text-sm py-2'>
+              <Link href='#' className='text-gray-700 hover:text-orange-500 transition-colors text-sm py-2'>
                 Automotivo
               </Link>
-              <Link href='#' className='text-gray-600 hover:text-orange-500 transition-colors text-sm py-2'>
+              <Link href='#' className='text-gray-700 hover:text-orange-500 transition-colors text-sm py-2'>
                 Livros
               </Link>
             </div>
